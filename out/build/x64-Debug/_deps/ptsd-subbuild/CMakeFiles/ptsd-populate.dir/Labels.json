@@ -1,0 +1,46 @@
+{
+	"sources" : 
+	[
+		{
+			"file" : "E:/1School/OOPL/OOPL_PTSD_pushBox/out/build/x64-Debug/_deps/ptsd-subbuild/CMakeFiles/ptsd-populate"
+		},
+		{
+			"file" : "E:/1School/OOPL/OOPL_PTSD_pushBox/out/build/x64-Debug/_deps/ptsd-subbuild/CMakeFiles/ptsd-populate.rule"
+		},
+		{
+			"file" : "E:/1School/OOPL/OOPL_PTSD_pushBox/out/build/x64-Debug/_deps/ptsd-subbuild/CMakeFiles/ptsd-populate-complete.rule"
+		},
+		{
+			"file" : "E:/1School/OOPL/OOPL_PTSD_pushBox/out/build/x64-Debug/_deps/ptsd-subbuild/ptsd-populate-prefix/src/ptsd-populate-stamp/ptsd-populate-build.rule"
+		},
+		{
+			"file" : "E:/1School/OOPL/OOPL_PTSD_pushBox/out/build/x64-Debug/_deps/ptsd-subbuild/ptsd-populate-prefix/src/ptsd-populate-stamp/ptsd-populate-configure.rule"
+		},
+		{
+			"file" : "E:/1School/OOPL/OOPL_PTSD_pushBox/out/build/x64-Debug/_deps/ptsd-subbuild/ptsd-populate-prefix/src/ptsd-populate-stamp/ptsd-populate-download.rule"
+		},
+		{
+			"file" : "E:/1School/OOPL/OOPL_PTSD_pushBox/out/build/x64-Debug/_deps/ptsd-subbuild/ptsd-populate-prefix/src/ptsd-populate-stamp/ptsd-populate-install.rule"
+		},
+		{
+			"file" : "E:/1School/OOPL/OOPL_PTSD_pushBox/out/build/x64-Debug/_deps/ptsd-subbuild/ptsd-populate-prefix/src/ptsd-populate-stamp/ptsd-populate-mkdir.rule"
+		},
+		{
+			"file" : "E:/1School/OOPL/OOPL_PTSD_pushBox/out/build/x64-Debug/_deps/ptsd-subbuild/ptsd-populate-prefix/src/ptsd-populate-stamp/ptsd-populate-patch.rule"
+		},
+		{
+			"file" : "E:/1School/OOPL/OOPL_PTSD_pushBox/out/build/x64-Debug/_deps/ptsd-subbuild/ptsd-populate-prefix/src/ptsd-populate-stamp/ptsd-populate-test.rule"
+		},
+		{
+			"file" : "E:/1School/OOPL/OOPL_PTSD_pushBox/out/build/x64-Debug/_deps/ptsd-subbuild/ptsd-populate-prefix/src/ptsd-populate-stamp/ptsd-populate-update.rule"
+		}
+	],
+	"target" : 
+	{
+		"labels" : 
+		[
+			"ptsd-populate"
+		],
+		"name" : "ptsd-populate"
+	}
+}

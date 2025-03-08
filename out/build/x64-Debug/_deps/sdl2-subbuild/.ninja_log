@@ -1,0 +1,21 @@
+# ninja log v6
+5	89	7631469997337678	sdl2-populate-prefix/src/sdl2-populate-stamp/sdl2-populate-mkdir	3d394e6e4b538d8c
+5	89	7631469997337678	E:/1School/OOPL/OOPL_PTSD_pushBox/out/build/x64-Debug/_deps/sdl2-subbuild/sdl2-populate-prefix/src/sdl2-populate-stamp/sdl2-populate-mkdir	3d394e6e4b538d8c
+4668	4749	7631470043933598	sdl2-populate-prefix/src/sdl2-populate-stamp/sdl2-populate-patch	5322cae98de10733
+89	4575	7631470042195413	sdl2-populate-prefix/src/sdl2-populate-stamp/sdl2-populate-download	7b15abcda0f8e4b4
+4575	4655	7631470043001827	E:/1School/OOPL/OOPL_PTSD_pushBox/out/build/x64-Debug/_deps/sdl2-subbuild/sdl2-populate-prefix/src/sdl2-populate-stamp/sdl2-populate-update	2ad4948d048e5740
+89	4575	7631470042195413	E:/1School/OOPL/OOPL_PTSD_pushBox/out/build/x64-Debug/_deps/sdl2-subbuild/sdl2-populate-prefix/src/sdl2-populate-stamp/sdl2-populate-download	7b15abcda0f8e4b4
+4575	4655	7631470043001827	sdl2-populate-prefix/src/sdl2-populate-stamp/sdl2-populate-update	2ad4948d048e5740
+4668	4749	7631470043933598	E:/1School/OOPL/OOPL_PTSD_pushBox/out/build/x64-Debug/_deps/sdl2-subbuild/sdl2-populate-prefix/src/sdl2-populate-stamp/sdl2-populate-patch	5322cae98de10733
+4749	4829	7631470044739590	sdl2-populate-prefix/src/sdl2-populate-stamp/sdl2-populate-configure	9c86c6048b2b6ece
+4749	4829	7631470044739590	E:/1School/OOPL/OOPL_PTSD_pushBox/out/build/x64-Debug/_deps/sdl2-subbuild/sdl2-populate-prefix/src/sdl2-populate-stamp/sdl2-populate-configure	9c86c6048b2b6ece
+4830	4925	7631470045693863	sdl2-populate-prefix/src/sdl2-populate-stamp/sdl2-populate-build	5201155f8b16ef67
+4830	4925	7631470045693863	E:/1School/OOPL/OOPL_PTSD_pushBox/out/build/x64-Debug/_deps/sdl2-subbuild/sdl2-populate-prefix/src/sdl2-populate-stamp/sdl2-populate-build	5201155f8b16ef67
+4925	5007	7631470046512629	sdl2-populate-prefix/src/sdl2-populate-stamp/sdl2-populate-install	200d901a99c907c9
+4925	5007	7631470046512629	E:/1School/OOPL/OOPL_PTSD_pushBox/out/build/x64-Debug/_deps/sdl2-subbuild/sdl2-populate-prefix/src/sdl2-populate-stamp/sdl2-populate-install	200d901a99c907c9
+5007	5089	7631470047335656	sdl2-populate-prefix/src/sdl2-populate-stamp/sdl2-populate-test	ca5d5a2c822f7c5f
+5007	5089	7631470047335656	E:/1School/OOPL/OOPL_PTSD_pushBox/out/build/x64-Debug/_deps/sdl2-subbuild/sdl2-populate-prefix/src/sdl2-populate-stamp/sdl2-populate-test	ca5d5a2c822f7c5f
+5089	5201	7631470048455177	CMakeFiles/sdl2-populate-complete	4934b4d98cb49fc4
+5089	5201	7631470048455177	sdl2-populate-prefix/src/sdl2-populate-stamp/sdl2-populate-done	4934b4d98cb49fc4
+5089	5201	7631470048455177	E:/1School/OOPL/OOPL_PTSD_pushBox/out/build/x64-Debug/_deps/sdl2-subbuild/CMakeFiles/sdl2-populate-complete	4934b4d98cb49fc4
+5089	5201	7631470048455177	E:/1School/OOPL/OOPL_PTSD_pushBox/out/build/x64-Debug/_deps/sdl2-subbuild/sdl2-populate-prefix/src/sdl2-populate-stamp/sdl2-populate-done	4934b4d98cb49fc4

@@ -55,7 +55,7 @@ cmake-build-*/
 *.iws
 
 # IntelliJ
-
+# out/
 
 # mpeltonen/sbt-idea plugin
 .idea_modules/
@@ -487,7 +487,7 @@ FodyWeavers.xsd
 .vscode/
 
 # Default build directory for CMake extension
-build/
+# build/
 
 # Ignore 3rd party dependencies
 lib/
