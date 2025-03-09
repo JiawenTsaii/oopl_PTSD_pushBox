@@ -2,6 +2,9 @@
 #define APP_HPP
 
 #include "pch.hpp" // IWYU pragma: export
+#include "Util/Renderer.hpp"
+
+#include "Phase.hpp"
 
 class App {
 public:
@@ -23,7 +26,12 @@ private:
     void ValidTask();
 
 private:
+
     State m_CurrentState = State::START;
+     
+    Util::Renderer m_Root;
+
+    std::unique_ptr<Phase> m_Phase;
 };
 
 #endif

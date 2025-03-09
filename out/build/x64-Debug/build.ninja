@@ -67,6 +67,24 @@ build CMakeFiles\REPLACE_WITH_YOUR_PROJECT_NAME.dir\src\App.cpp.obj: CXX_COMPILE
   TARGET_COMPILE_PDB = CMakeFiles\REPLACE_WITH_YOUR_PROJECT_NAME.dir\
   TARGET_PDB = REPLACE_WITH_YOUR_PROJECT_NAME.pdb
 
+build CMakeFiles\REPLACE_WITH_YOUR_PROJECT_NAME.dir\src\PhaseMenu.cpp.obj: CXX_COMPILER__REPLACE_WITH_YOUR_PROJECT_NAME_unscanned_Debug E$:\1School\OOPL\OOPL_PTSD_pushBox\src\PhaseMenu.cpp || cmake_object_order_depends_target_REPLACE_WITH_YOUR_PROJECT_NAME
+  DEFINES = -DGLEW_STATIC -DJSON_USE_IMPLICIT_CONVERSIONS=0 -DRESOURCE_DIR=\"E:/1School/OOPL/OOPL_PTSD_pushBox/Resources\" -DSPDLOG_COMPILED_LIB
+  FLAGS = /DWIN32 /D_WINDOWS /GR /EHsc /Zi /Ob0 /Od /RTC1 -std:c++17 -MDd /W4
+  INCLUDES = -IE:\1School\OOPL\OOPL_PTSD_pushBox\PTSD\include -IE:\1School\OOPL\OOPL_PTSD_pushBox\include -IE:\1School\OOPL\OOPL_PTSD_pushBox\out\build\x64-Debug\_deps\sdl2-build\include -IE:\1School\OOPL\OOPL_PTSD_pushBox\out\build\x64-Debug\_deps\sdl2-build\include-config-debug -IE:\1School\OOPL\OOPL_PTSD_pushBox\PTSD\lib\sdl2_image -IE:\1School\OOPL\OOPL_PTSD_pushBox\PTSD\lib\sdl2_ttf -IE:\1School\OOPL\OOPL_PTSD_pushBox\PTSD\lib\sdl2_mixer\include -external:IE:\1School\OOPL\OOPL_PTSD_pushBox\PTSD\lib\sdl2\include -external:IE:\1School\OOPL\OOPL_PTSD_pushBox\PTSD\lib\glew\include -external:IE:\1School\OOPL\OOPL_PTSD_pushBox\PTSD\lib\spdlog\include -external:IE:\1School\OOPL\OOPL_PTSD_pushBox\PTSD\lib\glm -external:IE:\1School\OOPL\OOPL_PTSD_pushBox\PTSD\lib\imgui -external:IE:\1School\OOPL\OOPL_PTSD_pushBox\PTSD\lib\imgui\backends -external:IE:\1School\OOPL\OOPL_PTSD_pushBox\PTSD\lib\nlohmann_json\include -external:W0
+  OBJECT_DIR = CMakeFiles\REPLACE_WITH_YOUR_PROJECT_NAME.dir
+  OBJECT_FILE_DIR = CMakeFiles\REPLACE_WITH_YOUR_PROJECT_NAME.dir\src
+  TARGET_COMPILE_PDB = CMakeFiles\REPLACE_WITH_YOUR_PROJECT_NAME.dir\
+  TARGET_PDB = REPLACE_WITH_YOUR_PROJECT_NAME.pdb
+
+build CMakeFiles\REPLACE_WITH_YOUR_PROJECT_NAME.dir\src\Character.cpp.obj: CXX_COMPILER__REPLACE_WITH_YOUR_PROJECT_NAME_unscanned_Debug E$:\1School\OOPL\OOPL_PTSD_pushBox\src\Character.cpp || cmake_object_order_depends_target_REPLACE_WITH_YOUR_PROJECT_NAME
+  DEFINES = -DGLEW_STATIC -DJSON_USE_IMPLICIT_CONVERSIONS=0 -DRESOURCE_DIR=\"E:/1School/OOPL/OOPL_PTSD_pushBox/Resources\" -DSPDLOG_COMPILED_LIB
+  FLAGS = /DWIN32 /D_WINDOWS /GR /EHsc /Zi /Ob0 /Od /RTC1 -std:c++17 -MDd /W4
+  INCLUDES = -IE:\1School\OOPL\OOPL_PTSD_pushBox\PTSD\include -IE:\1School\OOPL\OOPL_PTSD_pushBox\include -IE:\1School\OOPL\OOPL_PTSD_pushBox\out\build\x64-Debug\_deps\sdl2-build\include -IE:\1School\OOPL\OOPL_PTSD_pushBox\out\build\x64-Debug\_deps\sdl2-build\include-config-debug -IE:\1School\OOPL\OOPL_PTSD_pushBox\PTSD\lib\sdl2_image -IE:\1School\OOPL\OOPL_PTSD_pushBox\PTSD\lib\sdl2_ttf -IE:\1School\OOPL\OOPL_PTSD_pushBox\PTSD\lib\sdl2_mixer\include -external:IE:\1School\OOPL\OOPL_PTSD_pushBox\PTSD\lib\sdl2\include -external:IE:\1School\OOPL\OOPL_PTSD_pushBox\PTSD\lib\glew\include -external:IE:\1School\OOPL\OOPL_PTSD_pushBox\PTSD\lib\spdlog\include -external:IE:\1School\OOPL\OOPL_PTSD_pushBox\PTSD\lib\glm -external:IE:\1School\OOPL\OOPL_PTSD_pushBox\PTSD\lib\imgui -external:IE:\1School\OOPL\OOPL_PTSD_pushBox\PTSD\lib\imgui\backends -external:IE:\1School\OOPL\OOPL_PTSD_pushBox\PTSD\lib\nlohmann_json\include -external:W0
+  OBJECT_DIR = CMakeFiles\REPLACE_WITH_YOUR_PROJECT_NAME.dir
+  OBJECT_FILE_DIR = CMakeFiles\REPLACE_WITH_YOUR_PROJECT_NAME.dir\src
+  TARGET_COMPILE_PDB = CMakeFiles\REPLACE_WITH_YOUR_PROJECT_NAME.dir\
+  TARGET_PDB = REPLACE_WITH_YOUR_PROJECT_NAME.pdb
+
 
 # =============================================================================
 # Link build statements for EXECUTABLE target REPLACE_WITH_YOUR_PROJECT_NAME
@@ -75,7 +93,7 @@ build CMakeFiles\REPLACE_WITH_YOUR_PROJECT_NAME.dir\src\App.cpp.obj: CXX_COMPILE
 #############################################
 # Link the executable REPLACE_WITH_YOUR_PROJECT_NAME.exe
 
-build REPLACE_WITH_YOUR_PROJECT_NAME.exe: CXX_EXECUTABLE_LINKER__REPLACE_WITH_YOUR_PROJECT_NAME_Debug CMakeFiles\REPLACE_WITH_YOUR_PROJECT_NAME.dir\src\main.cpp.obj CMakeFiles\REPLACE_WITH_YOUR_PROJECT_NAME.dir\src\App.cpp.obj | _deps\sdl2-build\SDL2maind.lib _deps\ptsd-build\PTSD.lib lib\libglew32d.lib _deps\sdl2_image-build\SDL2_image-staticd.lib _deps\sdl2_ttf-build\SDL2_ttfd.lib _deps\sdl2_ttf-build\external\freetype\freetyped.lib _deps\sdl2_mixer-build\SDL2_mixer-staticd.lib _deps\sdl2-build\SDL2-staticd.lib _deps\spdlog-build\spdlogd.lib _deps\ptsd-build\ImGui.lib || _deps\ptsd-build\ImGui.lib _deps\ptsd-build\PTSD.lib _deps\sdl2-build\SDL2-staticd.lib _deps\sdl2-build\SDL2maind.lib _deps\sdl2_image-build\SDL2_image-staticd.lib _deps\sdl2_mixer-build\SDL2_mixer-staticd.lib _deps\sdl2_ttf-build\SDL2_ttfd.lib _deps\sdl2_ttf-build\external\freetype\freetyped.lib _deps\spdlog-build\spdlogd.lib lib\libglew32d.lib
+build REPLACE_WITH_YOUR_PROJECT_NAME.exe: CXX_EXECUTABLE_LINKER__REPLACE_WITH_YOUR_PROJECT_NAME_Debug CMakeFiles\REPLACE_WITH_YOUR_PROJECT_NAME.dir\src\main.cpp.obj CMakeFiles\REPLACE_WITH_YOUR_PROJECT_NAME.dir\src\App.cpp.obj CMakeFiles\REPLACE_WITH_YOUR_PROJECT_NAME.dir\src\PhaseMenu.cpp.obj CMakeFiles\REPLACE_WITH_YOUR_PROJECT_NAME.dir\src\Character.cpp.obj | _deps\sdl2-build\SDL2maind.lib _deps\ptsd-build\PTSD.lib lib\libglew32d.lib _deps\sdl2_image-build\SDL2_image-staticd.lib _deps\sdl2_ttf-build\SDL2_ttfd.lib _deps\sdl2_ttf-build\external\freetype\freetyped.lib _deps\sdl2_mixer-build\SDL2_mixer-staticd.lib _deps\sdl2-build\SDL2-staticd.lib _deps\spdlog-build\spdlogd.lib _deps\ptsd-build\ImGui.lib || _deps\ptsd-build\ImGui.lib _deps\ptsd-build\PTSD.lib _deps\sdl2-build\SDL2-staticd.lib _deps\sdl2-build\SDL2maind.lib _deps\sdl2_image-build\SDL2_image-staticd.lib _deps\sdl2_mixer-build\SDL2_mixer-staticd.lib _deps\sdl2_ttf-build\SDL2_ttfd.lib _deps\sdl2_ttf-build\external\freetype\freetyped.lib _deps\spdlog-build\spdlogd.lib lib\libglew32d.lib
   FLAGS = /DWIN32 /D_WINDOWS /GR /EHsc /Zi /Ob0 /Od /RTC1 -MDd
   LINK_FLAGS = /machine:x64 /debug /INCREMENTAL /subsystem:console
   LINK_LIBRARIES = _deps\sdl2-build\SDL2maind.lib  _deps\ptsd-build\PTSD.lib  lib\libglew32d.lib  opengl32.lib  glu32.lib  _deps\sdl2_image-build\SDL2_image-staticd.lib  _deps\sdl2_ttf-build\SDL2_ttfd.lib  _deps\sdl2_ttf-build\external\freetype\freetyped.lib  _deps\sdl2_mixer-build\SDL2_mixer-staticd.lib  _deps\sdl2-build\SDL2-staticd.lib  user32.lib  gdi32.lib  winmm.lib  imm32.lib  ole32.lib  oleaut32.lib  version.lib  uuid.lib  advapi32.lib  setupapi.lib  shell32.lib  dinput8.lib  _deps\spdlog-build\spdlogd.lib  _deps\ptsd-build\ImGui.lib  kernel32.lib user32.lib gdi32.lib winspool.lib shell32.lib ole32.lib oleaut32.lib uuid.lib comdlg32.lib advapi32.lib

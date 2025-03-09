@@ -5,19 +5,19 @@
 #include "Util/Keycode.hpp"
 #include "Util/Logger.hpp"
 
+#include "PhaseMenu.hpp"
+
 void App::Start() {
     LOG_TRACE("Start");
     m_CurrentState = State::UPDATE;
+    m_Phase = std::unique_ptr<Phase>(static_cast<Phase*>(new PhaseMenu()));
 }
 
 void App::Update() {
     
-    //TODO: do your things here and delete this line <3
+    m_Phase->Update();
     
-    /*
-     * Do not touch the code below as they serve the purpose for
-     * closing the window.
-     */
+    /* close the window */
     if (Util::Input::IsKeyUp(Util::Keycode::ESCAPE) ||
         Util::Input::IfExit()) {
         m_CurrentState = State::END;

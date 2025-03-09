@@ -17,7 +17,7 @@
 3102	3830	7631471802998136	_deps/sdl2-build/CMakeFiles/SDL2-static.dir/src/render/direct3d/SDL_shaders_d3d.c.obj	9f24a439873253ed
 124	309	7631471773769884	E:/1School/OOPL/OOPL_PTSD_pushBox/out/build/x64-Debug/_deps/sdl2-build/include/SDL_assert.h	a01cb6eed952e013
 124	309	7631471773769884	_deps/sdl2-build/include/SDL_assert.h	a01cb6eed952e013
-15780	19185	7631471929780132	CMakeFiles/REPLACE_WITH_YOUR_PROJECT_NAME.dir/src/App.cpp.obj	27ea55e6021b3ba5
+196	2730	7632183099520697	CMakeFiles/REPLACE_WITH_YOUR_PROJECT_NAME.dir/src/App.cpp.obj	27ea55e6021b3ba5
 310	494	7631471775567817	_deps/sdl2-build/include/SDL_hints.h	15812738cf821308
 5331	6199	7631471825287257	_deps/sdl2-build/CMakeFiles/SDL2-static.dir/src/video/windows/SDL_windowsclipboard.c.obj	bcc59e587bbdd9fc
 353	540	7631471776007045	E:/1School/OOPL/OOPL_PTSD_pushBox/out/build/x64-Debug/_deps/sdl2-build/include/SDL_loadso.h	7ac9f802b6f00e86
@@ -192,6 +192,7 @@
 678	875	7631471779262283	_deps/sdl2-build/include/SDL_syswm.h	1a88b2939cd3056f
 688	885	7631471779366641	_deps/sdl2-build/include/SDL_test.h	da086d969a020e41
 3796	3993	7631471809939273	_deps/sdl2-build/CMakeFiles/SDL2-static.dir/src/stdlib/SDL_iconv.c.obj	52012bec43db33b9
+219	2277	7632183099757319	CMakeFiles/REPLACE_WITH_YOUR_PROJECT_NAME.dir/src/Character.cpp.obj	1d1ee711add013dc
 688	885	7631471779366641	E:/1School/OOPL/OOPL_PTSD_pushBox/out/build/x64-Debug/_deps/sdl2-build/include/SDL_test.h	da086d969a020e41
 698	895	7631471779476619	_deps/sdl2-build/include/SDL_test_assert.h	6cd1314e7fe489a3
 742	939	7631471779960215	_deps/sdl2-build/include/SDL_test_font.h	dd570087137442d0
@@ -335,7 +336,7 @@
 8271	8858	7631471854690377	_deps/sdl2_image-build/CMakeFiles/SDL2_image.dir/IMG_jpg.c.obj	75e88923b661226c
 2337	3443	7631471795345729	_deps/sdl2-build/CMakeFiles/SDL2-static.dir/src/joystick/SDL_joystick.c.obj	c510ba57ebc8dbcb
 2948	3455	7631471801464313	_deps/sdl2-build/CMakeFiles/SDL2-static.dir/src/render/SDL_render.c.obj	a7a8ff540cd04ad0
-219	3703	7631476843380687	_deps/ptsd-build/CMakeFiles/PTSD.dir/src/Util/Image.cpp.obj	39fa668b010a63bc
+178	2975	7632166955304321	_deps/ptsd-build/CMakeFiles/PTSD.dir/src/Util/Image.cpp.obj	39fa668b010a63bc
 3419	3624	7631471806163496	_deps/sdl2-build/CMakeFiles/SDL2-static.dir/src/render/software/SDL_drawpoint.c.obj	ac24c2ac02e397b0
 3256	3677	7631471804536937	_deps/sdl2-build/CMakeFiles/SDL2-static.dir/src/render/software/SDL_blendline.c.obj	7e4aa3bfe59102e1
 6900	7631	7631471840969119	_deps/sdl2-build/CMakeFiles/SDL2-static.dir/src/joystick/windows/SDL_xinputjoystick.c.obj	438a322d4b85bcb2
@@ -424,7 +425,7 @@
 7177	7646	7631471843756319	_deps/sdl2_ttf-build/external/freetype/CMakeFiles/freetype.dir/src/cid/type1cid.c.obj	590cb8c75de9a4af
 6445	6871	7631471836421444	_deps/sdl2-build/CMakeFiles/SDL2-static.dir/src/joystick/hidapi/SDL_hidapi_ps5.c.obj	4f0bdf2f1d8ab5de
 6241	6899	7631471834380682	_deps/sdl2-build/CMakeFiles/SDL2-static.dir/src/locale/windows/SDL_syslocale.c.obj	6b0b3b75168daa3b
-15427	18972	7631471926252140	_deps/ptsd-build/CMakeFiles/PTSD.dir/src/Util/Animation.cpp.obj	bf004df6a472dfa9
+196	2362	7632059054787223	_deps/ptsd-build/CMakeFiles/PTSD.dir/src/Util/Animation.cpp.obj	bf004df6a472dfa9
 6582	7014	7631471837788355	_deps/sdl2-build/CMakeFiles/SDL2-static.dir/src/joystick/hidapi/SDL_hidapi_steam.c.obj	a66b3e6f0bc114e
 8735	9165	7631471859334133	_deps/sdl2_image-build/CMakeFiles/SDL2_image.dir/IMG_webp.c.obj	d08ac125dd94ae5f
 200	3002	7631476843197397	_deps/ptsd-build/CMakeFiles/PTSD.dir/src/Util/Logger.cpp.obj	8f2ab770211b323f
@@ -484,7 +485,12 @@
 14454	18140	7631471916511114	_deps/ptsd-build/CMakeFiles/PTSD.dir/src/Util/GameObject.cpp.obj	61b6b9b14465b8a2
 228	2986	7631476843470682	_deps/ptsd-build/CMakeFiles/PTSD.dir/src/Util/TransformUtils.cpp.obj	580bc26c16b959f2
 14556	18836	7631471917543994	_deps/ptsd-build/CMakeFiles/PTSD.dir/src/Util/Renderer.cpp.obj	d6b3162ce669c878
-246	3017	7631476843662287	CMakeFiles/REPLACE_WITH_YOUR_PROJECT_NAME.dir/src/main.cpp.obj	8b0756df21a42647
+186	2745	7632183099425264	CMakeFiles/REPLACE_WITH_YOUR_PROJECT_NAME.dir/src/main.cpp.obj	8b0756df21a42647
 15490	19653	7631471926882067	_deps/ptsd-build/CMakeFiles/PTSD.dir/src/Util/MissingTexture.cpp.obj	29b61c980ee4e717
-3707	3882	7631476878270382	_deps/ptsd-build/PTSD.lib	aa86dca83f4d8ac
-939	1531	7631481935107625	REPLACE_WITH_YOUR_PROJECT_NAME.exe	7f0a2eafee513144
+2980	3222	7632166983325528	_deps/ptsd-build/PTSD.lib	aa86dca83f4d8ac
+2750	3487	7632183125059826	REPLACE_WITH_YOUR_PROJECT_NAME.exe	94a436b6b0cd69b
+204	596	7632052473890875	CMakeFiles/REPLACE_WITH_YOUR_PROJECT_NAME.dir/src/BackgroundMenu.cpp.obj	4b1613b577c651b
+204	2534	7632139923119921	CMakeFiles/REPLACE_WITH_YOUR_PROJECT_NAME.dir/src/PhaseManager.cpp.obj	8841fed770eb4f77
+219	2336	7632166189670025	CMakeFiles/REPLACE_WITH_YOUR_PROJECT_NAME.dir/src/GameObjectEx.cpp.obj	601250f72356a354
+188	1946	7632166955404695	CMakeFiles/REPLACE_WITH_YOUR_PROJECT_NAME.dir/src/MenuScene.cpp.obj	eb1bb5d62f5f2f97
+207	2342	7632183099629072	CMakeFiles/REPLACE_WITH_YOUR_PROJECT_NAME.dir/src/PhaseMenu.cpp.obj	dc1e6262a7329dac
