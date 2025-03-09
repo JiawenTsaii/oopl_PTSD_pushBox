@@ -488,7 +488,7 @@ FodyWeavers.xsd
 
 # Default build directory for CMake extension
 # build/
-/out/build/x64-Debug/
+out/build/x64-Debug/
 
 # Ignore 3rd party dependencies
 lib/
