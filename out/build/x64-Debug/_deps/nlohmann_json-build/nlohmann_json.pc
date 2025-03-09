@@ -1,4 +1,0 @@
-Name: nlohmann_json
-Description: JSON for Modern C++
-Version: 3.11.3
-Cflags: -IE:/1School/OOPL/z_trytry/oopl_PTSD_pushBox/out/install/x64-Debug/include

@@ -1,6 +1,0 @@
-# CMake generated Testfile for 
-# Source directory: E:/1School/OOPL/z_trytry/oopl_PTSD_pushBox/PTSD/lib/googletest/googletest
-# Build directory: E:/1School/OOPL/z_trytry/oopl_PTSD_pushBox/out/build/x64-Debug/_deps/googletest-build/googletest
-# 
-# This file includes the relevant testing commands required for 
-# testing this directory and lists subdirectories to be tested as well.
