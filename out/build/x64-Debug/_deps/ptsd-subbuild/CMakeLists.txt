@@ -20,8 +20,8 @@ project(ptsd-populate NONE)
 include(ExternalProject)
 ExternalProject_Add(ptsd-populate
                      "UPDATE_DISCONNECTED" "False" "DOWNLOAD_EXTRACT_TIMESTAMP" "FALSE" "EXTERNALPROJECT_INTERNAL_ARGUMENT_SEPARATOR" "URL" "https://github.com/ntut-open-source-club/practical-tools-for-simple-design/archive/refs/tags/v0.3-rc1.zip"
-                    SOURCE_DIR          "E:/1School/OOPL/OOPL_PTSD_pushBox/PTSD"
-                    BINARY_DIR          "E:/1School/OOPL/OOPL_PTSD_pushBox/out/build/x64-Debug/_deps/ptsd-build"
+                    SOURCE_DIR          "E:/1School/OOPL/z_trytry/oopl_PTSD_pushBox/PTSD"
+                    BINARY_DIR          "E:/1School/OOPL/z_trytry/oopl_PTSD_pushBox/out/build/x64-Debug/_deps/ptsd-build"
                     CONFIGURE_COMMAND   ""
                     BUILD_COMMAND       ""
                     INSTALL_COMMAND     ""

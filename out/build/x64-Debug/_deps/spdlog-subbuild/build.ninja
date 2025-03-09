@@ -34,7 +34,7 @@ include CMakeFiles\rules.ninja
 #############################################
 # Logical path to working directory; prefix for absolute paths.
 
-cmake_ninja_workdir = E$:\1School\OOPL\OOPL_PTSD_pushBox\out\build\x64-Debug\_deps\spdlog-subbuild\
+cmake_ninja_workdir = E$:\1School\OOPL\z_trytry\oopl_PTSD_pushBox\out\build\x64-Debug\_deps\spdlog-subbuild\
 
 #############################################
 # Utility command for spdlog-populate
@@ -46,7 +46,7 @@ build spdlog-populate: phony CMakeFiles\spdlog-populate CMakeFiles\spdlog-popula
 # Utility command for edit_cache
 
 build CMakeFiles\edit_cache.util: CUSTOM_COMMAND
-  COMMAND = C:\WINDOWS\system32\cmd.exe /C "cd /D E:\1School\OOPL\OOPL_PTSD_pushBox\out\build\x64-Debug\_deps\spdlog-subbuild && "C:\Program Files\Microsoft Visual Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin\cmake.exe" -E echo "No interactive CMake dialog available.""
+  COMMAND = C:\WINDOWS\system32\cmd.exe /C "cd /D E:\1School\OOPL\z_trytry\oopl_PTSD_pushBox\out\build\x64-Debug\_deps\spdlog-subbuild && "C:\Program Files\Microsoft Visual Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin\cmake.exe" -E echo "No interactive CMake dialog available.""
   DESC = No interactive CMake dialog available...
   restat = 1
 
@@ -57,7 +57,7 @@ build edit_cache: phony CMakeFiles\edit_cache.util
 # Utility command for rebuild_cache
 
 build CMakeFiles\rebuild_cache.util: CUSTOM_COMMAND
-  COMMAND = C:\WINDOWS\system32\cmd.exe /C "cd /D E:\1School\OOPL\OOPL_PTSD_pushBox\out\build\x64-Debug\_deps\spdlog-subbuild && "C:\Program Files\Microsoft Visual Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin\cmake.exe" --regenerate-during-build -SE:\1School\OOPL\OOPL_PTSD_pushBox\out\build\x64-Debug\_deps\spdlog-subbuild -BE:\1School\OOPL\OOPL_PTSD_pushBox\out\build\x64-Debug\_deps\spdlog-subbuild"
+  COMMAND = C:\WINDOWS\system32\cmd.exe /C "cd /D E:\1School\OOPL\z_trytry\oopl_PTSD_pushBox\out\build\x64-Debug\_deps\spdlog-subbuild && "C:\Program Files\Microsoft Visual Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin\cmake.exe" --regenerate-during-build -SE:\1School\OOPL\z_trytry\oopl_PTSD_pushBox\out\build\x64-Debug\_deps\spdlog-subbuild -BE:\1School\OOPL\z_trytry\oopl_PTSD_pushBox\out\build\x64-Debug\_deps\spdlog-subbuild"
   DESC = Running CMake to regenerate build system...
   pool = console
   restat = 1
@@ -75,7 +75,7 @@ build CMakeFiles\spdlog-populate | ${cmake_ninja_workdir}CMakeFiles\spdlog-popul
 # Custom command for CMakeFiles\spdlog-populate-complete
 
 build CMakeFiles\spdlog-populate-complete spdlog-populate-prefix\src\spdlog-populate-stamp\spdlog-populate-done | ${cmake_ninja_workdir}CMakeFiles\spdlog-populate-complete ${cmake_ninja_workdir}spdlog-populate-prefix\src\spdlog-populate-stamp\spdlog-populate-done: CUSTOM_COMMAND spdlog-populate-prefix\src\spdlog-populate-stamp\spdlog-populate-install spdlog-populate-prefix\src\spdlog-populate-stamp\spdlog-populate-mkdir spdlog-populate-prefix\src\spdlog-populate-stamp\spdlog-populate-download spdlog-populate-prefix\src\spdlog-populate-stamp\spdlog-populate-update spdlog-populate-prefix\src\spdlog-populate-stamp\spdlog-populate-patch spdlog-populate-prefix\src\spdlog-populate-stamp\spdlog-populate-configure spdlog-populate-prefix\src\spdlog-populate-stamp\spdlog-populate-build spdlog-populate-prefix\src\spdlog-populate-stamp\spdlog-populate-install spdlog-populate-prefix\src\spdlog-populate-stamp\spdlog-populate-test
-  COMMAND = C:\WINDOWS\system32\cmd.exe /C "cd /D E:\1School\OOPL\OOPL_PTSD_pushBox\out\build\x64-Debug\_deps\spdlog-subbuild && "C:\Program Files\Microsoft Visual Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin\cmake.exe" -E make_directory E:/1School/OOPL/OOPL_PTSD_pushBox/out/build/x64-Debug/_deps/spdlog-subbuild/CMakeFiles && "C:\Program Files\Microsoft Visual Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin\cmake.exe" -E touch E:/1School/OOPL/OOPL_PTSD_pushBox/out/build/x64-Debug/_deps/spdlog-subbuild/CMakeFiles/spdlog-populate-complete && "C:\Program Files\Microsoft Visual Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin\cmake.exe" -E touch E:/1School/OOPL/OOPL_PTSD_pushBox/out/build/x64-Debug/_deps/spdlog-subbuild/spdlog-populate-prefix/src/spdlog-populate-stamp/spdlog-populate-done"
+  COMMAND = C:\WINDOWS\system32\cmd.exe /C "cd /D E:\1School\OOPL\z_trytry\oopl_PTSD_pushBox\out\build\x64-Debug\_deps\spdlog-subbuild && "C:\Program Files\Microsoft Visual Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin\cmake.exe" -E make_directory E:/1School/OOPL/z_trytry/oopl_PTSD_pushBox/out/build/x64-Debug/_deps/spdlog-subbuild/CMakeFiles && "C:\Program Files\Microsoft Visual Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin\cmake.exe" -E touch E:/1School/OOPL/z_trytry/oopl_PTSD_pushBox/out/build/x64-Debug/_deps/spdlog-subbuild/CMakeFiles/spdlog-populate-complete && "C:\Program Files\Microsoft Visual Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin\cmake.exe" -E touch E:/1School/OOPL/z_trytry/oopl_PTSD_pushBox/out/build/x64-Debug/_deps/spdlog-subbuild/spdlog-populate-prefix/src/spdlog-populate-stamp/spdlog-populate-done"
   DESC = Completed 'spdlog-populate'
   restat = 1
 
@@ -84,7 +84,7 @@ build CMakeFiles\spdlog-populate-complete spdlog-populate-prefix\src\spdlog-popu
 # Custom command for spdlog-populate-prefix\src\spdlog-populate-stamp\spdlog-populate-build
 
 build spdlog-populate-prefix\src\spdlog-populate-stamp\spdlog-populate-build | ${cmake_ninja_workdir}spdlog-populate-prefix\src\spdlog-populate-stamp\spdlog-populate-build: CUSTOM_COMMAND spdlog-populate-prefix\src\spdlog-populate-stamp\spdlog-populate-configure
-  COMMAND = C:\WINDOWS\system32\cmd.exe /C "cd /D E:\1School\OOPL\OOPL_PTSD_pushBox\out\build\x64-Debug\_deps\spdlog-build && "C:\Program Files\Microsoft Visual Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin\cmake.exe" -E echo_append && "C:\Program Files\Microsoft Visual Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin\cmake.exe" -E touch E:/1School/OOPL/OOPL_PTSD_pushBox/out/build/x64-Debug/_deps/spdlog-subbuild/spdlog-populate-prefix/src/spdlog-populate-stamp/spdlog-populate-build"
+  COMMAND = C:\WINDOWS\system32\cmd.exe /C "cd /D E:\1School\OOPL\z_trytry\oopl_PTSD_pushBox\out\build\x64-Debug\_deps\spdlog-build && "C:\Program Files\Microsoft Visual Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin\cmake.exe" -E echo_append && "C:\Program Files\Microsoft Visual Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin\cmake.exe" -E touch E:/1School/OOPL/z_trytry/oopl_PTSD_pushBox/out/build/x64-Debug/_deps/spdlog-subbuild/spdlog-populate-prefix/src/spdlog-populate-stamp/spdlog-populate-build"
   DESC = No build step for 'spdlog-populate'
   restat = 1
 
@@ -93,7 +93,7 @@ build spdlog-populate-prefix\src\spdlog-populate-stamp\spdlog-populate-build | $
 # Custom command for spdlog-populate-prefix\src\spdlog-populate-stamp\spdlog-populate-configure
 
 build spdlog-populate-prefix\src\spdlog-populate-stamp\spdlog-populate-configure | ${cmake_ninja_workdir}spdlog-populate-prefix\src\spdlog-populate-stamp\spdlog-populate-configure: CUSTOM_COMMAND spdlog-populate-prefix\tmp\spdlog-populate-cfgcmd.txt spdlog-populate-prefix\src\spdlog-populate-stamp\spdlog-populate-patch
-  COMMAND = C:\WINDOWS\system32\cmd.exe /C "cd /D E:\1School\OOPL\OOPL_PTSD_pushBox\out\build\x64-Debug\_deps\spdlog-build && "C:\Program Files\Microsoft Visual Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin\cmake.exe" -E echo_append && "C:\Program Files\Microsoft Visual Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin\cmake.exe" -E touch E:/1School/OOPL/OOPL_PTSD_pushBox/out/build/x64-Debug/_deps/spdlog-subbuild/spdlog-populate-prefix/src/spdlog-populate-stamp/spdlog-populate-configure"
+  COMMAND = C:\WINDOWS\system32\cmd.exe /C "cd /D E:\1School\OOPL\z_trytry\oopl_PTSD_pushBox\out\build\x64-Debug\_deps\spdlog-build && "C:\Program Files\Microsoft Visual Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin\cmake.exe" -E echo_append && "C:\Program Files\Microsoft Visual Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin\cmake.exe" -E touch E:/1School/OOPL/z_trytry/oopl_PTSD_pushBox/out/build/x64-Debug/_deps/spdlog-subbuild/spdlog-populate-prefix/src/spdlog-populate-stamp/spdlog-populate-configure"
   DESC = No configure step for 'spdlog-populate'
   restat = 1
 
@@ -102,7 +102,7 @@ build spdlog-populate-prefix\src\spdlog-populate-stamp\spdlog-populate-configure
 # Custom command for spdlog-populate-prefix\src\spdlog-populate-stamp\spdlog-populate-download
 
 build spdlog-populate-prefix\src\spdlog-populate-stamp\spdlog-populate-download | ${cmake_ninja_workdir}spdlog-populate-prefix\src\spdlog-populate-stamp\spdlog-populate-download: CUSTOM_COMMAND spdlog-populate-prefix\src\spdlog-populate-stamp\download-spdlog-populate.cmake spdlog-populate-prefix\src\spdlog-populate-stamp\spdlog-populate-urlinfo.txt spdlog-populate-prefix\src\spdlog-populate-stamp\spdlog-populate-mkdir
-  COMMAND = C:\WINDOWS\system32\cmd.exe /C "cd /D E:\1School\OOPL\OOPL_PTSD_pushBox\PTSD\lib && "C:\Program Files\Microsoft Visual Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin\cmake.exe" -P E:/1School/OOPL/OOPL_PTSD_pushBox/out/build/x64-Debug/_deps/spdlog-subbuild/spdlog-populate-prefix/src/spdlog-populate-stamp/download-spdlog-populate.cmake && "C:\Program Files\Microsoft Visual Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin\cmake.exe" -P E:/1School/OOPL/OOPL_PTSD_pushBox/out/build/x64-Debug/_deps/spdlog-subbuild/spdlog-populate-prefix/src/spdlog-populate-stamp/verify-spdlog-populate.cmake && "C:\Program Files\Microsoft Visual Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin\cmake.exe" -P E:/1School/OOPL/OOPL_PTSD_pushBox/out/build/x64-Debug/_deps/spdlog-subbuild/spdlog-populate-prefix/src/spdlog-populate-stamp/extract-spdlog-populate.cmake && "C:\Program Files\Microsoft Visual Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin\cmake.exe" -E touch E:/1School/OOPL/OOPL_PTSD_pushBox/out/build/x64-Debug/_deps/spdlog-subbuild/spdlog-populate-prefix/src/spdlog-populate-stamp/spdlog-populate-download"
+  COMMAND = C:\WINDOWS\system32\cmd.exe /C "cd /D E:\1School\OOPL\z_trytry\oopl_PTSD_pushBox\PTSD\lib && "C:\Program Files\Microsoft Visual Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin\cmake.exe" -P E:/1School/OOPL/z_trytry/oopl_PTSD_pushBox/out/build/x64-Debug/_deps/spdlog-subbuild/spdlog-populate-prefix/src/spdlog-populate-stamp/download-spdlog-populate.cmake && "C:\Program Files\Microsoft Visual Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin\cmake.exe" -P E:/1School/OOPL/z_trytry/oopl_PTSD_pushBox/out/build/x64-Debug/_deps/spdlog-subbuild/spdlog-populate-prefix/src/spdlog-populate-stamp/verify-spdlog-populate.cmake && "C:\Program Files\Microsoft Visual Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin\cmake.exe" -P E:/1School/OOPL/z_trytry/oopl_PTSD_pushBox/out/build/x64-Debug/_deps/spdlog-subbuild/spdlog-populate-prefix/src/spdlog-populate-stamp/extract-spdlog-populate.cmake && "C:\Program Files\Microsoft Visual Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin\cmake.exe" -E touch E:/1School/OOPL/z_trytry/oopl_PTSD_pushBox/out/build/x64-Debug/_deps/spdlog-subbuild/spdlog-populate-prefix/src/spdlog-populate-stamp/spdlog-populate-download"
   DESC = Performing download step (download, verify and extract) for 'spdlog-populate'
   pool = console
   restat = 1
@@ -112,7 +112,7 @@ build spdlog-populate-prefix\src\spdlog-populate-stamp\spdlog-populate-download 
 # Custom command for spdlog-populate-prefix\src\spdlog-populate-stamp\spdlog-populate-install
 
 build spdlog-populate-prefix\src\spdlog-populate-stamp\spdlog-populate-install | ${cmake_ninja_workdir}spdlog-populate-prefix\src\spdlog-populate-stamp\spdlog-populate-install: CUSTOM_COMMAND spdlog-populate-prefix\src\spdlog-populate-stamp\spdlog-populate-build
-  COMMAND = C:\WINDOWS\system32\cmd.exe /C "cd /D E:\1School\OOPL\OOPL_PTSD_pushBox\out\build\x64-Debug\_deps\spdlog-build && "C:\Program Files\Microsoft Visual Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin\cmake.exe" -E echo_append && "C:\Program Files\Microsoft Visual Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin\cmake.exe" -E touch E:/1School/OOPL/OOPL_PTSD_pushBox/out/build/x64-Debug/_deps/spdlog-subbuild/spdlog-populate-prefix/src/spdlog-populate-stamp/spdlog-populate-install"
+  COMMAND = C:\WINDOWS\system32\cmd.exe /C "cd /D E:\1School\OOPL\z_trytry\oopl_PTSD_pushBox\out\build\x64-Debug\_deps\spdlog-build && "C:\Program Files\Microsoft Visual Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin\cmake.exe" -E echo_append && "C:\Program Files\Microsoft Visual Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin\cmake.exe" -E touch E:/1School/OOPL/z_trytry/oopl_PTSD_pushBox/out/build/x64-Debug/_deps/spdlog-subbuild/spdlog-populate-prefix/src/spdlog-populate-stamp/spdlog-populate-install"
   DESC = No install step for 'spdlog-populate'
   restat = 1
 
@@ -121,7 +121,7 @@ build spdlog-populate-prefix\src\spdlog-populate-stamp\spdlog-populate-install |
 # Custom command for spdlog-populate-prefix\src\spdlog-populate-stamp\spdlog-populate-mkdir
 
 build spdlog-populate-prefix\src\spdlog-populate-stamp\spdlog-populate-mkdir | ${cmake_ninja_workdir}spdlog-populate-prefix\src\spdlog-populate-stamp\spdlog-populate-mkdir: CUSTOM_COMMAND
-  COMMAND = C:\WINDOWS\system32\cmd.exe /C "cd /D E:\1School\OOPL\OOPL_PTSD_pushBox\out\build\x64-Debug\_deps\spdlog-subbuild && "C:\Program Files\Microsoft Visual Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin\cmake.exe" -Dcfgdir= -P E:/1School/OOPL/OOPL_PTSD_pushBox/out/build/x64-Debug/_deps/spdlog-subbuild/spdlog-populate-prefix/tmp/spdlog-populate-mkdirs.cmake && "C:\Program Files\Microsoft Visual Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin\cmake.exe" -E touch E:/1School/OOPL/OOPL_PTSD_pushBox/out/build/x64-Debug/_deps/spdlog-subbuild/spdlog-populate-prefix/src/spdlog-populate-stamp/spdlog-populate-mkdir"
+  COMMAND = C:\WINDOWS\system32\cmd.exe /C "cd /D E:\1School\OOPL\z_trytry\oopl_PTSD_pushBox\out\build\x64-Debug\_deps\spdlog-subbuild && "C:\Program Files\Microsoft Visual Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin\cmake.exe" -Dcfgdir= -P E:/1School/OOPL/z_trytry/oopl_PTSD_pushBox/out/build/x64-Debug/_deps/spdlog-subbuild/spdlog-populate-prefix/tmp/spdlog-populate-mkdirs.cmake && "C:\Program Files\Microsoft Visual Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin\cmake.exe" -E touch E:/1School/OOPL/z_trytry/oopl_PTSD_pushBox/out/build/x64-Debug/_deps/spdlog-subbuild/spdlog-populate-prefix/src/spdlog-populate-stamp/spdlog-populate-mkdir"
   DESC = Creating directories for 'spdlog-populate'
   restat = 1
 
@@ -130,7 +130,7 @@ build spdlog-populate-prefix\src\spdlog-populate-stamp\spdlog-populate-mkdir | $
 # Custom command for spdlog-populate-prefix\src\spdlog-populate-stamp\spdlog-populate-patch
 
 build spdlog-populate-prefix\src\spdlog-populate-stamp\spdlog-populate-patch | ${cmake_ninja_workdir}spdlog-populate-prefix\src\spdlog-populate-stamp\spdlog-populate-patch: CUSTOM_COMMAND spdlog-populate-prefix\src\spdlog-populate-stamp\spdlog-populate-patch-info.txt spdlog-populate-prefix\src\spdlog-populate-stamp\spdlog-populate-update
-  COMMAND = C:\WINDOWS\system32\cmd.exe /C "cd /D E:\1School\OOPL\OOPL_PTSD_pushBox\out\build\x64-Debug\_deps\spdlog-subbuild && "C:\Program Files\Microsoft Visual Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin\cmake.exe" -E echo_append && "C:\Program Files\Microsoft Visual Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin\cmake.exe" -E touch E:/1School/OOPL/OOPL_PTSD_pushBox/out/build/x64-Debug/_deps/spdlog-subbuild/spdlog-populate-prefix/src/spdlog-populate-stamp/spdlog-populate-patch"
+  COMMAND = C:\WINDOWS\system32\cmd.exe /C "cd /D E:\1School\OOPL\z_trytry\oopl_PTSD_pushBox\out\build\x64-Debug\_deps\spdlog-subbuild && "C:\Program Files\Microsoft Visual Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin\cmake.exe" -E echo_append && "C:\Program Files\Microsoft Visual Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin\cmake.exe" -E touch E:/1School/OOPL/z_trytry/oopl_PTSD_pushBox/out/build/x64-Debug/_deps/spdlog-subbuild/spdlog-populate-prefix/src/spdlog-populate-stamp/spdlog-populate-patch"
   DESC = No patch step for 'spdlog-populate'
   pool = console
   restat = 1
@@ -140,7 +140,7 @@ build spdlog-populate-prefix\src\spdlog-populate-stamp\spdlog-populate-patch | $
 # Custom command for spdlog-populate-prefix\src\spdlog-populate-stamp\spdlog-populate-test
 
 build spdlog-populate-prefix\src\spdlog-populate-stamp\spdlog-populate-test | ${cmake_ninja_workdir}spdlog-populate-prefix\src\spdlog-populate-stamp\spdlog-populate-test: CUSTOM_COMMAND spdlog-populate-prefix\src\spdlog-populate-stamp\spdlog-populate-install
-  COMMAND = C:\WINDOWS\system32\cmd.exe /C "cd /D E:\1School\OOPL\OOPL_PTSD_pushBox\out\build\x64-Debug\_deps\spdlog-build && "C:\Program Files\Microsoft Visual Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin\cmake.exe" -E echo_append && "C:\Program Files\Microsoft Visual Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin\cmake.exe" -E touch E:/1School/OOPL/OOPL_PTSD_pushBox/out/build/x64-Debug/_deps/spdlog-subbuild/spdlog-populate-prefix/src/spdlog-populate-stamp/spdlog-populate-test"
+  COMMAND = C:\WINDOWS\system32\cmd.exe /C "cd /D E:\1School\OOPL\z_trytry\oopl_PTSD_pushBox\out\build\x64-Debug\_deps\spdlog-build && "C:\Program Files\Microsoft Visual Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin\cmake.exe" -E echo_append && "C:\Program Files\Microsoft Visual Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin\cmake.exe" -E touch E:/1School/OOPL/z_trytry/oopl_PTSD_pushBox/out/build/x64-Debug/_deps/spdlog-subbuild/spdlog-populate-prefix/src/spdlog-populate-stamp/spdlog-populate-test"
   DESC = No test step for 'spdlog-populate'
   restat = 1
 
@@ -149,7 +149,7 @@ build spdlog-populate-prefix\src\spdlog-populate-stamp\spdlog-populate-test | ${
 # Custom command for spdlog-populate-prefix\src\spdlog-populate-stamp\spdlog-populate-update
 
 build spdlog-populate-prefix\src\spdlog-populate-stamp\spdlog-populate-update | ${cmake_ninja_workdir}spdlog-populate-prefix\src\spdlog-populate-stamp\spdlog-populate-update: CUSTOM_COMMAND spdlog-populate-prefix\src\spdlog-populate-stamp\spdlog-populate-update-info.txt spdlog-populate-prefix\src\spdlog-populate-stamp\spdlog-populate-download
-  COMMAND = C:\WINDOWS\system32\cmd.exe /C "cd /D E:\1School\OOPL\OOPL_PTSD_pushBox\out\build\x64-Debug\_deps\spdlog-subbuild && "C:\Program Files\Microsoft Visual Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin\cmake.exe" -E echo_append && "C:\Program Files\Microsoft Visual Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin\cmake.exe" -E touch E:/1School/OOPL/OOPL_PTSD_pushBox/out/build/x64-Debug/_deps/spdlog-subbuild/spdlog-populate-prefix/src/spdlog-populate-stamp/spdlog-populate-update"
+  COMMAND = C:\WINDOWS\system32\cmd.exe /C "cd /D E:\1School\OOPL\z_trytry\oopl_PTSD_pushBox\out\build\x64-Debug\_deps\spdlog-subbuild && "C:\Program Files\Microsoft Visual Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin\cmake.exe" -E echo_append && "C:\Program Files\Microsoft Visual Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin\cmake.exe" -E touch E:/1School/OOPL/z_trytry/oopl_PTSD_pushBox/out/build/x64-Debug/_deps/spdlog-subbuild/spdlog-populate-prefix/src/spdlog-populate-stamp/spdlog-populate-update"
   DESC = No update step for 'spdlog-populate'
   pool = console
   restat = 1
@@ -163,7 +163,7 @@ build spdlog-populate-prefix\src\spdlog-populate-stamp\spdlog-populate-update | 
 # =============================================================================
 
 #############################################
-# Folder: E:/1School/OOPL/OOPL_PTSD_pushBox/out/build/x64-Debug/_deps/spdlog-subbuild
+# Folder: E:/1School/OOPL/z_trytry/oopl_PTSD_pushBox/out/build/x64-Debug/_deps/spdlog-subbuild
 
 build all: phony spdlog-populate
 

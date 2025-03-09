@@ -20,8 +20,8 @@ project(sdl2_ttf-populate NONE)
 include(ExternalProject)
 ExternalProject_Add(sdl2_ttf-populate
                      "UPDATE_DISCONNECTED" "False" "DOWNLOAD_EXTRACT_TIMESTAMP" "FALSE" "EXTERNALPROJECT_INTERNAL_ARGUMENT_SEPARATOR" "URL" "https://github.com/libsdl-org/SDL_ttf/releases/download/release-2.20.2/SDL2_ttf-2.20.2.zip" "URL_HASH" "MD5=7258258fdb2a4adb0072d337f94305f9"
-                    SOURCE_DIR          "E:/1School/OOPL/OOPL_PTSD_pushBox/PTSD/lib/sdl2_ttf"
-                    BINARY_DIR          "E:/1School/OOPL/OOPL_PTSD_pushBox/out/build/x64-Debug/_deps/sdl2_ttf-build"
+                    SOURCE_DIR          "E:/1School/OOPL/z_trytry/oopl_PTSD_pushBox/PTSD/lib/sdl2_ttf"
+                    BINARY_DIR          "E:/1School/OOPL/z_trytry/oopl_PTSD_pushBox/out/build/x64-Debug/_deps/sdl2_ttf-build"
                     CONFIGURE_COMMAND   ""
                     BUILD_COMMAND       ""
                     INSTALL_COMMAND     ""

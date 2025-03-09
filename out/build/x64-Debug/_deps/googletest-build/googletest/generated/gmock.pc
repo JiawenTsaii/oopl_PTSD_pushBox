@@ -1,5 +1,5 @@
-libdir=E:/1School/OOPL/OOPL_PTSD_pushBox/out/install/x64-Debug/lib
-includedir=E:/1School/OOPL/OOPL_PTSD_pushBox/out/install/x64-Debug/include
+libdir=E:/1School/OOPL/z_trytry/oopl_PTSD_pushBox/out/install/x64-Debug/lib
+includedir=E:/1School/OOPL/z_trytry/oopl_PTSD_pushBox/out/install/x64-Debug/include
 
 Name: gmock
 Description: GoogleMock (without main() function)

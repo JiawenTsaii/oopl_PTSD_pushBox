@@ -5,8 +5,8 @@ cmake_minimum_required(VERSION 3.5)
 
 # Make file names absolute:
 #
-get_filename_component(filename "E:/1School/OOPL/OOPL_PTSD_pushBox/out/build/x64-Debug/_deps/nlohmann_json-subbuild/nlohmann_json-populate-prefix/src/json.tar.xz" ABSOLUTE)
-get_filename_component(directory "E:/1School/OOPL/OOPL_PTSD_pushBox/PTSD/lib/nlohmann_json" ABSOLUTE)
+get_filename_component(filename "E:/1School/OOPL/z_trytry/oopl_PTSD_pushBox/out/build/x64-Debug/_deps/nlohmann_json-subbuild/nlohmann_json-populate-prefix/src/json.tar.xz" ABSOLUTE)
+get_filename_component(directory "E:/1School/OOPL/z_trytry/oopl_PTSD_pushBox/PTSD/lib/nlohmann_json" ABSOLUTE)
 
 message(STATUS "extracting...
      src='${filename}'

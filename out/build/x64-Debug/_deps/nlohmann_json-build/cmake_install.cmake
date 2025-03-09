@@ -1,8 +1,8 @@
-# Install script for directory: E:/1School/OOPL/OOPL_PTSD_pushBox/PTSD/lib/nlohmann_json
+# Install script for directory: E:/1School/OOPL/z_trytry/oopl_PTSD_pushBox/PTSD/lib/nlohmann_json
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
-  set(CMAKE_INSTALL_PREFIX "E:/1School/OOPL/OOPL_PTSD_pushBox/out/install/x64-Debug")
+  set(CMAKE_INSTALL_PREFIX "E:/1School/OOPL/z_trytry/oopl_PTSD_pushBox/out/install/x64-Debug")
 endif()
 string(REGEX REPLACE "/$" "" CMAKE_INSTALL_PREFIX "${CMAKE_INSTALL_PREFIX}")
 

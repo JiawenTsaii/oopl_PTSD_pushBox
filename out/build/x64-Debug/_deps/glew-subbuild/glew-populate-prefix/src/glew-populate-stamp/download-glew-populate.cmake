@@ -22,14 +22,14 @@ function(check_file_hash has_hash hash_is_good)
   set("${has_hash}" TRUE PARENT_SCOPE)
 
   message(STATUS "verifying file...
-       file='E:/1School/OOPL/OOPL_PTSD_pushBox/out/build/x64-Debug/_deps/glew-subbuild/glew-populate-prefix/src/glew-2.2.0.zip'")
+       file='E:/1School/OOPL/z_trytry/oopl_PTSD_pushBox/out/build/x64-Debug/_deps/glew-subbuild/glew-populate-prefix/src/glew-2.2.0.zip'")
 
-  file("MD5" "E:/1School/OOPL/OOPL_PTSD_pushBox/out/build/x64-Debug/_deps/glew-subbuild/glew-populate-prefix/src/glew-2.2.0.zip" actual_value)
+  file("MD5" "E:/1School/OOPL/z_trytry/oopl_PTSD_pushBox/out/build/x64-Debug/_deps/glew-subbuild/glew-populate-prefix/src/glew-2.2.0.zip" actual_value)
 
   if(NOT "${actual_value}" STREQUAL "970535b75b1b69ebd018a0fa05af63d1")
     set("${hash_is_good}" FALSE PARENT_SCOPE)
     message(STATUS "MD5 hash of
-    E:/1School/OOPL/OOPL_PTSD_pushBox/out/build/x64-Debug/_deps/glew-subbuild/glew-populate-prefix/src/glew-2.2.0.zip
+    E:/1School/OOPL/z_trytry/oopl_PTSD_pushBox/out/build/x64-Debug/_deps/glew-subbuild/glew-populate-prefix/src/glew-2.2.0.zip
   does not match expected value
     expected: '970535b75b1b69ebd018a0fa05af63d1'
       actual: '${actual_value}'")
@@ -71,32 +71,32 @@ function(sleep_before_download attempt)
   execute_process(COMMAND "${CMAKE_COMMAND}" -E sleep "${sleep_seconds}")
 endfunction()
 
-if(EXISTS "E:/1School/OOPL/OOPL_PTSD_pushBox/out/build/x64-Debug/_deps/glew-subbuild/glew-populate-prefix/src/glew-2.2.0.zip")
+if(EXISTS "E:/1School/OOPL/z_trytry/oopl_PTSD_pushBox/out/build/x64-Debug/_deps/glew-subbuild/glew-populate-prefix/src/glew-2.2.0.zip")
   check_file_hash(has_hash hash_is_good)
   if(has_hash)
     if(hash_is_good)
       message(STATUS "File already exists and hash match (skip download):
-  file='E:/1School/OOPL/OOPL_PTSD_pushBox/out/build/x64-Debug/_deps/glew-subbuild/glew-populate-prefix/src/glew-2.2.0.zip'
+  file='E:/1School/OOPL/z_trytry/oopl_PTSD_pushBox/out/build/x64-Debug/_deps/glew-subbuild/glew-populate-prefix/src/glew-2.2.0.zip'
   MD5='970535b75b1b69ebd018a0fa05af63d1'"
       )
       return()
     else()
       message(STATUS "File already exists but hash mismatch. Removing...")
-      file(REMOVE "E:/1School/OOPL/OOPL_PTSD_pushBox/out/build/x64-Debug/_deps/glew-subbuild/glew-populate-prefix/src/glew-2.2.0.zip")
+      file(REMOVE "E:/1School/OOPL/z_trytry/oopl_PTSD_pushBox/out/build/x64-Debug/_deps/glew-subbuild/glew-populate-prefix/src/glew-2.2.0.zip")
     endif()
   else()
     message(STATUS "File already exists but no hash specified (use URL_HASH):
-  file='E:/1School/OOPL/OOPL_PTSD_pushBox/out/build/x64-Debug/_deps/glew-subbuild/glew-populate-prefix/src/glew-2.2.0.zip'
+  file='E:/1School/OOPL/z_trytry/oopl_PTSD_pushBox/out/build/x64-Debug/_deps/glew-subbuild/glew-populate-prefix/src/glew-2.2.0.zip'
 Old file will be removed and new file downloaded from URL."
     )
-    file(REMOVE "E:/1School/OOPL/OOPL_PTSD_pushBox/out/build/x64-Debug/_deps/glew-subbuild/glew-populate-prefix/src/glew-2.2.0.zip")
+    file(REMOVE "E:/1School/OOPL/z_trytry/oopl_PTSD_pushBox/out/build/x64-Debug/_deps/glew-subbuild/glew-populate-prefix/src/glew-2.2.0.zip")
   endif()
 endif()
 
 set(retry_number 5)
 
 message(STATUS "Downloading...
-   dst='E:/1School/OOPL/OOPL_PTSD_pushBox/out/build/x64-Debug/_deps/glew-subbuild/glew-populate-prefix/src/glew-2.2.0.zip'
+   dst='E:/1School/OOPL/z_trytry/oopl_PTSD_pushBox/out/build/x64-Debug/_deps/glew-subbuild/glew-populate-prefix/src/glew-2.2.0.zip'
    timeout='none'
    inactivity timeout='none'"
 )
@@ -118,7 +118,7 @@ foreach(i RANGE ${retry_number})
 
       file(
         DOWNLOAD
-        "${url}" "E:/1School/OOPL/OOPL_PTSD_pushBox/out/build/x64-Debug/_deps/glew-subbuild/glew-populate-prefix/src/glew-2.2.0.zip"
+        "${url}" "E:/1School/OOPL/z_trytry/oopl_PTSD_pushBox/out/build/x64-Debug/_deps/glew-subbuild/glew-populate-prefix/src/glew-2.2.0.zip"
         SHOW_PROGRESS
         # no TIMEOUT
         # no INACTIVITY_TIMEOUT
@@ -135,7 +135,7 @@ foreach(i RANGE ${retry_number})
         check_file_hash(has_hash hash_is_good)
         if(has_hash AND NOT hash_is_good)
           message(STATUS "Hash mismatch, removing...")
-          file(REMOVE "E:/1School/OOPL/OOPL_PTSD_pushBox/out/build/x64-Debug/_deps/glew-subbuild/glew-populate-prefix/src/glew-2.2.0.zip")
+          file(REMOVE "E:/1School/OOPL/z_trytry/oopl_PTSD_pushBox/out/build/x64-Debug/_deps/glew-subbuild/glew-populate-prefix/src/glew-2.2.0.zip")
         else()
           message(STATUS "Downloading... done")
           return()

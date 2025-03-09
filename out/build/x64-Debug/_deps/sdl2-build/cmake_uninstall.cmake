@@ -1,8 +1,8 @@
-if (NOT EXISTS "E:/1School/OOPL/OOPL_PTSD_pushBox/out/build/x64-Debug/install_manifest.txt")
-    message(FATAL_ERROR "Cannot find install manifest: \"E:/1School/OOPL/OOPL_PTSD_pushBox/out/build/x64-Debug/install_manifest.txt\"")
-endif(NOT EXISTS "E:/1School/OOPL/OOPL_PTSD_pushBox/out/build/x64-Debug/install_manifest.txt")
+if (NOT EXISTS "E:/1School/OOPL/z_trytry/oopl_PTSD_pushBox/out/build/x64-Debug/install_manifest.txt")
+    message(FATAL_ERROR "Cannot find install manifest: \"E:/1School/OOPL/z_trytry/oopl_PTSD_pushBox/out/build/x64-Debug/install_manifest.txt\"")
+endif(NOT EXISTS "E:/1School/OOPL/z_trytry/oopl_PTSD_pushBox/out/build/x64-Debug/install_manifest.txt")
 
-file(READ "E:/1School/OOPL/OOPL_PTSD_pushBox/out/build/x64-Debug/install_manifest.txt" files)
+file(READ "E:/1School/OOPL/z_trytry/oopl_PTSD_pushBox/out/build/x64-Debug/install_manifest.txt" files)
 string(REGEX REPLACE "\n" ";" files "${files}")
 foreach (file ${files})
     message(STATUS "Uninstalling \"$ENV{DESTDIR}${file}\"")

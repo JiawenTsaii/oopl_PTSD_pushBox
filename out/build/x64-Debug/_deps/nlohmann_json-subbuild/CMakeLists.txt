@@ -20,8 +20,8 @@ project(nlohmann_json-populate NONE)
 include(ExternalProject)
 ExternalProject_Add(nlohmann_json-populate
                      "UPDATE_DISCONNECTED" "False" "DOWNLOAD_EXTRACT_TIMESTAMP" "FALSE" "EXTERNALPROJECT_INTERNAL_ARGUMENT_SEPARATOR" "URL" "https://github.com/nlohmann/json/releases/download/v3.11.3/json.tar.xz" "URL_HASH" "MD5=c23a33f04786d85c29fda8d16b5f0efd"
-                    SOURCE_DIR          "E:/1School/OOPL/OOPL_PTSD_pushBox/PTSD/lib/nlohmann_json"
-                    BINARY_DIR          "E:/1School/OOPL/OOPL_PTSD_pushBox/out/build/x64-Debug/_deps/nlohmann_json-build"
+                    SOURCE_DIR          "E:/1School/OOPL/z_trytry/oopl_PTSD_pushBox/PTSD/lib/nlohmann_json"
+                    BINARY_DIR          "E:/1School/OOPL/z_trytry/oopl_PTSD_pushBox/out/build/x64-Debug/_deps/nlohmann_json-build"
                     CONFIGURE_COMMAND   ""
                     BUILD_COMMAND       ""
                     INSTALL_COMMAND     ""

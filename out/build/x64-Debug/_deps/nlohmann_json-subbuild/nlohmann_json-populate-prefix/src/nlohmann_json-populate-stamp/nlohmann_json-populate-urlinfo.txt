@@ -3,9 +3,9 @@
 # No other meaning or use of this file is supported.
 
 method=url
-command=C:/Program Files/Microsoft Visual Studio/2022/Community/Common7/IDE/CommonExtensions/Microsoft/CMake/CMake/bin/cmake.exe;-P;E:/1School/OOPL/OOPL_PTSD_pushBox/out/build/x64-Debug/_deps/nlohmann_json-subbuild/nlohmann_json-populate-prefix/src/nlohmann_json-populate-stamp/download-nlohmann_json-populate.cmake;COMMAND;C:/Program Files/Microsoft Visual Studio/2022/Community/Common7/IDE/CommonExtensions/Microsoft/CMake/CMake/bin/cmake.exe;-P;E:/1School/OOPL/OOPL_PTSD_pushBox/out/build/x64-Debug/_deps/nlohmann_json-subbuild/nlohmann_json-populate-prefix/src/nlohmann_json-populate-stamp/verify-nlohmann_json-populate.cmake;COMMAND;C:/Program Files/Microsoft Visual Studio/2022/Community/Common7/IDE/CommonExtensions/Microsoft/CMake/CMake/bin/cmake.exe;-P;E:/1School/OOPL/OOPL_PTSD_pushBox/out/build/x64-Debug/_deps/nlohmann_json-subbuild/nlohmann_json-populate-prefix/src/nlohmann_json-populate-stamp/extract-nlohmann_json-populate.cmake
-source_dir=E:/1School/OOPL/OOPL_PTSD_pushBox/PTSD/lib/nlohmann_json
-work_dir=E:/1School/OOPL/OOPL_PTSD_pushBox/PTSD/lib
+command=C:/Program Files/Microsoft Visual Studio/2022/Community/Common7/IDE/CommonExtensions/Microsoft/CMake/CMake/bin/cmake.exe;-P;E:/1School/OOPL/z_trytry/oopl_PTSD_pushBox/out/build/x64-Debug/_deps/nlohmann_json-subbuild/nlohmann_json-populate-prefix/src/nlohmann_json-populate-stamp/download-nlohmann_json-populate.cmake;COMMAND;C:/Program Files/Microsoft Visual Studio/2022/Community/Common7/IDE/CommonExtensions/Microsoft/CMake/CMake/bin/cmake.exe;-P;E:/1School/OOPL/z_trytry/oopl_PTSD_pushBox/out/build/x64-Debug/_deps/nlohmann_json-subbuild/nlohmann_json-populate-prefix/src/nlohmann_json-populate-stamp/verify-nlohmann_json-populate.cmake;COMMAND;C:/Program Files/Microsoft Visual Studio/2022/Community/Common7/IDE/CommonExtensions/Microsoft/CMake/CMake/bin/cmake.exe;-P;E:/1School/OOPL/z_trytry/oopl_PTSD_pushBox/out/build/x64-Debug/_deps/nlohmann_json-subbuild/nlohmann_json-populate-prefix/src/nlohmann_json-populate-stamp/extract-nlohmann_json-populate.cmake
+source_dir=E:/1School/OOPL/z_trytry/oopl_PTSD_pushBox/PTSD/lib/nlohmann_json
+work_dir=E:/1School/OOPL/z_trytry/oopl_PTSD_pushBox/PTSD/lib
 url(s)=https://github.com/nlohmann/json/releases/download/v3.11.3/json.tar.xz
 hash=MD5=c23a33f04786d85c29fda8d16b5f0efd
 no_extract=

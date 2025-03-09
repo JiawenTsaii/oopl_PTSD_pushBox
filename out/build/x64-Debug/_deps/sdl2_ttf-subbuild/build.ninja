@@ -34,7 +34,7 @@ include CMakeFiles\rules.ninja
 #############################################
 # Logical path to working directory; prefix for absolute paths.
 
-cmake_ninja_workdir = E$:\1School\OOPL\OOPL_PTSD_pushBox\out\build\x64-Debug\_deps\sdl2_ttf-subbuild\
+cmake_ninja_workdir = E$:\1School\OOPL\z_trytry\oopl_PTSD_pushBox\out\build\x64-Debug\_deps\sdl2_ttf-subbuild\
 
 #############################################
 # Utility command for sdl2_ttf-populate
@@ -46,7 +46,7 @@ build sdl2_ttf-populate: phony CMakeFiles\sdl2_ttf-populate CMakeFiles\sdl2_ttf-
 # Utility command for edit_cache
 
 build CMakeFiles\edit_cache.util: CUSTOM_COMMAND
-  COMMAND = C:\WINDOWS\system32\cmd.exe /C "cd /D E:\1School\OOPL\OOPL_PTSD_pushBox\out\build\x64-Debug\_deps\sdl2_ttf-subbuild && "C:\Program Files\Microsoft Visual Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin\cmake.exe" -E echo "No interactive CMake dialog available.""
+  COMMAND = C:\WINDOWS\system32\cmd.exe /C "cd /D E:\1School\OOPL\z_trytry\oopl_PTSD_pushBox\out\build\x64-Debug\_deps\sdl2_ttf-subbuild && "C:\Program Files\Microsoft Visual Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin\cmake.exe" -E echo "No interactive CMake dialog available.""
   DESC = No interactive CMake dialog available...
   restat = 1
 
@@ -57,7 +57,7 @@ build edit_cache: phony CMakeFiles\edit_cache.util
 # Utility command for rebuild_cache
 
 build CMakeFiles\rebuild_cache.util: CUSTOM_COMMAND
-  COMMAND = C:\WINDOWS\system32\cmd.exe /C "cd /D E:\1School\OOPL\OOPL_PTSD_pushBox\out\build\x64-Debug\_deps\sdl2_ttf-subbuild && "C:\Program Files\Microsoft Visual Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin\cmake.exe" --regenerate-during-build -SE:\1School\OOPL\OOPL_PTSD_pushBox\out\build\x64-Debug\_deps\sdl2_ttf-subbuild -BE:\1School\OOPL\OOPL_PTSD_pushBox\out\build\x64-Debug\_deps\sdl2_ttf-subbuild"
+  COMMAND = C:\WINDOWS\system32\cmd.exe /C "cd /D E:\1School\OOPL\z_trytry\oopl_PTSD_pushBox\out\build\x64-Debug\_deps\sdl2_ttf-subbuild && "C:\Program Files\Microsoft Visual Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin\cmake.exe" --regenerate-during-build -SE:\1School\OOPL\z_trytry\oopl_PTSD_pushBox\out\build\x64-Debug\_deps\sdl2_ttf-subbuild -BE:\1School\OOPL\z_trytry\oopl_PTSD_pushBox\out\build\x64-Debug\_deps\sdl2_ttf-subbuild"
   DESC = Running CMake to regenerate build system...
   pool = console
   restat = 1
@@ -75,7 +75,7 @@ build CMakeFiles\sdl2_ttf-populate | ${cmake_ninja_workdir}CMakeFiles\sdl2_ttf-p
 # Custom command for CMakeFiles\sdl2_ttf-populate-complete
 
 build CMakeFiles\sdl2_ttf-populate-complete sdl2_ttf-populate-prefix\src\sdl2_ttf-populate-stamp\sdl2_ttf-populate-done | ${cmake_ninja_workdir}CMakeFiles\sdl2_ttf-populate-complete ${cmake_ninja_workdir}sdl2_ttf-populate-prefix\src\sdl2_ttf-populate-stamp\sdl2_ttf-populate-done: CUSTOM_COMMAND sdl2_ttf-populate-prefix\src\sdl2_ttf-populate-stamp\sdl2_ttf-populate-install sdl2_ttf-populate-prefix\src\sdl2_ttf-populate-stamp\sdl2_ttf-populate-mkdir sdl2_ttf-populate-prefix\src\sdl2_ttf-populate-stamp\sdl2_ttf-populate-download sdl2_ttf-populate-prefix\src\sdl2_ttf-populate-stamp\sdl2_ttf-populate-update sdl2_ttf-populate-prefix\src\sdl2_ttf-populate-stamp\sdl2_ttf-populate-patch sdl2_ttf-populate-prefix\src\sdl2_ttf-populate-stamp\sdl2_ttf-populate-configure sdl2_ttf-populate-prefix\src\sdl2_ttf-populate-stamp\sdl2_ttf-populate-build sdl2_ttf-populate-prefix\src\sdl2_ttf-populate-stamp\sdl2_ttf-populate-install sdl2_ttf-populate-prefix\src\sdl2_ttf-populate-stamp\sdl2_ttf-populate-test
-  COMMAND = C:\WINDOWS\system32\cmd.exe /C "cd /D E:\1School\OOPL\OOPL_PTSD_pushBox\out\build\x64-Debug\_deps\sdl2_ttf-subbuild && "C:\Program Files\Microsoft Visual Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin\cmake.exe" -E make_directory E:/1School/OOPL/OOPL_PTSD_pushBox/out/build/x64-Debug/_deps/sdl2_ttf-subbuild/CMakeFiles && "C:\Program Files\Microsoft Visual Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin\cmake.exe" -E touch E:/1School/OOPL/OOPL_PTSD_pushBox/out/build/x64-Debug/_deps/sdl2_ttf-subbuild/CMakeFiles/sdl2_ttf-populate-complete && "C:\Program Files\Microsoft Visual Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin\cmake.exe" -E touch E:/1School/OOPL/OOPL_PTSD_pushBox/out/build/x64-Debug/_deps/sdl2_ttf-subbuild/sdl2_ttf-populate-prefix/src/sdl2_ttf-populate-stamp/sdl2_ttf-populate-done"
+  COMMAND = C:\WINDOWS\system32\cmd.exe /C "cd /D E:\1School\OOPL\z_trytry\oopl_PTSD_pushBox\out\build\x64-Debug\_deps\sdl2_ttf-subbuild && "C:\Program Files\Microsoft Visual Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin\cmake.exe" -E make_directory E:/1School/OOPL/z_trytry/oopl_PTSD_pushBox/out/build/x64-Debug/_deps/sdl2_ttf-subbuild/CMakeFiles && "C:\Program Files\Microsoft Visual Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin\cmake.exe" -E touch E:/1School/OOPL/z_trytry/oopl_PTSD_pushBox/out/build/x64-Debug/_deps/sdl2_ttf-subbuild/CMakeFiles/sdl2_ttf-populate-complete && "C:\Program Files\Microsoft Visual Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin\cmake.exe" -E touch E:/1School/OOPL/z_trytry/oopl_PTSD_pushBox/out/build/x64-Debug/_deps/sdl2_ttf-subbuild/sdl2_ttf-populate-prefix/src/sdl2_ttf-populate-stamp/sdl2_ttf-populate-done"
   DESC = Completed 'sdl2_ttf-populate'
   restat = 1
 
@@ -84,7 +84,7 @@ build CMakeFiles\sdl2_ttf-populate-complete sdl2_ttf-populate-prefix\src\sdl2_tt
 # Custom command for sdl2_ttf-populate-prefix\src\sdl2_ttf-populate-stamp\sdl2_ttf-populate-build
 
 build sdl2_ttf-populate-prefix\src\sdl2_ttf-populate-stamp\sdl2_ttf-populate-build | ${cmake_ninja_workdir}sdl2_ttf-populate-prefix\src\sdl2_ttf-populate-stamp\sdl2_ttf-populate-build: CUSTOM_COMMAND sdl2_ttf-populate-prefix\src\sdl2_ttf-populate-stamp\sdl2_ttf-populate-configure
-  COMMAND = C:\WINDOWS\system32\cmd.exe /C "cd /D E:\1School\OOPL\OOPL_PTSD_pushBox\out\build\x64-Debug\_deps\sdl2_ttf-build && "C:\Program Files\Microsoft Visual Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin\cmake.exe" -E echo_append && "C:\Program Files\Microsoft Visual Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin\cmake.exe" -E touch E:/1School/OOPL/OOPL_PTSD_pushBox/out/build/x64-Debug/_deps/sdl2_ttf-subbuild/sdl2_ttf-populate-prefix/src/sdl2_ttf-populate-stamp/sdl2_ttf-populate-build"
+  COMMAND = C:\WINDOWS\system32\cmd.exe /C "cd /D E:\1School\OOPL\z_trytry\oopl_PTSD_pushBox\out\build\x64-Debug\_deps\sdl2_ttf-build && "C:\Program Files\Microsoft Visual Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin\cmake.exe" -E echo_append && "C:\Program Files\Microsoft Visual Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin\cmake.exe" -E touch E:/1School/OOPL/z_trytry/oopl_PTSD_pushBox/out/build/x64-Debug/_deps/sdl2_ttf-subbuild/sdl2_ttf-populate-prefix/src/sdl2_ttf-populate-stamp/sdl2_ttf-populate-build"
   DESC = No build step for 'sdl2_ttf-populate'
   restat = 1
 
@@ -93,7 +93,7 @@ build sdl2_ttf-populate-prefix\src\sdl2_ttf-populate-stamp\sdl2_ttf-populate-bui
 # Custom command for sdl2_ttf-populate-prefix\src\sdl2_ttf-populate-stamp\sdl2_ttf-populate-configure
 
 build sdl2_ttf-populate-prefix\src\sdl2_ttf-populate-stamp\sdl2_ttf-populate-configure | ${cmake_ninja_workdir}sdl2_ttf-populate-prefix\src\sdl2_ttf-populate-stamp\sdl2_ttf-populate-configure: CUSTOM_COMMAND sdl2_ttf-populate-prefix\tmp\sdl2_ttf-populate-cfgcmd.txt sdl2_ttf-populate-prefix\src\sdl2_ttf-populate-stamp\sdl2_ttf-populate-patch
-  COMMAND = C:\WINDOWS\system32\cmd.exe /C "cd /D E:\1School\OOPL\OOPL_PTSD_pushBox\out\build\x64-Debug\_deps\sdl2_ttf-build && "C:\Program Files\Microsoft Visual Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin\cmake.exe" -E echo_append && "C:\Program Files\Microsoft Visual Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin\cmake.exe" -E touch E:/1School/OOPL/OOPL_PTSD_pushBox/out/build/x64-Debug/_deps/sdl2_ttf-subbuild/sdl2_ttf-populate-prefix/src/sdl2_ttf-populate-stamp/sdl2_ttf-populate-configure"
+  COMMAND = C:\WINDOWS\system32\cmd.exe /C "cd /D E:\1School\OOPL\z_trytry\oopl_PTSD_pushBox\out\build\x64-Debug\_deps\sdl2_ttf-build && "C:\Program Files\Microsoft Visual Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin\cmake.exe" -E echo_append && "C:\Program Files\Microsoft Visual Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin\cmake.exe" -E touch E:/1School/OOPL/z_trytry/oopl_PTSD_pushBox/out/build/x64-Debug/_deps/sdl2_ttf-subbuild/sdl2_ttf-populate-prefix/src/sdl2_ttf-populate-stamp/sdl2_ttf-populate-configure"
   DESC = No configure step for 'sdl2_ttf-populate'
   restat = 1
 
@@ -102,7 +102,7 @@ build sdl2_ttf-populate-prefix\src\sdl2_ttf-populate-stamp\sdl2_ttf-populate-con
 # Custom command for sdl2_ttf-populate-prefix\src\sdl2_ttf-populate-stamp\sdl2_ttf-populate-download
 
 build sdl2_ttf-populate-prefix\src\sdl2_ttf-populate-stamp\sdl2_ttf-populate-download | ${cmake_ninja_workdir}sdl2_ttf-populate-prefix\src\sdl2_ttf-populate-stamp\sdl2_ttf-populate-download: CUSTOM_COMMAND sdl2_ttf-populate-prefix\src\sdl2_ttf-populate-stamp\download-sdl2_ttf-populate.cmake sdl2_ttf-populate-prefix\src\sdl2_ttf-populate-stamp\sdl2_ttf-populate-urlinfo.txt sdl2_ttf-populate-prefix\src\sdl2_ttf-populate-stamp\sdl2_ttf-populate-mkdir
-  COMMAND = C:\WINDOWS\system32\cmd.exe /C "cd /D E:\1School\OOPL\OOPL_PTSD_pushBox\PTSD\lib && "C:\Program Files\Microsoft Visual Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin\cmake.exe" -P E:/1School/OOPL/OOPL_PTSD_pushBox/out/build/x64-Debug/_deps/sdl2_ttf-subbuild/sdl2_ttf-populate-prefix/src/sdl2_ttf-populate-stamp/download-sdl2_ttf-populate.cmake && "C:\Program Files\Microsoft Visual Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin\cmake.exe" -P E:/1School/OOPL/OOPL_PTSD_pushBox/out/build/x64-Debug/_deps/sdl2_ttf-subbuild/sdl2_ttf-populate-prefix/src/sdl2_ttf-populate-stamp/verify-sdl2_ttf-populate.cmake && "C:\Program Files\Microsoft Visual Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin\cmake.exe" -P E:/1School/OOPL/OOPL_PTSD_pushBox/out/build/x64-Debug/_deps/sdl2_ttf-subbuild/sdl2_ttf-populate-prefix/src/sdl2_ttf-populate-stamp/extract-sdl2_ttf-populate.cmake && "C:\Program Files\Microsoft Visual Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin\cmake.exe" -E touch E:/1School/OOPL/OOPL_PTSD_pushBox/out/build/x64-Debug/_deps/sdl2_ttf-subbuild/sdl2_ttf-populate-prefix/src/sdl2_ttf-populate-stamp/sdl2_ttf-populate-download"
+  COMMAND = C:\WINDOWS\system32\cmd.exe /C "cd /D E:\1School\OOPL\z_trytry\oopl_PTSD_pushBox\PTSD\lib && "C:\Program Files\Microsoft Visual Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin\cmake.exe" -P E:/1School/OOPL/z_trytry/oopl_PTSD_pushBox/out/build/x64-Debug/_deps/sdl2_ttf-subbuild/sdl2_ttf-populate-prefix/src/sdl2_ttf-populate-stamp/download-sdl2_ttf-populate.cmake && "C:\Program Files\Microsoft Visual Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin\cmake.exe" -P E:/1School/OOPL/z_trytry/oopl_PTSD_pushBox/out/build/x64-Debug/_deps/sdl2_ttf-subbuild/sdl2_ttf-populate-prefix/src/sdl2_ttf-populate-stamp/verify-sdl2_ttf-populate.cmake && "C:\Program Files\Microsoft Visual Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin\cmake.exe" -P E:/1School/OOPL/z_trytry/oopl_PTSD_pushBox/out/build/x64-Debug/_deps/sdl2_ttf-subbuild/sdl2_ttf-populate-prefix/src/sdl2_ttf-populate-stamp/extract-sdl2_ttf-populate.cmake && "C:\Program Files\Microsoft Visual Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin\cmake.exe" -E touch E:/1School/OOPL/z_trytry/oopl_PTSD_pushBox/out/build/x64-Debug/_deps/sdl2_ttf-subbuild/sdl2_ttf-populate-prefix/src/sdl2_ttf-populate-stamp/sdl2_ttf-populate-download"
   DESC = Performing download step (download, verify and extract) for 'sdl2_ttf-populate'
   pool = console
   restat = 1
@@ -112,7 +112,7 @@ build sdl2_ttf-populate-prefix\src\sdl2_ttf-populate-stamp\sdl2_ttf-populate-dow
 # Custom command for sdl2_ttf-populate-prefix\src\sdl2_ttf-populate-stamp\sdl2_ttf-populate-install
 
 build sdl2_ttf-populate-prefix\src\sdl2_ttf-populate-stamp\sdl2_ttf-populate-install | ${cmake_ninja_workdir}sdl2_ttf-populate-prefix\src\sdl2_ttf-populate-stamp\sdl2_ttf-populate-install: CUSTOM_COMMAND sdl2_ttf-populate-prefix\src\sdl2_ttf-populate-stamp\sdl2_ttf-populate-build
-  COMMAND = C:\WINDOWS\system32\cmd.exe /C "cd /D E:\1School\OOPL\OOPL_PTSD_pushBox\out\build\x64-Debug\_deps\sdl2_ttf-build && "C:\Program Files\Microsoft Visual Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin\cmake.exe" -E echo_append && "C:\Program Files\Microsoft Visual Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin\cmake.exe" -E touch E:/1School/OOPL/OOPL_PTSD_pushBox/out/build/x64-Debug/_deps/sdl2_ttf-subbuild/sdl2_ttf-populate-prefix/src/sdl2_ttf-populate-stamp/sdl2_ttf-populate-install"
+  COMMAND = C:\WINDOWS\system32\cmd.exe /C "cd /D E:\1School\OOPL\z_trytry\oopl_PTSD_pushBox\out\build\x64-Debug\_deps\sdl2_ttf-build && "C:\Program Files\Microsoft Visual Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin\cmake.exe" -E echo_append && "C:\Program Files\Microsoft Visual Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin\cmake.exe" -E touch E:/1School/OOPL/z_trytry/oopl_PTSD_pushBox/out/build/x64-Debug/_deps/sdl2_ttf-subbuild/sdl2_ttf-populate-prefix/src/sdl2_ttf-populate-stamp/sdl2_ttf-populate-install"
   DESC = No install step for 'sdl2_ttf-populate'
   restat = 1
 
@@ -121,7 +121,7 @@ build sdl2_ttf-populate-prefix\src\sdl2_ttf-populate-stamp\sdl2_ttf-populate-ins
 # Custom command for sdl2_ttf-populate-prefix\src\sdl2_ttf-populate-stamp\sdl2_ttf-populate-mkdir
 
 build sdl2_ttf-populate-prefix\src\sdl2_ttf-populate-stamp\sdl2_ttf-populate-mkdir | ${cmake_ninja_workdir}sdl2_ttf-populate-prefix\src\sdl2_ttf-populate-stamp\sdl2_ttf-populate-mkdir: CUSTOM_COMMAND
-  COMMAND = C:\WINDOWS\system32\cmd.exe /C "cd /D E:\1School\OOPL\OOPL_PTSD_pushBox\out\build\x64-Debug\_deps\sdl2_ttf-subbuild && "C:\Program Files\Microsoft Visual Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin\cmake.exe" -Dcfgdir= -P E:/1School/OOPL/OOPL_PTSD_pushBox/out/build/x64-Debug/_deps/sdl2_ttf-subbuild/sdl2_ttf-populate-prefix/tmp/sdl2_ttf-populate-mkdirs.cmake && "C:\Program Files\Microsoft Visual Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin\cmake.exe" -E touch E:/1School/OOPL/OOPL_PTSD_pushBox/out/build/x64-Debug/_deps/sdl2_ttf-subbuild/sdl2_ttf-populate-prefix/src/sdl2_ttf-populate-stamp/sdl2_ttf-populate-mkdir"
+  COMMAND = C:\WINDOWS\system32\cmd.exe /C "cd /D E:\1School\OOPL\z_trytry\oopl_PTSD_pushBox\out\build\x64-Debug\_deps\sdl2_ttf-subbuild && "C:\Program Files\Microsoft Visual Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin\cmake.exe" -Dcfgdir= -P E:/1School/OOPL/z_trytry/oopl_PTSD_pushBox/out/build/x64-Debug/_deps/sdl2_ttf-subbuild/sdl2_ttf-populate-prefix/tmp/sdl2_ttf-populate-mkdirs.cmake && "C:\Program Files\Microsoft Visual Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin\cmake.exe" -E touch E:/1School/OOPL/z_trytry/oopl_PTSD_pushBox/out/build/x64-Debug/_deps/sdl2_ttf-subbuild/sdl2_ttf-populate-prefix/src/sdl2_ttf-populate-stamp/sdl2_ttf-populate-mkdir"
   DESC = Creating directories for 'sdl2_ttf-populate'
   restat = 1
 
@@ -130,7 +130,7 @@ build sdl2_ttf-populate-prefix\src\sdl2_ttf-populate-stamp\sdl2_ttf-populate-mkd
 # Custom command for sdl2_ttf-populate-prefix\src\sdl2_ttf-populate-stamp\sdl2_ttf-populate-patch
 
 build sdl2_ttf-populate-prefix\src\sdl2_ttf-populate-stamp\sdl2_ttf-populate-patch | ${cmake_ninja_workdir}sdl2_ttf-populate-prefix\src\sdl2_ttf-populate-stamp\sdl2_ttf-populate-patch: CUSTOM_COMMAND sdl2_ttf-populate-prefix\src\sdl2_ttf-populate-stamp\sdl2_ttf-populate-patch-info.txt sdl2_ttf-populate-prefix\src\sdl2_ttf-populate-stamp\sdl2_ttf-populate-update
-  COMMAND = C:\WINDOWS\system32\cmd.exe /C "cd /D E:\1School\OOPL\OOPL_PTSD_pushBox\out\build\x64-Debug\_deps\sdl2_ttf-subbuild && "C:\Program Files\Microsoft Visual Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin\cmake.exe" -E echo_append && "C:\Program Files\Microsoft Visual Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin\cmake.exe" -E touch E:/1School/OOPL/OOPL_PTSD_pushBox/out/build/x64-Debug/_deps/sdl2_ttf-subbuild/sdl2_ttf-populate-prefix/src/sdl2_ttf-populate-stamp/sdl2_ttf-populate-patch"
+  COMMAND = C:\WINDOWS\system32\cmd.exe /C "cd /D E:\1School\OOPL\z_trytry\oopl_PTSD_pushBox\out\build\x64-Debug\_deps\sdl2_ttf-subbuild && "C:\Program Files\Microsoft Visual Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin\cmake.exe" -E echo_append && "C:\Program Files\Microsoft Visual Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin\cmake.exe" -E touch E:/1School/OOPL/z_trytry/oopl_PTSD_pushBox/out/build/x64-Debug/_deps/sdl2_ttf-subbuild/sdl2_ttf-populate-prefix/src/sdl2_ttf-populate-stamp/sdl2_ttf-populate-patch"
   DESC = No patch step for 'sdl2_ttf-populate'
   pool = console
   restat = 1
@@ -140,7 +140,7 @@ build sdl2_ttf-populate-prefix\src\sdl2_ttf-populate-stamp\sdl2_ttf-populate-pat
 # Custom command for sdl2_ttf-populate-prefix\src\sdl2_ttf-populate-stamp\sdl2_ttf-populate-test
 
 build sdl2_ttf-populate-prefix\src\sdl2_ttf-populate-stamp\sdl2_ttf-populate-test | ${cmake_ninja_workdir}sdl2_ttf-populate-prefix\src\sdl2_ttf-populate-stamp\sdl2_ttf-populate-test: CUSTOM_COMMAND sdl2_ttf-populate-prefix\src\sdl2_ttf-populate-stamp\sdl2_ttf-populate-install
-  COMMAND = C:\WINDOWS\system32\cmd.exe /C "cd /D E:\1School\OOPL\OOPL_PTSD_pushBox\out\build\x64-Debug\_deps\sdl2_ttf-build && "C:\Program Files\Microsoft Visual Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin\cmake.exe" -E echo_append && "C:\Program Files\Microsoft Visual Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin\cmake.exe" -E touch E:/1School/OOPL/OOPL_PTSD_pushBox/out/build/x64-Debug/_deps/sdl2_ttf-subbuild/sdl2_ttf-populate-prefix/src/sdl2_ttf-populate-stamp/sdl2_ttf-populate-test"
+  COMMAND = C:\WINDOWS\system32\cmd.exe /C "cd /D E:\1School\OOPL\z_trytry\oopl_PTSD_pushBox\out\build\x64-Debug\_deps\sdl2_ttf-build && "C:\Program Files\Microsoft Visual Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin\cmake.exe" -E echo_append && "C:\Program Files\Microsoft Visual Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin\cmake.exe" -E touch E:/1School/OOPL/z_trytry/oopl_PTSD_pushBox/out/build/x64-Debug/_deps/sdl2_ttf-subbuild/sdl2_ttf-populate-prefix/src/sdl2_ttf-populate-stamp/sdl2_ttf-populate-test"
   DESC = No test step for 'sdl2_ttf-populate'
   restat = 1
 
@@ -149,7 +149,7 @@ build sdl2_ttf-populate-prefix\src\sdl2_ttf-populate-stamp\sdl2_ttf-populate-tes
 # Custom command for sdl2_ttf-populate-prefix\src\sdl2_ttf-populate-stamp\sdl2_ttf-populate-update
 
 build sdl2_ttf-populate-prefix\src\sdl2_ttf-populate-stamp\sdl2_ttf-populate-update | ${cmake_ninja_workdir}sdl2_ttf-populate-prefix\src\sdl2_ttf-populate-stamp\sdl2_ttf-populate-update: CUSTOM_COMMAND sdl2_ttf-populate-prefix\src\sdl2_ttf-populate-stamp\sdl2_ttf-populate-update-info.txt sdl2_ttf-populate-prefix\src\sdl2_ttf-populate-stamp\sdl2_ttf-populate-download
-  COMMAND = C:\WINDOWS\system32\cmd.exe /C "cd /D E:\1School\OOPL\OOPL_PTSD_pushBox\out\build\x64-Debug\_deps\sdl2_ttf-subbuild && "C:\Program Files\Microsoft Visual Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin\cmake.exe" -E echo_append && "C:\Program Files\Microsoft Visual Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin\cmake.exe" -E touch E:/1School/OOPL/OOPL_PTSD_pushBox/out/build/x64-Debug/_deps/sdl2_ttf-subbuild/sdl2_ttf-populate-prefix/src/sdl2_ttf-populate-stamp/sdl2_ttf-populate-update"
+  COMMAND = C:\WINDOWS\system32\cmd.exe /C "cd /D E:\1School\OOPL\z_trytry\oopl_PTSD_pushBox\out\build\x64-Debug\_deps\sdl2_ttf-subbuild && "C:\Program Files\Microsoft Visual Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin\cmake.exe" -E echo_append && "C:\Program Files\Microsoft Visual Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin\cmake.exe" -E touch E:/1School/OOPL/z_trytry/oopl_PTSD_pushBox/out/build/x64-Debug/_deps/sdl2_ttf-subbuild/sdl2_ttf-populate-prefix/src/sdl2_ttf-populate-stamp/sdl2_ttf-populate-update"
   DESC = No update step for 'sdl2_ttf-populate'
   pool = console
   restat = 1
@@ -163,7 +163,7 @@ build sdl2_ttf-populate-prefix\src\sdl2_ttf-populate-stamp\sdl2_ttf-populate-upd
 # =============================================================================
 
 #############################################
-# Folder: E:/1School/OOPL/OOPL_PTSD_pushBox/out/build/x64-Debug/_deps/sdl2_ttf-subbuild
+# Folder: E:/1School/OOPL/z_trytry/oopl_PTSD_pushBox/out/build/x64-Debug/_deps/sdl2_ttf-subbuild
 
 build all: phony sdl2_ttf-populate
 

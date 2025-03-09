@@ -20,8 +20,8 @@ project(spdlog-populate NONE)
 include(ExternalProject)
 ExternalProject_Add(spdlog-populate
                      "UPDATE_DISCONNECTED" "False" "DOWNLOAD_EXTRACT_TIMESTAMP" "FALSE" "EXTERNALPROJECT_INTERNAL_ARGUMENT_SEPARATOR" "URL" "https://github.com/gabime/spdlog/archive/refs/tags/v1.10.0.zip" "URL_HASH" "MD5=031565384b28f29e44c6e7fb247ad48a"
-                    SOURCE_DIR          "E:/1School/OOPL/OOPL_PTSD_pushBox/PTSD/lib/spdlog"
-                    BINARY_DIR          "E:/1School/OOPL/OOPL_PTSD_pushBox/out/build/x64-Debug/_deps/spdlog-build"
+                    SOURCE_DIR          "E:/1School/OOPL/z_trytry/oopl_PTSD_pushBox/PTSD/lib/spdlog"
+                    BINARY_DIR          "E:/1School/OOPL/z_trytry/oopl_PTSD_pushBox/out/build/x64-Debug/_deps/spdlog-build"
                     CONFIGURE_COMMAND   ""
                     BUILD_COMMAND       ""
                     INSTALL_COMMAND     ""

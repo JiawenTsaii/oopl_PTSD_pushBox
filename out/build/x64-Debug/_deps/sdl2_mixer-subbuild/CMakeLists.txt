@@ -20,8 +20,8 @@ project(sdl2_mixer-populate NONE)
 include(ExternalProject)
 ExternalProject_Add(sdl2_mixer-populate
                      "UPDATE_DISCONNECTED" "False" "DOWNLOAD_EXTRACT_TIMESTAMP" "FALSE" "EXTERNALPROJECT_INTERNAL_ARGUMENT_SEPARATOR" "URL" "https://github.com/libsdl-org/SDL_mixer/releases/download/release-2.6.3/SDL2_mixer-2.6.3.zip" "URL_HASH" "MD5=fb3e71ef072ff8dd793cec3ed384f9a0"
-                    SOURCE_DIR          "E:/1School/OOPL/OOPL_PTSD_pushBox/PTSD/lib/sdl2_mixer"
-                    BINARY_DIR          "E:/1School/OOPL/OOPL_PTSD_pushBox/out/build/x64-Debug/_deps/sdl2_mixer-build"
+                    SOURCE_DIR          "E:/1School/OOPL/z_trytry/oopl_PTSD_pushBox/PTSD/lib/sdl2_mixer"
+                    BINARY_DIR          "E:/1School/OOPL/z_trytry/oopl_PTSD_pushBox/out/build/x64-Debug/_deps/sdl2_mixer-build"
                     CONFIGURE_COMMAND   ""
                     BUILD_COMMAND       ""
                     INSTALL_COMMAND     ""

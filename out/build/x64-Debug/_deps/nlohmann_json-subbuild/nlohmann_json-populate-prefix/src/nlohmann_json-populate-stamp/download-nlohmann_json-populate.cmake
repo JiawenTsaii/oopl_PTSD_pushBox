@@ -22,14 +22,14 @@ function(check_file_hash has_hash hash_is_good)
   set("${has_hash}" TRUE PARENT_SCOPE)
 
   message(STATUS "verifying file...
-       file='E:/1School/OOPL/OOPL_PTSD_pushBox/out/build/x64-Debug/_deps/nlohmann_json-subbuild/nlohmann_json-populate-prefix/src/json.tar.xz'")
+       file='E:/1School/OOPL/z_trytry/oopl_PTSD_pushBox/out/build/x64-Debug/_deps/nlohmann_json-subbuild/nlohmann_json-populate-prefix/src/json.tar.xz'")
 
-  file("MD5" "E:/1School/OOPL/OOPL_PTSD_pushBox/out/build/x64-Debug/_deps/nlohmann_json-subbuild/nlohmann_json-populate-prefix/src/json.tar.xz" actual_value)
+  file("MD5" "E:/1School/OOPL/z_trytry/oopl_PTSD_pushBox/out/build/x64-Debug/_deps/nlohmann_json-subbuild/nlohmann_json-populate-prefix/src/json.tar.xz" actual_value)
 
   if(NOT "${actual_value}" STREQUAL "c23a33f04786d85c29fda8d16b5f0efd")
     set("${hash_is_good}" FALSE PARENT_SCOPE)
     message(STATUS "MD5 hash of
-    E:/1School/OOPL/OOPL_PTSD_pushBox/out/build/x64-Debug/_deps/nlohmann_json-subbuild/nlohmann_json-populate-prefix/src/json.tar.xz
+    E:/1School/OOPL/z_trytry/oopl_PTSD_pushBox/out/build/x64-Debug/_deps/nlohmann_json-subbuild/nlohmann_json-populate-prefix/src/json.tar.xz
   does not match expected value
     expected: 'c23a33f04786d85c29fda8d16b5f0efd'
       actual: '${actual_value}'")
@@ -71,32 +71,32 @@ function(sleep_before_download attempt)
   execute_process(COMMAND "${CMAKE_COMMAND}" -E sleep "${sleep_seconds}")
 endfunction()
 
-if(EXISTS "E:/1School/OOPL/OOPL_PTSD_pushBox/out/build/x64-Debug/_deps/nlohmann_json-subbuild/nlohmann_json-populate-prefix/src/json.tar.xz")
+if(EXISTS "E:/1School/OOPL/z_trytry/oopl_PTSD_pushBox/out/build/x64-Debug/_deps/nlohmann_json-subbuild/nlohmann_json-populate-prefix/src/json.tar.xz")
   check_file_hash(has_hash hash_is_good)
   if(has_hash)
     if(hash_is_good)
       message(STATUS "File already exists and hash match (skip download):
-  file='E:/1School/OOPL/OOPL_PTSD_pushBox/out/build/x64-Debug/_deps/nlohmann_json-subbuild/nlohmann_json-populate-prefix/src/json.tar.xz'
+  file='E:/1School/OOPL/z_trytry/oopl_PTSD_pushBox/out/build/x64-Debug/_deps/nlohmann_json-subbuild/nlohmann_json-populate-prefix/src/json.tar.xz'
   MD5='c23a33f04786d85c29fda8d16b5f0efd'"
       )
       return()
     else()
       message(STATUS "File already exists but hash mismatch. Removing...")
-      file(REMOVE "E:/1School/OOPL/OOPL_PTSD_pushBox/out/build/x64-Debug/_deps/nlohmann_json-subbuild/nlohmann_json-populate-prefix/src/json.tar.xz")
+      file(REMOVE "E:/1School/OOPL/z_trytry/oopl_PTSD_pushBox/out/build/x64-Debug/_deps/nlohmann_json-subbuild/nlohmann_json-populate-prefix/src/json.tar.xz")
     endif()
   else()
     message(STATUS "File already exists but no hash specified (use URL_HASH):
-  file='E:/1School/OOPL/OOPL_PTSD_pushBox/out/build/x64-Debug/_deps/nlohmann_json-subbuild/nlohmann_json-populate-prefix/src/json.tar.xz'
+  file='E:/1School/OOPL/z_trytry/oopl_PTSD_pushBox/out/build/x64-Debug/_deps/nlohmann_json-subbuild/nlohmann_json-populate-prefix/src/json.tar.xz'
 Old file will be removed and new file downloaded from URL."
     )
-    file(REMOVE "E:/1School/OOPL/OOPL_PTSD_pushBox/out/build/x64-Debug/_deps/nlohmann_json-subbuild/nlohmann_json-populate-prefix/src/json.tar.xz")
+    file(REMOVE "E:/1School/OOPL/z_trytry/oopl_PTSD_pushBox/out/build/x64-Debug/_deps/nlohmann_json-subbuild/nlohmann_json-populate-prefix/src/json.tar.xz")
   endif()
 endif()
 
 set(retry_number 5)
 
 message(STATUS "Downloading...
-   dst='E:/1School/OOPL/OOPL_PTSD_pushBox/out/build/x64-Debug/_deps/nlohmann_json-subbuild/nlohmann_json-populate-prefix/src/json.tar.xz'
+   dst='E:/1School/OOPL/z_trytry/oopl_PTSD_pushBox/out/build/x64-Debug/_deps/nlohmann_json-subbuild/nlohmann_json-populate-prefix/src/json.tar.xz'
    timeout='none'
    inactivity timeout='none'"
 )
@@ -118,7 +118,7 @@ foreach(i RANGE ${retry_number})
 
       file(
         DOWNLOAD
-        "${url}" "E:/1School/OOPL/OOPL_PTSD_pushBox/out/build/x64-Debug/_deps/nlohmann_json-subbuild/nlohmann_json-populate-prefix/src/json.tar.xz"
+        "${url}" "E:/1School/OOPL/z_trytry/oopl_PTSD_pushBox/out/build/x64-Debug/_deps/nlohmann_json-subbuild/nlohmann_json-populate-prefix/src/json.tar.xz"
         SHOW_PROGRESS
         # no TIMEOUT
         # no INACTIVITY_TIMEOUT
@@ -135,7 +135,7 @@ foreach(i RANGE ${retry_number})
         check_file_hash(has_hash hash_is_good)
         if(has_hash AND NOT hash_is_good)
           message(STATUS "Hash mismatch, removing...")
-          file(REMOVE "E:/1School/OOPL/OOPL_PTSD_pushBox/out/build/x64-Debug/_deps/nlohmann_json-subbuild/nlohmann_json-populate-prefix/src/json.tar.xz")
+          file(REMOVE "E:/1School/OOPL/z_trytry/oopl_PTSD_pushBox/out/build/x64-Debug/_deps/nlohmann_json-subbuild/nlohmann_json-populate-prefix/src/json.tar.xz")
         else()
           message(STATUS "Downloading... done")
           return()

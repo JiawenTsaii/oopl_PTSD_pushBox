@@ -5,8 +5,8 @@ cmake_minimum_required(VERSION 3.5)
 
 # Make file names absolute:
 #
-get_filename_component(filename "E:/1School/OOPL/OOPL_PTSD_pushBox/out/build/x64-Debug/_deps/glm-subbuild/glm-populate-prefix/src/glm-0.9.9.8.zip" ABSOLUTE)
-get_filename_component(directory "E:/1School/OOPL/OOPL_PTSD_pushBox/PTSD/lib/glm" ABSOLUTE)
+get_filename_component(filename "E:/1School/OOPL/z_trytry/oopl_PTSD_pushBox/out/build/x64-Debug/_deps/glm-subbuild/glm-populate-prefix/src/glm-0.9.9.8.zip" ABSOLUTE)
+get_filename_component(directory "E:/1School/OOPL/z_trytry/oopl_PTSD_pushBox/PTSD/lib/glm" ABSOLUTE)
 
 message(STATUS "extracting...
      src='${filename}'

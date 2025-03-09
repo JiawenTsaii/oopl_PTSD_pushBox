@@ -34,7 +34,7 @@ include CMakeFiles\rules.ninja
 #############################################
 # Logical path to working directory; prefix for absolute paths.
 
-cmake_ninja_workdir = E$:\1School\OOPL\OOPL_PTSD_pushBox\out\build\x64-Debug\_deps\ptsd-subbuild\
+cmake_ninja_workdir = E$:\1School\OOPL\z_trytry\oopl_PTSD_pushBox\out\build\x64-Debug\_deps\ptsd-subbuild\
 
 #############################################
 # Utility command for ptsd-populate
@@ -46,7 +46,7 @@ build ptsd-populate: phony CMakeFiles\ptsd-populate CMakeFiles\ptsd-populate-com
 # Utility command for edit_cache
 
 build CMakeFiles\edit_cache.util: CUSTOM_COMMAND
-  COMMAND = C:\WINDOWS\system32\cmd.exe /C "cd /D E:\1School\OOPL\OOPL_PTSD_pushBox\out\build\x64-Debug\_deps\ptsd-subbuild && "C:\Program Files\Microsoft Visual Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin\cmake.exe" -E echo "No interactive CMake dialog available.""
+  COMMAND = C:\WINDOWS\system32\cmd.exe /C "cd /D E:\1School\OOPL\z_trytry\oopl_PTSD_pushBox\out\build\x64-Debug\_deps\ptsd-subbuild && "C:\Program Files\Microsoft Visual Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin\cmake.exe" -E echo "No interactive CMake dialog available.""
   DESC = No interactive CMake dialog available...
   restat = 1
 
@@ -57,7 +57,7 @@ build edit_cache: phony CMakeFiles\edit_cache.util
 # Utility command for rebuild_cache
 
 build CMakeFiles\rebuild_cache.util: CUSTOM_COMMAND
-  COMMAND = C:\WINDOWS\system32\cmd.exe /C "cd /D E:\1School\OOPL\OOPL_PTSD_pushBox\out\build\x64-Debug\_deps\ptsd-subbuild && "C:\Program Files\Microsoft Visual Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin\cmake.exe" --regenerate-during-build -SE:\1School\OOPL\OOPL_PTSD_pushBox\out\build\x64-Debug\_deps\ptsd-subbuild -BE:\1School\OOPL\OOPL_PTSD_pushBox\out\build\x64-Debug\_deps\ptsd-subbuild"
+  COMMAND = C:\WINDOWS\system32\cmd.exe /C "cd /D E:\1School\OOPL\z_trytry\oopl_PTSD_pushBox\out\build\x64-Debug\_deps\ptsd-subbuild && "C:\Program Files\Microsoft Visual Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin\cmake.exe" --regenerate-during-build -SE:\1School\OOPL\z_trytry\oopl_PTSD_pushBox\out\build\x64-Debug\_deps\ptsd-subbuild -BE:\1School\OOPL\z_trytry\oopl_PTSD_pushBox\out\build\x64-Debug\_deps\ptsd-subbuild"
   DESC = Running CMake to regenerate build system...
   pool = console
   restat = 1
@@ -75,7 +75,7 @@ build CMakeFiles\ptsd-populate | ${cmake_ninja_workdir}CMakeFiles\ptsd-populate:
 # Custom command for CMakeFiles\ptsd-populate-complete
 
 build CMakeFiles\ptsd-populate-complete ptsd-populate-prefix\src\ptsd-populate-stamp\ptsd-populate-done | ${cmake_ninja_workdir}CMakeFiles\ptsd-populate-complete ${cmake_ninja_workdir}ptsd-populate-prefix\src\ptsd-populate-stamp\ptsd-populate-done: CUSTOM_COMMAND ptsd-populate-prefix\src\ptsd-populate-stamp\ptsd-populate-install ptsd-populate-prefix\src\ptsd-populate-stamp\ptsd-populate-mkdir ptsd-populate-prefix\src\ptsd-populate-stamp\ptsd-populate-download ptsd-populate-prefix\src\ptsd-populate-stamp\ptsd-populate-update ptsd-populate-prefix\src\ptsd-populate-stamp\ptsd-populate-patch ptsd-populate-prefix\src\ptsd-populate-stamp\ptsd-populate-configure ptsd-populate-prefix\src\ptsd-populate-stamp\ptsd-populate-build ptsd-populate-prefix\src\ptsd-populate-stamp\ptsd-populate-install ptsd-populate-prefix\src\ptsd-populate-stamp\ptsd-populate-test
-  COMMAND = C:\WINDOWS\system32\cmd.exe /C "cd /D E:\1School\OOPL\OOPL_PTSD_pushBox\out\build\x64-Debug\_deps\ptsd-subbuild && "C:\Program Files\Microsoft Visual Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin\cmake.exe" -E make_directory E:/1School/OOPL/OOPL_PTSD_pushBox/out/build/x64-Debug/_deps/ptsd-subbuild/CMakeFiles && "C:\Program Files\Microsoft Visual Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin\cmake.exe" -E touch E:/1School/OOPL/OOPL_PTSD_pushBox/out/build/x64-Debug/_deps/ptsd-subbuild/CMakeFiles/ptsd-populate-complete && "C:\Program Files\Microsoft Visual Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin\cmake.exe" -E touch E:/1School/OOPL/OOPL_PTSD_pushBox/out/build/x64-Debug/_deps/ptsd-subbuild/ptsd-populate-prefix/src/ptsd-populate-stamp/ptsd-populate-done"
+  COMMAND = C:\WINDOWS\system32\cmd.exe /C "cd /D E:\1School\OOPL\z_trytry\oopl_PTSD_pushBox\out\build\x64-Debug\_deps\ptsd-subbuild && "C:\Program Files\Microsoft Visual Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin\cmake.exe" -E make_directory E:/1School/OOPL/z_trytry/oopl_PTSD_pushBox/out/build/x64-Debug/_deps/ptsd-subbuild/CMakeFiles && "C:\Program Files\Microsoft Visual Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin\cmake.exe" -E touch E:/1School/OOPL/z_trytry/oopl_PTSD_pushBox/out/build/x64-Debug/_deps/ptsd-subbuild/CMakeFiles/ptsd-populate-complete && "C:\Program Files\Microsoft Visual Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin\cmake.exe" -E touch E:/1School/OOPL/z_trytry/oopl_PTSD_pushBox/out/build/x64-Debug/_deps/ptsd-subbuild/ptsd-populate-prefix/src/ptsd-populate-stamp/ptsd-populate-done"
   DESC = Completed 'ptsd-populate'
   restat = 1
 
@@ -84,7 +84,7 @@ build CMakeFiles\ptsd-populate-complete ptsd-populate-prefix\src\ptsd-populate-s
 # Custom command for ptsd-populate-prefix\src\ptsd-populate-stamp\ptsd-populate-build
 
 build ptsd-populate-prefix\src\ptsd-populate-stamp\ptsd-populate-build | ${cmake_ninja_workdir}ptsd-populate-prefix\src\ptsd-populate-stamp\ptsd-populate-build: CUSTOM_COMMAND ptsd-populate-prefix\src\ptsd-populate-stamp\ptsd-populate-configure
-  COMMAND = C:\WINDOWS\system32\cmd.exe /C "cd /D E:\1School\OOPL\OOPL_PTSD_pushBox\out\build\x64-Debug\_deps\ptsd-build && "C:\Program Files\Microsoft Visual Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin\cmake.exe" -E echo_append && "C:\Program Files\Microsoft Visual Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin\cmake.exe" -E touch E:/1School/OOPL/OOPL_PTSD_pushBox/out/build/x64-Debug/_deps/ptsd-subbuild/ptsd-populate-prefix/src/ptsd-populate-stamp/ptsd-populate-build"
+  COMMAND = C:\WINDOWS\system32\cmd.exe /C "cd /D E:\1School\OOPL\z_trytry\oopl_PTSD_pushBox\out\build\x64-Debug\_deps\ptsd-build && "C:\Program Files\Microsoft Visual Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin\cmake.exe" -E echo_append && "C:\Program Files\Microsoft Visual Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin\cmake.exe" -E touch E:/1School/OOPL/z_trytry/oopl_PTSD_pushBox/out/build/x64-Debug/_deps/ptsd-subbuild/ptsd-populate-prefix/src/ptsd-populate-stamp/ptsd-populate-build"
   DESC = No build step for 'ptsd-populate'
   restat = 1
 
@@ -93,7 +93,7 @@ build ptsd-populate-prefix\src\ptsd-populate-stamp\ptsd-populate-build | ${cmake
 # Custom command for ptsd-populate-prefix\src\ptsd-populate-stamp\ptsd-populate-configure
 
 build ptsd-populate-prefix\src\ptsd-populate-stamp\ptsd-populate-configure | ${cmake_ninja_workdir}ptsd-populate-prefix\src\ptsd-populate-stamp\ptsd-populate-configure: CUSTOM_COMMAND ptsd-populate-prefix\tmp\ptsd-populate-cfgcmd.txt ptsd-populate-prefix\src\ptsd-populate-stamp\ptsd-populate-patch
-  COMMAND = C:\WINDOWS\system32\cmd.exe /C "cd /D E:\1School\OOPL\OOPL_PTSD_pushBox\out\build\x64-Debug\_deps\ptsd-build && "C:\Program Files\Microsoft Visual Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin\cmake.exe" -E echo_append && "C:\Program Files\Microsoft Visual Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin\cmake.exe" -E touch E:/1School/OOPL/OOPL_PTSD_pushBox/out/build/x64-Debug/_deps/ptsd-subbuild/ptsd-populate-prefix/src/ptsd-populate-stamp/ptsd-populate-configure"
+  COMMAND = C:\WINDOWS\system32\cmd.exe /C "cd /D E:\1School\OOPL\z_trytry\oopl_PTSD_pushBox\out\build\x64-Debug\_deps\ptsd-build && "C:\Program Files\Microsoft Visual Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin\cmake.exe" -E echo_append && "C:\Program Files\Microsoft Visual Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin\cmake.exe" -E touch E:/1School/OOPL/z_trytry/oopl_PTSD_pushBox/out/build/x64-Debug/_deps/ptsd-subbuild/ptsd-populate-prefix/src/ptsd-populate-stamp/ptsd-populate-configure"
   DESC = No configure step for 'ptsd-populate'
   restat = 1
 
@@ -102,7 +102,7 @@ build ptsd-populate-prefix\src\ptsd-populate-stamp\ptsd-populate-configure | ${c
 # Custom command for ptsd-populate-prefix\src\ptsd-populate-stamp\ptsd-populate-download
 
 build ptsd-populate-prefix\src\ptsd-populate-stamp\ptsd-populate-download | ${cmake_ninja_workdir}ptsd-populate-prefix\src\ptsd-populate-stamp\ptsd-populate-download: CUSTOM_COMMAND ptsd-populate-prefix\src\ptsd-populate-stamp\download-ptsd-populate.cmake ptsd-populate-prefix\src\ptsd-populate-stamp\ptsd-populate-urlinfo.txt ptsd-populate-prefix\src\ptsd-populate-stamp\ptsd-populate-mkdir
-  COMMAND = C:\WINDOWS\system32\cmd.exe /C "cd /D E:\1School\OOPL\OOPL_PTSD_pushBox && "C:\Program Files\Microsoft Visual Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin\cmake.exe" -P E:/1School/OOPL/OOPL_PTSD_pushBox/out/build/x64-Debug/_deps/ptsd-subbuild/ptsd-populate-prefix/src/ptsd-populate-stamp/download-ptsd-populate.cmake && "C:\Program Files\Microsoft Visual Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin\cmake.exe" -P E:/1School/OOPL/OOPL_PTSD_pushBox/out/build/x64-Debug/_deps/ptsd-subbuild/ptsd-populate-prefix/src/ptsd-populate-stamp/verify-ptsd-populate.cmake && "C:\Program Files\Microsoft Visual Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin\cmake.exe" -P E:/1School/OOPL/OOPL_PTSD_pushBox/out/build/x64-Debug/_deps/ptsd-subbuild/ptsd-populate-prefix/src/ptsd-populate-stamp/extract-ptsd-populate.cmake && "C:\Program Files\Microsoft Visual Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin\cmake.exe" -E touch E:/1School/OOPL/OOPL_PTSD_pushBox/out/build/x64-Debug/_deps/ptsd-subbuild/ptsd-populate-prefix/src/ptsd-populate-stamp/ptsd-populate-download"
+  COMMAND = C:\WINDOWS\system32\cmd.exe /C "cd /D E:\1School\OOPL\z_trytry\oopl_PTSD_pushBox && "C:\Program Files\Microsoft Visual Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin\cmake.exe" -P E:/1School/OOPL/z_trytry/oopl_PTSD_pushBox/out/build/x64-Debug/_deps/ptsd-subbuild/ptsd-populate-prefix/src/ptsd-populate-stamp/download-ptsd-populate.cmake && "C:\Program Files\Microsoft Visual Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin\cmake.exe" -P E:/1School/OOPL/z_trytry/oopl_PTSD_pushBox/out/build/x64-Debug/_deps/ptsd-subbuild/ptsd-populate-prefix/src/ptsd-populate-stamp/verify-ptsd-populate.cmake && "C:\Program Files\Microsoft Visual Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin\cmake.exe" -P E:/1School/OOPL/z_trytry/oopl_PTSD_pushBox/out/build/x64-Debug/_deps/ptsd-subbuild/ptsd-populate-prefix/src/ptsd-populate-stamp/extract-ptsd-populate.cmake && "C:\Program Files\Microsoft Visual Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin\cmake.exe" -E touch E:/1School/OOPL/z_trytry/oopl_PTSD_pushBox/out/build/x64-Debug/_deps/ptsd-subbuild/ptsd-populate-prefix/src/ptsd-populate-stamp/ptsd-populate-download"
   DESC = Performing download step (download, verify and extract) for 'ptsd-populate'
   pool = console
   restat = 1
@@ -112,7 +112,7 @@ build ptsd-populate-prefix\src\ptsd-populate-stamp\ptsd-populate-download | ${cm
 # Custom command for ptsd-populate-prefix\src\ptsd-populate-stamp\ptsd-populate-install
 
 build ptsd-populate-prefix\src\ptsd-populate-stamp\ptsd-populate-install | ${cmake_ninja_workdir}ptsd-populate-prefix\src\ptsd-populate-stamp\ptsd-populate-install: CUSTOM_COMMAND ptsd-populate-prefix\src\ptsd-populate-stamp\ptsd-populate-build
-  COMMAND = C:\WINDOWS\system32\cmd.exe /C "cd /D E:\1School\OOPL\OOPL_PTSD_pushBox\out\build\x64-Debug\_deps\ptsd-build && "C:\Program Files\Microsoft Visual Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin\cmake.exe" -E echo_append && "C:\Program Files\Microsoft Visual Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin\cmake.exe" -E touch E:/1School/OOPL/OOPL_PTSD_pushBox/out/build/x64-Debug/_deps/ptsd-subbuild/ptsd-populate-prefix/src/ptsd-populate-stamp/ptsd-populate-install"
+  COMMAND = C:\WINDOWS\system32\cmd.exe /C "cd /D E:\1School\OOPL\z_trytry\oopl_PTSD_pushBox\out\build\x64-Debug\_deps\ptsd-build && "C:\Program Files\Microsoft Visual Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin\cmake.exe" -E echo_append && "C:\Program Files\Microsoft Visual Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin\cmake.exe" -E touch E:/1School/OOPL/z_trytry/oopl_PTSD_pushBox/out/build/x64-Debug/_deps/ptsd-subbuild/ptsd-populate-prefix/src/ptsd-populate-stamp/ptsd-populate-install"
   DESC = No install step for 'ptsd-populate'
   restat = 1
 
@@ -121,7 +121,7 @@ build ptsd-populate-prefix\src\ptsd-populate-stamp\ptsd-populate-install | ${cma
 # Custom command for ptsd-populate-prefix\src\ptsd-populate-stamp\ptsd-populate-mkdir
 
 build ptsd-populate-prefix\src\ptsd-populate-stamp\ptsd-populate-mkdir | ${cmake_ninja_workdir}ptsd-populate-prefix\src\ptsd-populate-stamp\ptsd-populate-mkdir: CUSTOM_COMMAND
-  COMMAND = C:\WINDOWS\system32\cmd.exe /C "cd /D E:\1School\OOPL\OOPL_PTSD_pushBox\out\build\x64-Debug\_deps\ptsd-subbuild && "C:\Program Files\Microsoft Visual Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin\cmake.exe" -Dcfgdir= -P E:/1School/OOPL/OOPL_PTSD_pushBox/out/build/x64-Debug/_deps/ptsd-subbuild/ptsd-populate-prefix/tmp/ptsd-populate-mkdirs.cmake && "C:\Program Files\Microsoft Visual Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin\cmake.exe" -E touch E:/1School/OOPL/OOPL_PTSD_pushBox/out/build/x64-Debug/_deps/ptsd-subbuild/ptsd-populate-prefix/src/ptsd-populate-stamp/ptsd-populate-mkdir"
+  COMMAND = C:\WINDOWS\system32\cmd.exe /C "cd /D E:\1School\OOPL\z_trytry\oopl_PTSD_pushBox\out\build\x64-Debug\_deps\ptsd-subbuild && "C:\Program Files\Microsoft Visual Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin\cmake.exe" -Dcfgdir= -P E:/1School/OOPL/z_trytry/oopl_PTSD_pushBox/out/build/x64-Debug/_deps/ptsd-subbuild/ptsd-populate-prefix/tmp/ptsd-populate-mkdirs.cmake && "C:\Program Files\Microsoft Visual Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin\cmake.exe" -E touch E:/1School/OOPL/z_trytry/oopl_PTSD_pushBox/out/build/x64-Debug/_deps/ptsd-subbuild/ptsd-populate-prefix/src/ptsd-populate-stamp/ptsd-populate-mkdir"
   DESC = Creating directories for 'ptsd-populate'
   restat = 1
 
@@ -130,7 +130,7 @@ build ptsd-populate-prefix\src\ptsd-populate-stamp\ptsd-populate-mkdir | ${cmake
 # Custom command for ptsd-populate-prefix\src\ptsd-populate-stamp\ptsd-populate-patch
 
 build ptsd-populate-prefix\src\ptsd-populate-stamp\ptsd-populate-patch | ${cmake_ninja_workdir}ptsd-populate-prefix\src\ptsd-populate-stamp\ptsd-populate-patch: CUSTOM_COMMAND ptsd-populate-prefix\src\ptsd-populate-stamp\ptsd-populate-patch-info.txt ptsd-populate-prefix\src\ptsd-populate-stamp\ptsd-populate-update
-  COMMAND = C:\WINDOWS\system32\cmd.exe /C "cd /D E:\1School\OOPL\OOPL_PTSD_pushBox\out\build\x64-Debug\_deps\ptsd-subbuild && "C:\Program Files\Microsoft Visual Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin\cmake.exe" -E echo_append && "C:\Program Files\Microsoft Visual Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin\cmake.exe" -E touch E:/1School/OOPL/OOPL_PTSD_pushBox/out/build/x64-Debug/_deps/ptsd-subbuild/ptsd-populate-prefix/src/ptsd-populate-stamp/ptsd-populate-patch"
+  COMMAND = C:\WINDOWS\system32\cmd.exe /C "cd /D E:\1School\OOPL\z_trytry\oopl_PTSD_pushBox\out\build\x64-Debug\_deps\ptsd-subbuild && "C:\Program Files\Microsoft Visual Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin\cmake.exe" -E echo_append && "C:\Program Files\Microsoft Visual Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin\cmake.exe" -E touch E:/1School/OOPL/z_trytry/oopl_PTSD_pushBox/out/build/x64-Debug/_deps/ptsd-subbuild/ptsd-populate-prefix/src/ptsd-populate-stamp/ptsd-populate-patch"
   DESC = No patch step for 'ptsd-populate'
   pool = console
   restat = 1
@@ -140,7 +140,7 @@ build ptsd-populate-prefix\src\ptsd-populate-stamp\ptsd-populate-patch | ${cmake
 # Custom command for ptsd-populate-prefix\src\ptsd-populate-stamp\ptsd-populate-test
 
 build ptsd-populate-prefix\src\ptsd-populate-stamp\ptsd-populate-test | ${cmake_ninja_workdir}ptsd-populate-prefix\src\ptsd-populate-stamp\ptsd-populate-test: CUSTOM_COMMAND ptsd-populate-prefix\src\ptsd-populate-stamp\ptsd-populate-install
-  COMMAND = C:\WINDOWS\system32\cmd.exe /C "cd /D E:\1School\OOPL\OOPL_PTSD_pushBox\out\build\x64-Debug\_deps\ptsd-build && "C:\Program Files\Microsoft Visual Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin\cmake.exe" -E echo_append && "C:\Program Files\Microsoft Visual Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin\cmake.exe" -E touch E:/1School/OOPL/OOPL_PTSD_pushBox/out/build/x64-Debug/_deps/ptsd-subbuild/ptsd-populate-prefix/src/ptsd-populate-stamp/ptsd-populate-test"
+  COMMAND = C:\WINDOWS\system32\cmd.exe /C "cd /D E:\1School\OOPL\z_trytry\oopl_PTSD_pushBox\out\build\x64-Debug\_deps\ptsd-build && "C:\Program Files\Microsoft Visual Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin\cmake.exe" -E echo_append && "C:\Program Files\Microsoft Visual Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin\cmake.exe" -E touch E:/1School/OOPL/z_trytry/oopl_PTSD_pushBox/out/build/x64-Debug/_deps/ptsd-subbuild/ptsd-populate-prefix/src/ptsd-populate-stamp/ptsd-populate-test"
   DESC = No test step for 'ptsd-populate'
   restat = 1
 
@@ -149,7 +149,7 @@ build ptsd-populate-prefix\src\ptsd-populate-stamp\ptsd-populate-test | ${cmake_
 # Custom command for ptsd-populate-prefix\src\ptsd-populate-stamp\ptsd-populate-update
 
 build ptsd-populate-prefix\src\ptsd-populate-stamp\ptsd-populate-update | ${cmake_ninja_workdir}ptsd-populate-prefix\src\ptsd-populate-stamp\ptsd-populate-update: CUSTOM_COMMAND ptsd-populate-prefix\src\ptsd-populate-stamp\ptsd-populate-update-info.txt ptsd-populate-prefix\src\ptsd-populate-stamp\ptsd-populate-download
-  COMMAND = C:\WINDOWS\system32\cmd.exe /C "cd /D E:\1School\OOPL\OOPL_PTSD_pushBox\out\build\x64-Debug\_deps\ptsd-subbuild && "C:\Program Files\Microsoft Visual Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin\cmake.exe" -E echo_append && "C:\Program Files\Microsoft Visual Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin\cmake.exe" -E touch E:/1School/OOPL/OOPL_PTSD_pushBox/out/build/x64-Debug/_deps/ptsd-subbuild/ptsd-populate-prefix/src/ptsd-populate-stamp/ptsd-populate-update"
+  COMMAND = C:\WINDOWS\system32\cmd.exe /C "cd /D E:\1School\OOPL\z_trytry\oopl_PTSD_pushBox\out\build\x64-Debug\_deps\ptsd-subbuild && "C:\Program Files\Microsoft Visual Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin\cmake.exe" -E echo_append && "C:\Program Files\Microsoft Visual Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin\cmake.exe" -E touch E:/1School/OOPL/z_trytry/oopl_PTSD_pushBox/out/build/x64-Debug/_deps/ptsd-subbuild/ptsd-populate-prefix/src/ptsd-populate-stamp/ptsd-populate-update"
   DESC = No update step for 'ptsd-populate'
   pool = console
   restat = 1
@@ -163,7 +163,7 @@ build ptsd-populate-prefix\src\ptsd-populate-stamp\ptsd-populate-update | ${cmak
 # =============================================================================
 
 #############################################
-# Folder: E:/1School/OOPL/OOPL_PTSD_pushBox/out/build/x64-Debug/_deps/ptsd-subbuild
+# Folder: E:/1School/OOPL/z_trytry/oopl_PTSD_pushBox/out/build/x64-Debug/_deps/ptsd-subbuild
 
 build all: phony ptsd-populate
 

@@ -1,4 +1,4 @@
-#line 1 "E:\\1School\\OOPL\\OOPL_PTSD_pushBox\\PTSD\\lib\\sdl2_ttf\\external\\freetype\\src\\base\\ftver.rc"
+#line 1 "E:\\1School\\OOPL\\z_trytry\\oopl_PTSD_pushBox\\PTSD\\lib\\sdl2_ttf\\external\\freetype\\src\\base\\ftver.rc"
 
 
 
@@ -9379,7 +9379,7 @@
 
 #line 276 "C:\\Program Files (x86)\\Windows Kits\\10\\include\\10.0.22621.0\\um\\windows.h"
 
-#line 20 "E:\\1School\\OOPL\\OOPL_PTSD_pushBox\\PTSD\\lib\\sdl2_ttf\\external\\freetype\\src\\base\\ftver.rc"
+#line 20 "E:\\1School\\OOPL\\z_trytry\\oopl_PTSD_pushBox\\PTSD\\lib\\sdl2_ttf\\external\\freetype\\src\\base\\ftver.rc"
 
 
 
@@ -9390,14 +9390,14 @@ PRODUCTVERSION       2,12,1,0
 FILEFLAGSMASK        0x0000003FL
 
 FILEFLAGS            0x00000001L
-#line 31 "E:\\1School\\OOPL\\OOPL_PTSD_pushBox\\PTSD\\lib\\sdl2_ttf\\external\\freetype\\src\\base\\ftver.rc"
+#line 31 "E:\\1School\\OOPL\\z_trytry\\oopl_PTSD_pushBox\\PTSD\\lib\\sdl2_ttf\\external\\freetype\\src\\base\\ftver.rc"
 
 
 
 
 FILETYPE             0x00000007L
 
-#line 38 "E:\\1School\\OOPL\\OOPL_PTSD_pushBox\\PTSD\\lib\\sdl2_ttf\\external\\freetype\\src\\base\\ftver.rc"
+#line 38 "E:\\1School\\OOPL\\z_trytry\\oopl_PTSD_pushBox\\PTSD\\lib\\sdl2_ttf\\external\\freetype\\src\\base\\ftver.rc"
 BEGIN
   BLOCK "StringFileInfo"
   BEGIN

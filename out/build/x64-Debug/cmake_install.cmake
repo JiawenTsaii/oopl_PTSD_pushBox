@@ -1,8 +1,8 @@
-# Install script for directory: E:/1School/OOPL/OOPL_PTSD_pushBox
+# Install script for directory: E:/1School/OOPL/z_trytry/oopl_PTSD_pushBox
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
-  set(CMAKE_INSTALL_PREFIX "E:/1School/OOPL/OOPL_PTSD_pushBox/out/install/x64-Debug")
+  set(CMAKE_INSTALL_PREFIX "E:/1School/OOPL/z_trytry/oopl_PTSD_pushBox/out/install/x64-Debug")
 endif()
 string(REGEX REPLACE "/$" "" CMAKE_INSTALL_PREFIX "${CMAKE_INSTALL_PREFIX}")
 
@@ -34,7 +34,7 @@ endif()
 
 if(NOT CMAKE_INSTALL_LOCAL_ONLY)
   # Include the install script for the subdirectory.
-  include("E:/1School/OOPL/OOPL_PTSD_pushBox/out/build/x64-Debug/_deps/ptsd-build/cmake_install.cmake")
+  include("E:/1School/OOPL/z_trytry/oopl_PTSD_pushBox/out/build/x64-Debug/_deps/ptsd-build/cmake_install.cmake")
 endif()
 
 if(CMAKE_INSTALL_COMPONENT)
@@ -45,5 +45,5 @@ endif()
 
 string(REPLACE ";" "\n" CMAKE_INSTALL_MANIFEST_CONTENT
        "${CMAKE_INSTALL_MANIFEST_FILES}")
-file(WRITE "E:/1School/OOPL/OOPL_PTSD_pushBox/out/build/x64-Debug/${CMAKE_INSTALL_MANIFEST}"
+file(WRITE "E:/1School/OOPL/z_trytry/oopl_PTSD_pushBox/out/build/x64-Debug/${CMAKE_INSTALL_MANIFEST}"
      "${CMAKE_INSTALL_MANIFEST_CONTENT}")

@@ -5,8 +5,8 @@ cmake_minimum_required(VERSION 3.5)
 
 # Make file names absolute:
 #
-get_filename_component(filename "E:/1School/OOPL/OOPL_PTSD_pushBox/out/build/x64-Debug/_deps/sdl2_ttf-subbuild/sdl2_ttf-populate-prefix/src/SDL2_ttf-2.20.2.zip" ABSOLUTE)
-get_filename_component(directory "E:/1School/OOPL/OOPL_PTSD_pushBox/PTSD/lib/sdl2_ttf" ABSOLUTE)
+get_filename_component(filename "E:/1School/OOPL/z_trytry/oopl_PTSD_pushBox/out/build/x64-Debug/_deps/sdl2_ttf-subbuild/sdl2_ttf-populate-prefix/src/SDL2_ttf-2.20.2.zip" ABSOLUTE)
+get_filename_component(directory "E:/1School/OOPL/z_trytry/oopl_PTSD_pushBox/PTSD/lib/sdl2_ttf" ABSOLUTE)
 
 message(STATUS "extracting...
      src='${filename}'

@@ -1,4 +1,4 @@
-prefix=E:/1School/OOPL/OOPL_PTSD_pushBox/out/install/x64-Debug
+prefix=E:/1School/OOPL/z_trytry/oopl_PTSD_pushBox/out/install/x64-Debug
 exec_prefix=${prefix}
 libdir=${prefix}/lib
 includedir=${prefix}/include
