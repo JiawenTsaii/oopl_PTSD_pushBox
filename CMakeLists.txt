@@ -23,7 +23,7 @@ FetchContent_Declare(
 FetchContent_MakeAvailable(ptsd)
 
 include(files.cmake)
-set(SRC_DIR ${CMAKE_SOURCE_DIR}/src)
+set(SRC_DIR ${CMAKE_SOURCE_DIR}/src "src/PhaseLevel.cpp")
 set(INCLUDE_DIR ${CMAKE_SOURCE_DIR}/include)
 list(TRANSFORM SRC_FILES PREPEND ${SRC_DIR}/)
 list(TRANSFORM INCLUDE_FILES PREPEND ${INCLUDE_DIR}/)
@@ -35,7 +35,7 @@ add_executable(${PROJECT_NAME}
     ${SRC_DIR}/main.cpp
     ${SRC_FILES}
     ${HEADER_FILES}
-)
+ "src/PhaseLevel.cpp")
 
 if(MSVC)
     target_compile_options(${PROJECT_NAME} PRIVATE /W4)

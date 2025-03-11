@@ -13,7 +13,7 @@ void App::ValidTask() {
 			m_Phase = Phase::LEVEL;
 			break;
 		case Phase::LEVEL:
-			m_PRM->SetImage(RESOURCE_DIR"/bg_level.png");
+			m_PRM->SetImage(RESOURCE_DIR"/bg_level_new.png");
 			break;
 		default:
 			m_CurrentState = State::END;

@@ -17,9 +17,13 @@ public:
     };
     State GetCurrentState() const { return m_CurrentState; }
 
+    int m_BoxCount = 0;  // 選擇關卡的部分 紀錄已經出現的箱子數量
+    std::vector<std::shared_ptr<Character>> m_Boxes;  //用來放箱子 的vector
+
     void Start();
     void Update();
     void End();
+
 
 private:
     void ValidTask();
