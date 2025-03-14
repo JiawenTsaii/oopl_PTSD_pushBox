@@ -1,7 +1,7 @@
 #include "App.hpp"
-
 #include "Util/Input.hpp"
 #include "Util/Keycode.hpp"
+#include <iostream>
 
 void App::Update() {
     if (Util::Input::IsKeyPressed(Util::Keycode::ESCAPE) || Util::Input::IfExit()) {
@@ -9,24 +9,21 @@ void App::Update() {
     }
 
     if (Util::Input::IsKeyPressed(Util::Keycode::RETURN)) {
-		ValidTask(); // 這裡是切換畫面的部分
+        // 記錄之前的階段
+        Phase prevPhase = m_Phase;
+        ValidTask();
+
+        // 如果從MENU進入了LEVEL階段，需要獲取並添加箱子
+        if (prevPhase == Phase::MENU && m_Phase == Phase::LEVEL) {
+            // 獲取並添加所有關卡箱子
+            auto levelBoxes = m_PRM->GetLevelBoxes();
+            std::cout << "Adding " << levelBoxes.size() << " level boxes to render system" << std::endl;
+
+            for (const auto& box : levelBoxes) {
+                m_Root.AddChildren({ box });
+            }
+        }
     }
-    
-    
+
     m_Root.Update();
 }
-
-
-//void App::ValidTask() {
-//	switch (m_Phase) {
-//	case Phase::MENU:
-//		m_PRM->NextPhase();
-//		m_Phase = Phase::LEVEL;
-//		break;
-//	case Phase::LEVEL:
-//		m_PRM->SetImage(RESOURCE_DIR"/bg_level_new.png");
-//		break;
-//	default:
-//		m_CurrentState = State::END;
-//	}
-//}

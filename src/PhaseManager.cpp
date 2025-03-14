@@ -1,19 +1,21 @@
 #include "PhaseResourceManager.hpp"
-
 #include "Util/Logger.hpp"
-#include "Util/Image.hpp"
 #include <iostream>
 
-PhaseResourceManager::PhaseResourceManager() {
+PhaseResourceManager::PhaseResourceManager(){
     std::cout << "Initializing PhaseResourceManager" << std::endl;
     m_Background = std::make_shared<BackgroundImage>();
 }
 
-void PhaseResourceManager::NextPhase() {
+void PhaseResourceManager::NextPhase(){
     if (m_Phase == 7) return;
     LOG_DEBUG("Passed! Next phase: {}", m_Phase);
-    if (m_Phase != 0) {     // menu to level, not phase
+    if (m_Phase != 0) {
         m_Background->NextPhase(m_Phase);
+    }
+    // 如果正在轉到關卡選擇階段
+    if (m_Phase == 0) {  // 假設0是從menu到level
+        CreateLevelBoxes();
     }
     m_Phase++;
 }
@@ -22,48 +24,37 @@ void PhaseResourceManager::SetImage(const std::string& filepath) {
     m_Background->SetImage(filepath);
 }
 
-void PhaseResourceManager::AddBox() {
-    if (m_BoxCount >= 30) return;  // 最多 30 個箱子
+void PhaseResourceManager::CreateLevelBoxes() {
+    // 清除之前的箱子
+    m_LevelBoxes.clear();
 
-    auto box = std::make_shared<Character>();
-    std::string boxPath = RESOURCE_DIR "/b" + std::to_string(m_BoxCount + 1) + ".png";
-    box->SetDrawable(std::make_shared<Util::Image>(boxPath));
+    std::cout << "Creating level boxes..." << std::endl;
+    LOG_DEBUG("Creating level boxes...");
 
-    // 設定箱子位置
-    float yOffset = m_BoxCount * 50.0f;  // 先設定成往下排
-    box->SetPosition({ 100.0f, 200.0f + yOffset });
-    box->SetZIndex(1.0f + m_BoxCount * 0.1f);
+    // 創30個箱子
+    for (int i = 30; i >= 1; i--) {
+        std::string boxImagePath = RESOURCE_DIR"/b" + std::to_string(i) + ".png";
+        std::cout << "Loading image: " << boxImagePath << std::endl;
 
-    // 把箱子加到圖片上面
-    m_Boxes.push_back(box);
-    m_BoxCount++;
+        auto box = std::make_shared<Character>(boxImagePath);
+        box->SetZIndex(50);
+        // 計算箱子位置（5x6）
+        int row = (i - 1) / 5;
+        int col = (i - 1) % 5;
+
+        // 箱子的完美位置被我找到了 嗚呼
+        glm::vec2 position(-132 + col * 65.5, 150 - row * 65.5);
+        box->SetPosition(position);
+        std::cout << "Box " << i << " position: " << position.x << ", " << position.y << std::endl;
+        m_LevelBoxes.push_back(box);
+        std::cout << "Adding box " << i << " to root node" << std::endl;
+        m_pRoot.AddChild({ box });
+    }
+
+    std::cout << "Created " << m_LevelBoxes.size() << " level boxes" << std::endl;
+    LOG_DEBUG("Created {} level boxes", m_LevelBoxes.size());
 }
 
-
-
-
-//#include "PhaseResourceManager.hpp"
-//
-//#include "Util/Logger.hpp"
-//
-//#include <iostream>
-//
-//PhaseResourceManager::PhaseResourceManager() {
-//    std::cout << "Initializing PhaseResourceManager" << std::endl;
-//    //m_TaskText = std::make_shared<TaskText>();
-//    m_Background = std::make_shared<BackgroundImage>();
-//}
-//
-//void PhaseResourceManager::NextPhase() {
-//    if (m_Phase == 7) return;
-//    LOG_DEBUG("Passed! Next phase: {}", m_Phase);
-//	if (m_Phase != 0) {     // menu to level, not phase
-//        m_Background->NextPhase(m_Phase);
-//    }
-//    //m_TaskText->NextPhase(m_Phase);
-//    m_Phase++;
-//}
-//
-//void PhaseResourceManager::SetImage(const std::string& filepath) {
-//	m_Background->SetImage(filepath);
-//}
+std::vector<std::shared_ptr<Character>> PhaseResourceManager::GetLevelBoxes() const {
+    return m_LevelBoxes;
+}
