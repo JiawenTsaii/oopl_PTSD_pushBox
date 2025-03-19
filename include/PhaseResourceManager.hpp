@@ -11,14 +11,16 @@
 #include <string>
 
 namespace Util {
-    class GameObject;  // 前向宣告
+    class GameObject;
 }
 
 class PhaseResourceManager {
 public:
     PhaseResourceManager();
 
-    // 設置根節點方法
+	// 設置根節點方法 SetRoot(這個是GameObject的引用)(設置根結點是為了方便管理所有的GameObject)
+	// SetRoot method to set the root node (this is a reference to GameObject) (setting the root node is to facilitate the management of all GameObjects)
+	// 還沒有很清楚這在幹嘛 上面的註記都是copilot幫我寫的 哈哈哈哈 之後再重新研究一下
     void SetRoot(Util::GameObject& root);
 
     [[nodiscard]] std::vector<std::shared_ptr<Util::GameObject>> GetChildren() const {
@@ -31,6 +33,8 @@ public:
     void SetImage(const std::string& filepath);
 
     void CreateLevelBoxes();
+    void AddNextLevelBox();
+    bool AreAllBoxesAdded() const;
 
 private:
     std::shared_ptr<BackgroundImage> m_Background;
@@ -42,6 +46,10 @@ private:
     Util::Renderer m_pRoot;
 
     int m_Phase = 0;    // 0: menu
+
+    int m_AddedBoxCount = 0;
+    static const int MAX_BOXES = 30;
+
 };
 
 #endif //PHASE_MANGER_HPP

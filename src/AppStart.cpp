@@ -8,7 +8,7 @@ void App::Start() {
     std::cout << "Start" << std::endl;
 
     m_PRM = std::make_shared<PhaseResourceManager>();
-    // 背景等初始資源
+    // 背景初始資源
     m_Root.AddChildren(m_PRM->GetChildren());
     m_CurrentState = State::UPDATE;
 }

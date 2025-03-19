@@ -28,14 +28,15 @@ private:
     enum class Phase {
         MENU,
         LEVEL,
+        GAME,
     };
 
     State m_CurrentState = State::START;
 	Phase m_Phase = Phase::MENU;
 
     std::shared_ptr<PhaseResourceManager> m_PRM;
-
     Util::Renderer m_Root;
+
 };
 
 #endif
