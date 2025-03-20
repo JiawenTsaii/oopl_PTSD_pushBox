@@ -36,6 +36,7 @@ private:
 
     std::shared_ptr<PhaseResourceManager> m_PRM;
     Util::Renderer m_Root;
+	bool m_EnterKeyWasPressed = false; // 追蹤enter 用來解決連續偵測到enter的問題
 
 };
 

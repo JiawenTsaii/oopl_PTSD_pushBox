@@ -38,13 +38,9 @@ public:
 
 private:
     std::shared_ptr<BackgroundImage> m_Background;
-    //std::shared_ptr<TaskText> m_TaskText;
-
     std::vector<std::shared_ptr<Character>> m_LevelBoxes;
 
-    //Util::GameObject* m_pRoot = nullptr;
     Util::Renderer m_pRoot;
-
     int m_Phase = 0;    // 0: menu
 
     int m_AddedBoxCount = 0;
