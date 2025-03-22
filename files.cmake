@@ -5,6 +5,7 @@ set(SRC_FILES
     AppUtil.cpp
     Character.cpp
     PhaseManager.cpp
+    InitializeMap.cpp
 )
 
 set(INCLUDE_FILES
@@ -14,6 +15,7 @@ set(INCLUDE_FILES
     BackgroundImage.hpp
     PhaseResourceManager.hpp
     TaskText.hpp
+    AnimatedCharacter.hpp
 )
 
 set(TEST_FILES
