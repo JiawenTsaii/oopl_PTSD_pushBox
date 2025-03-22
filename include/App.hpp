@@ -4,12 +4,18 @@
 #include "pch.hpp" // IWYU pragma: export
 
 #include "Util/Renderer.hpp"
+//#include "Util/Text.hpp"
+
 #include "Character.hpp"
-#include "Util/Text.hpp"
 #include "PhaseResourceManager.hpp"
+#include "AnimatedCharacter.hpp"
+
+//#include "InitializeMap.cpp"
 
 class App {
 public:
+	//App();
+
     enum class State {
         START,
         UPDATE,
@@ -23,19 +29,53 @@ public:
 
 private:
     void ValidTask();
+	void InitializeMap(const std::vector<std::vector<int>>& GameMap);
 
 private:
     enum class Phase {
         MENU,
         LEVEL,
+        LEVEL1,
+        LEVEL2,
     };
 
     State m_CurrentState = State::START;
 	Phase m_Phase = Phase::MENU;
 
+    bool m_PhaseChanged = false;
+
     std::shared_ptr<PhaseResourceManager> m_PRM;
 
+    std::shared_ptr<Character> m_Player;
+    std::shared_ptr<Character> m_Box;
+    std::vector<std::shared_ptr<Character>> m_Wall;
+	std::vector<std::shared_ptr<Character>> m_Floor;
+
     Util::Renderer m_Root;
+
+    /* 地圖 */
+    /* 0:草地 1:牆壁 2:空地 3:箱子 4:人物*/
+    std::vector<std::vector<int>> GameMap1 = {
+        {1, 1, 1, 1, 1, 1},
+        {1, 2, 2, 2, 2, 1},
+        {1, 2, 2, 2, 2, 1},
+        {1, 2, 2, 2, 2, 1},
+        {1, 2, 3, 2, 2, 1},
+        {1, 2, 2, 2, 2, 1},
+        {1, 4, 2, 2, 2, 1},
+        {1, 1, 1, 1, 1, 1}
+    };
+
+    std::vector<std::vector<int>> GameMap2 = {
+        {1, 1, 1, 1, 1, 1},
+        {1, 2, 2, 2, 4, 1},
+        {1, 2, 2, 2, 2, 1},
+        {1, 2, 2, 3, 2, 1},
+        {1, 2, 2, 2, 2, 1},
+        {1, 2, 2, 2, 2, 1},
+        {1, 2, 2, 2, 2, 1},
+        {1, 1, 1, 1, 1, 1}
+    };
 };
 
 #endif
