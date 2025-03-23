@@ -58,6 +58,13 @@ void App::InitializeMap(const std::vector<std::vector<int>>& GameMap) {
                     break;
                 case 3: // 箱子
                 {
+                    auto floor = std::make_shared<Character>(RESOURCE_DIR"/Object/floor.png");
+                    floor->SetZIndex(40);
+                    floor->SetPosition({ -150 + 60 * j, 210 - 60 * i });
+                    floor->SetVisible(false);
+                    m_Floor.push_back(floor);
+                    m_Root.AddChild(floor);
+
                     m_Box = std::make_shared<Character>(RESOURCE_DIR"/Object/box.png");
                     m_Box->SetPosition({ -150 + 60 * j, 210 - 60 * i });
                     m_Box->SetVisible(false);

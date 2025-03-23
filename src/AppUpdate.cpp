@@ -37,6 +37,16 @@ void App::Update() {
                             m_Player->SetPosition({ m_Player->GetPosition().x, m_Player->GetPosition().y + 60 });
                             needUpdate = true;
                         }
+                        if (i > 0 && m_GameMap[i - 1][j] == 3) {
+							if (i > 1 && m_GameMap[i - 2][j] == 2) { // 確保箱子不會超出邊界並且箱子上面是空地
+								m_GameMap[i][j] = 2; // 將當前位置設為空地
+								m_GameMap[i - 1][j] = 4; // 將上面一格設為玩家
+								m_GameMap[i - 2][j] = 3; // 將箱子上面一格設為箱子
+								m_Player->SetPosition({ m_Player->GetPosition().x, m_Player->GetPosition().y + 60 });
+								m_Box->SetPosition({ m_Box->GetPosition().x, m_Box->GetPosition().y + 60 });
+								needUpdate = true;
+							}
+                        }
                         break; // 找到玩家並移動後直接跳出內層迴圈
                     }
                 }
@@ -55,6 +65,16 @@ void App::Update() {
                             m_GameMap[i + 1][j] = 4; // 將下面一格設為玩家
                             m_Player->SetPosition({ m_Player->GetPosition().x, m_Player->GetPosition().y - 60 });
                             needUpdate = true;
+                        }
+                        if (i < 7 && m_GameMap[i + 1][j] == 3) {
+                            if (i < 6 && m_GameMap[i + 2][j] == 2) { // 確保箱子不會超出邊界並且箱子下面是空地
+                                m_GameMap[i][j] = 2; // 將當前位置設為空地
+                                m_GameMap[i + 1][j] = 4; // 將下面一格設為玩家
+                                m_GameMap[i + 2][j] = 3; // 將箱子下面一格設為箱子
+                                m_Player->SetPosition({ m_Player->GetPosition().x, m_Player->GetPosition().y - 60 });
+                                m_Box->SetPosition({ m_Box->GetPosition().x, m_Box->GetPosition().y - 60 });
+                                needUpdate = true;
+                            }
                         }
                         break; // 找到玩家並移動後直接跳出內層迴圈
                     }
@@ -75,6 +95,16 @@ void App::Update() {
                             m_Player->SetPosition({ m_Player->GetPosition().x - 60, m_Player->GetPosition().y });
                             needUpdate = true;
                         }
+                        if (j > 0 && m_GameMap[i][j - 1] == 3) {
+                            if (j > 1 && m_GameMap[i][j - 2] == 2) { // 確保箱子不會超出邊界並且箱子左邊是空地
+                                m_GameMap[i][j] = 2; // 將當前位置設為空地
+                                m_GameMap[i][j - 1] = 4; // 將左邊一格設為玩家
+                                m_GameMap[i][j - 2] = 3; // 將箱子左邊一格設為箱子
+                                m_Player->SetPosition({ m_Player->GetPosition().x - 60, m_Player->GetPosition().y });
+                                m_Box->SetPosition({ m_Box->GetPosition().x - 60, m_Box->GetPosition().y });
+                                needUpdate = true;
+                            }
+                        }
                         break; // 找到玩家並移動後直接跳出內層迴圈
                     }
                 }
@@ -93,6 +123,16 @@ void App::Update() {
                             m_GameMap[i][j + 1] = 4; // 將右邊一格設為玩家
                             m_Player->SetPosition({ m_Player->GetPosition().x + 60, m_Player->GetPosition().y });
                             needUpdate = true;
+                        }
+                        if (j < 5 && m_GameMap[i][j + 1] == 3) {
+							if (j < 4 && m_GameMap[i][j + 2] == 2) { // 確保箱子不會超出邊界並且箱子右邊是空地
+								m_GameMap[i][j] = 2; // 將當前位置設為空地
+								m_GameMap[i][j + 1] = 4; // 將右邊一格設為玩家
+								m_GameMap[i][j + 2] = 3; // 將箱子右邊一格設為箱子
+								m_Player->SetPosition({ m_Player->GetPosition().x + 60, m_Player->GetPosition().y });
+								m_Box->SetPosition({ m_Box->GetPosition().x + 60, m_Box->GetPosition().y });
+								needUpdate = true;
+							}
                         }
                         break; // 找到玩家並移動後直接跳出內層迴圈
                     }
