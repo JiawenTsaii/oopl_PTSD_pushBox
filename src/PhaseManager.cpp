@@ -11,13 +11,9 @@ PhaseResourceManager::PhaseResourceManager() {
 }
 
 void PhaseResourceManager::NextPhase() {
-    if (m_Phase == 7) return;
-    LOG_DEBUG("Passed! Next phase: {}", m_Phase);
-	if (m_Phase != 0) {     // menu to level, not phase
-        m_Background->NextPhase(m_Phase);
-    }
-    //m_TaskText->NextPhase(m_Phase);
+	std::cout << "Now phase: " << m_Phase << std::endl;
     m_Phase++;
+	std::cout << "Next phase: " << m_Phase << std::endl;
 }
 
 void PhaseResourceManager::SetImage(const std::string& filepath) {
