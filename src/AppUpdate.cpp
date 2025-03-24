@@ -2,6 +2,13 @@
 #include "Util/Input.hpp"
 #include "Util/Keycode.hpp"
 #include <iostream>
+//#include <chrono> // 這兩個都是為了在選擇關卡的時候可以讓箱子可以暫時放大幾秒的東西
+//#include <thread>
+
+// Below are the keycodes handling mouse buttons.
+// MOUSE_LB = 513,
+// MOUSE_MB = 514,
+// MOUSE_RB = 515,
 
 void App::Update() {
     if (Util::Input::IsKeyPressed(Util::Keycode::ESCAPE) || Util::Input::IfExit()) {
@@ -10,6 +17,37 @@ void App::Update() {
 
     // 檢測Enter鍵的按下，但避免重複觸發
     bool enterKeyCurrentlyPressed = Util::Input::IsKeyPressed(Util::Keycode::RETURN);
+
+    // LEVEL處理輸入(看要跳到哪個關卡)
+    if (m_Phase == Phase::LEVEL) {
+        if (Util::Input::IsKeyPressed(Util::Keycode::NUM_1)) m_SelectedLevel = 1;
+        else if (Util::Input::IsKeyPressed(Util::Keycode::NUM_2)) m_SelectedLevel = 2;
+        else if (Util::Input::IsKeyPressed(Util::Keycode::NUM_3)) m_SelectedLevel = 3;
+        else if (Util::Input::IsKeyPressed(Util::Keycode::NUM_4)) m_SelectedLevel = 4;
+        else if (Util::Input::IsKeyPressed(Util::Keycode::NUM_5)) m_SelectedLevel = 5;
+        else if (Util::Input::IsKeyPressed(Util::Keycode::NUM_6)) m_SelectedLevel = 6;
+        else if (Util::Input::IsKeyPressed(Util::Keycode::NUM_7)) m_SelectedLevel = 7;
+        else if (Util::Input::IsKeyPressed(Util::Keycode::NUM_8)) m_SelectedLevel = 8;
+        else if (Util::Input::IsKeyPressed(Util::Keycode::NUM_9)) m_SelectedLevel = 9;
+    }
+
+    // GAME 可以返回LEVEL的輸入處理
+    if (m_Phase == Phase::GAME) {
+        if (Util::Input::IsKeyPressed(Util::Keycode::UP) ||
+            Util::Input::IsKeyPressed(Util::Keycode::DOWN) ||
+            Util::Input::IsKeyPressed(Util::Keycode::LEFT) ||
+            Util::Input::IsKeyPressed(Util::Keycode::RIGHT)) {
+
+			// 回去LEVEL
+            m_PRM->SetImage(RESOURCE_DIR"/bg_level.png");
+            m_PRM->ShowLevelBoxes(true);  // 顯示箱子
+            m_Phase = Phase::LEVEL;
+			m_SelectedLevel = 0;  // 選擇關卡的值歸零
+        }
+    }
+
+
+
 
     // 只有當Enter鍵從未按下狀態變為按下狀態時才執行動作
     if (enterKeyCurrentlyPressed && !m_EnterKeyWasPressed) {
@@ -23,16 +61,21 @@ void App::Update() {
             ValidTask();
             break;
         case Phase::LEVEL:
-            // 在LEVEL 開始把箱子放進去
+            // 箱子還沒放完都可以繼續
             if (!m_PRM->AreAllBoxesAdded()) {
                 m_PRM->AddNextLevelBox();
                 auto box = m_PRM->GetLevelBoxes().back();
                 m_Root.AddChildren({ box });
             }
-            else {
-                // 箱子都加完就換到GAME
-                m_PRM->SetImage(RESOURCE_DIR"/game.png");
+			// 箱子放完了就換到GAME
+            else if (m_SelectedLevel >= 1 && m_SelectedLevel <= 30) {
+                std::string gameBackground = RESOURCE_DIR"/bg_game" + std::to_string(m_SelectedLevel) + ".png";
+                m_PRM->SetImage(gameBackground);
+
+                m_PRM->ShowLevelBoxes(false);
+
                 m_Phase = Phase::GAME;
+                //m_TypedNumbers = "";
             }
             break;
         case Phase::GAME:
@@ -45,17 +88,8 @@ void App::Update() {
 
     // 更新Enter鍵狀態
     m_EnterKeyWasPressed = enterKeyCurrentlyPressed;
+    //m_PRM->Update();
 
     m_Root.Update();
 }
 
-
-// 滑鼠的點擊操作和讀取要用到的資源有Util::Input::IsMousePressed()和Util::Input::GetMousePosition()
-// 還有Util::Input::IsKeyPressed()和Util::Input::GetKeycode()
-// Util::Input::IfExit() 這個是用來判斷是否要離開的 這個是在AppUpdate.cpp裡面的Update()裡面用到的
-// 上面提到的跟滑鼠有關的函數都是在Util/Input.hpp裡面的 可以參考Util/Input.hpp裡面的註解
-// 像是IsMousePressed()這個函數是用來判斷滑鼠是否被按下的
-// GetMousePosition()這個函數是用來取得滑鼠的位置的
-// IsKeyPressed()這個函數是用來判斷鍵盤是否被按下的
-// GetKeycode()這個函數是用來取得鍵盤的按鍵的
-// IfExit()這個函數是用來判斷是否要離開的

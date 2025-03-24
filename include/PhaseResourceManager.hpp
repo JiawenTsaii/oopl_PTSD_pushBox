@@ -36,6 +36,10 @@ public:
     void AddNextLevelBox();
     bool AreAllBoxesAdded() const;
 
+    // 關卡選擇的部分的箱子處理
+    void ShowLevelBoxes(bool visible);
+    //void HighlightBox(int boxNumber);
+
 private:
     std::shared_ptr<BackgroundImage> m_Background;
     std::vector<std::shared_ptr<Character>> m_LevelBoxes;
@@ -45,6 +49,12 @@ private:
 
     int m_AddedBoxCount = 0;
     static const int MAX_BOXES = 30;
+
+    // 關卡選擇的部分的箱子處理
+    std::chrono::time_point<std::chrono::system_clock> m_HighlightStartTime;
+    int m_HighlightedBoxIndex = -1;
+    bool m_IsHighlighting = false;
+    glm::vec2 m_OriginalBoxSize;
 
 };
 

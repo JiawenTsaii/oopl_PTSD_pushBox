@@ -1,4 +1,4 @@
-#include "PhaseResourceManager.hpp"
+ï»¿#include "PhaseResourceManager.hpp"
 #include "Util/Logger.hpp"
 #include <iostream>
 
@@ -13,8 +13,8 @@ void PhaseResourceManager::NextPhase(){
     if (m_Phase != 0) {
         m_Background->NextPhase(m_Phase);
     }
-    // ¦pªG¥¿¦bÂà¨ìÃö¥d¿ï¾Ü¶¥¬q
-    if (m_Phase == 0) {  // °²³]0¬O±qmenu¨ìlevel
+    // å¦‚æœæ­£åœ¨è½‰åˆ°é—œå¡é¸æ“‡éšæ®µ
+    if (m_Phase == 0) {  // å‡è¨­0æ˜¯å¾menuåˆ°level
         CreateLevelBoxes();
     }
     m_Phase++;
@@ -27,12 +27,12 @@ void PhaseResourceManager::SetImage(const std::string& filepath) {
 
 
 void PhaseResourceManager::AddNextLevelBox() {
-	// 30­Ó½c¤l³£¥[¶i¥h¤F´N¤£¦A¥[¤F
+	// 30å€‹ç®±å­éƒ½åŠ é€²å»äº†å°±ä¸å†åŠ äº†
     if (m_AddedBoxCount >= MAX_BOXES) {
         return;
     }
 
-    // ½c¤l½s¸¹±q1¶}©l
+    // ç®±å­ç·¨è™Ÿå¾1é–‹å§‹
     int boxNumber = m_AddedBoxCount + 1;
     std::string boxImagePath = RESOURCE_DIR"/b" + std::to_string(boxNumber) + ".png";
     std::cout << "Loading image: " << boxImagePath << std::endl;
@@ -40,11 +40,11 @@ void PhaseResourceManager::AddNextLevelBox() {
     auto box = std::make_shared<Character>(boxImagePath);
     box->SetZIndex(50);
 
-    // ­pºâ½c¤l¦ì¸m¡]5x6¡^
+    // è¨ˆç®—ç®±å­ä½ç½®ï¼ˆ5x6ï¼‰
     int row = (boxNumber - 1) / 5;
     int col = (boxNumber - 1) % 5;
 
-    // ½c¤lªº§¹¬ü¦ì¸m³Q§Ú§ä¨ì¤F ¶ã©I
+    // ç®±å­çš„å®Œç¾ä½ç½®è¢«æˆ‘æ‰¾åˆ°äº† å—šå‘¼
     glm::vec2 position(-132 + col * 65.5, 150 - row * 65.5);
     box->SetPosition(position);
 
@@ -63,7 +63,7 @@ bool PhaseResourceManager::AreAllBoxesAdded() const {
 }
 
 void PhaseResourceManager::CreateLevelBoxes() {
-    // ²M±¼¤§«eªº½c¤l
+    // æ¸…æ‰ä¹‹å‰çš„ç®±å­
     m_LevelBoxes.clear();
     m_AddedBoxCount = 0;
     std::cout << "Level boxes cleared, ready to add one by one" << std::endl;
@@ -75,5 +75,9 @@ std::vector<std::shared_ptr<Character>> PhaseResourceManager::GetLevelBoxes() co
 }
 
 
-
-
+// é—œå¡é¸æ“‡çš„éƒ¨åˆ†çš„ç®±å­è™•ç†
+void PhaseResourceManager::ShowLevelBoxes(bool visible) {
+    for (auto& box : m_LevelBoxes) {
+        box->SetVisible(visible);
+    }
+}

@@ -31,11 +31,18 @@ public:
     [[nodiscard]] bool IfCollides(const std::shared_ptr<Character>& other) const;
 
     // TODO: Add and implement more methods and properties as needed to finish Giraffe Adventure.
+    
+    //// 關卡選擇的部分的箱子處理
+    void SetVisible(bool visible) { m_Visible = visible; }
+    //void SetScale(const glm::vec2& scale) { m_Transform.scale = scale; }
+    //[[nodiscard]] const glm::vec2& GetScale() const { return m_Transform.scale; }
+
 
 private:
     void ResetPosition() { m_Transform.translation = {0, 0}; }
 
     std::string m_ImagePath;
+    //bool m_Visible = true;
 };
 
 

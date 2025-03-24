@@ -28,3 +28,4 @@ bool Character::IfCollides(const std::shared_ptr<Character>& other) const {
 
     return collisionX && collisionY;
 }
+

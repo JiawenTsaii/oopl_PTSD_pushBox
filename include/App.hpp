@@ -33,11 +33,12 @@ private:
 
     State m_CurrentState = State::START;
 	Phase m_Phase = Phase::MENU;
-
     std::shared_ptr<PhaseResourceManager> m_PRM;
     Util::Renderer m_Root;
 	bool m_EnterKeyWasPressed = false; // 追蹤enter 用來解決連續偵測到enter的問題
 
+    int m_SelectedLevel = 0;  // 目前選擇的關卡
+    //std::string m_TypedNumbers;  // 輸入的數字
 };
 
 #endif
