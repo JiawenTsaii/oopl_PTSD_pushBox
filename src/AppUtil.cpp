@@ -10,7 +10,7 @@ void App::ValidTask() {
     case Phase::MENU:
         // MENU到LEVEL
         m_PRM->NextPhase(); // 用到CreateLevelBoxes 但還不會把箱子放進去
-        m_PRM->SetImage(RESOURCE_DIR"/bg_level.png"); // LEVEL的背景
+        m_PRM->SetImage(RESOURCE_DIR"/Background/bg_level.png"); // LEVEL的背景
         m_Phase = Phase::LEVEL;
         break;
 

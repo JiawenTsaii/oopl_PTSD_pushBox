@@ -7,6 +7,7 @@
 #include "Character.hpp"
 #include "Util/Text.hpp"
 #include "PhaseResourceManager.hpp"
+#include "AnimatedCharacter.hpp"
 
 class App {
 public:

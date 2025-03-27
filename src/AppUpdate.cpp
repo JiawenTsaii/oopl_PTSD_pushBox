@@ -6,6 +6,7 @@
 //#include <thread>
 
 // Below are the keycodes handling mouse buttons.
+// 用IsKeyPressed來檢測滑鼠鍵是否按下跟偵測鍵盤的按鍵用一樣的方式
 // MOUSE_LB = 513,
 // MOUSE_MB = 514,
 // MOUSE_RB = 515,
@@ -39,7 +40,7 @@ void App::Update() {
             Util::Input::IsKeyPressed(Util::Keycode::RIGHT)) {
 
 			// 回去LEVEL
-            m_PRM->SetImage(RESOURCE_DIR"/bg_level.png");
+            m_PRM->SetImage(RESOURCE_DIR"/Background/bg_level.png");
             m_PRM->ShowLevelBoxes(true);  // 顯示箱子
             m_Phase = Phase::LEVEL;
 			m_SelectedLevel = 0;  // 選擇關卡的值歸零
@@ -69,7 +70,7 @@ void App::Update() {
             }
 			// 箱子放完了就換到GAME
             else if (m_SelectedLevel >= 1 && m_SelectedLevel <= 30) {
-                std::string gameBackground = RESOURCE_DIR"/bg_game" + std::to_string(m_SelectedLevel) + ".png";
+                std::string gameBackground = RESOURCE_DIR"/Background/bg_game" + std::to_string(m_SelectedLevel) + ".png";
                 m_PRM->SetImage(gameBackground);
 
                 m_PRM->ShowLevelBoxes(false);
@@ -92,4 +93,5 @@ void App::Update() {
 
     m_Root.Update();
 }
+
 

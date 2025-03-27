@@ -34,7 +34,7 @@ void PhaseResourceManager::AddNextLevelBox() {
 
     // 箱子編號從1開始
     int boxNumber = m_AddedBoxCount + 1;
-    std::string boxImagePath = RESOURCE_DIR"/b" + std::to_string(boxNumber) + ".png";
+    std::string boxImagePath = RESOURCE_DIR"/Object/LevelBox/b" + std::to_string(boxNumber) + ".png";
     std::cout << "Loading image: " << boxImagePath << std::endl;
 
     auto box = std::make_shared<Character>(boxImagePath);
@@ -81,3 +81,5 @@ void PhaseResourceManager::ShowLevelBoxes(bool visible) {
         box->SetVisible(visible);
     }
 }
+
+
