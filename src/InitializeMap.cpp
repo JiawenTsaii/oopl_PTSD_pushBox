@@ -24,6 +24,16 @@ void App::InitializeMap(const std::vector<std::vector<int>>& GameMap) {
         m_Box.reset();
     }
 
+    if (m_Check) {
+        m_Root.RemoveChild(m_Check);
+        m_Check.reset();
+    }
+
+    if (m_Point) {
+        m_Root.RemoveChild(m_Point);
+        m_Point.reset();
+    }
+
     /* 複製 GameMap 到 m_GameMap */
 	m_GameMap.assign(GameMap.begin(), GameMap.end());
 
@@ -104,15 +114,8 @@ void App::InitializeMap(const std::vector<std::vector<int>>& GameMap) {
                     m_Floor.push_back(floor);
                     m_Root.AddChild(floor);
 
-                    /* 人物 */
-                    m_Player = std::make_shared<Character>(RESOURCE_DIR"/Object/player_down.png");
-                    m_Player->SetPosition({ -160 + 40 * j, 140 - 40 * i });
-                    m_Player->SetVisible(false);
-                    m_Player->SetZIndex(50);
-                    m_Root.AddChild(m_Player);
-
                     /* 目標點 */
-					m_Point = std::make_shared<Character>(RESOURCE_DIR"/Object/point.png");
+                    m_Point = std::make_shared<Character>(RESOURCE_DIR"/Object/point.png");
                     m_Point->SetPosition({ -160 + 40 * j, 140 - 40 * i });
                     m_Point->SetVisible(false);
                     m_Point->SetZIndex(40);

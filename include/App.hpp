@@ -30,6 +30,7 @@ public:
 private:
     void ValidTask();
 	void InitializeMap(const std::vector<std::vector<int>>& GameMap);
+    //void CheckPoint();
 
 private:
     enum class Phase {
@@ -53,6 +54,11 @@ private:
     std::shared_ptr<Character> m_Point;
     std::shared_ptr<Character> m_Check;
 
+	bool isBoxOnCheck = false;
+
+    glm::vec2 m_PlayerPositionOnCheck;
+	bool isPlayerOnCheck = false;
+
     Util::Renderer m_Root;
 
     std::vector<std::vector<int>> m_GameMap;
@@ -62,7 +68,7 @@ private:
     std::vector<std::vector<int>> GameMap1 = {
         {1, 1, 1, 1, 1, 1, 1, 1, 1},
         {1, 2, 2, 2, 2, 2, 2, 2, 1},
-        {1, 2, 2, 2, 2, 2, 2, 2, 1},
+        {1, 2, 2, 2, 2, 2, 5, 2, 1},
         {1, 2, 2, 2, 2, 2, 2, 2, 1},
         {1, 2, 3, 2, 2, 2, 2, 2, 1},
         {1, 2, 2, 2, 2, 2, 2, 2, 1},
@@ -72,10 +78,10 @@ private:
 
     std::vector<std::vector<int>> GameMap2 = {
         {1, 1, 1, 1, 1, 1, 1, 1, 1},
-        {1, 2, 2, 3, 4, 2, 2, 2, 1},
+        {1, 2, 2, 2, 4, 2, 2, 2, 1},
         {1, 2, 2, 2, 2, 2, 2, 2, 1},
         {1, 2, 2, 2, 2, 2, 2, 2, 1},
-        {1, 2, 2, 2, 2, 2, 2, 2, 1},
+        {1, 2, 2, 2, 3, 2, 5, 2, 1},
         {1, 2, 2, 2, 2, 2, 2, 2, 1},
         {1, 2, 2, 2, 2, 2, 2, 2, 1},
         {1, 1, 1, 1, 1, 1, 1, 1, 1}
