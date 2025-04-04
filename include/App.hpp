@@ -53,11 +53,16 @@ private:
 	std::vector<std::shared_ptr<Character>> m_Floor;
     std::shared_ptr<Character> m_Point;
     std::shared_ptr<Character> m_Check;
+    
+    /* 讀人的位置 */
+    bool isPlayerOnCheck = false;
+    int m_PlayerPosition_i = 0;
+    int m_PlayerPosition_j = 0;
 
-	bool isBoxOnCheck = false;
-
-    glm::vec2 m_PlayerPositionOnCheck;
-	bool isPlayerOnCheck = false;
+    /* 讀箱子的位置 */
+    bool isBoxOnCheck = false;
+	int m_BoxPosition_i = 0;
+	int m_BoxPosition_j = 0;
 
     Util::Renderer m_Root;
 
@@ -68,8 +73,8 @@ private:
     std::vector<std::vector<int>> GameMap1 = {
         {1, 1, 1, 1, 1, 1, 1, 1, 1},
         {1, 2, 2, 2, 2, 2, 2, 2, 1},
-        {1, 2, 2, 2, 2, 2, 5, 2, 1},
         {1, 2, 2, 2, 2, 2, 2, 2, 1},
+        {1, 2, 2, 2, 2, 5, 2, 2, 1},
         {1, 2, 3, 2, 2, 2, 2, 2, 1},
         {1, 2, 2, 2, 2, 2, 2, 2, 1},
         {1, 4, 2, 2, 2, 2, 2, 2, 1},
@@ -80,8 +85,8 @@ private:
         {1, 1, 1, 1, 1, 1, 1, 1, 1},
         {1, 2, 2, 2, 4, 2, 2, 2, 1},
         {1, 2, 2, 2, 2, 2, 2, 2, 1},
-        {1, 2, 2, 2, 2, 2, 2, 2, 1},
-        {1, 2, 2, 2, 3, 2, 5, 2, 1},
+        {1, 2, 2, 5, 2, 2, 2, 2, 1},
+        {1, 2, 2, 2, 3, 2, 2, 2, 1},
         {1, 2, 2, 2, 2, 2, 2, 2, 1},
         {1, 2, 2, 2, 2, 2, 2, 2, 1},
         {1, 1, 1, 1, 1, 1, 1, 1, 1}

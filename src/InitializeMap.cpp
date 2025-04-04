@@ -34,6 +34,11 @@ void App::InitializeMap(const std::vector<std::vector<int>>& GameMap) {
         m_Point.reset();
     }
 
+    m_PlayerPosition_i = 0;
+    m_PlayerPosition_j = 0;
+    m_BoxPosition_i = 0;
+	m_BoxPosition_j = 0;
+
     /* 複製 GameMap 到 m_GameMap */
 	m_GameMap.assign(GameMap.begin(), GameMap.end());
 
