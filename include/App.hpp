@@ -30,7 +30,6 @@ public:
 private:
     void ValidTask();
 	void InitializeMap(const std::vector<std::vector<int>>& GameMap);
-    //void CheckPoint();
 
 private:
     enum class Phase {
@@ -38,6 +37,7 @@ private:
         LEVEL,
         LEVEL1,
         LEVEL2,
+        LEVEL3,
     };
 
     State m_CurrentState = State::START;
@@ -48,11 +48,14 @@ private:
     std::shared_ptr<PhaseResourceManager> m_PRM;
 
     std::shared_ptr<Character> m_Player;
-    std::shared_ptr<Character> m_Box;
+    std::shared_ptr<Character> m_Box; // 待刪
+    std::vector<std::shared_ptr<Character>> m_Box_vec;
     std::vector<std::shared_ptr<Character>> m_Wall;
 	std::vector<std::shared_ptr<Character>> m_Floor;
-    std::shared_ptr<Character> m_Point;
-    std::shared_ptr<Character> m_Check;
+    std::shared_ptr<Character> m_Point; // 待刪
+	std::vector<std::shared_ptr<Character>> m_Point_vec;
+    std::shared_ptr<Character> m_Check; // 待刪
+	std::vector<std::shared_ptr<Character>> m_Check_vec;
     
     /* 讀人的位置 */
     bool isPlayerOnCheck = false;
@@ -60,9 +63,14 @@ private:
     int m_PlayerPosition_j = 0;
 
     /* 讀箱子的位置 */
-    bool isBoxOnCheck = false;
+    //bool isBoxOnCheck = false;
+    std::vector<bool> isBoxOnCheck;
 	int m_BoxPosition_i = 0;
 	int m_BoxPosition_j = 0;
+
+    /* 過關條件 */
+    int BoxOnCheckCount = 0;
+    int BoxNeedOnCheckCount = 0;
 
     Util::Renderer m_Root;
 
@@ -71,26 +79,37 @@ private:
     /* 地圖 */
     /* 0:草地 1:牆壁 2:空地 3:箱子 4:人物 5:目標點*/
     std::vector<std::vector<int>> GameMap1 = {
-        {1, 1, 1, 1, 1, 1, 1, 1, 1},
-        {1, 2, 2, 2, 2, 2, 2, 2, 1},
-        {1, 2, 2, 2, 2, 2, 2, 2, 1},
-        {1, 2, 2, 2, 2, 5, 2, 2, 1},
-        {1, 2, 3, 2, 2, 2, 2, 2, 1},
-        {1, 2, 2, 2, 2, 2, 2, 2, 1},
-        {1, 4, 2, 2, 2, 2, 2, 2, 1},
-        {1, 1, 1, 1, 1, 1, 1, 1, 1}
+        {0, 0, 0, 0, 0, 0, 0, 0, 0},
+        {0, 0, 0, 0, 0, 0, 0, 0, 0},
+        {0, 0, 0, 0, 0, 0, 0, 0, 0},
+        {0, 1, 1, 1, 1, 1, 1, 1, 0},
+        {0, 1, 2, 2, 3, 2, 5, 1, 0},
+        {0, 1, 2, 2, 1, 1, 1, 1, 0},
+        {0, 1, 2, 4, 1, 0, 0, 0, 0},
+        {0, 1, 1, 1, 1, 0, 0, 0, 0},
     };
 
     std::vector<std::vector<int>> GameMap2 = {
-        {1, 1, 1, 1, 1, 1, 1, 1, 1},
-        {1, 2, 2, 2, 4, 2, 2, 2, 1},
-        {1, 2, 2, 2, 2, 2, 2, 2, 1},
-        {1, 2, 2, 5, 2, 2, 2, 2, 1},
-        {1, 2, 2, 2, 3, 2, 2, 2, 1},
-        {1, 2, 2, 2, 2, 2, 2, 2, 1},
-        {1, 2, 2, 2, 2, 2, 2, 2, 1},
-        {1, 1, 1, 1, 1, 1, 1, 1, 1}
+        {0, 0, 0, 0, 0, 0, 0, 0, 0},
+        {0, 0, 0, 0, 0, 0, 0, 0, 0},
+        {0, 1, 1, 1, 1, 1, 1, 1, 0},
+        {0, 1, 2, 2, 4, 2, 2, 1, 0},
+        {0, 1, 2, 2, 2, 2, 2, 1, 0},
+        {0, 1, 2, 2, 2, 3, 5, 1, 0},
+        {0, 1, 2, 2, 2, 2, 2, 1, 0},
+        {0, 1, 1, 1, 1, 1, 1, 1, 0},
     };
+
+	std::vector<std::vector<int>> GameMap3 = {
+        {0, 0, 0, 0, 0, 0, 0, 0, 0},
+        {0, 0, 0, 1, 1, 1, 1, 1, 0},
+        {0, 1, 1, 1, 5, 3, 2, 1, 0},
+        {0, 1, 2, 2, 2, 2, 2, 1, 0},
+        {0, 1, 2, 2, 2, 2, 2, 1, 0},
+        {0, 1, 2, 2, 3, 5, 2, 1, 0},
+        {0, 1, 4, 2, 2, 1, 1, 1, 0},
+        {0, 1, 1, 1, 1, 1, 0, 0, 0},
+	};
 };
 
 #endif
