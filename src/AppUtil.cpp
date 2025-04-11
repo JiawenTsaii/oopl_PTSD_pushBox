@@ -10,18 +10,34 @@ void App::ValidTask() {
 		switch (m_Phase) {
 			case Phase::MENU:
 				std::cout << "MENU to LEVEL" << std::endl;
+				
 				m_PRM->SetImage(RESOURCE_DIR"/Background/bg_level.png");
+				m_PRM->ShowLevelBoxes(true);  // 顯示箱子
 				m_PRM->NextPhase();
-				m_Phase = Phase::LEVEL;
+				
+				m_Phase = Phase::LEVELSELECT;
 				m_PhaseChanged = true;
+
+				// 初始化所有的箱子 (b1.png - b30.png)
+				// 不過先設為不可見
+				while (!m_PRM->AreAllBoxesAdded()) {
+					m_PRM->AddNextLevelBox();
+					auto box = m_PRM->GetLevelBoxes().back();
+					box->SetVisible(false);  // 一開始設定為不可見
+					m_Root.AddChildren({ box });
+				}
+
 				break;
-			case Phase::LEVEL:
-				std::cout << "LEVEL to LEVEL1" << std::endl;
+
+			case Phase::LEVELSELECT:
+				std::cout << "LEVELSELECT to LEVEL1" << std::endl;
 				m_PRM->SetImage(RESOURCE_DIR"/Background/bg_game.png");
+				m_PRM->ShowLevelBoxes(false);
+				//m_PRM->ShowNextLevelBox();
 				m_PRM->NextPhase();
 				m_Phase = Phase::LEVEL1;
 				InitializeMap(GameMap1);
-				//BoxNeedOnCheckCount = 1;
+				BoxPass = 1;
 				m_PhaseChanged = true;
 				break;
 			case Phase::LEVEL1:
@@ -29,7 +45,7 @@ void App::ValidTask() {
 				m_PRM->NextPhase();
 				m_Phase = Phase::LEVEL2;
 				InitializeMap(GameMap2);
-				//BoxNeedOnCheckCount = 1;
+				BoxPass = 1;
 				m_PhaseChanged = true;
 				break;
 			case Phase::LEVEL2:
@@ -37,7 +53,7 @@ void App::ValidTask() {
 				m_PRM->NextPhase();
 				m_Phase = Phase::LEVEL3;
 				InitializeMap(GameMap3);
-				//BoxNeedOnCheckCount = 2;
+				BoxPass = 2;
 				m_PhaseChanged = true;
 				break;
 			default:
