@@ -21,7 +21,7 @@ void App::ValidTask() {
 				m_PRM->NextPhase();
 				m_Phase = Phase::LEVEL1;
 				InitializeMap(GameMap1);
-				BoxNeedOnCheckCount = 1;
+				//BoxNeedOnCheckCount = 1;
 				m_PhaseChanged = true;
 				break;
 			case Phase::LEVEL1:
@@ -29,7 +29,7 @@ void App::ValidTask() {
 				m_PRM->NextPhase();
 				m_Phase = Phase::LEVEL2;
 				InitializeMap(GameMap2);
-				BoxNeedOnCheckCount = 1;
+				//BoxNeedOnCheckCount = 1;
 				m_PhaseChanged = true;
 				break;
 			case Phase::LEVEL2:
@@ -37,7 +37,7 @@ void App::ValidTask() {
 				m_PRM->NextPhase();
 				m_Phase = Phase::LEVEL3;
 				InitializeMap(GameMap3);
-				BoxNeedOnCheckCount = 2;
+				//BoxNeedOnCheckCount = 2;
 				m_PhaseChanged = true;
 				break;
 			default:

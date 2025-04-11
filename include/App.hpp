@@ -63,14 +63,13 @@ private:
     int m_PlayerPosition_j = 0;
 
     /* 讀箱子的位置 */
-    //bool isBoxOnCheck = false;
     std::vector<bool> isBoxOnCheck;
 	int m_BoxPosition_i = 0;
 	int m_BoxPosition_j = 0;
 
     /* 過關條件 */
     int BoxOnCheckCount = 0;
-    int BoxNeedOnCheckCount = 0;
+    int PassLevel = 0;
 
     Util::Renderer m_Root;
 
@@ -88,6 +87,16 @@ private:
         {0, 1, 2, 4, 1, 0, 0, 0, 0},
         {0, 1, 1, 1, 1, 0, 0, 0, 0},
     };
+    /*std::vector<std::vector<int>> GameMap1 = {
+        {0, 0, 0, 0, 0, 0, 0, 0, 0},
+        {0, 0, 0, 0, 0, 0, 0, 0, 0},
+        {0, 1, 1, 1, 1, 1, 1, 1, 1},
+        {0, 1, 2, 2, 2, 2, 2, 2, 1},
+        {0, 1, 2, 2, 3, 2, 5, 2, 1},
+        {0, 1, 2, 2, 2, 2, 2, 2, 1},
+        {0, 1, 2, 4, 2, 2, 2, 2, 1},
+        {0, 1, 1, 1, 1, 1, 1, 1, 1},
+    };*/
 
     std::vector<std::vector<int>> GameMap2 = {
         {0, 0, 0, 0, 0, 0, 0, 0, 0},
