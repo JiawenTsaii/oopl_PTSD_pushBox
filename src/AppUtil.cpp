@@ -1,4 +1,4 @@
-#include "AppUtil.hpp"
+//#include "AppUtil.hpp"
 #include "App.hpp"
 
 #include "Util/Logger.hpp"
@@ -6,26 +6,33 @@
 #include <iostream>
 
 void App::ValidTask() {
-    switch (m_Phase) {
-    case Phase::MENU:
-        // MENU¨ìLEVEL
-        m_PRM->NextPhase(); // ¥Î¨ìCreateLevelBoxes ¦ıÁÙ¤£·|§â½c¤l©ñ¶i¥h
-        m_PRM->SetImage(RESOURCE_DIR"/Background/bg_level.png"); // LEVELªº­I´º
-        m_Phase = Phase::LEVEL;
-        break;
-
-    case Phase::LEVEL:
-        // ¥ı¤£­n¦b³o¸Ì©ñ½c¤l
-        // §ï¦¨¦bUpdate¸Ì­±¤@­Ó¤@­Ó©ñ¶i¥h·PÄ±¤ñ¸û¦n
-        break;
-
-    case Phase::GAME:
-        // ª±¹CÀ¸ªº³¡¤À
-        break;
-
-    default:
-        m_CurrentState = State::END;
-        break;
-    }
+	if (!m_PhaseChanged) {
+		switch (m_Phase) {
+			case Phase::MENU:
+				std::cout << "MENU to LEVEL" << std::endl;
+				m_PRM->SetImage(RESOURCE_DIR"/Background/bg_level.png");
+				m_PRM->NextPhase(); // ç”¨åˆ°CreateLevelBoxes ä½†é‚„ä¸æœƒæŠŠç®±å­æ”¾é€²å»
+				m_Phase = Phase::LEVELSELECT;
+				m_PhaseChanged = true;
+				break;
+			case Phase::LEVELSELECT:
+				std::cout << "LEVEL to LEVEL1" << std::endl;
+				m_PRM->SetImage(RESOURCE_DIR"/Background/bg_game.png");
+				m_PRM->NextPhase();
+				m_Phase = Phase::LEVEL1;
+				InitializeMap(GameMap1);
+				m_PhaseChanged = true;
+				break;
+			case Phase::LEVEL1:
+				std::cout << "LEVEL1 to LEVEL2" << std::endl;
+				m_PRM->NextPhase();
+				m_Phase = Phase::LEVEL2;
+				InitializeMap(GameMap2);
+				m_PhaseChanged = true;
+				break;
+			default:
+				m_CurrentState = State::END;
+				break;
+		}
+	}
 }
-

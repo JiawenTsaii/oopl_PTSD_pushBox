@@ -11,51 +11,55 @@
 #include <string>
 
 namespace Util {
-    class GameObject;
+	class GameObject;
 }
 
 class PhaseResourceManager {
 public:
-    PhaseResourceManager();
+	PhaseResourceManager();
+	void SetRoot(Util::GameObject& root);
 
-	// ³]¸m®Ú¸`ÂI¤èªk SetRoot(³o­Ó¬OGameObjectªº¤Ş¥Î)(³]¸m®Úµ²ÂI¬O¬°¤F¤è«KºŞ²z©Ò¦³ªºGameObject)
-	// SetRoot method to set the root node (this is a reference to GameObject) (setting the root node is to facilitate the management of all GameObjects)
-	// ÁÙ¨S¦³«Ü²M·¡³o¦b·F¹À ¤W­±ªºµù°O³£¬OcopilotÀ°§Ú¼gªº «¢«¢«¢«¢ ¤§«á¦A­«·s¬ã¨s¤@¤U
-    void SetRoot(Util::GameObject& root);
+	[[nodiscard]] std::vector<std::shared_ptr<Util::GameObject>> GetChildren() const {
+		//return { m_TaskText, m_Background };
+		return { m_Background };
+	}
+	[[nodiscard]] std::vector<std::shared_ptr<Character>> GetLevelBoxes() const;
 
-    [[nodiscard]] std::vector<std::shared_ptr<Util::GameObject>> GetChildren() const {
-        return { m_Background };
-    }
 
-    [[nodiscard]] std::vector<std::shared_ptr<Character>> GetLevelBoxes() const;
+	void NextPhase();
+	void SetImage(const std::string& filepath);
 
-    void NextPhase();
-    void SetImage(const std::string& filepath);
+	void CreateLevelBoxes();
+	void AddNextLevelBox();
+	bool AreAllBoxesAdded() const;
 
-    void CreateLevelBoxes();
-    void AddNextLevelBox();
-    bool AreAllBoxesAdded() const;
+	// é—œå¡é¸æ“‡çš„éƒ¨åˆ†çš„ç®±å­è™•ç†
+	void ShowLevelBoxes(bool visible);
+	//void HighlightBox(int boxNumber);
 
-    // Ãö¥d¿ï¾Üªº³¡¤Àªº½c¤l³B²z
-    void ShowLevelBoxes(bool visible);
-    //void HighlightBox(int boxNumber);
+
+	// æª¢æŸ¥æ˜¯å¦æ‰€æœ‰ç®±å­éƒ½å·²æ·»åŠ 
+	bool AreAllBoxesAdded();
+	// æª¢æŸ¥æ˜¯å¦æ‰€æœ‰ç®±å­éƒ½å·²é¡¯ç¤º
+	bool AreAllBoxesVisible();
+	// é¡¯ç¤ºä¸‹ä¸€å€‹å°šæœªé¡¯ç¤ºçš„ç®±å­
+	void ShowNextLevelBox();
 
 private:
-    std::shared_ptr<BackgroundImage> m_Background;
-    std::vector<std::shared_ptr<Character>> m_LevelBoxes;
+	std::shared_ptr<BackgroundImage> m_Background;
+	std::vector<std::shared_ptr<Character>> m_LevelBoxes;
 
-    Util::Renderer m_pRoot;
-    int m_Phase = 0;    // 0: menu
+	Util::Renderer m_pRoot;
+	int m_Phase = 0;    // 0: menu
 
-    int m_AddedBoxCount = 0;
-    static const int MAX_BOXES = 30;
+	int m_AddedBoxCount = 0;
+	static const int MAX_BOXES = 30;
 
-    // Ãö¥d¿ï¾Üªº³¡¤Àªº½c¤l³B²z
-    std::chrono::time_point<std::chrono::system_clock> m_HighlightStartTime;
-    int m_HighlightedBoxIndex = -1;
-    bool m_IsHighlighting = false;
-    glm::vec2 m_OriginalBoxSize;
-
+	// é—œå¡é¸æ“‡çš„éƒ¨åˆ†çš„ç®±å­è™•ç†
+	std::chrono::time_point<std::chrono::system_clock> m_HighlightStartTime;
+	int m_HighlightedBoxIndex = -1;
+	bool m_IsHighlighting = false;
+	glm::vec2 m_OriginalBoxSize;
 };
 
 #endif //PHASE_MANGER_HPP

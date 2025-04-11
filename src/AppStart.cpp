@@ -1,14 +1,18 @@
 #include "App.hpp"
 #include "Util/Logger.hpp"
 #include <iostream>
-#include "Util/Renderer.hpp"
+
+// #include "InitializeMap.cpp"
 
 void App::Start() {
     LOG_TRACE("Start");
-    std::cout << "Start" << std::endl;
+	std::cout << "Start" << std::endl;
 
+    /* Phase Resource Manager */
     m_PRM = std::make_shared<PhaseResourceManager>();
-    // ­I´ºªì©l¸ê·½
+    // èƒŒæ™¯åˆå§‹è³‡æº
     m_Root.AddChildren(m_PRM->GetChildren());
     m_CurrentState = State::UPDATE;
 }
+
+
