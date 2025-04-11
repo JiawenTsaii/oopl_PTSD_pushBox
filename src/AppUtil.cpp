@@ -27,6 +27,8 @@ void App::ValidTask() {
 					m_Root.AddChildren({ box });
 				}
 
+				m_PRM->GetLevelBoxes()[0]->SetVisible(true);
+
 				break;
 
 			case Phase::LEVELSELECT:
@@ -40,16 +42,20 @@ void App::ValidTask() {
 				BoxPass = 1;
 				m_PhaseChanged = true;
 				break;
+
 			case Phase::LEVEL1:
 				std::cout << "LEVEL1 to LEVEL2" << std::endl;
+				m_PRM->SetImage(RESOURCE_DIR"/Background/bg_game.png");
 				m_PRM->NextPhase();
 				m_Phase = Phase::LEVEL2;
 				InitializeMap(GameMap2);
 				BoxPass = 1;
 				m_PhaseChanged = true;
 				break;
+
 			case Phase::LEVEL2:
 				std::cout << "LEVEL2 to LEVEL3" << std::endl;
+				m_PRM->SetImage(RESOURCE_DIR"/Background/bg_game.png");
 				m_PRM->NextPhase();
 				m_Phase = Phase::LEVEL3;
 				InitializeMap(GameMap3);

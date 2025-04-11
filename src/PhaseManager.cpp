@@ -14,6 +14,7 @@ PhaseResourceManager::PhaseResourceManager() {
 void PhaseResourceManager::NextPhase() {
 	// 如果正在轉到關卡選擇階段
 	if (m_Phase == 0) {  // 假設0是從menu到level
+		std::cout << "正要執行CreateLevelBoxes()" << std::endl;
 		CreateLevelBoxes();
 	}
 
@@ -27,6 +28,7 @@ void PhaseResourceManager::SetImage(const std::string& filepath) {
 }
 
 void PhaseResourceManager::AddNextLevelBox() {
+
 	// 30個箱子都加進去了就不再加了
 	if (m_AddedBoxCount >= MAX_BOXES) {
 		return;

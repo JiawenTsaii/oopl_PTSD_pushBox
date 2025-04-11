@@ -154,68 +154,27 @@ void App::Update() {
 
             // 遊戲物件隱藏
             if (m_Player) { // 人物
-                m_Player->SetVisible(true);
+                m_Player->SetVisible(false);
             }
             for (auto& box : m_Box_vec) { // 箱子
-                box->SetVisible(true);
+                box->SetVisible(false);
             }
             for (auto& wall : m_Wall) { // 牆壁
-                wall->SetVisible(true);
+                wall->SetVisible(false);
             }
             for (auto& floor : m_Floor) { // 地板
-                floor->SetVisible(true);
+                floor->SetVisible(false);
             }
             for (auto& point : m_Point_vec) { // 目標點
-                point->SetVisible(true);
+                point->SetVisible(false);
+            }
+            for (auto& check : m_Check_vec) { // 勾勾
+                check->SetVisible(false);
             }
 
             keyProcessed = true; // 有按過按鍵了
         }
     }
-
-    // 只有當Enter鍵從未按下狀態變為按下狀態時才執行動作
-    //if (enterKeyCurrentlyPressed && !keyProcessed) {
-    //    // 記錄之前的phase
-    //    Phase prevPhase = m_Phase;
-
-    //    // 根據不同階段處理enter
-    //    switch (m_Phase) {
-    //        case Phase::MENU:
-    //            // 從MENU到LEVELSELECT
-    //            m_Phase = Phase::LEVELSELECT;
-    //            m_PRM->SetImage(RESOURCE_DIR"/Background/bg_level.png");
-    //            m_PRM->ShowLevelBoxes(true);  // 顯示箱子
-
-    //            // 初始化所有的箱子 (b1.png - b30.png)
-    //            // 不過先設為不可見
-    //            while (!m_PRM->AreAllBoxesAdded()) {
-    //                m_PRM->AddNextLevelBox();
-    //                auto box = m_PRM->GetLevelBoxes().back();
-    //                box->SetVisible(false);  // 一開始設定為不可見
-    //                m_Root.AddChildren({ box });
-    //            }
-    //            break;
-
-    //        case Phase::LEVELSELECT:
-    //            // 按Enter逐一顯示下一個箱子
-    //            m_PRM->ShowNextLevelBox(); // -----會一直跑
-    //            break;
-
-    //        case Phase::LEVEL1:
-    //        case Phase::LEVEL2:
-    //        case Phase::LEVEL3:
-    //            // 在關卡中按Enter，可以進行驗證任務完成情況
-    //            std::cout << "Enter pressed in level" << std::endl; // -----會一直跑
-    //            break;
-    //        default:
-    //            break;
-    //    }
-
-    //    keyProcessed = true;
-    //}
-
-    // 更新Enter鍵狀態
-    //m_EnterKeyWasPressed = keyProcessed;
 
     /* 遊戲 */
     bool needUpdate = false;
