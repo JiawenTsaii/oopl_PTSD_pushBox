@@ -1,6 +1,7 @@
 #include "PhaseResourceManager.hpp"
 #include "Util/Logger.hpp"
 #include <iostream>
+#include "App.hpp"
 
 PhaseResourceManager::PhaseResourceManager() {
     std::cout << "Initializing PhaseResourceManager" << std::endl;
@@ -46,13 +47,14 @@ void PhaseResourceManager::AddNextLevelBox() {
 	int col = (boxNumber - 1) % 5;
 
 	// 箱子的完美位置被我找到了 嗚呼
-	glm::vec2 position(-132 + col * 65.5, 150 - row * 65.5);
-	box->SetPosition(position);
+	// glm::vec2 position(-132 + col * 65.5, 150 - row * 65.5);
+	// box->SetPosition(position);
+	box->SetPosition({-132 + col * 65.5, 150 - row * 65.5});
 
-	std::cout << "Box " << boxNumber << " position: " << position.x << ", " << position.y << std::endl;
+	std::cout << "Box " << boxNumber << " position: " << box->GetPosition().x << ", " << box->GetPosition().y << std::endl;
 
 	m_LevelBoxes.push_back(box);
-	std::cout << "Adding box " << boxNumber << " to root node" << std::endl;
+	// std::cout << "Adding box " << boxNumber << " to root node" << std::endl;
 	m_pRoot.AddChild({ box });
 
 	m_AddedBoxCount++;
@@ -67,8 +69,8 @@ void PhaseResourceManager::CreateLevelBoxes() {
 	// 清掉之前的箱子
 	m_LevelBoxes.clear();
 	m_AddedBoxCount = 0;
-	std::cout << "Level boxes cleared, ready to add one by one" << std::endl;
-	LOG_DEBUG("Level boxes cleared, ready to add one by one");
+	// std::cout << "Level boxes cleared, ready to add one by one" << std::endl;
+	// LOG_DEBUG("Level boxes cleared, ready to add one by one");
 }
 
 std::vector<std::shared_ptr<Character>> PhaseResourceManager::GetLevelBoxes() const {
@@ -86,7 +88,7 @@ void PhaseResourceManager::ShowLevelBoxes(bool visible) {
 	for (auto& box : m_LevelBoxes) {
 		box->SetVisible(visible);
 	}
-	std::cout << "Level boxes visibility set to: " << (visible ? "visible" : "hidden") << std::endl;
+	// std::cout << "Level boxes visibility set to: " << (visible ? "visible" : "hidden") << std::endl;
 }
 
 
@@ -114,3 +116,14 @@ void PhaseResourceManager::ShowNextLevelBox() {
 		}
 	}
 }
+
+
+// int PhaseResourceManager::GetVisibleBoxCount() const {
+// 	int count = 0;
+// 	for (const auto& box : m_Box) {
+// 		if (box->IsVisible()) {
+// 			count++;
+// 		}
+// 	}
+// 	return count;
+// }

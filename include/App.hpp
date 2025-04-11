@@ -99,6 +99,15 @@ private:
 
 
 
+    void HandleMouseClick(int x, int y);// 處理滑鼠點擊事件
+    bool IsClickOnBox(int x, int y, const std::shared_ptr<Character>& box);    // 檢查點擊是否在箱子上
+    bool m_MouseLeftButtonWasPressed = false;
+    int m_LastClickedLevel = 0;  // 記錄上次點擊的關卡
+    std::chrono::steady_clock::time_point m_LastClickTime;
+    std::chrono::steady_clock::time_point m_PrevClickTime;
+
+    bool m_ShiftKeyWasPressed = false;
+
     std::vector<std::vector<int>> m_GameMap;
 
     /* 地圖 */
@@ -121,7 +130,17 @@ private:
         {1, 2, 2, 2, 2, 1},
         {1, 2, 4, 2, 2, 1},
         {1, 2, 2, 2, 2, 1},
+        {1, 2, 4, 2, 2, 1},
+        {1, 1, 1, 1, 1, 1}
+    };
+    std::vector<std::vector<int>> GameMap3 = {
+        {1, 1, 1, 1, 1, 1},
+        {1, 2, 2, 3, 4, 1},
         {1, 2, 2, 2, 2, 1},
+        {1, 2, 2, 2, 2, 1},
+        {1, 2, 4, 2, 2, 1},
+        {1, 2, 2, 2, 2, 1},
+        {1, 2, 2, 4, 2, 1},
         {1, 1, 1, 1, 1, 1}
     };
 

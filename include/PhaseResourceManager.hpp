@@ -44,6 +44,7 @@ public:
 	bool AreAllBoxesVisible();
 	// 顯示下一個尚未顯示的箱子
 	void ShowNextLevelBox();
+	// int GetVisibleBoxCount() const;
 
 private:
 	std::shared_ptr<BackgroundImage> m_Background;
@@ -60,6 +61,9 @@ private:
 	int m_HighlightedBoxIndex = -1;
 	bool m_IsHighlighting = false;
 	glm::vec2 m_OriginalBoxSize;
+
+
+	int m_VisibleBoxCount = 0;
 };
 
 #endif //PHASE_MANGER_HPP
