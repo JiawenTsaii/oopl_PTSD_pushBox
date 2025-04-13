@@ -282,91 +282,103 @@ void App::Update() {
                         }
 
                         /* 人的上面是箱子 */
-                        if (m_GameMap[i + GameMap_i][j + GameMap_j] == 3) {
+                        for (size_t k = 0; k < m_Box_vec.size(); ++k) {
+                            if (m_GameMap[i + GameMap_i][j + GameMap_j] == 3) {
 
-                            /* 箱子上面是空地 (3、4) */
-                            if (m_GameMap[i + (GameMap_i * 2)][j + (GameMap_j * 2)] == 2) {
+                                /* 箱子上面是空地 (3、4) */
+                                if (m_GameMap[i + (GameMap_i * 2)][j + (GameMap_j * 2)] == 2) {
 
-                                /* 人不在目標點上 */
-                                if (!isPlayerOnCheck) {
-                                    m_GameMap[i][j] = 2; // 目前位置設為空地
-                                }
-
-                                // GameMap
-                                m_GameMap[i + GameMap_i][j + GameMap_j] = 4; // 上面一格設為人
-                                m_GameMap[i + (GameMap_i * 2)][j + (GameMap_j * 2)] = 3; // 上面兩格設為箱子
-                                // SetPosition (箱子先移動，再換人移動)
-                                for (size_t k = 0; k < m_Box_vec.size(); ++k) { // 找到在人的上面一格的箱子
-									std::cout << "m_Box_vec[" << k << "]: " << m_Box_vec[k]->GetPosition().x << ", " << m_Box_vec[k]->GetPosition().y << std::endl;
-									std::cout << "m_Player->GetPosition().x + (SetPosition_i * 40): " << m_Player->GetPosition().x + (SetPosition_i * 40) << ", " << m_Player->GetPosition().y + (SetPosition_j * 40) << std::endl;
-                                    if ((m_Box_vec[k]->GetPosition().x == m_Player->GetPosition().x + (SetPosition_i * 40)) && (m_Box_vec[k]->GetPosition().y == m_Player->GetPosition().y + (SetPosition_j * 40))) {
-										m_Box_vec[k]->SetPosition({ m_Box_vec[k]->GetPosition().x + (SetPosition_i * 40), m_Box_vec[k]->GetPosition().y + (SetPosition_j * 40) });
-                                        break;
+                                    /* 人不在目標點上 */
+                                    if (!isPlayerOnCheck) {
+                                        m_GameMap[i][j] = 2; // 目前位置設為空地
                                     }
-                                }
-                                m_Player->SetPosition({ m_Player->GetPosition().x + (SetPosition_i * 40), m_Player->GetPosition().y + (SetPosition_j * 40) }); // 人往上一格
 
-                                needUpdate = true;
-
-                                isPlayerOnCheck = false; // 人離開目標點了
-
-                                break;
-                            }
-
-                            /* 箱子上面是目標點 (5、6) */
-                            else if (m_GameMap[i + (GameMap_i * 2)][j + (GameMap_j * 2)] == 5) {
-
-                                /* 人不在目標點上 */
-                                if (!isPlayerOnCheck) {
-                                    m_GameMap[i][j] = 2; // 目前位置設為空地
-                                }
-
-                                // GameMap
-                                m_GameMap[i + GameMap_i][j + GameMap_j] = 4; // 上面一格設為人
-                                // SetPosition
-                                for (size_t k = 0; k < m_Box_vec.size(); ++k) { // 找到在人的上面一格的箱子
-                                    if ((m_Box_vec[k]->GetPosition().x == m_Player->GetPosition().x + (SetPosition_i * 40)) && (m_Box_vec[k]->GetPosition().y == m_Player->GetPosition().y + (SetPosition_j * 40))) {
-                                        m_Box_vec[k]->SetPosition({ m_Box_vec[k]->GetPosition().x + (SetPosition_i * 40), m_Box_vec[k]->GetPosition().y + (SetPosition_j * 40) });
-                                        isBoxOnCheck[k] = true;
-                                        BoxOnCheckCount++;
-                                        std::cout << "BoxOnCheckCount: " << BoxOnCheckCount << std::endl;
-                                        break;
+                                    // GameMap
+                                    m_GameMap[i + GameMap_i][j + GameMap_j] = 4; // 上面一格設為人
+                                    m_GameMap[i + (GameMap_i * 2)][j + (GameMap_j * 2)] = 3; // 上面兩格設為箱子
+                                    // SetPosition (箱子先移動，再換人移動)
+                                    for (size_t k = 0; k < m_Box_vec.size(); ++k) { // 找到在人的上面一格的箱子
+                                        if ((m_Box_vec[k]->GetPosition().x == m_Player->GetPosition().x + (SetPosition_i * 40)) && (m_Box_vec[k]->GetPosition().y == m_Player->GetPosition().y + (SetPosition_j * 40))) {
+                                            m_Box_vec[k]->SetPosition({ m_Box_vec[k]->GetPosition().x + (SetPosition_i * 40), m_Box_vec[k]->GetPosition().y + (SetPosition_j * 40) });
+                                            break;
+                                        }
                                     }
+                                    m_Player->SetPosition({ m_Player->GetPosition().x + (SetPosition_i * 40), m_Player->GetPosition().y + (SetPosition_j * 40) }); // 人往上一格
+
+                                    needUpdate = true;
+
+                                    isPlayerOnCheck = false; // 人離開目標點了
+
+                                    break;
                                 }
-                                
-                                // 勾勾出現 (先勾勾，再人)
-                                for (size_t k = 0; k < m_Check_vec.size(); ++k) { // 找到在人的上面兩格的勾勾(箱子的上面一格)
-                                    if ((m_Check_vec[k]->GetPosition().x == m_Player->GetPosition().x + (SetPosition_i * 80)) && (m_Check_vec[k]->GetPosition().y == m_Player->GetPosition().y + (SetPosition_j * 80))) {
-                                        m_Check_vec[k]->SetVisible(true);
+
+                                /* 箱子上面是目標點 (5、6) */
+                                else if (m_GameMap[i + (GameMap_i * 2)][j + (GameMap_j * 2)] == 5) {
+
+                                    /* 人不在目標點上 */
+                                    if (!isPlayerOnCheck) {
+                                        m_GameMap[i][j] = 2; // 目前位置設為空地
                                     }
+
+                                    // GameMap
+                                    m_GameMap[i + GameMap_i][j + GameMap_j] = 4; // 上面一格設為人
+                                    // SetPosition
+                                    for (size_t k = 0; k < m_Box_vec.size(); ++k) { // 找到在人的上面一格的箱子
+                                        if ((m_Box_vec[k]->GetPosition().x == m_Player->GetPosition().x + (SetPosition_i * 40)) && (m_Box_vec[k]->GetPosition().y == m_Player->GetPosition().y + (SetPosition_j * 40))) {
+                                            m_Box_vec[k]->SetPosition({ m_Box_vec[k]->GetPosition().x + (SetPosition_i * 40), m_Box_vec[k]->GetPosition().y + (SetPosition_j * 40) });
+                                            isBoxOnCheck[k] = true;
+                                            BoxOnCheckCount++;
+                                            std::cout << "BoxOnCheckCount: " << BoxOnCheckCount << std::endl;
+                                            break;
+                                        }
+                                    }
+
+                                    // 勾勾出現 (先勾勾，再人)
+                                    for (size_t k = 0; k < m_Check_vec.size(); ++k) { // 找到在人的上面兩格的勾勾(箱子的上面一格)
+                                        if ((m_Check_vec[k]->GetPosition().x == m_Player->GetPosition().x + (SetPosition_i * 80)) && (m_Check_vec[k]->GetPosition().y == m_Player->GetPosition().y + (SetPosition_j * 80))) {
+                                            m_Check_vec[k]->SetVisible(true);
+                                        }
+                                    }
+
+                                    m_Player->SetPosition({ m_Player->GetPosition().x + (SetPosition_i * 40), m_Player->GetPosition().y + (SetPosition_j * 40) });
+
+                                    needUpdate = true;
+
+                                    isPlayerOnCheck = false; // 更新玩家位置後重置標誌
+
+                                    break;
                                 }
 
-                                m_Player->SetPosition({ m_Player->GetPosition().x + (SetPosition_i * 40), m_Player->GetPosition().y + (SetPosition_j * 40) });
+                                /* 箱子的上面是牆壁 (什麼事都不用做) */
+                                else {
+                                    needUpdate = true;
 
-                                needUpdate = true;
-
-                                isPlayerOnCheck = false; // 更新玩家位置後重置標誌
-
-                                break;
+                                    break;
+                                }
                             }
                         }
+                        
                         /* 人的上面是目標點 */
                         if (m_GameMap[i + GameMap_i][j + GameMap_j] == 5) {
 
-                            /* 目標點上有箱子*/
-                            for (size_t k = 0; k < m_Box_vec.size(); ++k) {
-                                if ((m_Box_vec[k]->GetPosition().x == m_Player->GetPosition().x + (SetPosition_i * 40)) && (m_Box_vec[k]->GetPosition().y == m_Player->GetPosition().y + (SetPosition_i * 40))) {
+                            /* 目標點上有箱子 */
+                            for (size_t k = 0; k < m_Box_vec.size(); k++) {
+
+                                if ((m_Box_vec[k]->GetPosition().x == m_Player->GetPosition().x + (SetPosition_i * 40)) 
+                                    && (m_Box_vec[k]->GetPosition().y == m_Player->GetPosition().y + (SetPosition_j * 40))) {
 
                                     bool temp2box = false; // 記錄上面的上面還有沒有箱子
 
                                     /* 目標點的上面一格還有箱子 */
                                     for (size_t j = 0; j < m_Box_vec.size(); ++j) {
-                                        if ((m_Box_vec[j]->GetPosition().x == m_Player->GetPosition().x + (SetPosition_i * 80)) && (m_Box_vec[j]->GetPosition().y == m_Player->GetPosition().y + (SetPosition_j * 80))) {
+                                        if ((m_Box_vec[j]->GetPosition().x == m_Player->GetPosition().x + (SetPosition_i * 80)) 
+                                            && (m_Box_vec[j]->GetPosition().y == m_Player->GetPosition().y + (SetPosition_j * 80))) {
 
                                             temp2box = true; // 上面的上面還有箱子
 
                                             /* 上面的上面那個箱子踩在另一個目標點上 (9) */
                                             if (isBoxOnCheck[j]) {
+
                                                 // GameMap
                                                 m_GameMap[i][j] = 2; // 目前位置設為空地
                                                 m_GameMap[i + (GameMap_i * 3)][j + (GameMap_j * 3)] = 3; // 上面三格設為箱子
@@ -392,6 +404,7 @@ void App::Update() {
 
                                             /* 上面的上面那個箱子沒有踩在另一個目標點上 (10、11) */
                                             else {
+
                                                 if (!isPlayerOnCheck) {
                                                     m_GameMap[i][j] = 2; // 目前位置設為空地
                                                 }
@@ -425,6 +438,7 @@ void App::Update() {
                                                 break;
                                             }
                                         }
+                                        if (needUpdate) break;
                                     }
 
                                     /* 目標點的上面一格沒有箱子 */
@@ -432,6 +446,7 @@ void App::Update() {
 
                                         /* 目標點的上面是空地 (12、13) */
                                         if (m_GameMap[i + (GameMap_i * 2)][j + (GameMap_j * 2)] == 2) {
+
                                             if (!isPlayerOnCheck) {
                                                 m_GameMap[i][j] = 2; // 目前位置設為空地
                                             }
@@ -499,26 +514,40 @@ void App::Update() {
 
                                             break;
                                         }
+
+                                        /* 目標點的上面是牆壁 (什麼事都不用做) */
+                                        else {
+
+											needUpdate = true;
+
+                                            break;
+                                        }
                                     }
+
+                                    /* 目標點上沒箱子 (7、8) */
+                                    if (!needUpdate) {
+
+                                        if (!isPlayerOnCheck) {
+                                            m_GameMap[i][j] = 2; // 將當前位置設為空地
+                                        }
+
+                                        // SetPosition
+                                        m_Player->SetPosition({ m_Player->GetPosition().x + (SetPosition_i * 40), m_Player->GetPosition().y + (SetPosition_j * 40) });
+
+                                        isPlayerOnCheck = true;
+                                        m_PlayerPosition_i = i + GameMap_i;
+                                        m_PlayerPosition_j = j + GameMap_j;
+
+                                        needUpdate = true;
+
+                                        break;
+                                    }
+
                                 }
 
-                                /* 目標點上沒箱子 (7、8) */
-                                if (!needUpdate) {
-                                    if (!isPlayerOnCheck) {
-                                        m_GameMap[i][j] = 2; // 將當前位置設為空地
-                                    }
+                                
 
-                                    // SetPosition
-                                    m_Player->SetPosition({ m_Player->GetPosition().x + (SetPosition_i * 40), m_Player->GetPosition().y + (SetPosition_j * 40) });
-
-                                    isPlayerOnCheck = true;
-                                    m_PlayerPosition_i = i + GameMap_i;
-                                    m_PlayerPosition_j = j + GameMap_j;
-
-                                    needUpdate = true;
-
-                                    break;
-                                }
+                                if (needUpdate) break;
                             }
                         }
                         break; // 找到玩家並移動後直接跳出內層迴圈
