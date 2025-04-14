@@ -1,7 +1,9 @@
 #include "PhaseResourceManager.hpp"
-#include "Util/Logger.hpp"
-#include <iostream>
 #include "App.hpp"
+
+#include "Util/Logger.hpp"
+
+#include <iostream>
 
 PhaseResourceManager::PhaseResourceManager() {
     std::cout << "Initializing PhaseResourceManager" << std::endl;
@@ -10,16 +12,13 @@ PhaseResourceManager::PhaseResourceManager() {
 }
 
 void PhaseResourceManager::NextPhase() {
-	// LOG_DEBUG("Passed! Next phase: {}", m_Phase);
-	// if (m_Phase != 0) {
-	// 	m_Background->NextPhase(m_Phase);
-	// }
 	// 如果正在轉到關卡選擇階段
 	if (m_Phase == 0) {  // 假設0是從menu到level
+		std::cout << "CreateLevelBoxes()" << std::endl;
 		CreateLevelBoxes();
 	}
-	//m_Phase++;
-	std::cout << "Now phase: " << m_Phase << std::endl;
+
+    std::cout << "Now phase: " << m_Phase << std::endl;
     m_Phase++;
 	std::cout << "Next phase: " << m_Phase << std::endl;
 }
@@ -29,6 +28,7 @@ void PhaseResourceManager::SetImage(const std::string& filepath) {
 }
 
 void PhaseResourceManager::AddNextLevelBox() {
+
 	// 30個箱子都加進去了就不再加了
 	if (m_AddedBoxCount >= MAX_BOXES) {
 		return;
@@ -49,7 +49,7 @@ void PhaseResourceManager::AddNextLevelBox() {
 	// 箱子的完美位置被我找到了 嗚呼
 	// glm::vec2 position(-132 + col * 65.5, 150 - row * 65.5);
 	// box->SetPosition(position);
-	box->SetPosition({-132 + col * 65.5, 150 - row * 65.5});
+	box->SetPosition({ -132 + col * 65.5, 150 - row * 65.5 });
 
 	std::cout << "Box " << boxNumber << " position: " << box->GetPosition().x << ", " << box->GetPosition().y << std::endl;
 
@@ -66,11 +66,9 @@ bool PhaseResourceManager::AreAllBoxesAdded() const {
 }
 
 void PhaseResourceManager::CreateLevelBoxes() {
-	// 清掉之前的箱子
+	// 先清掉之前的箱子
 	m_LevelBoxes.clear();
 	m_AddedBoxCount = 0;
-	// std::cout << "Level boxes cleared, ready to add one by one" << std::endl;
-	// LOG_DEBUG("Level boxes cleared, ready to add one by one");
 }
 
 std::vector<std::shared_ptr<Character>> PhaseResourceManager::GetLevelBoxes() const {
@@ -79,22 +77,16 @@ std::vector<std::shared_ptr<Character>> PhaseResourceManager::GetLevelBoxes() co
 
 
 // // 關卡選擇的部分的箱子處理
-// void PhaseResourceManager::ShowLevelBoxes(bool visible) {
-// 	for (auto& box : m_LevelBoxes) {
-// 		box->SetVisible(visible);
-// 	}
-// }
 void PhaseResourceManager::ShowLevelBoxes(bool visible) {
 	for (auto& box : m_LevelBoxes) {
 		box->SetVisible(visible);
 	}
-	// std::cout << "Level boxes visibility set to: " << (visible ? "visible" : "hidden") << std::endl;
 }
 
 
 // 檢查是否所有箱子都已添加
 bool PhaseResourceManager::AreAllBoxesAdded() {
-	return m_LevelBoxes.size() >= 30;  // 假設總共有30個箱子
+	return m_LevelBoxes.size() >= 30;  // 總共有30個
 }
 
 // 檢查是否所有箱子都已顯示
@@ -112,18 +104,7 @@ void PhaseResourceManager::ShowNextLevelBox() {
 	for (auto& box : m_LevelBoxes) {
 		if (!box->GetVisibility()) {
 			box->SetVisible(true);
-			break;  // 只顯示一個，然後退出
+			break;  // 顯示一個 然後退出
 		}
 	}
 }
-
-
-// int PhaseResourceManager::GetVisibleBoxCount() const {
-// 	int count = 0;
-// 	for (const auto& box : m_Box) {
-// 		if (box->IsVisible()) {
-// 			count++;
-// 		}
-// 	}
-// 	return count;
-// }
