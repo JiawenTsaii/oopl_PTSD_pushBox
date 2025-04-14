@@ -62,6 +62,15 @@ void App::ValidTask() {
 				BoxPass = 2;
 				m_PhaseChanged = true;
 				break;
+			case Phase::LEVEL3:
+				std::cout << "LEVEL3 to LEVEL4" << std::endl;
+			m_PRM->SetImage(RESOURCE_DIR"/Background/bg_game.png");
+			m_PRM->NextPhase();
+			m_Phase = Phase::LEVEL4;
+			InitializeMap(GameMap4);
+			BoxPass = 2;
+			m_PhaseChanged = true;
+			break;
 			default:
 				m_CurrentState = State::END;
 		}
