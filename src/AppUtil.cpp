@@ -62,15 +62,87 @@ void App::ValidTask() {
 				BoxPass = 2;
 				m_PhaseChanged = true;
 				break;
+
 			case Phase::LEVEL3:
 				std::cout << "LEVEL3 to LEVEL4" << std::endl;
-			m_PRM->SetImage(RESOURCE_DIR"/Background/bg_game.png");
-			m_PRM->NextPhase();
-			m_Phase = Phase::LEVEL4;
-			InitializeMap(GameMap4);
-			BoxPass = 2;
-			m_PhaseChanged = true;
-			break;
+				m_PRM->SetImage(RESOURCE_DIR"/Background/bg_game.png");
+				m_PRM->NextPhase();
+				m_Phase = Phase::LEVEL4;
+				InitializeMap(GameMap4);
+				BoxPass = 2;
+				m_PhaseChanged = true;
+				break;
+
+			case Phase::LEVEL4:
+				std::cout << "LEVEL4 to LEVEL5" << std::endl;
+				m_PRM->SetImage(RESOURCE_DIR"/Background/bg_game.png");
+				m_PRM->NextPhase();
+				m_Phase = Phase::LEVEL5;
+				InitializeMap(GameMap5);
+				BoxPass = 2;
+				m_PhaseChanged = true;
+				break;
+
+			case Phase::LEVEL5:
+				std::cout << "LEVEL4 to LEVEL5" << std::endl;
+				m_PRM->SetImage(RESOURCE_DIR"/Background/bg_game.png");
+				m_PRM->NextPhase();
+				m_Phase = Phase::LEVEL5;
+				InitializeMap(GameMap5);
+				BoxPass = 2;
+				m_PhaseChanged = true;
+				break;
+
+			case Phase::LEVEL6:
+				std::cout << "LEVEL5 to LEVEL6" << std::endl;
+				m_PRM->SetImage(RESOURCE_DIR"/Background/bg_game.png");
+				m_PRM->NextPhase();
+				m_Phase = Phase::LEVEL6;
+				InitializeMap(GameMap6);
+				BoxPass = 2;
+				m_PhaseChanged = true;
+				break;
+
+			case Phase::LEVEL7:
+				std::cout << "LEVEL6 to LEVEL7" << std::endl;
+				m_PRM->SetImage(RESOURCE_DIR"/Background/bg_game.png");
+				m_PRM->NextPhase();
+				m_Phase = Phase::LEVEL7;
+				InitializeMap(GameMap7);
+				BoxPass = 2;
+				m_PhaseChanged = true;
+				break;
+
+			case Phase::LEVEL8:
+				std::cout << "LEVEL7 to LEVEL8" << std::endl;
+				m_PRM->SetImage(RESOURCE_DIR"/Background/bg_game.png");
+				m_PRM->NextPhase();
+				m_Phase = Phase::LEVEL8;
+				InitializeMap(GameMap8);
+				BoxPass = 2;
+				m_PhaseChanged = true;
+				break;
+
+			case Phase::LEVEL9:
+				std::cout << "LEVEL8 to LEVEL9" << std::endl;
+				m_PRM->SetImage(RESOURCE_DIR"/Background/bg_game.png");
+				m_PRM->NextPhase();
+				m_Phase = Phase::LEVEL9;
+				InitializeMap(GameMap9);
+				BoxPass = 2;
+				m_PhaseChanged = true;
+				break;
+
+			case Phase::LEVEL10:
+				std::cout << "LEVEL9 to LEVEL10" << std::endl;
+				m_PRM->SetImage(RESOURCE_DIR"/Background/bg_game.png");
+				m_PRM->NextPhase();
+				m_Phase = Phase::LEVEL10;
+				InitializeMap(GameMap10);
+				BoxPass = 2;
+				m_PhaseChanged = true;
+				break;
+
 			default:
 				m_CurrentState = State::END;
 		}
