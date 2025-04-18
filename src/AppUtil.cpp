@@ -14,6 +14,12 @@ void App::ValidTask() {
 				m_PRM->SetImage(RESOURCE_DIR"/Background/bg_level.png");
 				m_PRM->ShowLevelBoxes(true);  // 顯示箱子
 				m_PRM->NextPhase();
+
+				btn_return = std::make_shared<Character>(RESOURCE_DIR"/Button/btn_return.png");
+				m_Root.AddChild(btn_return);
+				btn_return->SetZIndex(50);
+				btn_return->SetPosition({ -155, 295 });
+				btn_return->SetVisible(false);
 				
 				m_Phase = Phase::LEVELSELECT;
 				m_PhaseChanged = true;
@@ -35,6 +41,9 @@ void App::ValidTask() {
 				std::cout << "LEVELSELECT to LEVEL1" << std::endl;
 				m_PRM->SetImage(RESOURCE_DIR"/Background/bg_game.png");
 				m_PRM->ShowLevelBoxes(false);
+				
+				btn_return->SetVisible(true);
+
 				//m_PRM->ShowNextLevelBox();
 				m_PRM->NextPhase();
 				m_Phase = Phase::LEVEL1;

@@ -141,24 +141,31 @@ void App::Update() {
                 case 4:
                     m_Phase = Phase::LEVEL3;
                     ValidTask();
+                    break;
                 case 5:
                     m_Phase = Phase::LEVEL4;
                     ValidTask();
+                    break;
                 case 6:
                     m_Phase = Phase::LEVEL5;
                     ValidTask();
+                    break;
                 case 7:
                     m_Phase = Phase::LEVEL6;
                     ValidTask();
+                    break;
                 case 8:
                     m_Phase = Phase::LEVEL7;
                     ValidTask();
+                    break;
                 case 9:
                     m_Phase = Phase::LEVEL8;
                     ValidTask();
+                    break;
                 case 10:
                     m_Phase = Phase::LEVEL9;
                     ValidTask();
+                    break;
                 break;
 
                 // ----- 待完成更多關卡 -----
@@ -177,8 +184,10 @@ void App::Update() {
     /* 遊戲中返回關卡選擇畫面 */
     else if (m_Phase != Phase::MENU && m_Phase != Phase::LEVELSELECT) {
         if (Util::Input::IsKeyPressed(Util::Keycode::BACKSPACE) ||
-            (mouseLeftButtonDown && Util::Input::GetCursorPosition().x < 50 && Util::Input::GetCursorPosition().y < 50)) {
+            (mouseLeftButtonDown && Util::Input::GetCursorPosition().x < -130 && Util::Input::GetCursorPosition().y < -270)) {
 
+            btn_return->SetVisible(false); // 返回鍵消失
+			
             // 回去LEVELSELECT (按下Backspace鍵或點擊左上角區域)
             m_PRM->SetImage(RESOURCE_DIR"/Background/bg_level.png");
             m_PRM->ShowLevelBoxes(true);  // 顯示箱子

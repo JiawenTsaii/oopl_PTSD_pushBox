@@ -96,6 +96,9 @@ private:
     std::chrono::steady_clock::time_point m_LastClickTime;
     std::chrono::steady_clock::time_point m_PrevClickTime;
 
+	std::shared_ptr<Character> btn_return; // 返回鍵
+	std::shared_ptr<Character> btn_reset; // 重置鍵
+
     bool m_ShiftKeyWasPressed = false;
 
     /* 讀人的位置 */
@@ -178,7 +181,7 @@ private:
         {0, 1, 1, 1, 1, 1, 0, 0, 0},
         {1, 1, 4, 2, 2, 1, 1, 0, 0},
         {1, 2, 2, 1, 2, 2, 1, 0, 0},
-        {1, 2, 3, 35, 3, 2, 1, 0, 0},
+        {1, 2, 3, 3, 2, 2, 1, 0, 0},
         {1, 2, 2, 5, 2, 2, 1, 0, 0},
         {1, 1, 2, 5, 2, 1, 1, 0, 0},
         {0, 1, 1, 1, 1, 1, 0, 0, 0},

@@ -86,11 +86,6 @@ void App::InitializeMap(const std::vector<std::vector<int>>& GameMap) {
                     m_Root.AddChild(floor);
 
                     /* 箱子 */
-                    /*m_Box = std::make_shared<Character>(RESOURCE_DIR"/Object/box.png");
-                    m_Box->SetPosition({ -160 + 40 * j, 140 - 40 * i });
-                    m_Box->SetVisible(false);
-                    m_Box->SetZIndex(50);
-                    m_Root.AddChild(m_Box);*/
                     m_Box_vec.push_back(std::make_shared<Character>(RESOURCE_DIR"/Object/box.png"));
 					m_Box_vec[box_num]->SetPosition({ -160 + 40 * j, 140 - 40 * i });
 					m_Box_vec[box_num]->SetVisible(false);
@@ -128,11 +123,6 @@ void App::InitializeMap(const std::vector<std::vector<int>>& GameMap) {
                     m_Root.AddChild(floor);
 
                     /* 目標點 */
-                    /*m_Point = std::make_shared<Character>(RESOURCE_DIR"/Object/point.png");
-                    m_Point->SetPosition({ -160 + 40 * j, 140 - 40 * i });
-                    m_Point->SetVisible(false);
-                    m_Point->SetZIndex(40);
-                    m_Root.AddChild(m_Point);*/
                     m_Point_vec.push_back(std::make_shared<Character>(RESOURCE_DIR"/Object/point.png"));
                     m_Point_vec[point_num]->SetPosition({ -160 + 40 * j, 140 - 40 * i });;
                     m_Point_vec[point_num]->SetVisible(false);
@@ -141,11 +131,6 @@ void App::InitializeMap(const std::vector<std::vector<int>>& GameMap) {
                     point_num++;
 
                     /* 勾勾 */
-					/*m_Check = std::make_shared<Character>(RESOURCE_DIR"/Object/check.png");
-                    m_Check->SetPosition({ -160 + 40 * j, 140 - 40 * i });
-                    m_Check->SetVisible(false);
-                    m_Check->SetZIndex(60);
-                    m_Root.AddChild(m_Check);*/
                     m_Check_vec.push_back(std::make_shared<Character>(RESOURCE_DIR"/Object/check.png"));
                     m_Check_vec[check_num]->SetPosition({ -160 + 40 * j, 140 - 40 * i });
                     m_Check_vec[check_num]->SetVisible(false);
