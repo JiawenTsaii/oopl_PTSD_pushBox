@@ -36,6 +36,12 @@ void App::ValidTask() {
 				btn_return->SetZIndex(50);
 				btn_return->SetPosition({ -155, 295 });
 				btn_return->SetVisible(false);
+
+				btn_reset = std::make_shared<Character>(RESOURCE_DIR"/Button/btn_reset.png");
+				m_Root.AddChild(btn_reset);
+				btn_reset->SetZIndex(50);
+				btn_reset->SetPosition({ 155, 295 });
+				btn_reset->SetVisible(false);
 				
 				m_Phase = Phase::LEVELSELECT;
 				m_PhaseChanged = true;
@@ -54,6 +60,14 @@ void App::ValidTask() {
 				m_PRM->ShowLevelBoxes(false);
 				
 				btn_return->SetVisible(true);
+				// 新增重置按鈕
+				if (!btn_reset) {
+					btn_reset = std::make_shared<Character>(RESOURCE_DIR"/Button/btn_reset.png");
+					m_Root.AddChild(btn_reset);
+					btn_reset->SetZIndex(50);
+					btn_reset->SetPosition({ 155, 295 }); // 右上角位置
+				}
+				btn_reset->SetVisible(true);
 
 				//m_PRM->ShowNextLevelBox();
 				m_PRM->NextPhase();
