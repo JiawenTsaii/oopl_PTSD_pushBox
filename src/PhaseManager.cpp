@@ -7,7 +7,7 @@
 
 PhaseResourceManager::PhaseResourceManager() {
     std::cout << "Initializing PhaseResourceManager" << std::endl;
-    //m_TaskText = std::make_shared<TaskText>();
+    m_TaskText = std::make_shared<TaskText>();
     m_Background = std::make_shared<BackgroundImage>();
 }
 
@@ -18,6 +18,8 @@ void PhaseResourceManager::NextPhase() {
 		CreateLevelBoxes();
 	}
 
+	/*m_TaskText->NextPhase(m_SelectedLevel);*/
+
     std::cout << "Now phase: " << m_Phase << std::endl;
     m_Phase++;
 	std::cout << "Next phase: " << m_Phase << std::endl;
@@ -25,6 +27,10 @@ void PhaseResourceManager::NextPhase() {
 
 void PhaseResourceManager::SetImage(const std::string& filepath) {
 	m_Background->SetImage(filepath);
+}
+
+void PhaseResourceManager::SetTaskText(int TextLevel) {
+	m_TaskText->NextPhase(TextLevel + 1);
 }
 
 void PhaseResourceManager::AddNextLevelBox() {

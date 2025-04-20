@@ -20,15 +20,14 @@ class PhaseResourceManager {
 public:
 	PhaseResourceManager();
 
-	//void SetRoot(Util::GameObject& root);
-
 	[[nodiscard]] std::vector<std::shared_ptr<Util::GameObject>> GetChildren() const {
-		return { m_Background };
+		return { m_TaskText, m_Background };
 	}
 	[[nodiscard]] std::vector<std::shared_ptr<Character>> GetLevelBoxes() const;
 
 	void NextPhase();
 	void SetImage(const std::string& filepath);
+	void SetTaskText(int TextLevel);
 
 	void CreateLevelBoxes();
 	void AddNextLevelBox();
@@ -46,6 +45,8 @@ public:
 
 private:
 	std::shared_ptr<BackgroundImage> m_Background;
+	std::shared_ptr<TaskText> m_TaskText;
+
 	std::vector<std::shared_ptr<Character>> m_LevelBoxes;
 
 	Util::Renderer m_pRoot;

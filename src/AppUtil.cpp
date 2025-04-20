@@ -15,6 +15,10 @@ void App::ValidTask() {
 				// m_PRM->ShowLevelBoxes(true);  // 顯示箱子
 				m_PRM->NextPhase();
 
+				TextLevel = 0;
+				std::cout << "TextLevel: " << TextLevel << std::endl;
+				m_PRM->SetTaskText(TextLevel);
+
 				// 初始化所有的箱子 (b1.png - b30.png)
 				// 不過先設為不可見
 				while (!m_PRM->AreAllBoxesAdded()) {
@@ -46,10 +50,6 @@ void App::ValidTask() {
 				m_Phase = Phase::LEVELSELECT;
 				m_PhaseChanged = true;
 
-
-
-
-
 				m_PRM->GetLevelBoxes()[0]->SetVisible(true);
 
 				break;
@@ -58,6 +58,10 @@ void App::ValidTask() {
 				std::cout << "LEVELSELECT to LEVEL1" << std::endl;
 				m_PRM->SetImage(RESOURCE_DIR"/Background/bg_game.png");
 				m_PRM->ShowLevelBoxes(false);
+
+				TextLevel = 0;
+				std::cout << "TextLevel+1: " << TextLevel + 1 << std::endl;
+				m_PRM->SetTaskText(TextLevel + 1);
 				
 				btn_return->SetVisible(true);
 				// 新增重置按鈕
@@ -82,6 +86,11 @@ void App::ValidTask() {
 				std::cout << "LEVEL1 to LEVEL2" << std::endl;
 				m_PRM->SetImage(RESOURCE_DIR"/Background/bg_game.png");
 				m_PRM->NextPhase();
+
+				TextLevel = 1;
+				std::cout << "TextLevel + 1: " << TextLevel + 1 << std::endl;
+				m_PRM->SetTaskText(TextLevel + 1);
+
 				m_Phase = Phase::LEVEL2;
 				InitializeMap(GameMap2);
 				BoxPass = 1;
@@ -93,6 +102,11 @@ void App::ValidTask() {
 				std::cout << "LEVEL2 to LEVEL3" << std::endl;
 				m_PRM->SetImage(RESOURCE_DIR"/Background/bg_game.png");
 				m_PRM->NextPhase();
+				
+				TextLevel = 2;
+				std::cout << "TextLevel + 1: " << TextLevel + 1 << std::endl;
+				m_PRM->SetTaskText(TextLevel + 1);
+
 				m_Phase = Phase::LEVEL3;
 				InitializeMap(GameMap3);
 				BoxPass = 2;
@@ -104,6 +118,11 @@ void App::ValidTask() {
 				std::cout << "LEVEL3 to LEVEL4" << std::endl;
 				m_PRM->SetImage(RESOURCE_DIR"/Background/bg_game.png");
 				m_PRM->NextPhase();
+
+				TextLevel = 3;
+				std::cout << "TextLevel + 1: " << TextLevel + 1 << std::endl;
+				m_PRM->SetTaskText(TextLevel + 1);
+
 				m_Phase = Phase::LEVEL4;
 				InitializeMap(GameMap4);
 				BoxPass = 2;
@@ -115,6 +134,11 @@ void App::ValidTask() {
 				std::cout << "LEVEL4 to LEVEL5" << std::endl;
 				m_PRM->SetImage(RESOURCE_DIR"/Background/bg_game.png");
 				m_PRM->NextPhase();
+
+				TextLevel = 4;
+				std::cout << "TextLevel + 1: " << TextLevel + 1 << std::endl;
+				m_PRM->SetTaskText(TextLevel + 1);
+
 				m_Phase = Phase::LEVEL5;
 				InitializeMap(GameMap5);
 				BoxPass = 2;
@@ -126,6 +150,11 @@ void App::ValidTask() {
 				std::cout << "LEVEL5 to LEVEL6" << std::endl;
 				m_PRM->SetImage(RESOURCE_DIR"/Background/bg_game.png");
 				m_PRM->NextPhase();
+
+				TextLevel = 5;
+				std::cout << "TextLevel + 1: " << TextLevel + 1 << std::endl;
+				m_PRM->SetTaskText(TextLevel + 1);
+
 				m_Phase = Phase::LEVEL6;
 				InitializeMap(GameMap6);
 				BoxPass = 2;
@@ -137,6 +166,11 @@ void App::ValidTask() {
 				std::cout << "LEVEL6 to LEVEL7" << std::endl;
 				m_PRM->SetImage(RESOURCE_DIR"/Background/bg_game.png");
 				m_PRM->NextPhase();
+
+				TextLevel = 6;
+				std::cout << "TextLevel + 1: " << TextLevel + 1 << std::endl;
+				m_PRM->SetTaskText(TextLevel + 1);
+
 				m_Phase = Phase::LEVEL7;
 				InitializeMap(GameMap7);
 				BoxPass = 2;
@@ -148,6 +182,11 @@ void App::ValidTask() {
 				std::cout << "LEVEL7 to LEVEL8" << std::endl;
 				m_PRM->SetImage(RESOURCE_DIR"/Background/bg_game.png");
 				m_PRM->NextPhase();
+
+				TextLevel = 7;
+				std::cout << "TextLevel + 1: " << TextLevel + 1 << std::endl;
+				m_PRM->SetTaskText(TextLevel + 1);
+
 				m_Phase = Phase::LEVEL8;
 				InitializeMap(GameMap8);
 				BoxPass = 2;
@@ -159,6 +198,11 @@ void App::ValidTask() {
 				std::cout << "LEVEL8 to LEVEL9" << std::endl;
 				m_PRM->SetImage(RESOURCE_DIR"/Background/bg_game.png");
 				m_PRM->NextPhase();
+
+				TextLevel = 8;
+				std::cout << "TextLevel + 1: " << TextLevel + 1 << std::endl;
+				m_PRM->SetTaskText(TextLevel + 1);
+
 				m_Phase = Phase::LEVEL9;
 				InitializeMap(GameMap9);
 				BoxPass = 2;
@@ -170,23 +214,17 @@ void App::ValidTask() {
 				std::cout << "LEVEL9 to LEVEL10" << std::endl;
 				m_PRM->SetImage(RESOURCE_DIR"/Background/bg_game.png");
 				m_PRM->NextPhase();
+
+				TextLevel = 9;
+				std::cout << "TextLevel + 1: " << TextLevel + 1 << std::endl;
+				m_PRM->SetTaskText(TextLevel + 1);
+
 				m_Phase = Phase::LEVEL10;
 				InitializeMap(GameMap10);
 				BoxPass = 2;
 				if (m_CurrentMaxLevel < 10) m_CurrentMaxLevel = 10;
 				m_PhaseChanged = true;
 				break;
-			//
-			// case Phase::LEVEL10:
-			// 	std::cout << "LEVEL10 to LEVEL11" << std::endl;
-			// 	m_PRM->SetImage(RESOURCE_DIR"/Background/bg_game.png");
-			// 	m_PRM->NextPhase();
-			// 	m_Phase = Phase::LEVEL11;
-			// 	InitializeMap(GameMap11);
-			// 	BoxPass = 2;
-			// if (m_CurrentMaxLevel < 11) m_CurrentMaxLevel = 11;
-			// 	m_PhaseChanged = true;
-			// 	break;
 
 			default:
 				m_CurrentState = State::END;

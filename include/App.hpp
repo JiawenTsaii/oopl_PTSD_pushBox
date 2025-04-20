@@ -99,6 +99,8 @@ private:
 	std::shared_ptr<Character> btn_return; // 返回鍵
 	std::shared_ptr<Character> btn_reset; // 重置鍵
 
+	int TextLevel = 0; // 要顯示哪個關卡的字
+
     bool m_ShiftKeyWasPressed = false;
 
     /* 讀人的位置 */
