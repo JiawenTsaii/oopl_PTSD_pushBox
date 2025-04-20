@@ -190,7 +190,18 @@ void App::Update() {
 			
             // 回去LEVELSELECT (按下Backspace鍵或點擊左上角區域)
             m_PRM->SetImage(RESOURCE_DIR"/Background/bg_level.png");
-            m_PRM->ShowLevelBoxes(true);  // 顯示箱子
+
+            //m_PRM->ShowLevelBoxes(true);  // 顯示箱子
+
+            // 只顯示到目前已破關的關卡數量的箱子
+            m_PRM->ShowLevelBoxes(false);  // 先隱藏所有箱子
+            // 顯示已解鎖的關卡箱子
+            for (int i = 0; i < m_CurrentMaxLevel; ++i) {
+                if (i < m_PRM->GetLevelBoxes().size()) {
+                    m_PRM->GetLevelBoxes()[i]->SetVisible(true);
+                }
+            }
+
             m_Phase = Phase::LEVELSELECT;
             m_SelectedLevel = 0;  // 選擇關卡的值歸零
 
@@ -303,6 +314,14 @@ void App::Update() {
                 bool allPointsHaveBoxes = true;
                 // 如果所有的箱子都在目標點上，則 BoxOnCheckCount 應該等於 BoxPass
                 if (BoxOnCheckCount >= BoxPass) {
+                    // 計算目前關卡的編號
+                    int currentLevel = static_cast<int>(m_Phase) - static_cast<int>(Phase::LEVEL1) + 1;
+
+                    // 更新最大已解鎖關卡
+                    if (currentLevel + 1 > m_CurrentMaxLevel) {
+                        m_CurrentMaxLevel = currentLevel + 1;
+                    }
+
                     std::cout << "Win! Proceed to next level" << std::endl;
                     // 跳到下一關卡
                     m_PhaseChanged = false; // 重置狀態以允許切換關卡

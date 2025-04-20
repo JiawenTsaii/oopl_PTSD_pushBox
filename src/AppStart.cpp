@@ -14,5 +14,7 @@ void App::Start() {
     m_PRM = std::make_shared<PhaseResourceManager>();
     m_Root.AddChildren(m_PRM->GetChildren());
 
+    m_CurrentMaxLevel = 1; // 初始設定成已經解鎖第一關了
+
     m_CurrentState = State::UPDATE;
 }
