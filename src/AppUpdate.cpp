@@ -14,11 +14,11 @@ void App::Update() {
     // 檢測Enter鍵 避免重複觸發
     bool enterKeyCurrentlyPressed = Util::Input::IsKeyPressed(Util::Keycode::RETURN);
     static bool keyProcessed = false; // 確認有沒有按過按鍵了(除作弊模式以外)，沒有就可以按，否則不能
-    
+
     // 檢測滑鼠左鍵的按下
     bool mouseLeftButtonPressed = Util::Input::IsKeyPressed(Util::Keycode::MOUSE_LB);
     bool mouseLeftButtonDown = Util::Input::IsKeyDown(Util::Keycode::MOUSE_LB);
-    
+
     // 檢測Shift鍵的按下，用於確認關卡選擇
     bool shiftKeyPressed = Util::Input::IsKeyPressed(Util::Keycode::LSHIFT) || Util::Input::IsKeyPressed(Util::Keycode::RSHIFT);
 
@@ -90,7 +90,7 @@ void App::Update() {
         if (mouseLeftButtonDown) {
             // 獲取滑鼠位置
             Util::PTSDPosition mousePos = Util::Input::GetCursorPosition();
-            
+
             keyProcessed = true; // 有按過按鍵了
 
             // 是否點擊了箱子
@@ -101,7 +101,7 @@ void App::Update() {
                 if (levelBoxes[i]->GetVisibility()) {
                     // 取得箱子位置
                     glm::vec2 boxPos = levelBoxes[i]->GetPosition();
-                    
+
                     // 檢查滑鼠是否在箱子區域內
                     if (mousePos.x >= (boxPos.x - 25.0) && mousePos.x <= (boxPos.x + 25.0) &&
                         (mousePos.y) * -1 >= (boxPos.y - 25.0) && (mousePos.y) * -1 <= (boxPos.y + 25.0)) {
@@ -187,7 +187,8 @@ void App::Update() {
             (mouseLeftButtonDown && Util::Input::GetCursorPosition().x < -130 && Util::Input::GetCursorPosition().y < -270)) {
 
             btn_return->SetVisible(false); // 返回鍵消失
-			
+            btn_reset->SetVisible(false);
+
             // 回去LEVELSELECT (按下Backspace鍵或點擊左上角區域)
             m_PRM->SetImage(RESOURCE_DIR"/Background/bg_level.png");
 
@@ -226,6 +227,32 @@ void App::Update() {
             }
 
             keyProcessed = true; // 有按過按鍵了
+        }
+        // 檢查滑鼠是否點擊了右上角的重置按鈕
+        else if (mouseLeftButtonDown && Util::Input::GetCursorPosition().x > 130 && Util::Input::GetCursorPosition().y < -270) {
+            // 重新初始化當前關卡
+            switch (m_Phase) {
+                case Phase::LEVEL1:
+                    InitializeMap(GameMap1);
+                    BoxPass = 1;
+                    break;
+                case Phase::LEVEL2:
+                    InitializeMap(GameMap2);
+                    BoxPass = 1;
+                    break;
+                case Phase::LEVEL3:
+                    InitializeMap(GameMap3);
+                    BoxPass = 2;
+                    break;
+                // ...其他關卡
+                default:
+                    // 默認
+                    ValidTask();
+                    break;
+            }
+            BoxOnCheckCount = 0;
+            isPlayerOnCheck = false;
+            m_LevelCompleted = false;
         }
     }
 
@@ -275,6 +302,17 @@ void App::Update() {
 	int RIGHT_SetPosition_j = 0;
 
     if ((Util::Input::IsKeyPressed(Util::Keycode::UP)) || (Util::Input::IsKeyPressed(Util::Keycode::DOWN)) || (Util::Input::IsKeyPressed(Util::Keycode::LEFT)) || (Util::Input::IsKeyPressed(Util::Keycode::RIGHT))) {
+        // 每移動一步就偵測一次
+        if (m_Phase != Phase::LEVELSELECT && m_Phase != Phase::MENU && m_Phase != Phase::END) {
+            // 檢查所有的目標點都有箱子
+            if (BoxOnCheckCount >= BoxPass) {
+                std::cout << "Win! All targets are covered with boxes." << std::endl;
+                ValidTask(); // 跳到下一關
+                BoxOnCheckCount = 0;
+            } else {
+                std::cout << "current level not finish yet" << std::endl;
+            }
+        }
 
         /* 設定上下左右delta */
         int GameMap_i = 0;
@@ -652,23 +690,24 @@ void App::Update() {
 
     if (Util::Input::IsKeyPressed(Util::Keycode::RETURN) && !m_PhaseChanged) {
         std::cout << "RETURN" << std::endl;
-        
+
         // 在LEVELSELECT按下Enter不做任何事情
         if (m_Phase == Phase::LEVELSELECT) {
         }
-        
+    // }
+    // if (Util::Input::IsKeyPressed(Util::Keycode::UP) && m_PhaseChanged) {
         // 按下Enter檢查是否過關、過關就換到下一關的畫面 沒過關就會跳出通知並留在原本的關卡頁
-        else if (m_Phase != Phase::LEVELSELECT && m_Phase != Phase::MENU && m_Phase != Phase::END) {
-            
-            // 檢查所有的目標點都有箱子
-            if (BoxOnCheckCount >= BoxPass) {
-                std::cout << "Win! All targets are covered with boxes." << std::endl;
-                ValidTask(); // 跳到下一關
-                BoxOnCheckCount = 0;
-            } else {
-                std::cout << "current level not finish yet" << std::endl;
-            }
-        }
+        // else if (m_Phase != Phase::LEVELSELECT && m_Phase != Phase::MENU && m_Phase != Phase::END) {
+        //
+        //     // 檢查所有的目標點都有箱子
+        //     if (BoxOnCheckCount >= BoxPass) {
+        //         std::cout << "Win! All targets are covered with boxes." << std::endl;
+        //         ValidTask(); // 跳到下一關
+        //         BoxOnCheckCount = 0;
+        //     } else {
+        //         std::cout << "current level not finish yet" << std::endl;
+        //     }
+        // }
         else {
             // 其他情況下按Enter才執行ValidTask()
             ValidTask();
