@@ -6,9 +6,14 @@
 #include <iostream>
 
 PhaseResourceManager::PhaseResourceManager() {
-    std::cout << "Initializing PhaseResourceManager" << std::endl;
     m_TaskText = std::make_shared<TaskText>();
     m_Background = std::make_shared<BackgroundImage>();
+	m_RemainingStepsText = std::make_shared<TaskText>(
+		RESOURCE_DIR"/Font/BodoniFLF-Bold.ttf", // 字體路徑
+		20,                                    // 字體大小
+		"Remaining Steps: 100",                // 初始文字內容
+		Util::Color::FromName(Util::Colors::BLACK) // 顏色
+	);
 }
 
 void PhaseResourceManager::NextPhase() {
@@ -17,8 +22,6 @@ void PhaseResourceManager::NextPhase() {
 		std::cout << "CreateLevelBoxes()" << std::endl;
 		CreateLevelBoxes();
 	}
-
-	/*m_TaskText->NextPhase(m_SelectedLevel);*/
 
     std::cout << "Now phase: " << m_Phase << std::endl;
     m_Phase++;
@@ -31,6 +34,18 @@ void PhaseResourceManager::SetImage(const std::string& filepath) {
 
 void PhaseResourceManager::SetTaskText(int TextLevel) {
 	m_TaskText->NextPhase(TextLevel + 1);
+}
+
+void PhaseResourceManager::SetRemainingStepsText(const std::string& remainingSteps) {
+	m_RemainingStepsText->SetText("Remaining Steps: " + remainingSteps);
+}
+
+std::shared_ptr<TaskText> PhaseResourceManager::GetRemainingStepsText() const {
+	return m_RemainingStepsText;
+}
+
+std::shared_ptr<TaskText> PhaseResourceManager::GetTaskText() const {
+	return m_TaskText;
 }
 
 void PhaseResourceManager::AddNextLevelBox() {

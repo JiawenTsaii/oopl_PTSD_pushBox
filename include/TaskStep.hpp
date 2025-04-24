@@ -1,42 +1,28 @@
-#ifndef TASKTEXT_HPP
-#define TASKTEXT_HPP
+#ifndef TASKSTEP_HPP
+#define TASKSTEP_HPP
 
 #include "Util/GameObject.hpp"
 #include "Util/Text.hpp"
 #include "Util/Color.hpp"
 
-class TaskText : public Util::GameObject {
+class TaskStep : public Util::GameObject {
 public:
-    TaskText() : GameObject(
+    TaskStep() : GameObject(
         std::make_unique<Util::Text>(RESOURCE_DIR"/Font/BodoniFLF-Bold.ttf", 40,
             append_string_views(s_PhaseTasks[0], s_Validation),
             Util::Color::FromName(Util::Colors::WHITE)),
-            100){
-            m_Transform.translation = { 20.F, 200.F };
-    }
-
-    TaskText(const std::string& fontPath, int fontSize, const std::string& text, const Util::Color& color)
-        : GameObject(
-            std::make_unique<Util::Text>(fontPath, fontSize, text, color),
-            100) {
-        m_Transform.translation = { 0.F, -270.F }; // 預設位置
+        100) {
+        m_Transform.translation = { 360 / 2.0F, 640 - 50.0F };
     }
 
     void NextPhase(const int phase) {
-        std::cout << "NextPhase" << std::endl;
         auto temp = std::dynamic_pointer_cast<Util::Text>(m_Drawable);
         temp->SetText(append_string_views(s_PhaseTasks[phase], s_Validation));
     }
 
     void SetText(const std::string& text) {
-        std::cout << "SetText" << std::endl;
         auto temp = std::dynamic_pointer_cast<Util::Text>(m_Drawable);
         temp->SetText(text);
-    }
-
-    void UpdatePosition(float x, float y) { // 更新位置
-        std::cout << "UpdatePosition" << std::endl;
-        m_Transform.translation = { x, y }; 
     }
 
 private:
@@ -57,4 +43,4 @@ private:
 };
 
 
-#endif //TASKTEXT_HPP
+#endif //TASKSTEP_HPP
