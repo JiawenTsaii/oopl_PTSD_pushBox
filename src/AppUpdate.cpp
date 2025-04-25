@@ -259,66 +259,111 @@ void App::Update() {
             
             // 重新初始化當前關卡
             switch (m_Phase) {
+
+                /* LEVEL 1~10 */
                 case Phase::LEVEL1:
                     InitializeMap(GameMap1);
                     BoxPass = 1;
-					m_RemainingSteps = 10; // 重置步數
-                    m_PRM->SetRemainingStepsText(std::to_string(m_RemainingSteps));
                     break;
                 case Phase::LEVEL2:
+                    InitializeMap(GameMap2);
+                    BoxPass = 1;
+                    break;
+                case Phase::LEVEL3:
+                    InitializeMap(GameMap3);
+                    BoxPass = 2;
+                    break;
+                case Phase::LEVEL4:
+                    InitializeMap(GameMap4);
+                    BoxPass = 2;
+                    break;
+                case Phase::LEVEL5:
+                    InitializeMap(GameMap5);
+                    BoxPass = 2;
+                    break;
+                case Phase::LEVEL6:
+                    InitializeMap(GameMap6);
+                    BoxPass = 2;
+                    break;
+                case Phase::LEVEL7:
+                    InitializeMap(GameMap7);
+                    BoxPass = 2;
+                    break;
+                case Phase::LEVEL8:
+                    InitializeMap(GameMap8);
+                    BoxPass = 2;
+                    break;
+                case Phase::LEVEL9:
+                    InitializeMap(GameMap9);
+                    BoxPass = 2;
+                    break;
+                case Phase::LEVEL10:
+                    InitializeMap(GameMap10);
+                    BoxPass = 2;
+                    break;
+
+                /* LEVEL 11~20 */
+                case Phase::LEVEL11:
+                    InitializeMap(GameMap1);
+                    BoxPass = 1;
+                    m_RemainingSteps = 10; // 重置步數
+                    m_PRM->SetRemainingStepsText(std::to_string(m_RemainingSteps));
+                    break;
+                case Phase::LEVEL12:
                     InitializeMap(GameMap2);
                     BoxPass = 1;
                     m_RemainingSteps = 10;
                     m_PRM->SetRemainingStepsText(std::to_string(m_RemainingSteps));
                     break;
-                case Phase::LEVEL3:
+                case Phase::LEVEL13:
                     InitializeMap(GameMap3);
                     BoxPass = 2;
                     m_RemainingSteps = 20;
                     m_PRM->SetRemainingStepsText(std::to_string(m_RemainingSteps));
                     break;
-                case Phase::LEVEL4:
+                case Phase::LEVEL14:
                     InitializeMap(GameMap4);
                     BoxPass = 2;
                     m_RemainingSteps = 25;
                     m_PRM->SetRemainingStepsText(std::to_string(m_RemainingSteps));
                     break;
-                case Phase::LEVEL5:
+                case Phase::LEVEL15:
                     InitializeMap(GameMap5);
                     BoxPass = 2;
                     m_RemainingSteps = 40;
                     m_PRM->SetRemainingStepsText(std::to_string(m_RemainingSteps));
                     break;
-                case Phase::LEVEL6:
+                case Phase::LEVEL16:
                     InitializeMap(GameMap6);
                     BoxPass = 2;
                     m_RemainingSteps = 30;
                     m_PRM->SetRemainingStepsText(std::to_string(m_RemainingSteps));
                     break;
-                case Phase::LEVEL7:
+                case Phase::LEVEL17:
                     InitializeMap(GameMap7);
                     BoxPass = 2;
                     m_RemainingSteps = 30;
                     m_PRM->SetRemainingStepsText(std::to_string(m_RemainingSteps));
                     break;
-                case Phase::LEVEL8:
+                case Phase::LEVEL18:
                     InitializeMap(GameMap8);
                     BoxPass = 2;
                     m_RemainingSteps = 50;
                     m_PRM->SetRemainingStepsText(std::to_string(m_RemainingSteps));
                     break;
-                case Phase::LEVEL9:
+                case Phase::LEVEL19:
                     InitializeMap(GameMap9);
                     BoxPass = 2;
                     m_RemainingSteps = 20;
                     m_PRM->SetRemainingStepsText(std::to_string(m_RemainingSteps));
                     break;
-                case Phase::LEVEL10:
+                case Phase::LEVEL20:
                     InitializeMap(GameMap10);
                     BoxPass = 2;
                     m_RemainingSteps = 25;
                     m_PRM->SetRemainingStepsText(std::to_string(m_RemainingSteps));
                     break;
+
                 default:
                     // 默認
                     ValidTask();
