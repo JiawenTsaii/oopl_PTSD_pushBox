@@ -6,7 +6,7 @@
 
 void App::Start() {
     LOG_TRACE("Start");
-	std::cout << "Start" << std::endl;
+	//std::cout << "Start" << std::endl;
     
     /* Phase Resource Manager */
     m_PRM = std::make_shared<PhaseResourceManager>();
@@ -14,7 +14,7 @@ void App::Start() {
 
     // 初始化剩餘步數
     m_RemainingSteps = 100;
-    m_PRM->GetRemainingStepsText()->UpdatePosition(0.0F, -250.0F);
+    m_PRM->GetRemainingStepsText()->UpdatePosition(0.0F, 150.0F);
 	m_PRM->GetRemainingStepsText()->SetVisible(false);
     m_PRM->SetRemainingStepsText(std::to_string(m_RemainingSteps));
 

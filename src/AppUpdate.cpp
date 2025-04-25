@@ -107,7 +107,7 @@ void App::Update() {
                         (mousePos.y) * -1 >= (boxPos.y - 25.0) && (mousePos.y) * -1 <= (boxPos.y + 25.0)) {
                         // 設置選中的關卡
                         m_SelectedLevel = i + 1;
-                        std::cout << "m_SelectedLevel: " << m_SelectedLevel << std::endl;
+                        //std::cout << "m_SelectedLevel: " << m_SelectedLevel << std::endl;
 
                         // 模擬按下Shift確認選擇
                         shiftKeyPressed = true;
@@ -133,47 +133,47 @@ void App::Update() {
                     break;
                 case 2:
                     m_Phase = Phase::LEVEL1;
-                    TextLevel = 1;
+                    TextLevel = m_SelectedLevel - 1;
                     ValidTask();
                     break;
                 case 3:
                     m_Phase = Phase::LEVEL2;
-                    TextLevel = 2;
+                    TextLevel = m_SelectedLevel - 1;
                     ValidTask();
                     break;
                 case 4:
                     m_Phase = Phase::LEVEL3;
-                    TextLevel = 3;
+                    TextLevel = m_SelectedLevel - 1;
                     ValidTask();
                     break;
                 case 5:
                     m_Phase = Phase::LEVEL4;
-                    TextLevel = 4;
+                    TextLevel = m_SelectedLevel - 1;
                     ValidTask();
                     break;
                 case 6:
                     m_Phase = Phase::LEVEL5;
-                    TextLevel = 5;
+                    TextLevel = m_SelectedLevel - 1;
                     ValidTask();
                     break;
                 case 7:
                     m_Phase = Phase::LEVEL6;
-                    TextLevel = 6;
+                    TextLevel = m_SelectedLevel - 1;
                     ValidTask();
                     break;
                 case 8:
                     m_Phase = Phase::LEVEL7;
-                    TextLevel = 7;
+                    TextLevel = m_SelectedLevel - 1;
                     ValidTask();
                     break;
                 case 9:
                     m_Phase = Phase::LEVEL8;
-                    TextLevel = 8;
+                    TextLevel = m_SelectedLevel - 1;
                     ValidTask();
                     break;
                 case 10:
                     m_Phase = Phase::LEVEL9;
-                    TextLevel = 9;
+                    TextLevel = m_SelectedLevel - 1;
                     ValidTask();
                     break;
                 break;
@@ -193,6 +193,7 @@ void App::Update() {
 
     /* 遊戲中返回關卡選擇畫面 */
     else if (m_Phase != Phase::MENU && m_Phase != Phase::LEVELSELECT) {
+        
         if (Util::Input::IsKeyPressed(Util::Keycode::BACKSPACE) ||
             (mouseLeftButtonDown && Util::Input::GetCursorPosition().x < -130 && Util::Input::GetCursorPosition().y < -270)) {
 
@@ -209,8 +210,6 @@ void App::Update() {
 
             // 回去LEVELSELECT (按下Backspace鍵或點擊左上角區域)
             m_PRM->SetImage(RESOURCE_DIR"/Background/bg_level.png");
-
-            //m_PRM->ShowLevelBoxes(true);  // 顯示箱子
 
             // 只顯示到目前已破關的關卡數量的箱子
             m_PRM->ShowLevelBoxes(false);  // 先隱藏所有箱子
@@ -246,8 +245,18 @@ void App::Update() {
 
             keyProcessed = true; // 有按過按鍵了
         }
+
         // 檢查滑鼠是否點擊了右上角的重置按鈕
         else if (mouseLeftButtonDown && Util::Input::GetCursorPosition().x > 130 && Util::Input::GetCursorPosition().y < -270) {
+            
+            isPlayerOnCheck = false;
+            m_PlayerPosition_i = 0;
+            m_PlayerPosition_j = 0;
+            BoxOnCheckCount = 0;
+            isBoxOnCheck.clear();
+
+            m_LevelCompleted = false;
+            
             // 重新初始化當前關卡
             switch (m_Phase) {
                 case Phase::LEVEL1:
@@ -315,9 +324,6 @@ void App::Update() {
                     ValidTask();
                     break;
             }
-            BoxOnCheckCount = 0;
-            isPlayerOnCheck = false;
-            m_LevelCompleted = false;
         }
     }
 
@@ -327,7 +333,8 @@ void App::Update() {
     /* 遊戲 */
     bool needUpdate = false;
 
-    if (m_Phase != Phase::MENU && m_Phase != Phase::LEVELSELECT) {
+    if (m_Phase != Phase::MENU && m_Phase != Phase::LEVELSELECT && m_Phase != Phase::END) {
+
         if (m_Player) { // 人物
             m_Player->SetVisible(true);
         }
@@ -376,16 +383,16 @@ void App::Update() {
             
             /* 檢查所有的目標點都有箱子 */
             if (BoxOnCheckCount >= BoxPass) {
-                std::cout << "Win! All targets are covered with boxes." << std::endl;
+                //std::cout << "Win! All targets are covered with boxes." << std::endl;
                 ValidTask(); // 跳到下一關
                 BoxOnCheckCount = 0;
             } else {
-                std::cout << "current level not finish yet" << std::endl;
+                //std::cout << "current level not finish yet" << std::endl;
             }
 
             /* 檢查剩餘步數是否>=0 */
             if (m_RemainingSteps == 0) {
-                m_Phase = Phase::LEVEL30;
+				m_Phase = Phase::LEVEL30;
                 Lose = true;
                 ValidTask();
             }
@@ -437,12 +444,12 @@ void App::Update() {
                         m_CurrentMaxLevel = currentLevel + 1;
                     }
 
-                    std::cout << "Win! Proceed to next level" << std::endl;
+                    //std::cout << "Win! Proceed to next level" << std::endl;
                     // 跳到下一關卡
                     m_PhaseChanged = false; // 重置狀態以允許切換關卡
                     ValidTask();
                 } else {
-                    std::cout << "Current level not finish yet" << std::endl;
+                    //std::cout << "Current level not finish yet" << std::endl;
                     // 這裡可以加入視覺提示或其他反饋
                 }
             }
@@ -894,7 +901,7 @@ void App::Update() {
     }
 
     if (Util::Input::IsKeyPressed(Util::Keycode::RETURN) && !m_PhaseChanged) {
-        std::cout << "RETURN" << std::endl;
+        //std::cout << "RETURN" << std::endl;
 
         // 在LEVELSELECT按下Enter不做任何事情
         if (m_Phase == Phase::LEVELSELECT) {

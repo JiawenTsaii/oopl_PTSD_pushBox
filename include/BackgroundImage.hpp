@@ -10,7 +10,7 @@ class BackgroundImage : public Util::GameObject {
 public:
     BackgroundImage() : GameObject(
         std::make_unique<Util::Image>(RESOURCE_DIR"/Background/bg_menu.png"), -10) {
-        std::cout << "Creating BackgroundImage" << std::endl;
+        //std::cout << "Creating BackgroundImage" << std::endl;
     }
 
     void NextPhase(const int phase) {

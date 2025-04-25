@@ -7,12 +7,50 @@
 
 void App::ValidTask() {
 	if (!m_PhaseChanged) {
+		
+		/* 清空地圖 */
+		for (auto& wall : m_Wall) {
+			m_Root.RemoveChild(wall);
+		}
+		m_Wall.clear();
+
+		for (auto& floor : m_Floor) {
+			m_Root.RemoveChild(floor);
+		}
+		m_Floor.clear();
+
+		if (m_Player) {
+			m_Root.RemoveChild(m_Player);
+			m_Player.reset();
+		}
+
+		for (auto& box : m_Box_vec) {
+			m_Root.RemoveChild(box);
+		}
+		m_Box_vec.clear();
+
+		for (auto& check : m_Check_vec) {
+			m_Root.RemoveChild(check);
+		}
+		m_Check_vec.clear();
+
+		for (auto& point : m_Point_vec) {
+			m_Root.RemoveChild(point);
+		}
+		m_Point_vec.clear();
+
+		isPlayerOnCheck = false;
+		m_PlayerPosition_i = 0;
+		m_PlayerPosition_j = 0;
+		BoxOnCheckCount = 0;
+		isBoxOnCheck.clear();
+
+		/* 不同關卡要做的事 */
 		switch (m_Phase) {
 			case Phase::MENU:
 				std::cout << "MENU to LEVEL" << std::endl;
 				
 				m_PRM->SetImage(RESOURCE_DIR"/Background/bg_level.png");
-				// m_PRM->ShowLevelBoxes(true);  // 顯示箱子
 				m_PRM->NextPhase();
 
 				TextLevel = 0;
@@ -59,15 +97,18 @@ void App::ValidTask() {
 				m_PRM->SetImage(RESOURCE_DIR"/Background/bg_game.png");
 				m_PRM->ShowLevelBoxes(false);
 
+				m_PRM->NextPhase();
+
 				/* 文字(第幾關) */
 				TextLevel = 0;
 				std::cout << "TextLevel+1: " << TextLevel + 1 << std::endl;
 				m_PRM->SetTaskText(TextLevel + 1);
+				m_PRM->GetTaskText()->SetVisible(true);
 
-				m_PRM->GetRemainingStepsText()->SetVisible(true);
 				m_RemainingSteps = 10; // 最多步數
 				m_PRM->SetRemainingStepsText(std::to_string(m_RemainingSteps)); // 更新步數文字
-			
+				m_PRM->GetRemainingStepsText()->SetVisible(true);
+
 				btn_return->SetVisible(true);
 				// 新增重置按鈕
 				if (!btn_reset) {
@@ -78,7 +119,7 @@ void App::ValidTask() {
 				}
 				btn_reset->SetVisible(true);
 
-				m_PRM->NextPhase();
+				
 				m_Phase = Phase::LEVEL1;
 				InitializeMap(GameMap1);
 				BoxPass = 1;
@@ -93,10 +134,11 @@ void App::ValidTask() {
 				TextLevel = 1;
 				std::cout << "TextLevel + 1: " << TextLevel + 1 << std::endl;
 				m_PRM->SetTaskText(TextLevel + 1);
+				m_PRM->GetTaskText()->SetVisible(true);
 
-				m_PRM->GetRemainingStepsText()->SetVisible(true);
 				m_RemainingSteps = 10;
 				m_PRM->SetRemainingStepsText(std::to_string(m_RemainingSteps));
+				m_PRM->GetRemainingStepsText()->SetVisible(true);
 
 				m_Phase = Phase::LEVEL2;
 				InitializeMap(GameMap2);
@@ -114,10 +156,11 @@ void App::ValidTask() {
 				TextLevel = 2;
 				std::cout << "TextLevel + 1: " << TextLevel + 1 << std::endl;
 				m_PRM->SetTaskText(TextLevel + 1);
+				m_PRM->GetTaskText()->SetVisible(true);
 
-				m_PRM->GetRemainingStepsText()->SetVisible(true);
 				m_RemainingSteps = 20;
 				m_PRM->SetRemainingStepsText(std::to_string(m_RemainingSteps));
+				m_PRM->GetRemainingStepsText()->SetVisible(true);
 
 				m_Phase = Phase::LEVEL3;
 				InitializeMap(GameMap3);
@@ -135,10 +178,11 @@ void App::ValidTask() {
 				TextLevel = 3;
 				std::cout << "TextLevel + 1: " << TextLevel + 1 << std::endl;
 				m_PRM->SetTaskText(TextLevel + 1);
+				m_PRM->GetTaskText()->SetVisible(true);
 
-				m_PRM->GetRemainingStepsText()->SetVisible(true);
 				m_RemainingSteps = 25;
 				m_PRM->SetRemainingStepsText(std::to_string(m_RemainingSteps));
+				m_PRM->GetRemainingStepsText()->SetVisible(true);
 
 				m_Phase = Phase::LEVEL4;
 				InitializeMap(GameMap4);
@@ -156,10 +200,11 @@ void App::ValidTask() {
 				TextLevel = 4;
 				std::cout << "TextLevel + 1: " << TextLevel + 1 << std::endl;
 				m_PRM->SetTaskText(TextLevel + 1);
+				m_PRM->GetTaskText()->SetVisible(true);
 
-				m_PRM->GetRemainingStepsText()->SetVisible(true);
 				m_RemainingSteps = 40;
 				m_PRM->SetRemainingStepsText(std::to_string(m_RemainingSteps));
+				m_PRM->GetRemainingStepsText()->SetVisible(true);
 
 				m_Phase = Phase::LEVEL5;
 				InitializeMap(GameMap5);
@@ -177,10 +222,11 @@ void App::ValidTask() {
 				TextLevel = 5;
 				std::cout << "TextLevel + 1: " << TextLevel + 1 << std::endl;
 				m_PRM->SetTaskText(TextLevel + 1);
+				m_PRM->GetTaskText()->SetVisible(true);
 
-				m_PRM->GetRemainingStepsText()->SetVisible(true);
 				m_RemainingSteps = 30;
 				m_PRM->SetRemainingStepsText(std::to_string(m_RemainingSteps));
+				m_PRM->GetRemainingStepsText()->SetVisible(true);
 
 				m_Phase = Phase::LEVEL6;
 				InitializeMap(GameMap6);
@@ -198,10 +244,11 @@ void App::ValidTask() {
 				TextLevel = 6;
 				std::cout << "TextLevel + 1: " << TextLevel + 1 << std::endl;
 				m_PRM->SetTaskText(TextLevel + 1);
+				m_PRM->GetTaskText()->SetVisible(true);
 
-				m_PRM->GetRemainingStepsText()->SetVisible(true);
 				m_RemainingSteps = 30;
 				m_PRM->SetRemainingStepsText(std::to_string(m_RemainingSteps));
+				m_PRM->GetRemainingStepsText()->SetVisible(true);
 
 				m_Phase = Phase::LEVEL7;
 				InitializeMap(GameMap7);
@@ -219,10 +266,11 @@ void App::ValidTask() {
 				TextLevel = 7;
 				std::cout << "TextLevel + 1: " << TextLevel + 1 << std::endl;
 				m_PRM->SetTaskText(TextLevel + 1);
+				m_PRM->GetTaskText()->SetVisible(true);
 
-				m_PRM->GetRemainingStepsText()->SetVisible(true);
 				m_RemainingSteps = 50;
 				m_PRM->SetRemainingStepsText(std::to_string(m_RemainingSteps));
+				m_PRM->GetRemainingStepsText()->SetVisible(true);
 
 				m_Phase = Phase::LEVEL8;
 				InitializeMap(GameMap8);
@@ -240,10 +288,11 @@ void App::ValidTask() {
 				TextLevel = 8;
 				std::cout << "TextLevel + 1: " << TextLevel + 1 << std::endl;
 				m_PRM->SetTaskText(TextLevel + 1);
+				m_PRM->GetTaskText()->SetVisible(true);
 
-				m_PRM->GetRemainingStepsText()->SetVisible(true);
 				m_RemainingSteps = 20;
 				m_PRM->SetRemainingStepsText(std::to_string(m_RemainingSteps));
+				m_PRM->GetRemainingStepsText()->SetVisible(true);
 
 				m_Phase = Phase::LEVEL9;
 				InitializeMap(GameMap9);
@@ -261,10 +310,11 @@ void App::ValidTask() {
 				TextLevel = 9;
 				std::cout << "TextLevel + 1: " << TextLevel + 1 << std::endl;
 				m_PRM->SetTaskText(TextLevel + 1);
+				m_PRM->GetTaskText()->SetVisible(true);
 
-				m_PRM->GetRemainingStepsText()->SetVisible(true);
 				m_RemainingSteps = 25;
 				m_PRM->SetRemainingStepsText(std::to_string(m_RemainingSteps));
+				m_PRM->GetRemainingStepsText()->SetVisible(true);
 
 				m_Phase = Phase::LEVEL10;
 				InitializeMap(GameMap10);
@@ -277,7 +327,7 @@ void App::ValidTask() {
 
 			case Phase::LEVEL30:
 				std::cout << "Game Over! No remaining steps." << std::endl;
-				m_Phase = Phase::END; // 遊戲結束
+				
 				
 				if (Lose) { // 輸了
 					m_PRM->SetImage(RESOURCE_DIR"/Background/bg_lose.png");
@@ -307,6 +357,8 @@ void App::ValidTask() {
 				for (auto& check : m_Check_vec) { // 勾勾
 					check->SetVisible(false);
 				}
+
+				m_Phase = Phase::END; // 遊戲結束
 
 				break;
 
