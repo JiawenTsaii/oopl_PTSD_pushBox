@@ -128,42 +128,52 @@ void App::Update() {
 
                 case 1:
                     m_Phase = Phase::LEVELSELECT;
+                    TextLevel = 0;
                     ValidTask();
                     break;
                 case 2:
                     m_Phase = Phase::LEVEL1;
+                    TextLevel = 1;
                     ValidTask();
                     break;
                 case 3:
                     m_Phase = Phase::LEVEL2;
+                    TextLevel = 2;
                     ValidTask();
                     break;
                 case 4:
                     m_Phase = Phase::LEVEL3;
+                    TextLevel = 3;
                     ValidTask();
                     break;
                 case 5:
                     m_Phase = Phase::LEVEL4;
+                    TextLevel = 4;
                     ValidTask();
                     break;
                 case 6:
                     m_Phase = Phase::LEVEL5;
+                    TextLevel = 5;
                     ValidTask();
                     break;
                 case 7:
                     m_Phase = Phase::LEVEL6;
+                    TextLevel = 6;
                     ValidTask();
                     break;
                 case 8:
                     m_Phase = Phase::LEVEL7;
+                    TextLevel = 7;
                     ValidTask();
                     break;
                 case 9:
                     m_Phase = Phase::LEVEL8;
+                    TextLevel = 8;
                     ValidTask();
                     break;
                 case 10:
                     m_Phase = Phase::LEVEL9;
+                    TextLevel = 9;
                     ValidTask();
                     break;
                 break;
@@ -188,6 +198,14 @@ void App::Update() {
 
             btn_return->SetVisible(false); // 返回鍵消失
             btn_reset->SetVisible(false);
+
+            // LEVEL ? 消失
+            TextLevel = 0;
+            std::cout << "TextLevel: " << TextLevel << std::endl;
+            m_PRM->SetTaskText(TextLevel);
+
+            // 剩餘步數消失
+            m_PRM->GetRemainingStepsText()->SetVisible(false);
 
             // 回去LEVELSELECT (按下Backspace鍵或點擊左上角區域)
             m_PRM->SetImage(RESOURCE_DIR"/Background/bg_level.png");
@@ -235,16 +253,63 @@ void App::Update() {
                 case Phase::LEVEL1:
                     InitializeMap(GameMap1);
                     BoxPass = 1;
+					m_RemainingSteps = 10; // 重置步數
+                    m_PRM->SetRemainingStepsText(std::to_string(m_RemainingSteps));
                     break;
                 case Phase::LEVEL2:
                     InitializeMap(GameMap2);
                     BoxPass = 1;
+                    m_RemainingSteps = 10;
+                    m_PRM->SetRemainingStepsText(std::to_string(m_RemainingSteps));
                     break;
                 case Phase::LEVEL3:
                     InitializeMap(GameMap3);
                     BoxPass = 2;
+                    m_RemainingSteps = 20;
+                    m_PRM->SetRemainingStepsText(std::to_string(m_RemainingSteps));
                     break;
-                // ...其他關卡
+                case Phase::LEVEL4:
+                    InitializeMap(GameMap4);
+                    BoxPass = 2;
+                    m_RemainingSteps = 25;
+                    m_PRM->SetRemainingStepsText(std::to_string(m_RemainingSteps));
+                    break;
+                case Phase::LEVEL5:
+                    InitializeMap(GameMap5);
+                    BoxPass = 2;
+                    m_RemainingSteps = 40;
+                    m_PRM->SetRemainingStepsText(std::to_string(m_RemainingSteps));
+                    break;
+                case Phase::LEVEL6:
+                    InitializeMap(GameMap6);
+                    BoxPass = 2;
+                    m_RemainingSteps = 30;
+                    m_PRM->SetRemainingStepsText(std::to_string(m_RemainingSteps));
+                    break;
+                case Phase::LEVEL7:
+                    InitializeMap(GameMap7);
+                    BoxPass = 2;
+                    m_RemainingSteps = 30;
+                    m_PRM->SetRemainingStepsText(std::to_string(m_RemainingSteps));
+                    break;
+                case Phase::LEVEL8:
+                    InitializeMap(GameMap8);
+                    BoxPass = 2;
+                    m_RemainingSteps = 50;
+                    m_PRM->SetRemainingStepsText(std::to_string(m_RemainingSteps));
+                    break;
+                case Phase::LEVEL9:
+                    InitializeMap(GameMap9);
+                    BoxPass = 2;
+                    m_RemainingSteps = 20;
+                    m_PRM->SetRemainingStepsText(std::to_string(m_RemainingSteps));
+                    break;
+                case Phase::LEVEL10:
+                    InitializeMap(GameMap10);
+                    BoxPass = 2;
+                    m_RemainingSteps = 25;
+                    m_PRM->SetRemainingStepsText(std::to_string(m_RemainingSteps));
+                    break;
                 default:
                     // 默認
                     ValidTask();
@@ -255,6 +320,9 @@ void App::Update() {
             m_LevelCompleted = false;
         }
     }
+
+    /* 步數限制 */
+    bool StepKeyProcessed = false;
 
     /* 遊戲 */
     bool needUpdate = false;
@@ -302,15 +370,24 @@ void App::Update() {
 	int RIGHT_SetPosition_j = 0;
 
     if ((Util::Input::IsKeyPressed(Util::Keycode::UP)) || (Util::Input::IsKeyPressed(Util::Keycode::DOWN)) || (Util::Input::IsKeyPressed(Util::Keycode::LEFT)) || (Util::Input::IsKeyPressed(Util::Keycode::RIGHT))) {
+
         // 每移動一步就偵測一次
         if (m_Phase != Phase::LEVELSELECT && m_Phase != Phase::MENU && m_Phase != Phase::END) {
-            // 檢查所有的目標點都有箱子
+            
+            /* 檢查所有的目標點都有箱子 */
             if (BoxOnCheckCount >= BoxPass) {
                 std::cout << "Win! All targets are covered with boxes." << std::endl;
                 ValidTask(); // 跳到下一關
                 BoxOnCheckCount = 0;
             } else {
                 std::cout << "current level not finish yet" << std::endl;
+            }
+
+            /* 檢查剩餘步數是否>=0 */
+            if (m_RemainingSteps == 0) {
+                m_Phase = Phase::LEVEL30;
+                Lose = true;
+                ValidTask();
             }
         }
 
@@ -381,6 +458,22 @@ void App::Update() {
                         /* 人的上面是空地 (1、2) */
                         if (m_GameMap[i + GameMap_i][j + GameMap_j] == 2) {
 
+                            /* 步數限制 */
+                            if ((Util::Input::IsKeyDown(Util::Keycode::UP)) ||
+                                (Util::Input::IsKeyDown(Util::Keycode::DOWN)) ||
+                                (Util::Input::IsKeyDown(Util::Keycode::LEFT)) ||
+                                (Util::Input::IsKeyDown(Util::Keycode::RIGHT))) {
+
+                                if (!StepKeyProcessed) {
+                                    m_RemainingSteps--; // 每次移動步數減1
+                                    m_PRM->SetRemainingStepsText(std::to_string(m_RemainingSteps));
+                                    StepKeyProcessed = true; // 標記按鍵已處理
+                                }
+                            }
+                            else {
+                                StepKeyProcessed = false; // 當按鍵釋放時，重置標記
+                            }
+
                             /* 人不在目標點上 */
                             if (!isPlayerOnCheck) {
                                 m_GameMap[i][j] = 2; // 目前位置設為空地
@@ -403,6 +496,22 @@ void App::Update() {
 
                                 /* 箱子上面是空地 (3、4) */
                                 if (m_GameMap[i + (GameMap_i * 2)][j + (GameMap_j * 2)] == 2) {
+
+                                    /* 步數限制 */
+                                    if ((Util::Input::IsKeyDown(Util::Keycode::UP)) ||
+                                        (Util::Input::IsKeyDown(Util::Keycode::DOWN)) ||
+                                        (Util::Input::IsKeyDown(Util::Keycode::LEFT)) ||
+                                        (Util::Input::IsKeyDown(Util::Keycode::RIGHT))) {
+
+                                        if (!StepKeyProcessed) {
+                                            m_RemainingSteps--; // 每次移動步數減1
+                                            m_PRM->SetRemainingStepsText(std::to_string(m_RemainingSteps));
+                                            StepKeyProcessed = true; // 標記按鍵已處理
+                                        }
+                                    }
+                                    else {
+                                        StepKeyProcessed = false; // 當按鍵釋放時，重置標記
+                                    }
 
                                     /* 人不在目標點上 */
                                     if (!isPlayerOnCheck) {
@@ -430,6 +539,22 @@ void App::Update() {
 
                                 /* 箱子上面是目標點 (5、6) */
                                 else if (m_GameMap[i + (GameMap_i * 2)][j + (GameMap_j * 2)] == 5) {
+
+                                    /* 步數限制 */
+                                    if ((Util::Input::IsKeyDown(Util::Keycode::UP)) ||
+                                        (Util::Input::IsKeyDown(Util::Keycode::DOWN)) ||
+                                        (Util::Input::IsKeyDown(Util::Keycode::LEFT)) ||
+                                        (Util::Input::IsKeyDown(Util::Keycode::RIGHT))) {
+
+                                        if (!StepKeyProcessed) {
+                                            m_RemainingSteps--; // 每次移動步數減1
+                                            m_PRM->SetRemainingStepsText(std::to_string(m_RemainingSteps));
+                                            StepKeyProcessed = true; // 標記按鍵已處理
+                                        }
+                                    }
+                                    else {
+                                        StepKeyProcessed = false; // 當按鍵釋放時，重置標記
+                                    }
 
                                     /* 人不在目標點上 */
                                     if (!isPlayerOnCheck) {
@@ -495,6 +620,22 @@ void App::Update() {
                                             /* 上面的上面那個箱子踩在另一個目標點上 (9) */
                                             if (isBoxOnCheck[j]) {
 
+                                                /* 步數限制 */
+                                                if ((Util::Input::IsKeyDown(Util::Keycode::UP)) ||
+                                                    (Util::Input::IsKeyDown(Util::Keycode::DOWN)) ||
+                                                    (Util::Input::IsKeyDown(Util::Keycode::LEFT)) ||
+                                                    (Util::Input::IsKeyDown(Util::Keycode::RIGHT))) {
+
+                                                    if (!StepKeyProcessed) {
+                                                        m_RemainingSteps--; // 每次移動步數減1
+                                                        m_PRM->SetRemainingStepsText(std::to_string(m_RemainingSteps));
+                                                        StepKeyProcessed = true; // 標記按鍵已處理
+                                                    }
+                                                }
+                                                else {
+                                                    StepKeyProcessed = false; // 當按鍵釋放時，重置標記
+                                                }
+
                                                 // GameMap
                                                 m_GameMap[i][j] = 2; // 目前位置設為空地
                                                 m_GameMap[i + (GameMap_i * 3)][j + (GameMap_j * 3)] = 3; // 上面三格設為箱子
@@ -520,6 +661,22 @@ void App::Update() {
 
                                             /* 上面的上面那個箱子沒有踩在另一個目標點上 (10、11) */
                                             else {
+
+                                                /* 步數限制 */
+                                                if ((Util::Input::IsKeyDown(Util::Keycode::UP)) ||
+                                                    (Util::Input::IsKeyDown(Util::Keycode::DOWN)) ||
+                                                    (Util::Input::IsKeyDown(Util::Keycode::LEFT)) ||
+                                                    (Util::Input::IsKeyDown(Util::Keycode::RIGHT))) {
+
+                                                    if (!StepKeyProcessed) {
+                                                        m_RemainingSteps--; // 每次移動步數減1
+                                                        m_PRM->SetRemainingStepsText(std::to_string(m_RemainingSteps));
+                                                        StepKeyProcessed = true; // 標記按鍵已處理
+                                                    }
+                                                }
+                                                else {
+                                                    StepKeyProcessed = false; // 當按鍵釋放時，重置標記
+                                                }
 
                                                 if (!isPlayerOnCheck) {
                                                     m_GameMap[i][j] = 2; // 目前位置設為空地
@@ -563,6 +720,22 @@ void App::Update() {
                                         /* 目標點的上面是空地 (12、13) */
                                         if (m_GameMap[i + (GameMap_i * 2)][j + (GameMap_j * 2)] == 2) {
 
+                                            /* 步數限制 */
+                                            if ((Util::Input::IsKeyDown(Util::Keycode::UP)) ||
+                                                (Util::Input::IsKeyDown(Util::Keycode::DOWN)) ||
+                                                (Util::Input::IsKeyDown(Util::Keycode::LEFT)) ||
+                                                (Util::Input::IsKeyDown(Util::Keycode::RIGHT))) {
+
+                                                if (!StepKeyProcessed) {
+                                                    m_RemainingSteps--; // 每次移動步數減1
+                                                    m_PRM->SetRemainingStepsText(std::to_string(m_RemainingSteps));
+                                                    StepKeyProcessed = true; // 標記按鍵已處理
+                                                }
+                                            }
+                                            else {
+                                                StepKeyProcessed = false; // 當按鍵釋放時，重置標記
+                                            }
+
                                             if (!isPlayerOnCheck) {
                                                 m_GameMap[i][j] = 2; // 目前位置設為空地
                                             }
@@ -596,6 +769,22 @@ void App::Update() {
 
                                         /* 目標點的上面是另一個目標點 (14) */
                                         else if (m_GameMap[i + (GameMap_i * 2)][j + (GameMap_j * 2)] == 5) {
+
+                                            /* 步數限制 */
+                                            if ((Util::Input::IsKeyDown(Util::Keycode::UP)) ||
+                                                (Util::Input::IsKeyDown(Util::Keycode::DOWN)) ||
+                                                (Util::Input::IsKeyDown(Util::Keycode::LEFT)) ||
+                                                (Util::Input::IsKeyDown(Util::Keycode::RIGHT))) {
+
+                                                if (!StepKeyProcessed) {
+                                                    m_RemainingSteps--; // 每次移動步數減1
+                                                    m_PRM->SetRemainingStepsText(std::to_string(m_RemainingSteps));
+                                                    StepKeyProcessed = true; // 標記按鍵已處理
+                                                }
+                                            }
+                                            else {
+                                                StepKeyProcessed = false; // 當按鍵釋放時，重置標記
+                                            }
 
                                             // GameMap
                                             m_GameMap[i][j] = 2; // 目前位置設為空地
@@ -648,6 +837,22 @@ void App::Update() {
                             /* 目標點上沒箱子 (7、8) */
                             if (!needUpdate) {
 
+                                /* 步數限制 */
+                                if ((Util::Input::IsKeyDown(Util::Keycode::UP)) ||
+                                    (Util::Input::IsKeyDown(Util::Keycode::DOWN)) ||
+                                    (Util::Input::IsKeyDown(Util::Keycode::LEFT)) ||
+                                    (Util::Input::IsKeyDown(Util::Keycode::RIGHT))) {
+
+                                    if (!StepKeyProcessed) {
+                                        m_RemainingSteps--; // 每次移動步數減1
+                                        m_PRM->SetRemainingStepsText(std::to_string(m_RemainingSteps));
+                                        StepKeyProcessed = true; // 標記按鍵已處理
+                                    }
+                                }
+                                else {
+                                    StepKeyProcessed = false; // 當按鍵釋放時，重置標記
+                                }
+
                                 if (!isPlayerOnCheck) {
                                     m_GameMap[i][j] = 2; // 將當前位置設為空地
                                 }
@@ -694,20 +899,6 @@ void App::Update() {
         // 在LEVELSELECT按下Enter不做任何事情
         if (m_Phase == Phase::LEVELSELECT) {
         }
-    // }
-    // if (Util::Input::IsKeyPressed(Util::Keycode::UP) && m_PhaseChanged) {
-        // 按下Enter檢查是否過關、過關就換到下一關的畫面 沒過關就會跳出通知並留在原本的關卡頁
-        // else if (m_Phase != Phase::LEVELSELECT && m_Phase != Phase::MENU && m_Phase != Phase::END) {
-        //
-        //     // 檢查所有的目標點都有箱子
-        //     if (BoxOnCheckCount >= BoxPass) {
-        //         std::cout << "Win! All targets are covered with boxes." << std::endl;
-        //         ValidTask(); // 跳到下一關
-        //         BoxOnCheckCount = 0;
-        //     } else {
-        //         std::cout << "current level not finish yet" << std::endl;
-        //     }
-        // }
         else {
             // 其他情況下按Enter才執行ValidTask()
             ValidTask();

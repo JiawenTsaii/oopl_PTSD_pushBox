@@ -20,15 +20,18 @@ class PhaseResourceManager {
 public:
 	PhaseResourceManager();
 
-	//void SetRoot(Util::GameObject& root);
-
 	[[nodiscard]] std::vector<std::shared_ptr<Util::GameObject>> GetChildren() const {
-		return { m_Background };
+		return { m_TaskText, m_Background, m_RemainingStepsText };
 	}
 	[[nodiscard]] std::vector<std::shared_ptr<Character>> GetLevelBoxes() const;
 
 	void NextPhase();
 	void SetImage(const std::string& filepath);
+	void SetTaskText(int TextLevel);
+	void SetRemainingStepsText(const std::string& m_RemainingSteps);
+
+	std::shared_ptr<TaskText> GetRemainingStepsText() const;
+	std::shared_ptr<TaskText> GetTaskText() const;
 
 	void CreateLevelBoxes();
 	void AddNextLevelBox();
@@ -46,6 +49,10 @@ public:
 
 private:
 	std::shared_ptr<BackgroundImage> m_Background;
+	std::shared_ptr<TaskText> m_TaskText;
+
+	std::shared_ptr<TaskText> m_RemainingStepsText; // 用於顯示剩餘步數的 TaskText 物件
+
 	std::vector<std::shared_ptr<Character>> m_LevelBoxes;
 
 	Util::Renderer m_pRoot;

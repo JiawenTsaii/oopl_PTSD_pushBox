@@ -4,11 +4,12 @@
 #include "pch.hpp" // IWYU pragma: export
 
 #include "Util/Renderer.hpp"
-//#include "Util/Text.hpp"
+#include "Util/Text.hpp"
 
 #include "Character.hpp"
 #include "PhaseResourceManager.hpp"
 #include "AnimatedCharacter.hpp"
+#include "TaskText.hpp"
 
 class App {
 public:
@@ -99,6 +100,9 @@ private:
 	std::shared_ptr<Character> btn_return; // 返回鍵
 	std::shared_ptr<Character> btn_reset; // 重置鍵
 
+	int TextLevel = 0; // 要顯示哪個關卡的字
+    
+
     bool m_ShiftKeyWasPressed = false;
 
     /* 讀人的位置 */
@@ -115,9 +119,14 @@ private:
     bool allPointsHaveBoxes = false;
     bool m_LevelCompleted = false; // 紀錄關卡完成了沒 之後用在SELECTLEVEL階段要出線多少個箱子的部分
 
+    bool Lose = false; // 紀錄是否輸了->跳Phase::LOSE
+
     Util::Renderer m_Root;
 
     std::vector<std::vector<int>> m_GameMap;
+
+    /* 步數限制 */
+    int m_RemainingSteps = 100;   // 初始剩餘步數
 
     /* 地圖 */
     /* 0:草地 1:牆壁 2:空地 3:箱子 4:人物 5:目標點*/
