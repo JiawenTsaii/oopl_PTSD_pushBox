@@ -421,7 +421,24 @@ void App::Update() {
 	int RIGHT_SetPosition_i = 1;
 	int RIGHT_SetPosition_j = 0;
 
-    if ((Util::Input::IsKeyPressed(Util::Keycode::UP)) || (Util::Input::IsKeyPressed(Util::Keycode::DOWN)) || (Util::Input::IsKeyPressed(Util::Keycode::LEFT)) || (Util::Input::IsKeyPressed(Util::Keycode::RIGHT))) {
+    if ((Util::Input::IsKeyPressed(Util::Keycode::UP)) 
+        || (Util::Input::IsKeyPressed(Util::Keycode::DOWN)) 
+        || (Util::Input::IsKeyPressed(Util::Keycode::LEFT)) 
+        || (Util::Input::IsKeyPressed(Util::Keycode::RIGHT))) {
+
+        /* 換角色圖片 */
+        if (Util::Input::IsKeyPressed(Util::Keycode::UP)) {
+			m_Player->SetImage(RESOURCE_DIR"/Object/Player/player_up.png");
+		}
+		else if (Util::Input::IsKeyPressed(Util::Keycode::DOWN)) {
+			m_Player->SetImage(RESOURCE_DIR"/Object/Player/player_down.png");
+		}
+		else if (Util::Input::IsKeyPressed(Util::Keycode::LEFT)) {
+			m_Player->SetImage(RESOURCE_DIR"/Object/Player/player_left.png");
+		}
+		else if (Util::Input::IsKeyPressed(Util::Keycode::RIGHT)) {
+			m_Player->SetImage(RESOURCE_DIR"/Object/Player/player_right.png");
+        }
 
         // 每移動一步就偵測一次
         if (m_Phase != Phase::LEVELSELECT && m_Phase != Phase::MENU && m_Phase != Phase::END) {
