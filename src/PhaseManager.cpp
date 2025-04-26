@@ -19,13 +19,13 @@ PhaseResourceManager::PhaseResourceManager() {
 void PhaseResourceManager::NextPhase() {
 	// 如果正在轉到關卡選擇階段
 	if (m_Phase == 0) {  // 假設0是從menu到level
-		std::cout << "CreateLevelBoxes()" << std::endl;
+		//std::cout << "CreateLevelBoxes()" << std::endl;
 		CreateLevelBoxes();
 	}
 
-    std::cout << "Now phase: " << m_Phase << std::endl;
+    //std::cout << "Now phase: " << m_Phase << std::endl;
     m_Phase++;
-	std::cout << "Next phase: " << m_Phase << std::endl;
+	//std::cout << "Next phase: " << m_Phase << std::endl;
 }
 
 void PhaseResourceManager::SetImage(const std::string& filepath) {
@@ -58,7 +58,7 @@ void PhaseResourceManager::AddNextLevelBox() {
 	// 箱子編號從1開始
 	int boxNumber = m_AddedBoxCount + 1;
 	std::string boxImagePath = RESOURCE_DIR"/Object/LevelBox/b" + std::to_string(boxNumber) + ".png";
-	std::cout << "Loading image: " << boxImagePath << std::endl;
+	//std::cout << "Loading image: " << boxImagePath << std::endl;
 
 	auto box = std::make_shared<Character>(boxImagePath);
 	box->SetZIndex(50);
@@ -72,7 +72,7 @@ void PhaseResourceManager::AddNextLevelBox() {
 	// box->SetPosition(position);
 	box->SetPosition({ -132 + col * 65.5, 150 - row * 65.5 });
 
-	std::cout << "Box " << boxNumber << " position: " << box->GetPosition().x << ", " << box->GetPosition().y << std::endl;
+	//std::cout << "Box " << boxNumber << " position: " << box->GetPosition().x << ", " << box->GetPosition().y << std::endl;
 
 	m_LevelBoxes.push_back(box);
 	// std::cout << "Adding box " << boxNumber << " to root node" << std::endl;

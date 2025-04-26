@@ -23,19 +23,19 @@ public:
     }
 
     void NextPhase(const int phase) {
-        std::cout << "NextPhase" << std::endl;
+        //std::cout << "NextPhase" << std::endl;
         auto temp = std::dynamic_pointer_cast<Util::Text>(m_Drawable);
         temp->SetText(append_string_views(s_PhaseTasks[phase], s_Validation));
     }
 
     void SetText(const std::string& text) {
-        std::cout << "SetText" << std::endl;
+        //std::cout << "SetText" << std::endl;
         auto temp = std::dynamic_pointer_cast<Util::Text>(m_Drawable);
         temp->SetText(text);
     }
 
     void UpdatePosition(float x, float y) { // 更新位置
-        std::cout << "UpdatePosition" << std::endl;
+        //std::cout << "UpdatePosition" << std::endl;
         m_Transform.translation = { x, y }; 
     }
 
