@@ -20,7 +20,7 @@ void App::Update() {
     bool mouseLeftButtonDown = Util::Input::IsKeyDown(Util::Keycode::MOUSE_LB);
 
     // 檢測Shift鍵的按下，用於確認關卡選擇
-    bool shiftKeyPressed = Util::Input::IsKeyPressed(Util::Keycode::LSHIFT) || Util::Input::IsKeyPressed(Util::Keycode::RSHIFT);
+    //bool shiftKeyPressed = Util::Input::IsKeyPressed(Util::Keycode::LSHIFT) || Util::Input::IsKeyPressed(Util::Keycode::RSHIFT);
 
     // 這裡是對Phase::MENU按下滑鼠也能跳到下一個頁面的東東
     if (m_Phase == Phase::MENU && mouseLeftButtonDown) {
@@ -42,21 +42,23 @@ void App::Update() {
         /* [special] 作弊模式 */
 
         // 第1~10關
-        // 普通的輸入數字 (0代表10)
-        if (Util::Input::IsKeyPressed(Util::Keycode::NUM_1)) m_SelectedLevel = 1;
-        else if (Util::Input::IsKeyPressed(Util::Keycode::NUM_2)) m_SelectedLevel = 2;
-        else if (Util::Input::IsKeyPressed(Util::Keycode::NUM_3)) m_SelectedLevel = 3;
-        else if (Util::Input::IsKeyPressed(Util::Keycode::NUM_4)) m_SelectedLevel = 4;
-        else if (Util::Input::IsKeyPressed(Util::Keycode::NUM_5)) m_SelectedLevel = 5;
-        else if (Util::Input::IsKeyPressed(Util::Keycode::NUM_6)) m_SelectedLevel = 6;
-        else if (Util::Input::IsKeyPressed(Util::Keycode::NUM_7)) m_SelectedLevel = 7;
-        else if (Util::Input::IsKeyPressed(Util::Keycode::NUM_8)) m_SelectedLevel = 8;
-        else if (Util::Input::IsKeyPressed(Util::Keycode::NUM_9)) m_SelectedLevel = 9;
-        else if (Util::Input::IsKeyPressed(Util::Keycode::NUM_0)) m_SelectedLevel = 10;
+        // F1 + num
+        if (Util::Input::IsKeyPressed(Util::Keycode::F1)) {
+            if (Util::Input::IsKeyPressed(Util::Keycode::NUM_1)) m_SelectedLevel = 1;
+            else if (Util::Input::IsKeyPressed(Util::Keycode::NUM_2)) m_SelectedLevel = 2;
+            else if (Util::Input::IsKeyPressed(Util::Keycode::NUM_3)) m_SelectedLevel = 3;
+            else if (Util::Input::IsKeyPressed(Util::Keycode::NUM_4)) m_SelectedLevel = 4;
+            else if (Util::Input::IsKeyPressed(Util::Keycode::NUM_5)) m_SelectedLevel = 5;
+            else if (Util::Input::IsKeyPressed(Util::Keycode::NUM_6)) m_SelectedLevel = 6;
+            else if (Util::Input::IsKeyPressed(Util::Keycode::NUM_7)) m_SelectedLevel = 7;
+            else if (Util::Input::IsKeyPressed(Util::Keycode::NUM_8)) m_SelectedLevel = 8;
+            else if (Util::Input::IsKeyPressed(Util::Keycode::NUM_9)) m_SelectedLevel = 9;
+            else if (Util::Input::IsKeyPressed(Util::Keycode::NUM_0)) m_SelectedLevel = 10;
+        }
 
 		// 11~20
-        // 按Alt+1表示11，Alt+2表示12...
-        else if (Util::Input::IsKeyPressed(Util::Keycode::LALT) || Util::Input::IsKeyPressed(Util::Keycode::RALT)) {
+        // F2 + num
+        else if (Util::Input::IsKeyPressed(Util::Keycode::F2)) {
             if (Util::Input::IsKeyPressed(Util::Keycode::NUM_1)) m_SelectedLevel = 11;
             else if (Util::Input::IsKeyPressed(Util::Keycode::NUM_2)) m_SelectedLevel = 12;
             else if (Util::Input::IsKeyPressed(Util::Keycode::NUM_3)) m_SelectedLevel = 13;
@@ -70,8 +72,8 @@ void App::Update() {
         }
 
         // 21~30
-        // 按Ctrl + 1表示21，Ctrl + 2表示22...
-        else if (Util::Input::IsKeyPressed(Util::Keycode::LCTRL) || Util::Input::IsKeyPressed(Util::Keycode::RCTRL)) {
+        // F3 + num
+        else if (Util::Input::IsKeyPressed(Util::Keycode::F3)) {
             if (Util::Input::IsKeyPressed(Util::Keycode::NUM_1)) m_SelectedLevel = 21;
             else if (Util::Input::IsKeyPressed(Util::Keycode::NUM_2)) m_SelectedLevel = 22;
             else if (Util::Input::IsKeyPressed(Util::Keycode::NUM_3)) m_SelectedLevel = 23;
@@ -107,87 +109,31 @@ void App::Update() {
                         (mousePos.y) * -1 >= (boxPos.y - 25.0) && (mousePos.y) * -1 <= (boxPos.y + 25.0)) {
                         // 設置選中的關卡
                         m_SelectedLevel = i + 1;
-                        //std::cout << "m_SelectedLevel: " << m_SelectedLevel << std::endl;
-
-                        // 模擬按下Shift確認選擇
-                        shiftKeyPressed = true;
                         break;
                     }
                 }
             }
         }
 
-        // 當選定關卡後，按下Shift確認選擇
-        if (m_SelectedLevel > 0 && shiftKeyPressed) {
+        if (m_SelectedLevel > 0) {
 
             m_PRM->ShowLevelBoxes(false); // 所有關卡箱子消失
 
-            // 根據選擇的關卡設置相應的階段並初始化地圖
-            switch (m_SelectedLevel) {
-                //m_Phase設在前一關，執行ValidTask()時會跳到下一關
-
-                case 1:
-                    m_Phase = Phase::LEVELSELECT;
-                    TextLevel = 0;
-                    ValidTask();
-                    break;
-                case 2:
-                    m_Phase = Phase::LEVEL1;
-                    TextLevel = m_SelectedLevel - 1;
-                    ValidTask();
-                    break;
-                case 3:
-                    m_Phase = Phase::LEVEL2;
-                    TextLevel = m_SelectedLevel - 1;
-                    ValidTask();
-                    break;
-                case 4:
-                    m_Phase = Phase::LEVEL3;
-                    TextLevel = m_SelectedLevel - 1;
-                    ValidTask();
-                    break;
-                case 5:
-                    m_Phase = Phase::LEVEL4;
-                    TextLevel = m_SelectedLevel - 1;
-                    ValidTask();
-                    break;
-                case 6:
-                    m_Phase = Phase::LEVEL5;
-                    TextLevel = m_SelectedLevel - 1;
-                    ValidTask();
-                    break;
-                case 7:
-                    m_Phase = Phase::LEVEL6;
-                    TextLevel = m_SelectedLevel - 1;
-                    ValidTask();
-                    break;
-                case 8:
-                    m_Phase = Phase::LEVEL7;
-                    TextLevel = m_SelectedLevel - 1;
-                    ValidTask();
-                    break;
-                case 9:
-                    m_Phase = Phase::LEVEL8;
-                    TextLevel = m_SelectedLevel - 1;
-                    ValidTask();
-                    break;
-                case 10:
-                    m_Phase = Phase::LEVEL9;
-                    TextLevel = m_SelectedLevel - 1;
-                    ValidTask();
-                    break;
-                break;
-
-                // ----- 待完成更多關卡 -----
-
-                default:
-                    // 默認使用第一關地圖
-                    m_Phase = Phase::LEVELSELECT;
-                    ValidTask();
-                    break;
+            /* 根據選擇的關卡設置相應的階段並初始化地圖 */
+            if (m_SelectedLevel == 1) {
+                m_Phase = Phase::LEVELSELECT;
+                TextLevel = 0;
             }
-
-
+            else if (m_SelectedLevel >= 2 && m_SelectedLevel <= 30) {
+                m_Phase = static_cast<Phase>(static_cast<int>(Phase::LEVEL1) + (m_SelectedLevel - 2));
+                std::cout << "m_SelectedLevel-1: " << m_SelectedLevel-1 << std::endl;
+                TextLevel = m_SelectedLevel - 1;
+            }
+            else {
+                // 默認使用第一關地圖
+                m_Phase = Phase::LEVELSELECT;
+            }
+            ValidTask();
         }
     }
 
@@ -258,116 +204,36 @@ void App::Update() {
             m_LevelCompleted = false;
             
             // 重新初始化當前關卡
-            switch (m_Phase) {
+            if (m_Phase >= Phase::LEVEL1 && m_Phase <= Phase::LEVEL30) {
+                int levelIndex = static_cast<int>(m_Phase) - static_cast<int>(Phase::LEVEL1);
 
-                /* LEVEL 1~10 */
-                case Phase::LEVEL1:
-                    InitializeMap(GameMap1);
-                    BoxPass = 1;
-                    break;
-                case Phase::LEVEL2:
-                    InitializeMap(GameMap2);
-                    BoxPass = 1;
-                    break;
-                case Phase::LEVEL3:
-                    InitializeMap(GameMap3);
-                    BoxPass = 2;
-                    break;
-                case Phase::LEVEL4:
-                    InitializeMap(GameMap4);
-                    BoxPass = 2;
-                    break;
-                case Phase::LEVEL5:
-                    InitializeMap(GameMap5);
-                    BoxPass = 2;
-                    break;
-                case Phase::LEVEL6:
-                    InitializeMap(GameMap6);
-                    BoxPass = 2;
-                    break;
-                case Phase::LEVEL7:
-                    InitializeMap(GameMap7);
-                    BoxPass = 2;
-                    break;
-                case Phase::LEVEL8:
-                    InitializeMap(GameMap8);
-                    BoxPass = 2;
-                    break;
-                case Phase::LEVEL9:
-                    InitializeMap(GameMap9);
-                    BoxPass = 2;
-                    break;
-                case Phase::LEVEL10:
-                    InitializeMap(GameMap10);
-                    BoxPass = 2;
-                    break;
+                // 動態選擇對應的 GameMap
+                std::vector<std::vector<int>>* gameMaps[] = {
+                    &GameMap1, &GameMap2, &GameMap3, &GameMap4, &GameMap5,
+                    &GameMap6, &GameMap7, &GameMap8, &GameMap9, &GameMap10
+                };
 
-                /* LEVEL 11~20 */
-                case Phase::LEVEL11:
-                    InitializeMap(GameMap1);
-                    BoxPass = 1;
-                    m_RemainingSteps = 10; // 重置步數
-                    m_PRM->SetRemainingStepsText(std::to_string(m_RemainingSteps));
-                    break;
-                case Phase::LEVEL12:
-                    InitializeMap(GameMap2);
-                    BoxPass = 1;
-                    m_RemainingSteps = 10;
-                    m_PRM->SetRemainingStepsText(std::to_string(m_RemainingSteps));
-                    break;
-                case Phase::LEVEL13:
-                    InitializeMap(GameMap3);
-                    BoxPass = 2;
-                    m_RemainingSteps = 20;
-                    m_PRM->SetRemainingStepsText(std::to_string(m_RemainingSteps));
-                    break;
-                case Phase::LEVEL14:
-                    InitializeMap(GameMap4);
-                    BoxPass = 2;
-                    m_RemainingSteps = 25;
-                    m_PRM->SetRemainingStepsText(std::to_string(m_RemainingSteps));
-                    break;
-                case Phase::LEVEL15:
-                    InitializeMap(GameMap5);
-                    BoxPass = 2;
-                    m_RemainingSteps = 40;
-                    m_PRM->SetRemainingStepsText(std::to_string(m_RemainingSteps));
-                    break;
-                case Phase::LEVEL16:
-                    InitializeMap(GameMap6);
-                    BoxPass = 2;
-                    m_RemainingSteps = 30;
-                    m_PRM->SetRemainingStepsText(std::to_string(m_RemainingSteps));
-                    break;
-                case Phase::LEVEL17:
-                    InitializeMap(GameMap7);
-                    BoxPass = 2;
-                    m_RemainingSteps = 30;
-                    m_PRM->SetRemainingStepsText(std::to_string(m_RemainingSteps));
-                    break;
-                case Phase::LEVEL18:
-                    InitializeMap(GameMap8);
-                    BoxPass = 2;
-                    m_RemainingSteps = 50;
-                    m_PRM->SetRemainingStepsText(std::to_string(m_RemainingSteps));
-                    break;
-                case Phase::LEVEL19:
-                    InitializeMap(GameMap9);
-                    BoxPass = 2;
-                    m_RemainingSteps = 20;
-                    m_PRM->SetRemainingStepsText(std::to_string(m_RemainingSteps));
-                    break;
-                case Phase::LEVEL20:
-                    InitializeMap(GameMap10);
-                    BoxPass = 2;
-                    m_RemainingSteps = 25;
-                    m_PRM->SetRemainingStepsText(std::to_string(m_RemainingSteps));
-                    break;
+                // 設定 BoxPass
+                int boxPassValues[] = { 1, 1, 2, 2, 2, 2, 2, 2, 2, 2 };
 
-                default:
-                    // 默認
-                    ValidTask();
-                    break;
+                // 設定剩餘步數 (僅適用於 LEVEL11~LEVEL20)
+                int remainingStepsValues[] = { 10, 10, 20, 25, 40, 30, 30, 50, 20, 25 };
+
+                // 初始化地圖
+                InitializeMap(*gameMaps[levelIndex % 10]);
+
+                // 設定 BoxPass
+                BoxPass = boxPassValues[levelIndex % 10];
+
+                // 設定剩餘步數 (LEVEL11~LEVEL20)
+                if (m_Phase >= Phase::LEVEL11 && m_Phase <= Phase::LEVEL20) {
+                    m_RemainingSteps = remainingStepsValues[levelIndex % 10];
+                    m_PRM->SetRemainingStepsText(std::to_string(m_RemainingSteps));
+                }
+            }
+            else {
+                // 默認處理
+                ValidTask();
             }
         }
     }
@@ -445,11 +311,8 @@ void App::Update() {
             
             /* 檢查所有的目標點都有箱子 */
             if (BoxOnCheckCount >= BoxPass) {
-                //std::cout << "Win! All targets are covered with boxes." << std::endl;
                 ValidTask(); // 跳到下一關
                 BoxOnCheckCount = 0;
-            } else {
-                //std::cout << "current level not finish yet" << std::endl;
             }
 
             /* 檢查剩餘步數是否>=0 */
@@ -506,13 +369,9 @@ void App::Update() {
                         m_CurrentMaxLevel = currentLevel + 1;
                     }
 
-                    //std::cout << "Win! Proceed to next level" << std::endl;
                     // 跳到下一關卡
                     m_PhaseChanged = false; // 重置狀態以允許切換關卡
                     ValidTask();
-                } else {
-                    //std::cout << "Current level not finish yet" << std::endl;
-                    // 這裡可以加入視覺提示或其他反饋
                 }
             }
         }
