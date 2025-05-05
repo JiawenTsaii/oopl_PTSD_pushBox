@@ -5,6 +5,7 @@
 
 #include "Util/Renderer.hpp"
 #include "Util/Text.hpp"
+#include "Util/BGM.hpp"
 
 #include "Character.hpp"
 #include "PhaseResourceManager.hpp"
@@ -240,7 +241,7 @@ private:
         {1, 1, 1, 1, 1, 1, 1, 1, 0},
     };
 
-    std::vector<std::vector<int>> GameMap11 = {
+    /*std::vector<std::vector<int>> GameMap11 = {
         {0, 0, 0, 0, 0, 0, 0, 0, 0},
         {0, 0, 0, 0, 0, 0, 0, 0, 0},
         {0, 0, 0, 0, 0, 0, 0, 0, 0},
@@ -348,7 +349,7 @@ private:
         {1, 2, 1, 2, 3, 3, 2, 1, 0},
         {1, 2, 2, 2, 1, 4, 2, 1, 0},
         {1, 1, 1, 1, 1, 1, 1, 1, 0},
-    };
+    };*/
 };
 
 #endif

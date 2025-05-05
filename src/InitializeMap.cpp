@@ -105,7 +105,7 @@ void App::InitializeMap(const std::vector<std::vector<int>>& GameMap) {
                     m_Root.AddChild(floor);
 
                     /* 人物 */
-                    m_Player = std::make_shared<Character>(RESOURCE_DIR"/Object/player_down.png");
+                    m_Player = std::make_shared<Character>(RESOURCE_DIR"/Object/Player/player_down.png");
                     m_Player->SetPosition({ -160 + 40 * j, 140 - 40 * i });
                     m_Player->SetVisible(false);
                     m_Player->SetZIndex(50);
