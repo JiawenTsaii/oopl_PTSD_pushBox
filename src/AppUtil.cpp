@@ -1,6 +1,6 @@
 //#include "AppUtil.hpp"
 #include "App.hpp"
-
+#include "Util/Text.hpp"
 #include "Util/Logger.hpp"
 
 #include <iostream>
@@ -121,6 +121,10 @@ void App::ValidTask() {
 				BoxPass = 1;
 				if (m_CurrentMaxLevel < 1) m_CurrentMaxLevel = 1; // 更新已破關的關卡紀錄
 				m_PhaseChanged = true;
+				// // 第一個時間限制關卡，60秒
+				// ResetTimer(60.0f);
+				// m_PhaseChanged = true;
+
 				break;
 
 			case Phase::LEVEL1:
@@ -191,8 +195,28 @@ void App::ValidTask() {
 				if (m_CurrentMaxLevel < 5) m_CurrentMaxLevel = 5;
 
 				m_PRM->NextPhase();
+
+				// 設置計時關卡
+				m_TimeLimited = true;
+				m_TimeLimit = 30.0f; // 30秒時間限制
+				m_RemainingTime = m_TimeLimit;
+				m_LastUpdateTime = std::chrono::steady_clock::now();
+
+				// 創建並設置計時文字
+				if (!m_TimerText) {
+					m_TimerText = std::make_shared<Util::Text>("00:30", RESOURCE_DIR"/Font/Inkfree.ttf", 24);
+					// m_TimerText->SetPosition({0, 270}); // 畫面上方中間
+					// m_TimerText->SetZIndex(100); // 確保在最上層
+					m_Root.AddChild(m_TimerText);
+				} else {
+					m_TimerText->SetText("00:30");
+				}
+
 				m_PhaseChanged = true;
 				break;
+
+				// m_PhaseChanged = true;
+				// break;
 
 			case Phase::LEVEL5:
 				std::cout << "LEVEL5 to LEVEL6" << std::endl;
@@ -204,12 +228,36 @@ void App::ValidTask() {
 				m_PRM->GetTaskText()->SetVisible(true);
 
 				m_Phase = Phase::LEVEL6;
+				// InitializeMap(GameMap6);
+				// BoxPass = 2;
+				// if (m_CurrentMaxLevel < 6) m_CurrentMaxLevel = 6;
+				//
+				// m_PRM->NextPhase();
+
+				// 設置計時關卡，這關更難，時間更短
+				// m_TimeLimited = true;
+				// m_TimeLimit = 20.0f; // 20秒時間限制
+				// m_RemainingTime = m_TimeLimit;
+				// m_LastUpdateTime = std::chrono::steady_clock::now();
+
+				// 更新計時文字
+				// if (m_TimerText) {
+				// 	m_TimerText->SetText("00:20");
+				// 	m_TimerText->SetVisible(true);
+				// }
+
+				// m_PhaseChanged = true;
+				// break;
+			std::cout << "LEVEL_TIME1 to LEVEL_TIME2" << std::endl;
+				m_PRM->SetImage(RESOURCE_DIR"/Background/bg_game.png");
+				m_PRM->NextPhase();
+				m_Phase = Phase::LEVEL6;
 				InitializeMap(GameMap6);
 				BoxPass = 2;
-				if (m_CurrentMaxLevel < 6) m_CurrentMaxLevel = 6;
-
-				m_PRM->NextPhase();
 				m_PhaseChanged = true;
+
+				// 啟用計時器，設置15秒限制
+				StartTimer(15.0f);
 				break;
 
 			case Phase::LEVEL6:

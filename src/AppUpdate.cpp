@@ -10,6 +10,11 @@
 
 void App::Update() {
 
+    // 更新計時器
+    if (m_TimerActive) {
+        UpdateTimer();
+    }
+
     /* 關卡選擇 */
     // 檢測Enter鍵 避免重複觸發
     bool enterKeyCurrentlyPressed = Util::Input::IsKeyPressed(Util::Keycode::RETURN);
@@ -38,25 +43,69 @@ void App::Update() {
 
     // LEVELSELECT處理輸入(看要跳到哪個關卡)
     if (m_Phase == Phase::LEVELSELECT) {
+        btn_return->SetVisible(false);
+        btn_reset->SetVisible(false);
 
         /* [special] 作弊模式 */
 
         // 第1~10關
         // 普通的輸入數字 (0代表10)
-        if (Util::Input::IsKeyPressed(Util::Keycode::NUM_1)) m_SelectedLevel = 1;
-        else if (Util::Input::IsKeyPressed(Util::Keycode::NUM_2)) m_SelectedLevel = 2;
-        else if (Util::Input::IsKeyPressed(Util::Keycode::NUM_3)) m_SelectedLevel = 3;
-        else if (Util::Input::IsKeyPressed(Util::Keycode::NUM_4)) m_SelectedLevel = 4;
-        else if (Util::Input::IsKeyPressed(Util::Keycode::NUM_5)) m_SelectedLevel = 5;
-        else if (Util::Input::IsKeyPressed(Util::Keycode::NUM_6)) m_SelectedLevel = 6;
-        else if (Util::Input::IsKeyPressed(Util::Keycode::NUM_7)) m_SelectedLevel = 7;
-        else if (Util::Input::IsKeyPressed(Util::Keycode::NUM_8)) m_SelectedLevel = 8;
-        else if (Util::Input::IsKeyPressed(Util::Keycode::NUM_9)) m_SelectedLevel = 9;
-        else if (Util::Input::IsKeyPressed(Util::Keycode::NUM_0)) m_SelectedLevel = 10;
+        if (Util::Input::IsKeyPressed(Util::Keycode::NUM_1)) {
+            m_SelectedLevel = 1;
+            // btn_return->SetVisible(true);
+            // btn_reset->SetVisible(true);
+        }
+        else if (Util::Input::IsKeyPressed(Util::Keycode::NUM_2)) {
+            m_SelectedLevel = 2;
+            // btn_return->SetVisible(true);
+            // btn_reset->SetVisible(true);
+        }
+        else if (Util::Input::IsKeyPressed(Util::Keycode::NUM_3)) {
+            m_SelectedLevel = 3;
+            // btn_return->SetVisible(true);
+            // btn_reset->SetVisible(true);
+        }
+        else if (Util::Input::IsKeyPressed(Util::Keycode::NUM_4)) {
+            m_SelectedLevel = 4;
+            // btn_return->SetVisible(true);
+            // btn_reset->SetVisible(true);
+        }
+        else if (Util::Input::IsKeyPressed(Util::Keycode::NUM_5)) {
+            m_SelectedLevel = 5;
+            // btn_return->SetVisible(true);
+            // btn_reset->SetVisible(true);
+        }
+        else if (Util::Input::IsKeyPressed(Util::Keycode::NUM_6)) {
+            m_SelectedLevel = 6;
+            // btn_return->SetVisible(true);
+            // btn_reset->SetVisible(true);
+        }
+        else if (Util::Input::IsKeyPressed(Util::Keycode::NUM_7)) {
+            m_SelectedLevel = 7;
+            // btn_return->SetVisible(true);
+            // btn_reset->SetVisible(true);
+        }
+        else if (Util::Input::IsKeyPressed(Util::Keycode::NUM_8)) {
+            m_SelectedLevel = 8;
+            // btn_return->SetVisible(true);
+            // btn_reset->SetVisible(true);
+        }
+        else if (Util::Input::IsKeyPressed(Util::Keycode::NUM_9)) {
+            m_SelectedLevel = 9;
+            // btn_return->SetVisible(true);
+            // btn_reset->SetVisible(true);
+        }
+        else if (Util::Input::IsKeyPressed(Util::Keycode::NUM_0)) {
+            m_SelectedLevel = 10;
+            // btn_return->SetVisible(true);
+            // btn_reset->SetVisible(true);
+        }
 
 		// 11~20
         // 按Alt+1表示11，Alt+2表示12...
         else if (Util::Input::IsKeyPressed(Util::Keycode::LALT) || Util::Input::IsKeyPressed(Util::Keycode::RALT)) {
+            btn_return->SetVisible(true);
+            btn_reset->SetVisible(true);
             if (Util::Input::IsKeyPressed(Util::Keycode::NUM_1)) m_SelectedLevel = 11;
             else if (Util::Input::IsKeyPressed(Util::Keycode::NUM_2)) m_SelectedLevel = 12;
             else if (Util::Input::IsKeyPressed(Util::Keycode::NUM_3)) m_SelectedLevel = 13;
@@ -72,6 +121,8 @@ void App::Update() {
         // 21~30
         // 按Ctrl + 1表示21，Ctrl + 2表示22...
         else if (Util::Input::IsKeyPressed(Util::Keycode::LCTRL) || Util::Input::IsKeyPressed(Util::Keycode::RCTRL)) {
+            btn_return->SetVisible(true);
+            btn_reset->SetVisible(true);
             if (Util::Input::IsKeyPressed(Util::Keycode::NUM_1)) m_SelectedLevel = 21;
             else if (Util::Input::IsKeyPressed(Util::Keycode::NUM_2)) m_SelectedLevel = 22;
             else if (Util::Input::IsKeyPressed(Util::Keycode::NUM_3)) m_SelectedLevel = 23;
@@ -368,6 +419,48 @@ void App::Update() {
                     // 默認
                     ValidTask();
                     break;
+            }
+        }
+    }
+
+    // // 更新時間顯示（如果關卡有時間限制）
+    // if (m_LevelHasTimeLimit && m_Phase != Phase::MENU && m_Phase != Phase::LEVELSELECT
+    //     && m_Phase != Phase::LOSE && m_Phase != Phase::WIN && m_Phase != Phase::END)
+    //     {
+    //         UpdateTimeDisplay();
+    //     }
+
+    if (m_Phase == Phase::LOSE) {
+        if (enterKeyCurrentlyPressed || mouseLeftButtonDown) {
+            m_Phase = Phase::LEVELSELECT;
+            m_PRM->SetImage(RESOURCE_DIR"/Background/bg_level.png");
+            m_PRM->ShowLevelBoxes(true);
+
+            // 隱藏遊戲物件
+            if (m_Player) {
+                m_Player->SetVisible(false);
+            }
+            for (auto& box : m_Box_vec) {
+                box->SetVisible(false);
+            }
+            for (auto& wall : m_Wall) {
+                wall->SetVisible(false);
+            }
+            for (auto& floor : m_Floor) {
+                floor->SetVisible(false);
+            }
+            for (auto& point : m_Point_vec) {
+                point->SetVisible(false);
+            }
+            for (auto& check : m_Check_vec) {
+                check->SetVisible(false);
+            }
+
+            // 關閉計時器
+            m_TimeLimited = false;
+            if (m_TimerText) {
+                m_Root.RemoveChild(m_TimerText);
+                m_TimerText.reset();
             }
         }
     }
@@ -961,9 +1054,137 @@ void App::Update() {
         m_CurrentState = State::END;
     }
 
+    // // 更新計時器（如果是有時間限制的關卡）
+    // if (m_TimeLimited && (m_Phase == Phase::LEVEL5 || m_Phase == Phase::LEVEL6)) {
+    //     UpdateTimer();
+    // }
+    // UpdateTimer();
     m_Root.Update();
+    if (!Util::Input::IsKeyPressed(Util::Keycode::RETURN)) {
+        m_PhaseChanged = false;
+    }
 
     if (!Util::Input::IsKeyPressed(Util::Keycode::RETURN)) {
         m_PhaseChanged = false;
     }
 }
+// 添加計時器更新方法
+void App::UpdateTimer() {
+    auto currentTime = std::chrono::steady_clock::now();
+    float deltaTime = std::chrono::duration<float>(currentTime - m_LastTimeUpdate).count();
+    m_LastTimeUpdate = currentTime;
+
+    if (m_RemainingTime > 0.0f) {
+        m_RemainingTime -= deltaTime;
+
+        // 更新顯示的時間
+        int minutes = static_cast<int>(m_RemainingTime / 60.0f);
+        int seconds = static_cast<int>(m_RemainingTime) % 60;
+
+        std::stringstream ss;
+        ss << std::setfill('0') << std::setw(2) << minutes << ":"
+           << std::setfill('0') << std::setw(2) << seconds;
+
+        // 更新計時器文字
+        m_TimerText = std::make_shared<Util::Text>(
+            RESOURCE_DIR"/Fonts/NotoSansTC-Regular.ttf",
+            36,
+            ss.str(),
+            Util::Color(255, 255, 255, 255),
+            true
+        );
+
+        // 如果時間耗盡，跳轉到失敗階段
+        if (m_RemainingTime <= 0.0f) {
+            m_RemainingTime = 0.0f;
+            m_TimerActive = false;
+            m_Phase = Phase::LOSE;
+            m_PhaseChanged = false;
+            ValidTask();
+        }
+    }
+}
+// 添加開始計時方法
+void App::StartTimer(float timeLimit) {
+    m_RemainingTime = timeLimit;
+    m_TimerActive = true;
+    m_LastTimeUpdate = std::chrono::steady_clock::now();
+
+    // 初始化顯示的時間
+    int minutes = static_cast<int>(m_RemainingTime / 60.0f);
+    int seconds = static_cast<int>(m_RemainingTime) % 60;
+
+    std::stringstream ss;
+    ss << std::setfill('0') << std::setw(2) << minutes << ":"
+       << std::setfill('0') << std::setw(2) << seconds;
+
+    // 更新計時器文字
+    m_TimerText = std::make_shared<Util::Text>(
+        RESOURCE_DIR"/Fonts/NotoSansTC-Regular.ttf",
+        36,
+        ss.str(),
+        Util::Color(255, 255, 255, 255),
+        true
+    );
+}
+
+// 添加繪製計時器方法
+void App::DrawTimer() {
+    if (m_TimerActive) {
+        // 設置合適的位置（畫面上方中間）
+        Core::Matrices matrices;
+        matrices.model = glm::translate(glm::mat4(1.0f), glm::vec3(0.0f, 250.0f, 0.0f));
+        matrices.model = glm::scale(matrices.model, glm::vec3(0.5f, 0.5f, 1.0f));
+
+        // 繪製計時器文字
+        m_TimerText->Draw(matrices);
+    }
+}
+
+
+// try 3
+
+// void App::UpdateTimer() {
+//     // 獲取當前時間
+//     auto currentTime = std::chrono::steady_clock::now();
+//
+//     // 計算經過的時間（以秒為單位）
+//     float elapsedSeconds = std::chrono::duration<float>(currentTime - m_LastUpdateTime).count();
+//     m_LastUpdateTime = currentTime;
+//
+//     // 更新剩餘時間
+//     m_RemainingTime -= elapsedSeconds;
+//
+//     if (m_RemainingTime <= 0) {
+//         // 時間到，進入失敗畫面
+//         m_RemainingTime = 0;
+//         if (m_Phase != Phase::LOSE) {
+//             m_Phase = Phase::LOSE;
+//             m_PRM->SetImage(RESOURCE_DIR"/Background/bg_lose.png");
+//
+//             // 隱藏游戲物件
+//             if (m_Player) m_Player->SetVisible(false);
+//             for (auto& box : m_Box_vec) box->SetVisible(false);
+//             for (auto& wall : m_Wall) wall->SetVisible(false);
+//             for (auto& floor : m_Floor) floor->SetVisible(false);
+//             for (auto& point : m_Point_vec) point->SetVisible(false);
+//             for (auto& check : m_Check_vec) check->SetVisible(false);
+//
+//             // 隱藏計時器
+//             if (m_TimerText) m_TimerText->SetVisible(false);
+//         }
+//     }
+//
+//     // 更新計時器顯示
+//     if (m_TimerText) {
+//         int minutes = static_cast<int>(m_RemainingTime) / 60;
+//         int seconds = static_cast<int>(m_RemainingTime) % 60;
+//
+//         // 格式化時間字符串
+//         std::string timeText = (minutes < 10 ? "0" : "") + std::to_string(minutes) + ":" +
+//                               (seconds < 10 ? "0" : "") + std::to_string(seconds);
+//
+//         // 設置顯示文字
+//         m_TimerText->SetText(timeText);
+//     }
+// }
