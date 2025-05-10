@@ -10,11 +10,6 @@
 
 void App::Update() {
 
-    // 更新計時器
-    if (m_TimerActive) {
-        UpdateTimer();
-    }
-
     /* 關卡選擇 */
     // 檢測Enter鍵 避免重複觸發
     bool enterKeyCurrentlyPressed = Util::Input::IsKeyPressed(Util::Keycode::RETURN);
@@ -25,7 +20,7 @@ void App::Update() {
     bool mouseLeftButtonDown = Util::Input::IsKeyDown(Util::Keycode::MOUSE_LB);
 
     // 檢測Shift鍵的按下，用於確認關卡選擇
-    bool shiftKeyPressed = Util::Input::IsKeyPressed(Util::Keycode::LSHIFT) || Util::Input::IsKeyPressed(Util::Keycode::RSHIFT);
+    //bool shiftKeyPressed = Util::Input::IsKeyPressed(Util::Keycode::LSHIFT) || Util::Input::IsKeyPressed(Util::Keycode::RSHIFT);
 
     // 這裡是對Phase::MENU按下滑鼠也能跳到下一個頁面的東東
     if (m_Phase == Phase::MENU && mouseLeftButtonDown) {
@@ -43,69 +38,27 @@ void App::Update() {
 
     // LEVELSELECT處理輸入(看要跳到哪個關卡)
     if (m_Phase == Phase::LEVELSELECT) {
-        btn_return->SetVisible(false);
-        btn_reset->SetVisible(false);
 
         /* [special] 作弊模式 */
 
         // 第1~10關
-        // 普通的輸入數字 (0代表10)
-        if (Util::Input::IsKeyPressed(Util::Keycode::NUM_1)) {
-            m_SelectedLevel = 1;
-            // btn_return->SetVisible(true);
-            // btn_reset->SetVisible(true);
-        }
-        else if (Util::Input::IsKeyPressed(Util::Keycode::NUM_2)) {
-            m_SelectedLevel = 2;
-            // btn_return->SetVisible(true);
-            // btn_reset->SetVisible(true);
-        }
-        else if (Util::Input::IsKeyPressed(Util::Keycode::NUM_3)) {
-            m_SelectedLevel = 3;
-            // btn_return->SetVisible(true);
-            // btn_reset->SetVisible(true);
-        }
-        else if (Util::Input::IsKeyPressed(Util::Keycode::NUM_4)) {
-            m_SelectedLevel = 4;
-            // btn_return->SetVisible(true);
-            // btn_reset->SetVisible(true);
-        }
-        else if (Util::Input::IsKeyPressed(Util::Keycode::NUM_5)) {
-            m_SelectedLevel = 5;
-            // btn_return->SetVisible(true);
-            // btn_reset->SetVisible(true);
-        }
-        else if (Util::Input::IsKeyPressed(Util::Keycode::NUM_6)) {
-            m_SelectedLevel = 6;
-            // btn_return->SetVisible(true);
-            // btn_reset->SetVisible(true);
-        }
-        else if (Util::Input::IsKeyPressed(Util::Keycode::NUM_7)) {
-            m_SelectedLevel = 7;
-            // btn_return->SetVisible(true);
-            // btn_reset->SetVisible(true);
-        }
-        else if (Util::Input::IsKeyPressed(Util::Keycode::NUM_8)) {
-            m_SelectedLevel = 8;
-            // btn_return->SetVisible(true);
-            // btn_reset->SetVisible(true);
-        }
-        else if (Util::Input::IsKeyPressed(Util::Keycode::NUM_9)) {
-            m_SelectedLevel = 9;
-            // btn_return->SetVisible(true);
-            // btn_reset->SetVisible(true);
-        }
-        else if (Util::Input::IsKeyPressed(Util::Keycode::NUM_0)) {
-            m_SelectedLevel = 10;
-            // btn_return->SetVisible(true);
-            // btn_reset->SetVisible(true);
+        // F1 + num
+        if (Util::Input::IsKeyPressed(Util::Keycode::F1)) {
+            if (Util::Input::IsKeyPressed(Util::Keycode::NUM_1)) m_SelectedLevel = 1;
+            else if (Util::Input::IsKeyPressed(Util::Keycode::NUM_2)) m_SelectedLevel = 2;
+            else if (Util::Input::IsKeyPressed(Util::Keycode::NUM_3)) m_SelectedLevel = 3;
+            else if (Util::Input::IsKeyPressed(Util::Keycode::NUM_4)) m_SelectedLevel = 4;
+            else if (Util::Input::IsKeyPressed(Util::Keycode::NUM_5)) m_SelectedLevel = 5;
+            else if (Util::Input::IsKeyPressed(Util::Keycode::NUM_6)) m_SelectedLevel = 6;
+            else if (Util::Input::IsKeyPressed(Util::Keycode::NUM_7)) m_SelectedLevel = 7;
+            else if (Util::Input::IsKeyPressed(Util::Keycode::NUM_8)) m_SelectedLevel = 8;
+            else if (Util::Input::IsKeyPressed(Util::Keycode::NUM_9)) m_SelectedLevel = 9;
+            else if (Util::Input::IsKeyPressed(Util::Keycode::NUM_0)) m_SelectedLevel = 10;
         }
 
 		// 11~20
-        // 按Alt+1表示11，Alt+2表示12...
-        else if (Util::Input::IsKeyPressed(Util::Keycode::LALT) || Util::Input::IsKeyPressed(Util::Keycode::RALT)) {
-            btn_return->SetVisible(true);
-            btn_reset->SetVisible(true);
+        // F2 + num
+        else if (Util::Input::IsKeyPressed(Util::Keycode::F2)) {
             if (Util::Input::IsKeyPressed(Util::Keycode::NUM_1)) m_SelectedLevel = 11;
             else if (Util::Input::IsKeyPressed(Util::Keycode::NUM_2)) m_SelectedLevel = 12;
             else if (Util::Input::IsKeyPressed(Util::Keycode::NUM_3)) m_SelectedLevel = 13;
@@ -119,10 +72,8 @@ void App::Update() {
         }
 
         // 21~30
-        // 按Ctrl + 1表示21，Ctrl + 2表示22...
-        else if (Util::Input::IsKeyPressed(Util::Keycode::LCTRL) || Util::Input::IsKeyPressed(Util::Keycode::RCTRL)) {
-            btn_return->SetVisible(true);
-            btn_reset->SetVisible(true);
+        // F3 + num
+        else if (Util::Input::IsKeyPressed(Util::Keycode::F3)) {
             if (Util::Input::IsKeyPressed(Util::Keycode::NUM_1)) m_SelectedLevel = 21;
             else if (Util::Input::IsKeyPressed(Util::Keycode::NUM_2)) m_SelectedLevel = 22;
             else if (Util::Input::IsKeyPressed(Util::Keycode::NUM_3)) m_SelectedLevel = 23;
@@ -158,87 +109,31 @@ void App::Update() {
                         (mousePos.y) * -1 >= (boxPos.y - 25.0) && (mousePos.y) * -1 <= (boxPos.y + 25.0)) {
                         // 設置選中的關卡
                         m_SelectedLevel = i + 1;
-                        //std::cout << "m_SelectedLevel: " << m_SelectedLevel << std::endl;
-
-                        // 模擬按下Shift確認選擇
-                        shiftKeyPressed = true;
                         break;
                     }
                 }
             }
         }
 
-        // 當選定關卡後，按下Shift確認選擇
-        if (m_SelectedLevel > 0 && shiftKeyPressed) {
+        if (m_SelectedLevel > 0) {
 
             m_PRM->ShowLevelBoxes(false); // 所有關卡箱子消失
 
-            // 根據選擇的關卡設置相應的階段並初始化地圖
-            switch (m_SelectedLevel) {
-                //m_Phase設在前一關，執行ValidTask()時會跳到下一關
-
-                case 1:
-                    m_Phase = Phase::LEVELSELECT;
-                    TextLevel = 0;
-                    ValidTask();
-                    break;
-                case 2:
-                    m_Phase = Phase::LEVEL1;
-                    TextLevel = m_SelectedLevel - 1;
-                    ValidTask();
-                    break;
-                case 3:
-                    m_Phase = Phase::LEVEL2;
-                    TextLevel = m_SelectedLevel - 1;
-                    ValidTask();
-                    break;
-                case 4:
-                    m_Phase = Phase::LEVEL3;
-                    TextLevel = m_SelectedLevel - 1;
-                    ValidTask();
-                    break;
-                case 5:
-                    m_Phase = Phase::LEVEL4;
-                    TextLevel = m_SelectedLevel - 1;
-                    ValidTask();
-                    break;
-                case 6:
-                    m_Phase = Phase::LEVEL5;
-                    TextLevel = m_SelectedLevel - 1;
-                    ValidTask();
-                    break;
-                case 7:
-                    m_Phase = Phase::LEVEL6;
-                    TextLevel = m_SelectedLevel - 1;
-                    ValidTask();
-                    break;
-                case 8:
-                    m_Phase = Phase::LEVEL7;
-                    TextLevel = m_SelectedLevel - 1;
-                    ValidTask();
-                    break;
-                case 9:
-                    m_Phase = Phase::LEVEL8;
-                    TextLevel = m_SelectedLevel - 1;
-                    ValidTask();
-                    break;
-                case 10:
-                    m_Phase = Phase::LEVEL9;
-                    TextLevel = m_SelectedLevel - 1;
-                    ValidTask();
-                    break;
-                break;
-
-                // ----- 待完成更多關卡 -----
-
-                default:
-                    // 默認使用第一關地圖
-                    m_Phase = Phase::LEVELSELECT;
-                    ValidTask();
-                    break;
+            /* 根據選擇的關卡設置相應的階段並初始化地圖 */
+            if (m_SelectedLevel == 1) {
+                m_Phase = Phase::LEVELSELECT;
+                TextLevel = 0;
             }
-
-
+            else if (m_SelectedLevel >= 2 && m_SelectedLevel <= 30) {
+                m_Phase = static_cast<Phase>(static_cast<int>(Phase::LEVEL1) + (m_SelectedLevel - 2));
+                std::cout << "m_SelectedLevel-1: " << m_SelectedLevel-1 << std::endl;
+                TextLevel = m_SelectedLevel - 1;
+            }
+            else {
+                // 默認使用第一關地圖
+                m_Phase = Phase::LEVELSELECT;
+            }
+            ValidTask();
         }
     }
 
@@ -247,6 +142,10 @@ void App::Update() {
         
         if (Util::Input::IsKeyPressed(Util::Keycode::BACKSPACE) ||
             (mouseLeftButtonDown && Util::Input::GetCursorPosition().x < -130 && Util::Input::GetCursorPosition().y < -270)) {
+
+            // 重置時間限制
+            m_TimeLimited = false;
+            m_TimeText->SetVisible(false);
 
             btn_return->SetVisible(false); // 返回鍵消失
             btn_reset->SetVisible(false);
@@ -309,158 +208,36 @@ void App::Update() {
             m_LevelCompleted = false;
             
             // 重新初始化當前關卡
-            switch (m_Phase) {
+            if (m_Phase >= Phase::LEVEL1 && m_Phase <= Phase::LEVEL30) {
+                int levelIndex = static_cast<int>(m_Phase) - static_cast<int>(Phase::LEVEL1);
 
-                /* LEVEL 1~10 */
-                case Phase::LEVEL1:
-                    InitializeMap(GameMap1);
-                    BoxPass = 1;
-                    break;
-                case Phase::LEVEL2:
-                    InitializeMap(GameMap2);
-                    BoxPass = 1;
-                    break;
-                case Phase::LEVEL3:
-                    InitializeMap(GameMap3);
-                    BoxPass = 2;
-                    break;
-                case Phase::LEVEL4:
-                    InitializeMap(GameMap4);
-                    BoxPass = 2;
-                    break;
-                case Phase::LEVEL5:
-                    InitializeMap(GameMap5);
-                    BoxPass = 2;
-                    break;
-                case Phase::LEVEL6:
-                    InitializeMap(GameMap6);
-                    BoxPass = 2;
-                    break;
-                case Phase::LEVEL7:
-                    InitializeMap(GameMap7);
-                    BoxPass = 2;
-                    break;
-                case Phase::LEVEL8:
-                    InitializeMap(GameMap8);
-                    BoxPass = 2;
-                    break;
-                case Phase::LEVEL9:
-                    InitializeMap(GameMap9);
-                    BoxPass = 2;
-                    break;
-                case Phase::LEVEL10:
-                    InitializeMap(GameMap10);
-                    BoxPass = 2;
-                    break;
+                // 動態選擇對應的 GameMap
+                std::vector<std::vector<int>>* gameMaps[] = {
+                    &GameMap1, &GameMap2, &GameMap3, &GameMap4, &GameMap5,
+                    &GameMap6, &GameMap7, &GameMap8, &GameMap9, &GameMap10
+                };
 
-                /* LEVEL 11~20 */
-                case Phase::LEVEL11:
-                    InitializeMap(GameMap1);
-                    BoxPass = 1;
-                    m_RemainingSteps = 10; // 重置步數
-                    m_PRM->SetRemainingStepsText(std::to_string(m_RemainingSteps));
-                    break;
-                case Phase::LEVEL12:
-                    InitializeMap(GameMap2);
-                    BoxPass = 1;
-                    m_RemainingSteps = 10;
-                    m_PRM->SetRemainingStepsText(std::to_string(m_RemainingSteps));
-                    break;
-                case Phase::LEVEL13:
-                    InitializeMap(GameMap3);
-                    BoxPass = 2;
-                    m_RemainingSteps = 20;
-                    m_PRM->SetRemainingStepsText(std::to_string(m_RemainingSteps));
-                    break;
-                case Phase::LEVEL14:
-                    InitializeMap(GameMap4);
-                    BoxPass = 2;
-                    m_RemainingSteps = 25;
-                    m_PRM->SetRemainingStepsText(std::to_string(m_RemainingSteps));
-                    break;
-                case Phase::LEVEL15:
-                    InitializeMap(GameMap5);
-                    BoxPass = 2;
-                    m_RemainingSteps = 40;
-                    m_PRM->SetRemainingStepsText(std::to_string(m_RemainingSteps));
-                    break;
-                case Phase::LEVEL16:
-                    InitializeMap(GameMap6);
-                    BoxPass = 2;
-                    m_RemainingSteps = 30;
-                    m_PRM->SetRemainingStepsText(std::to_string(m_RemainingSteps));
-                    break;
-                case Phase::LEVEL17:
-                    InitializeMap(GameMap7);
-                    BoxPass = 2;
-                    m_RemainingSteps = 30;
-                    m_PRM->SetRemainingStepsText(std::to_string(m_RemainingSteps));
-                    break;
-                case Phase::LEVEL18:
-                    InitializeMap(GameMap8);
-                    BoxPass = 2;
-                    m_RemainingSteps = 50;
-                    m_PRM->SetRemainingStepsText(std::to_string(m_RemainingSteps));
-                    break;
-                case Phase::LEVEL19:
-                    InitializeMap(GameMap9);
-                    BoxPass = 2;
-                    m_RemainingSteps = 20;
-                    m_PRM->SetRemainingStepsText(std::to_string(m_RemainingSteps));
-                    break;
-                case Phase::LEVEL20:
-                    InitializeMap(GameMap10);
-                    BoxPass = 2;
-                    m_RemainingSteps = 25;
-                    m_PRM->SetRemainingStepsText(std::to_string(m_RemainingSteps));
-                    break;
+                // 設定 BoxPass
+                int boxPassValues[] = { 1, 1, 2, 2, 2, 2, 2, 2, 2, 2 };
 
-                default:
-                    // 默認
-                    ValidTask();
-                    break;
-            }
-        }
-    }
+                // 設定剩餘步數 (僅適用於 LEVEL11~LEVEL20)
+                int remainingStepsValues[] = { 10, 10, 20, 25, 40, 30, 30, 50, 20, 25 };
 
-    // // 更新時間顯示（如果關卡有時間限制）
-    // if (m_LevelHasTimeLimit && m_Phase != Phase::MENU && m_Phase != Phase::LEVELSELECT
-    //     && m_Phase != Phase::LOSE && m_Phase != Phase::WIN && m_Phase != Phase::END)
-    //     {
-    //         UpdateTimeDisplay();
-    //     }
+                // 初始化地圖
+                InitializeMap(*gameMaps[levelIndex % 10]);
 
-    if (m_Phase == Phase::LOSE) {
-        if (enterKeyCurrentlyPressed || mouseLeftButtonDown) {
-            m_Phase = Phase::LEVELSELECT;
-            m_PRM->SetImage(RESOURCE_DIR"/Background/bg_level.png");
-            m_PRM->ShowLevelBoxes(true);
+                // 設定 BoxPass
+                BoxPass = boxPassValues[levelIndex % 10];
 
-            // 隱藏遊戲物件
-            if (m_Player) {
-                m_Player->SetVisible(false);
+                // 設定剩餘步數 (LEVEL11~LEVEL20)
+                if (m_Phase >= Phase::LEVEL11 && m_Phase <= Phase::LEVEL20) {
+                    m_RemainingSteps = remainingStepsValues[levelIndex % 10];
+                    m_PRM->SetRemainingStepsText(std::to_string(m_RemainingSteps));
+                }
             }
-            for (auto& box : m_Box_vec) {
-                box->SetVisible(false);
-            }
-            for (auto& wall : m_Wall) {
-                wall->SetVisible(false);
-            }
-            for (auto& floor : m_Floor) {
-                floor->SetVisible(false);
-            }
-            for (auto& point : m_Point_vec) {
-                point->SetVisible(false);
-            }
-            for (auto& check : m_Check_vec) {
-                check->SetVisible(false);
-            }
-
-            // 關閉計時器
-            m_TimeLimited = false;
-            if (m_TimerText) {
-                m_Root.RemoveChild(m_TimerText);
-                m_TimerText.reset();
+            else {
+                // 默認處理
+                ValidTask();
             }
         }
     }
@@ -514,18 +291,32 @@ void App::Update() {
 	int RIGHT_SetPosition_i = 1;
 	int RIGHT_SetPosition_j = 0;
 
-    if ((Util::Input::IsKeyPressed(Util::Keycode::UP)) || (Util::Input::IsKeyPressed(Util::Keycode::DOWN)) || (Util::Input::IsKeyPressed(Util::Keycode::LEFT)) || (Util::Input::IsKeyPressed(Util::Keycode::RIGHT))) {
+    if ((Util::Input::IsKeyPressed(Util::Keycode::UP)) 
+        || (Util::Input::IsKeyPressed(Util::Keycode::DOWN)) 
+        || (Util::Input::IsKeyPressed(Util::Keycode::LEFT)) 
+        || (Util::Input::IsKeyPressed(Util::Keycode::RIGHT))) {
+
+        /* 換角色圖片 */
+        if (Util::Input::IsKeyPressed(Util::Keycode::UP)) {
+			m_Player->SetImage(RESOURCE_DIR"/Object/Player/player_up.png");
+		}
+		else if (Util::Input::IsKeyPressed(Util::Keycode::DOWN)) {
+			m_Player->SetImage(RESOURCE_DIR"/Object/Player/player_down.png");
+		}
+		else if (Util::Input::IsKeyPressed(Util::Keycode::LEFT)) {
+			m_Player->SetImage(RESOURCE_DIR"/Object/Player/player_left.png");
+		}
+		else if (Util::Input::IsKeyPressed(Util::Keycode::RIGHT)) {
+			m_Player->SetImage(RESOURCE_DIR"/Object/Player/player_right.png");
+        }
 
         // 每移動一步就偵測一次
         if (m_Phase != Phase::LEVELSELECT && m_Phase != Phase::MENU && m_Phase != Phase::END) {
             
             /* 檢查所有的目標點都有箱子 */
             if (BoxOnCheckCount >= BoxPass) {
-                //std::cout << "Win! All targets are covered with boxes." << std::endl;
                 ValidTask(); // 跳到下一關
                 BoxOnCheckCount = 0;
-            } else {
-                //std::cout << "current level not finish yet" << std::endl;
             }
 
             /* 檢查剩餘步數是否>=0 */
@@ -582,13 +373,9 @@ void App::Update() {
                         m_CurrentMaxLevel = currentLevel + 1;
                     }
 
-                    //std::cout << "Win! Proceed to next level" << std::endl;
                     // 跳到下一關卡
                     m_PhaseChanged = false; // 重置狀態以允許切換關卡
                     ValidTask();
-                } else {
-                    //std::cout << "Current level not finish yet" << std::endl;
-                    // 這裡可以加入視覺提示或其他反饋
                 }
             }
         }
@@ -1054,137 +841,41 @@ void App::Update() {
         m_CurrentState = State::END;
     }
 
-    // // 更新計時器（如果是有時間限制的關卡）
-    // if (m_TimeLimited && (m_Phase == Phase::LEVEL5 || m_Phase == Phase::LEVEL6)) {
-    //     UpdateTimer();
-    // }
-    // UpdateTimer();
-    m_Root.Update();
-    if (!Util::Input::IsKeyPressed(Util::Keycode::RETURN)) {
-        m_PhaseChanged = false;
+    // 更新計時 - 只在特定關卡使用時間限制 暫時先用五六關來試
+    if (m_TimeLimited && (m_Phase == Phase::LEVEL5 || m_Phase == Phase::LEVEL6)) {
+        UpdateTimer();
     }
+
+    m_Root.Update();
+
 
     if (!Util::Input::IsKeyPressed(Util::Keycode::RETURN)) {
         m_PhaseChanged = false;
     }
 }
-// 添加計時器更新方法
+
 void App::UpdateTimer() {
     auto currentTime = std::chrono::steady_clock::now();
-    float deltaTime = std::chrono::duration<float>(currentTime - m_LastTimeUpdate).count();
-    m_LastTimeUpdate = currentTime;
+    auto elapsed = std::chrono::duration_cast<std::chrono::seconds>(currentTime - m_LastTimeUpdate).count();
 
-    if (m_RemainingTime > 0.0f) {
-        m_RemainingTime -= deltaTime;
+    // 每秒更新一次
+    if (elapsed >= 1) {
+        m_RemainingTime--;
+        m_LastTimeUpdate = currentTime;
 
         // 更新顯示的時間
-        int minutes = static_cast<int>(m_RemainingTime / 60.0f);
-        int seconds = static_cast<int>(m_RemainingTime) % 60;
+        int minutes = m_RemainingTime / 60;
+        int seconds = m_RemainingTime % 60;
+        std::string timeStr = (minutes < 10 ? "0" : "") + std::to_string(minutes) + ":" +
+                             (seconds < 10 ? "0" : "") + std::to_string(seconds);
 
-        std::stringstream ss;
-        ss << std::setfill('0') << std::setw(2) << minutes << ":"
-           << std::setfill('0') << std::setw(2) << seconds;
+        m_TimeText->SetText("剩餘時間: " + timeStr);
 
-        // 更新計時器文字
-        m_TimerText = std::make_shared<Util::Text>(
-            RESOURCE_DIR"/Fonts/NotoSansTC-Regular.ttf",
-            36,
-            ss.str(),
-            Util::Color(255, 255, 255, 255),
-            true
-        );
-
-        // 如果時間耗盡，跳轉到失敗階段
-        if (m_RemainingTime <= 0.0f) {
-            m_RemainingTime = 0.0f;
-            m_TimerActive = false;
-            m_Phase = Phase::LOSE;
-            m_PhaseChanged = false;
+        // 檢查時間是否用完
+        if (m_RemainingTime <= 0) {
+            Lose = true;
+            m_Phase = Phase::LEVEL30; // 使用 LEVEL30 作為跳轉到失敗畫面的中介
             ValidTask();
         }
     }
 }
-// 添加開始計時方法
-void App::StartTimer(float timeLimit) {
-    m_RemainingTime = timeLimit;
-    m_TimerActive = true;
-    m_LastTimeUpdate = std::chrono::steady_clock::now();
-
-    // 初始化顯示的時間
-    int minutes = static_cast<int>(m_RemainingTime / 60.0f);
-    int seconds = static_cast<int>(m_RemainingTime) % 60;
-
-    std::stringstream ss;
-    ss << std::setfill('0') << std::setw(2) << minutes << ":"
-       << std::setfill('0') << std::setw(2) << seconds;
-
-    // 更新計時器文字
-    m_TimerText = std::make_shared<Util::Text>(
-        RESOURCE_DIR"/Fonts/NotoSansTC-Regular.ttf",
-        36,
-        ss.str(),
-        Util::Color(255, 255, 255, 255),
-        true
-    );
-}
-
-// 添加繪製計時器方法
-void App::DrawTimer() {
-    if (m_TimerActive) {
-        // 設置合適的位置（畫面上方中間）
-        Core::Matrices matrices;
-        matrices.model = glm::translate(glm::mat4(1.0f), glm::vec3(0.0f, 250.0f, 0.0f));
-        matrices.model = glm::scale(matrices.model, glm::vec3(0.5f, 0.5f, 1.0f));
-
-        // 繪製計時器文字
-        m_TimerText->Draw(matrices);
-    }
-}
-
-
-// try 3
-
-// void App::UpdateTimer() {
-//     // 獲取當前時間
-//     auto currentTime = std::chrono::steady_clock::now();
-//
-//     // 計算經過的時間（以秒為單位）
-//     float elapsedSeconds = std::chrono::duration<float>(currentTime - m_LastUpdateTime).count();
-//     m_LastUpdateTime = currentTime;
-//
-//     // 更新剩餘時間
-//     m_RemainingTime -= elapsedSeconds;
-//
-//     if (m_RemainingTime <= 0) {
-//         // 時間到，進入失敗畫面
-//         m_RemainingTime = 0;
-//         if (m_Phase != Phase::LOSE) {
-//             m_Phase = Phase::LOSE;
-//             m_PRM->SetImage(RESOURCE_DIR"/Background/bg_lose.png");
-//
-//             // 隱藏游戲物件
-//             if (m_Player) m_Player->SetVisible(false);
-//             for (auto& box : m_Box_vec) box->SetVisible(false);
-//             for (auto& wall : m_Wall) wall->SetVisible(false);
-//             for (auto& floor : m_Floor) floor->SetVisible(false);
-//             for (auto& point : m_Point_vec) point->SetVisible(false);
-//             for (auto& check : m_Check_vec) check->SetVisible(false);
-//
-//             // 隱藏計時器
-//             if (m_TimerText) m_TimerText->SetVisible(false);
-//         }
-//     }
-//
-//     // 更新計時器顯示
-//     if (m_TimerText) {
-//         int minutes = static_cast<int>(m_RemainingTime) / 60;
-//         int seconds = static_cast<int>(m_RemainingTime) % 60;
-//
-//         // 格式化時間字符串
-//         std::string timeText = (minutes < 10 ? "0" : "") + std::to_string(minutes) + ":" +
-//                               (seconds < 10 ? "0" : "") + std::to_string(seconds);
-//
-//         // 設置顯示文字
-//         m_TimerText->SetText(timeText);
-//     }
-// }

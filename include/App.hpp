@@ -5,6 +5,7 @@
 
 #include "Util/Renderer.hpp"
 #include "Util/Text.hpp"
+#include "Util/BGM.hpp"
 
 #include "Character.hpp"
 #include "PhaseResourceManager.hpp"
@@ -125,36 +126,18 @@ private:
 
     std::vector<std::vector<int>> m_GameMap;
 
-    /* 計時相關 try3 */
-    // 時間相關
-    std::shared_ptr<Util::Text> m_TimerText;  // 計時器文字
-    float m_RemainingTime;                    // 剩餘時間（秒）
-    bool m_TimerActive;                       // 計時器是否啟動
-    std::chrono::steady_clock::time_point m_LastTimeUpdate;  // 上次更新時間
+    // 時間限制相關
+    bool m_TimeLimited = false;          // 是否有時間限制
+    int m_TimeLimit = 10;                // 時間限制（秒）
+    int m_RemainingTime = 0;             // 剩餘時間（秒）
+    std::chrono::steady_clock::time_point m_LastTimeUpdate; // 上次更新時間
+    std::shared_ptr<TaskText> m_TimeText;  // 顯示時間的文字
 
-    // 計時器相關方法
+    // 更新計時器
     void UpdateTimer();
-    void StartTimer(float timeLimit);
-    void DrawTimer();
-
-    // /* 計時相關 try2 */
-    // std::shared_ptr<Util::Text> m_TimerText;      // 用於顯示倒數計時的文字物件
-    // std::chrono::steady_clock::time_point m_LevelStartTime;  // 關卡開始時間
-    // int m_LevelTimeLimit;                          // 關卡時間限制(秒)
-    // bool m_TimerActive;                            // 計時器是否啟動
-
 
     /* 步數限制 */
-    int m_RemainingSteps = 100;   // 初始剩餘步數
-
-    // // 時間限制相關
-    // bool m_LevelHasTimeLimit = false;     // 目前關卡是否有時間限制
-    // float m_LevelTimeLimit = 0.0f;        // 關卡時間限制(秒)
-    // float m_RemainingTime = 0.0f;         // 剩餘時間(秒)
-    // std::shared_ptr<Character> m_ClockDisplay;  // 時鐘顯示
-    // std::shared_ptr<Character> m_TimeText;      // 顯示剩餘時間的文字
-    // std::chrono::steady_clock::time_point m_LevelStartTime;  // 關卡開始時間
-
+    int m_RemainingSteps = 1000;   // 初始剩餘步數
 
     /* 地圖 */
     /* 0:草地 1:牆壁 2:空地 3:箱子 4:人物 5:目標點*/
@@ -268,7 +251,7 @@ private:
         {1, 1, 1, 1, 1, 1, 1, 1, 0},
     };
 
-    std::vector<std::vector<int>> GameMap11 = {
+    /*std::vector<std::vector<int>> GameMap11 = {
         {0, 0, 0, 0, 0, 0, 0, 0, 0},
         {0, 0, 0, 0, 0, 0, 0, 0, 0},
         {0, 0, 0, 0, 0, 0, 0, 0, 0},
@@ -376,10 +359,7 @@ private:
         {1, 2, 1, 2, 3, 3, 2, 1, 0},
         {1, 2, 2, 2, 1, 4, 2, 1, 0},
         {1, 1, 1, 1, 1, 1, 1, 1, 0},
-    };
-
-    // 更新計時器
-    void UpdateTimer();
+    };*/
 };
 
 #endif

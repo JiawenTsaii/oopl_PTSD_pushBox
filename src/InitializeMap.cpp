@@ -2,8 +2,7 @@
 
 #include <iostream>
 
-void App::InitializeMap(const std::vector<std::vector<int>>& GameMap)
-{
+void App::InitializeMap(const std::vector<std::vector<int>>& GameMap) {
     // 清空現有的地圖物件
     for (auto& wall : m_Wall) {
         m_Root.RemoveChild(wall);
@@ -106,7 +105,7 @@ void App::InitializeMap(const std::vector<std::vector<int>>& GameMap)
                     m_Root.AddChild(floor);
 
                     /* 人物 */
-                    m_Player = std::make_shared<Character>(RESOURCE_DIR"/Object/player_down.png");
+                    m_Player = std::make_shared<Character>(RESOURCE_DIR"/Object/Player/player_down.png");
                     m_Player->SetPosition({ -160 + 40 * j, 140 - 40 * i });
                     m_Player->SetVisible(false);
                     m_Player->SetZIndex(50);
@@ -148,41 +147,5 @@ void App::InitializeMap(const std::vector<std::vector<int>>& GameMap)
 
     isBoxOnCheck.resize(m_Box_vec.size(), false);
     std::cout << "isBoxOnCheck.size() = " << isBoxOnCheck.size() << std::endl;
-
-    // // 設定關卡時間限制，可以根據不同關卡設定不同時間
-    // if (m_Phase == Phase::LEVEL1) {
-    //     m_LevelTimeLimit = 30;  // 第一關30秒
-    // } else if (m_Phase == Phase::LEVEL2) {
-    //     m_LevelTimeLimit = 45;  // 第二關45秒
-    // } else if (m_Phase == Phase::LEVEL3) {
-    //     m_LevelTimeLimit = 60;  // 第三關60秒
-    // } else if (m_Phase == Phase::LEVEL4) {
-    //     m_LevelTimeLimit = 75;  // 第四關75秒
-    // } else if (m_Phase == Phase::LEVEL5) {
-    //     m_LevelTimeLimit = 90;  // 第五關90秒
-    // } else {
-    //     m_LevelTimeLimit = 30;  // 預設30秒
-    // }
-
-//     // time try2
-//     // 啟動計時器
-//     m_LevelStartTime = std::chrono::steady_clock::now();
-//     m_TimerActive = true;
-//     m_TimerText->SetVisible(true);
-//
-//     // 設定初始時間文字
-//     int minutes = m_LevelTimeLimit / 60;
-//     int seconds = m_LevelTimeLimit % 60;
-//     std::string timeText = (minutes < 10 ? "0" : "") + std::to_string(minutes) + ":" + (seconds < 10 ? "0" : "") + std::to_string(seconds);
-//     m_TimerText->SetText(timeText);
-
-    // 最後添加：如果是時間限制關卡，確保計時器正確顯示
-    if (m_TimeLimited && m_TimerText) {
-        int minutes = static_cast<int>(m_RemainingTime) / 60;
-        int seconds = static_cast<int>(m_RemainingTime) % 60;
-        std::string timeString = (minutes < 10 ? "0" : "") + std::to_string(minutes) + ":" +
-                                (seconds < 10 ? "0" : "") + std::to_string(seconds);
-        m_TimerText->SetText(timeString);
-    }
 }
 
