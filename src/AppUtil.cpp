@@ -109,6 +109,8 @@ void App::ValidTask() {
 			/* ----- 文字 ----- */
 			TextLevel = static_cast<int>(m_Phase) - static_cast<int>(Phase::LEVELSELECT);
 			std::cout << "TextLevel+1: " << TextLevel + 1 << std::endl;
+			//m_PRM->SetPassText();
+			
 			m_PRM->SetTaskText(TextLevel + 1);
 			m_PRM->GetTaskText()->SetVisible(true);
 
@@ -196,51 +198,5 @@ void App::ValidTask() {
 
 			m_Phase = Phase::END; // 遊戲結束
 		}
-
-
-
-
-
-		//switch (m_Phase) {
-
-			//case Phase::LEVEL30:
-				//std::cout << "Game Over! No remaining steps." << std::endl;
-				//
-				//if (Lose) { // 輸了
-				//	m_PRM->SetImage(RESOURCE_DIR"/Background/bg_lose.png");
-				//}
-				//else {
-				//	m_PRM->SetImage(RESOURCE_DIR"/Background/bg_win.png");
-				//}
-
-				//m_PRM->GetRemainingStepsText()->SetVisible(false);
-				//m_PRM->GetTaskText()->SetVisible(false);
-
-				//if (m_Player) { // 人物
-				//	m_Player->SetVisible(false);
-				//}
-				//for (auto& box : m_Box_vec) { // 箱子
-				//	box->SetVisible(false);
-				//}
-				//for (auto& wall : m_Wall) { // 牆壁
-				//	wall->SetVisible(false);
-				//}
-				//for (auto& floor : m_Floor) { // 地板
-				//	floor->SetVisible(false);
-				//}
-				//for (auto& point : m_Point_vec) { // 目標點
-				//	point->SetVisible(false);
-				//}
-				//for (auto& check : m_Check_vec) { // 勾勾
-				//	check->SetVisible(false);
-				//}
-
-				//m_Phase = Phase::END; // 遊戲結束
-
-				//break;
-
-			//default:
-				//m_CurrentState = State::END;
-		//}
 	}
 }

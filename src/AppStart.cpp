@@ -12,9 +12,6 @@ void App::Start() {
     m_PRM = std::make_shared<PhaseResourceManager>();
     m_Root.AddChildren(m_PRM->GetChildren());
 
-    /* BGM */
-
-
     // 初始化剩餘步數
     m_RemainingSteps = 100;
     m_PRM->GetRemainingStepsText()->UpdatePosition(0.0F, 150.0F);

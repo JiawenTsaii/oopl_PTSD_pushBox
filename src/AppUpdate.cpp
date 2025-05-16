@@ -311,15 +311,28 @@ void App::Update() {
             
             /* 檢查所有的目標點都有箱子 */
             if (BoxOnCheckCount >= BoxPass) {
+                
+                m_PRM->SetPassText();
+                std::cout << "m_PRM->SetPassText()" << std::endl;
+				m_PRM->GetTaskText()->SetVisible(true);
+                
+                // 停頓一秒
+                auto startTime = Util::Time::GetElapsedTimeMs();
+                while (Util::Time::GetElapsedTimeMs() - startTime < 1000) {
+                    // Busy-wait loop for 1 second
+                }
+
                 ValidTask(); // 跳到下一關
                 BoxOnCheckCount = 0;
             }
 
             /* 檢查剩餘步數是否>=0 */
-            if (m_RemainingSteps == 0) {
-				m_Phase = Phase::LEVEL30;
-                Lose = true;
-                ValidTask();
+            if (m_Phase >= Phase::LEVEL11 && m_Phase <= Phase::LEVEL20) {
+                if (m_RemainingSteps == 0) {
+                    m_Phase = Phase::LEVEL30;
+                    Lose = true;
+                    ValidTask();
+                }
             }
         }
 

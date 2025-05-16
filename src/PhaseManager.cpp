@@ -36,6 +36,10 @@ void PhaseResourceManager::SetTaskText(int TextLevel) {
 	m_TaskText->NextPhase(TextLevel + 1);
 }
 
+void PhaseResourceManager::SetPassText() {
+	m_TaskText->SetText("Level Complete!");
+}
+
 void PhaseResourceManager::SetRemainingStepsText(const std::string& remainingSteps) {
 	m_RemainingStepsText->SetText("Remaining Steps: " + remainingSteps);
 }
