@@ -44,6 +44,8 @@ void App::Update() {
         // 第1~10關
         // F1 + num
         if (Util::Input::IsKeyPressed(Util::Keycode::F1)) {
+            btn_return->SetVisible(true);
+            btn_reset->SetVisible(true);
             if (Util::Input::IsKeyPressed(Util::Keycode::NUM_1)) m_SelectedLevel = 1;
             else if (Util::Input::IsKeyPressed(Util::Keycode::NUM_2)) m_SelectedLevel = 2;
             else if (Util::Input::IsKeyPressed(Util::Keycode::NUM_3)) m_SelectedLevel = 3;
@@ -59,6 +61,8 @@ void App::Update() {
 		// 11~20
         // F2 + num
         else if (Util::Input::IsKeyPressed(Util::Keycode::F2)) {
+            btn_return->SetVisible(true);
+            btn_reset->SetVisible(true);
             if (Util::Input::IsKeyPressed(Util::Keycode::NUM_1)) m_SelectedLevel = 11;
             else if (Util::Input::IsKeyPressed(Util::Keycode::NUM_2)) m_SelectedLevel = 12;
             else if (Util::Input::IsKeyPressed(Util::Keycode::NUM_3)) m_SelectedLevel = 13;
@@ -74,6 +78,8 @@ void App::Update() {
         // 21~30
         // F3 + num
         else if (Util::Input::IsKeyPressed(Util::Keycode::F3)) {
+            btn_return->SetVisible(true);
+            btn_reset->SetVisible(true);
             if (Util::Input::IsKeyPressed(Util::Keycode::NUM_1)) m_SelectedLevel = 21;
             else if (Util::Input::IsKeyPressed(Util::Keycode::NUM_2)) m_SelectedLevel = 22;
             else if (Util::Input::IsKeyPressed(Util::Keycode::NUM_3)) m_SelectedLevel = 23;
@@ -125,6 +131,8 @@ void App::Update() {
                 TextLevel = 0;
             }
             else if (m_SelectedLevel >= 2 && m_SelectedLevel <= 30) {
+                btn_return->SetVisible(true);
+                btn_reset->SetVisible(true);
                 m_Phase = static_cast<Phase>(static_cast<int>(Phase::LEVEL1) + (m_SelectedLevel - 2));
                 std::cout << "m_SelectedLevel-1: " << m_SelectedLevel-1 << std::endl;
                 TextLevel = m_SelectedLevel - 1;
