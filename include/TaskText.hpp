@@ -8,11 +8,13 @@
 class TaskText : public Util::GameObject {
 public:
     TaskText() : GameObject(
-        std::make_unique<Util::Text>(RESOURCE_DIR"/Font/BodoniFLF-Bold.ttf", 40,
+        std::make_unique<Util::Text>(
+            RESOURCE_DIR"/Font/BodoniFLF-Bold.ttf", 
+            50,
             append_string_views(s_PhaseTasks[0], s_Validation),
             Util::Color::FromName(Util::Colors::WHITE)),
             100){
-            m_Transform.translation = { 20.F, 200.F };
+            m_Transform.translation = { 15.F, 200.F };
     }
 
     TaskText(const std::string& fontPath, int fontSize, const std::string& text, const Util::Color& color)

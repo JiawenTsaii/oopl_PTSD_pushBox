@@ -28,6 +28,7 @@ public:
 	void NextPhase();
 	void SetImage(const std::string& filepath);
 	void SetTaskText(int TextLevel);
+	void SetPassText();
 	void SetRemainingStepsText(const std::string& m_RemainingSteps);
 
 	std::shared_ptr<TaskText> GetRemainingStepsText() const;

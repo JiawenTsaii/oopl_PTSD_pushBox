@@ -2,6 +2,7 @@
 
 #include "Core/Context.hpp"
 #include "Util/Logger.hpp"
+#include "Util/BGM.hpp"
 
 #include <iostream>
 
@@ -12,6 +13,7 @@ int main(int, char**) {
 
     while (!context->GetExit()) {
         //std::cout << static_cast<int>(app.GetCurrentState()) << std::endl;
+        Util::BGM m_BGM(RESOURCE_DIR "BGM/BGM_ground.mp3");
         
         switch (app.GetCurrentState()) {
             case App::State::START:
