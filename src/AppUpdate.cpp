@@ -696,6 +696,7 @@ void App::Update() {
                                                     StepKeyProcessed = false; // 當按鍵釋放時，重置標記
                                                 }
 
+												std::cout << "isPlayerOnCheck: " << isPlayerOnCheck << std::endl;
                                                 if (!isPlayerOnCheck) {
                                                     m_GameMap[i][j] = 2; // 目前位置設為空地
                                                 }
@@ -748,7 +749,6 @@ void App::Update() {
 
                                                 // GameMap
                                                 m_GameMap[i][j] = 2; // 目前位置設為空地
-                                                m_GameMap[i + (GameMap_i * 2)][j + (GameMap_j * 2)] = 3; // 上面兩格設為箱子
 
                                                 // SetPosition
                                                 m_Box_vec[k]->SetPosition({ m_Box_vec[k]->GetPosition().x + (SetPosition_i * 40), m_Box_vec[k]->GetPosition().y + (SetPosition_j * 40) }); // 箱子往上一格
