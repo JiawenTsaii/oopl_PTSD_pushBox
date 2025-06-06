@@ -95,7 +95,7 @@ void App::ValidTask() {
 			m_PhaseChanged = true;
 		}
 
-		else if (m_Phase >= Phase::LEVELSELECT && m_Phase <= Phase::LEVEL19) {
+		else if (m_Phase >= Phase::LEVELSELECT && m_Phase <= Phase::LEVEL29) {
 			std::cout << "LEVEL" << static_cast<int>(m_Phase) - static_cast<int>(Phase::LEVEL1) + 1 << " to LEVEL" << static_cast<int>(m_Phase) - static_cast<int>(Phase::LEVEL1) + 2 << std::endl;
 			
 			int levelIndex = static_cast<int>(m_Phase) - static_cast<int>(Phase::LEVEL1) + 1;
@@ -109,9 +109,10 @@ void App::ValidTask() {
 			/* ----- 文字 ----- */
 			TextLevel = static_cast<int>(m_Phase) - static_cast<int>(Phase::LEVELSELECT);
 			std::cout << "TextLevel+1: " << TextLevel + 1 << std::endl;
+			//m_PRM->SetPassText();
+			
 			m_PRM->SetTaskText(TextLevel + 1);
 			m_PRM->GetTaskText()->SetVisible(true);
-
 
 			if (m_Phase == Phase::LEVELSELECT) {
 				/* ----- 選擇關卡的箱子 ----- */
@@ -138,8 +139,8 @@ void App::ValidTask() {
 				m_PRM->GetRemainingStepsText()->SetVisible(true);
 			}
 
-			// 特殊處理第5和第6關 - 添加時間限制
-			if (m_Phase == Phase::LEVEL5 || m_Phase == Phase::LEVEL6) {
+			/* ----- [for 21~30] 限制時間 ----- */
+			if (m_Phase >= Phase::LEVEL20 && m_Phase <= Phase::LEVEL29) {
 				// 設置時間限制
 				m_TimeLimited = true;
 				m_TimeLimit = 10; // 10秒時間限制
@@ -150,16 +151,16 @@ void App::ValidTask() {
 				int minutes = m_RemainingTime / 60;
 				int seconds = m_RemainingTime % 60;
 				std::string timeStr = (minutes < 10 ? "0" : "") + std::to_string(minutes) + ":" +
-									 (seconds < 10 ? "0" : "") + std::to_string(seconds);
+					(seconds < 10 ? "0" : "") + std::to_string(seconds);
 
-				m_TimeText->SetText("剩餘時間: " + timeStr);
+				m_TimeText->SetText(timeStr);
 				m_TimeText->SetVisible(true);
-			} else {
+			}
+			else {
 				// 非計時關卡隱藏時間文字
 				m_TimeLimited = false;
 				m_TimeText->SetVisible(false);
 			}
-
 			
 			/* ----- 跳下一關 ----- */
 			// 設定 m_Phase 為下一關
@@ -198,6 +199,7 @@ void App::ValidTask() {
 
 			m_PRM->GetRemainingStepsText()->SetVisible(false);
 			m_PRM->GetTaskText()->SetVisible(false);
+			m_TimeText->SetVisible(false);
 
 			if (m_Player) { // 人物
 				m_Player->SetVisible(false);
@@ -220,52 +222,5 @@ void App::ValidTask() {
 
 			m_Phase = Phase::END; // 遊戲結束
 		}
-
-
-
-
-
-
-		//switch (m_Phase) {
-
-			//case Phase::LEVEL30:
-				//std::cout << "Game Over! No remaining steps." << std::endl;
-				//
-				//if (Lose) { // 輸了
-				//	m_PRM->SetImage(RESOURCE_DIR"/Background/bg_lose.png");
-				//}
-				//else {
-				//	m_PRM->SetImage(RESOURCE_DIR"/Background/bg_win.png");
-				//}
-
-				//m_PRM->GetRemainingStepsText()->SetVisible(false);
-				//m_PRM->GetTaskText()->SetVisible(false);
-
-				//if (m_Player) { // 人物
-				//	m_Player->SetVisible(false);
-				//}
-				//for (auto& box : m_Box_vec) { // 箱子
-				//	box->SetVisible(false);
-				//}
-				//for (auto& wall : m_Wall) { // 牆壁
-				//	wall->SetVisible(false);
-				//}
-				//for (auto& floor : m_Floor) { // 地板
-				//	floor->SetVisible(false);
-				//}
-				//for (auto& point : m_Point_vec) { // 目標點
-				//	point->SetVisible(false);
-				//}
-				//for (auto& check : m_Check_vec) { // 勾勾
-				//	check->SetVisible(false);
-				//}
-
-				//m_Phase = Phase::END; // 遊戲結束
-
-				//break;
-
-			//default:
-				//m_CurrentState = State::END;
-		//}
 	}
 }

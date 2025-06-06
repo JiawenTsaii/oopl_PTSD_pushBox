@@ -19,9 +19,6 @@ void App::Update() {
     bool mouseLeftButtonPressed = Util::Input::IsKeyPressed(Util::Keycode::MOUSE_LB);
     bool mouseLeftButtonDown = Util::Input::IsKeyDown(Util::Keycode::MOUSE_LB);
 
-    // 檢測Shift鍵的按下，用於確認關卡選擇
-    //bool shiftKeyPressed = Util::Input::IsKeyPressed(Util::Keycode::LSHIFT) || Util::Input::IsKeyPressed(Util::Keycode::RSHIFT);
-
     // 這裡是對Phase::MENU按下滑鼠也能跳到下一個頁面的東東
     if (m_Phase == Phase::MENU && mouseLeftButtonDown) {
         ValidTask(); // 從MENU跳到LEVELSELECT
@@ -44,8 +41,6 @@ void App::Update() {
         // 第1~10關
         // F1 + num
         if (Util::Input::IsKeyPressed(Util::Keycode::F1)) {
-            btn_return->SetVisible(true);
-            btn_reset->SetVisible(true);
             if (Util::Input::IsKeyPressed(Util::Keycode::NUM_1)) m_SelectedLevel = 1;
             else if (Util::Input::IsKeyPressed(Util::Keycode::NUM_2)) m_SelectedLevel = 2;
             else if (Util::Input::IsKeyPressed(Util::Keycode::NUM_3)) m_SelectedLevel = 3;
@@ -61,8 +56,6 @@ void App::Update() {
 		// 11~20
         // F2 + num
         else if (Util::Input::IsKeyPressed(Util::Keycode::F2)) {
-            btn_return->SetVisible(true);
-            btn_reset->SetVisible(true);
             if (Util::Input::IsKeyPressed(Util::Keycode::NUM_1)) m_SelectedLevel = 11;
             else if (Util::Input::IsKeyPressed(Util::Keycode::NUM_2)) m_SelectedLevel = 12;
             else if (Util::Input::IsKeyPressed(Util::Keycode::NUM_3)) m_SelectedLevel = 13;
@@ -78,8 +71,6 @@ void App::Update() {
         // 21~30
         // F3 + num
         else if (Util::Input::IsKeyPressed(Util::Keycode::F3)) {
-            btn_return->SetVisible(true);
-            btn_reset->SetVisible(true);
             if (Util::Input::IsKeyPressed(Util::Keycode::NUM_1)) m_SelectedLevel = 21;
             else if (Util::Input::IsKeyPressed(Util::Keycode::NUM_2)) m_SelectedLevel = 22;
             else if (Util::Input::IsKeyPressed(Util::Keycode::NUM_3)) m_SelectedLevel = 23;
@@ -125,14 +116,16 @@ void App::Update() {
 
             m_PRM->ShowLevelBoxes(false); // 所有關卡箱子消失
 
+            // reset、return按鈕出現
+            btn_return->SetVisible(true);
+            btn_reset->SetVisible(true);
+
             /* 根據選擇的關卡設置相應的階段並初始化地圖 */
             if (m_SelectedLevel == 1) {
                 m_Phase = Phase::LEVELSELECT;
                 TextLevel = 0;
             }
             else if (m_SelectedLevel >= 2 && m_SelectedLevel <= 30) {
-                btn_return->SetVisible(true);
-                btn_reset->SetVisible(true);
                 m_Phase = static_cast<Phase>(static_cast<int>(Phase::LEVEL1) + (m_SelectedLevel - 2));
                 std::cout << "m_SelectedLevel-1: " << m_SelectedLevel-1 << std::endl;
                 TextLevel = m_SelectedLevel - 1;
@@ -155,7 +148,7 @@ void App::Update() {
             m_TimeLimited = false;
             m_TimeText->SetVisible(false);
 
-            btn_return->SetVisible(false); // 返回鍵消失
+            btn_return->SetVisible(false);
             btn_reset->SetVisible(false);
 
             // LEVEL ? 消失
@@ -242,6 +235,16 @@ void App::Update() {
                     m_RemainingSteps = remainingStepsValues[levelIndex % 10];
                     m_PRM->SetRemainingStepsText(std::to_string(m_RemainingSteps));
                 }
+
+                // 設置時間限制 (LEVEL21~LEVEL30)
+                m_TimeLimit = 10; // 10秒時間限制
+                m_RemainingTime = m_TimeLimit;
+                m_LastTimeUpdate = std::chrono::steady_clock::now();
+                int minutes = m_RemainingTime / 60;
+                int seconds = m_RemainingTime % 60;
+                std::string timeStr = (minutes < 10 ? "0" : "") + std::to_string(minutes) + ":" +
+                    (seconds < 10 ? "0" : "") + std::to_string(seconds);
+
             }
             else {
                 // 默認處理
@@ -299,308 +302,383 @@ void App::Update() {
 	int RIGHT_SetPosition_i = 1;
 	int RIGHT_SetPosition_j = 0;
 
-    if ((Util::Input::IsKeyPressed(Util::Keycode::UP)) 
-        || (Util::Input::IsKeyPressed(Util::Keycode::DOWN)) 
-        || (Util::Input::IsKeyPressed(Util::Keycode::LEFT)) 
-        || (Util::Input::IsKeyPressed(Util::Keycode::RIGHT))) {
+        if ((m_Phase != Phase::MENU && m_Phase != Phase::LEVELSELECT && m_Phase != Phase::END) &&
+            (
+                (Util::Input::IsKeyPressed(Util::Keycode::UP))
+                || (Util::Input::IsKeyPressed(Util::Keycode::DOWN)) 
+                || (Util::Input::IsKeyPressed(Util::Keycode::LEFT)) 
+                || (Util::Input::IsKeyPressed(Util::Keycode::RIGHT))
+            )
+           ) {
 
-        /* 換角色圖片 */
-        if (Util::Input::IsKeyPressed(Util::Keycode::UP)) {
-			m_Player->SetImage(RESOURCE_DIR"/Object/Player/player_up.png");
-		}
-		else if (Util::Input::IsKeyPressed(Util::Keycode::DOWN)) {
-			m_Player->SetImage(RESOURCE_DIR"/Object/Player/player_down.png");
-		}
-		else if (Util::Input::IsKeyPressed(Util::Keycode::LEFT)) {
-			m_Player->SetImage(RESOURCE_DIR"/Object/Player/player_left.png");
-		}
-		else if (Util::Input::IsKeyPressed(Util::Keycode::RIGHT)) {
-			m_Player->SetImage(RESOURCE_DIR"/Object/Player/player_right.png");
-        }
+            /* 換角色圖片 */
+            if (Util::Input::IsKeyPressed(Util::Keycode::UP)) {
+			    m_Player->SetImage(RESOURCE_DIR"/Object/Player/player_up.png");
+		    }
+		    else if (Util::Input::IsKeyPressed(Util::Keycode::DOWN)) {
+			    m_Player->SetImage(RESOURCE_DIR"/Object/Player/player_down.png");
+		    }
+		    else if (Util::Input::IsKeyPressed(Util::Keycode::LEFT)) {
+			    m_Player->SetImage(RESOURCE_DIR"/Object/Player/player_left.png");
+		    }
+		    else if (Util::Input::IsKeyPressed(Util::Keycode::RIGHT)) {
+			    m_Player->SetImage(RESOURCE_DIR"/Object/Player/player_right.png");
+            }
 
-        // 每移動一步就偵測一次
-        if (m_Phase != Phase::LEVELSELECT && m_Phase != Phase::MENU && m_Phase != Phase::END) {
+            // 每移動一步就偵測一次
+            if (m_Phase != Phase::LEVELSELECT && m_Phase != Phase::MENU && m_Phase != Phase::END) {
             
-            /* 檢查所有的目標點都有箱子 */
-            if (BoxOnCheckCount >= BoxPass) {
-                ValidTask(); // 跳到下一關
-                BoxOnCheckCount = 0;
-            }
-
-            /* 檢查剩餘步數是否>=0 */
-            if (m_RemainingSteps == 0) {
-				m_Phase = Phase::LEVEL30;
-                Lose = true;
-                ValidTask();
-            }
-        }
-
-        /* 設定上下左右delta */
-        int GameMap_i = 0;
-		int GameMap_j = 0;
-		int SetPosition_i = 0;
-		int SetPosition_j = 0;
-
-        if (Util::Input::IsKeyPressed(Util::Keycode::UP)) {
-			GameMap_i = UP_GameMap_i;
-			GameMap_j = UP_GameMap_j;
-			SetPosition_i = UP_SetPosition_i;
-			SetPosition_j = UP_SetPosition_j;
-        }
-        else if (Util::Input::IsKeyPressed(Util::Keycode::DOWN)) {
-			GameMap_i = DOWN_GameMap_i;
-		    GameMap_j = DOWN_GameMap_j;
-		    SetPosition_i = DOWN_SetPosition_i;
-			SetPosition_j = DOWN_SetPosition_j;
-        }
-        else if (Util::Input::IsKeyPressed(Util::Keycode::LEFT)) {
-			GameMap_i = LEFT_GameMap_i;
-			GameMap_j = LEFT_GameMap_j;
-			SetPosition_i = LEFT_SetPosition_i;
-			SetPosition_j = LEFT_SetPosition_j;
-		}
-		else if (Util::Input::IsKeyPressed(Util::Keycode::RIGHT)) {
-			GameMap_i = RIGHT_GameMap_i;
-			GameMap_j = RIGHT_GameMap_j;
-			SetPosition_i = RIGHT_SetPosition_i;
-			SetPosition_j = RIGHT_SetPosition_j;
-        }
-
-        // 勝利條件驗證：檢查是否所有目標點上都有箱子
-        if (m_Phase != Phase::MENU && m_Phase != Phase::LEVELSELECT) {
-            if (Util::Input::IsKeyPressed(Util::Keycode::RETURN)) {
-                // 檢查所有目標點是否都有箱子
-                bool allPointsHaveBoxes = true;
-                // 如果所有的箱子都在目標點上，則 BoxOnCheckCount 應該等於 BoxPass
+                /* 檢查所有的目標點都有箱子 */
                 if (BoxOnCheckCount >= BoxPass) {
-                    // 計算目前關卡的編號
-                    int currentLevel = static_cast<int>(m_Phase) - static_cast<int>(Phase::LEVEL1) + 1;
-
-                    // 更新最大已解鎖關卡
-                    if (currentLevel + 1 > m_CurrentMaxLevel) {
-                        m_CurrentMaxLevel = currentLevel + 1;
+                
+                    m_PRM->SetPassText();
+                    std::cout << "m_PRM->SetPassText()" << std::endl;
+				    m_PRM->GetTaskText()->SetVisible(true);
+                
+                    // 停頓一秒
+                    auto startTime = Util::Time::GetElapsedTimeMs();
+                    while (Util::Time::GetElapsedTimeMs() - startTime < 1000) {
+                        // Busy-wait loop for 1 second
                     }
 
-                    // 跳到下一關卡
-                    m_PhaseChanged = false; // 重置狀態以允許切換關卡
-                    ValidTask();
+                    ValidTask(); // 跳到下一關
+                    BoxOnCheckCount = 0;
+                }
+
+                /* 檢查剩餘步數是否>=0 */
+                if (m_Phase >= Phase::LEVEL11 && m_Phase <= Phase::LEVEL20) {
+                    if (m_RemainingSteps == 0) {
+                        m_Phase = Phase::LEVEL30;
+                        Lose = true;
+                        ValidTask();
+                    }
                 }
             }
-        }
 
-        if (!keyProcessed) {
-            for (int i = 7; i >= 0; i--) {
-                for (int j = 0; j < 9; j++) {
+            /* 設定上下左右delta */
+            int GameMap_i = 0;
+		    int GameMap_j = 0;
+		    int SetPosition_i = 0;
+		    int SetPosition_j = 0;
 
-                    /* 人 */
-                    if ((m_GameMap[i][j] == 4) || (isPlayerOnCheck && (i == m_PlayerPosition_i) && (j == m_PlayerPosition_j))) {
+            if (Util::Input::IsKeyPressed(Util::Keycode::UP)) {
+			    GameMap_i = UP_GameMap_i;
+			    GameMap_j = UP_GameMap_j;
+			    SetPosition_i = UP_SetPosition_i;
+			    SetPosition_j = UP_SetPosition_j;
+            }
+            else if (Util::Input::IsKeyPressed(Util::Keycode::DOWN)) {
+			    GameMap_i = DOWN_GameMap_i;
+		        GameMap_j = DOWN_GameMap_j;
+		        SetPosition_i = DOWN_SetPosition_i;
+			    SetPosition_j = DOWN_SetPosition_j;
+            }
+            else if (Util::Input::IsKeyPressed(Util::Keycode::LEFT)) {
+			    GameMap_i = LEFT_GameMap_i;
+			    GameMap_j = LEFT_GameMap_j;
+			    SetPosition_i = LEFT_SetPosition_i;
+			    SetPosition_j = LEFT_SetPosition_j;
+		    }
+		    else if (Util::Input::IsKeyPressed(Util::Keycode::RIGHT)) {
+			    GameMap_i = RIGHT_GameMap_i;
+			    GameMap_j = RIGHT_GameMap_j;
+			    SetPosition_i = RIGHT_SetPosition_i;
+			    SetPosition_j = RIGHT_SetPosition_j;
+            }
 
-                        /* 人的上面是空地 (1、2) */
-                        if (m_GameMap[i + GameMap_i][j + GameMap_j] == 2) {
+            // 勝利條件驗證：檢查是否所有目標點上都有箱子
+            if (m_Phase != Phase::MENU && m_Phase != Phase::LEVELSELECT && m_Phase != Phase::END) {
+                if (Util::Input::IsKeyPressed(Util::Keycode::RETURN)) {
+                    // 檢查所有目標點是否都有箱子
+                    bool allPointsHaveBoxes = true;
+                    // 如果所有的箱子都在目標點上，則 BoxOnCheckCount 應該等於 BoxPass
+                    if (BoxOnCheckCount >= BoxPass) {
+                        // 計算目前關卡的編號
+                        int currentLevel = static_cast<int>(m_Phase) - static_cast<int>(Phase::LEVEL1) + 1;
 
-                            /* 步數限制 */
-                            if ((Util::Input::IsKeyDown(Util::Keycode::UP)) ||
-                                (Util::Input::IsKeyDown(Util::Keycode::DOWN)) ||
-                                (Util::Input::IsKeyDown(Util::Keycode::LEFT)) ||
-                                (Util::Input::IsKeyDown(Util::Keycode::RIGHT))) {
-
-                                if (!StepKeyProcessed) {
-                                    m_RemainingSteps--; // 每次移動步數減1
-                                    m_PRM->SetRemainingStepsText(std::to_string(m_RemainingSteps));
-                                    StepKeyProcessed = true; // 標記按鍵已處理
-                                }
-                            }
-                            else {
-                                StepKeyProcessed = false; // 當按鍵釋放時，重置標記
-                            }
-
-                            /* 人不在目標點上 */
-                            if (!isPlayerOnCheck) {
-                                m_GameMap[i][j] = 2; // 目前位置設為空地
-                            }
-                            // GameMap
-                            m_GameMap[i + GameMap_i][j + GameMap_j] = 4; // 上面一格設為人
-                            // SetPosition
-                            m_Player->SetPosition({ m_Player->GetPosition().x + (SetPosition_i * 40), m_Player->GetPosition().y + (SetPosition_j * 40)});
-
-                            needUpdate = true;
-
-                            isPlayerOnCheck = false; // 人離開目標點了
-
-                            break;
+                        // 更新最大已解鎖關卡
+                        if (currentLevel + 1 > m_CurrentMaxLevel) {
+                            m_CurrentMaxLevel = currentLevel + 1;
                         }
 
-                        /* 人的上面是箱子 */
-                        for (size_t k = 0; k < m_Box_vec.size(); ++k) {
-                            if (m_GameMap[i + GameMap_i][j + GameMap_j] == 3) {
+                        // 跳到下一關卡
+                        m_PhaseChanged = false; // 重置狀態以允許切換關卡
+                        ValidTask();
+                    }
+                }
+            }
 
-                                /* 箱子上面是空地 (3、4) */
-                                if (m_GameMap[i + (GameMap_i * 2)][j + (GameMap_j * 2)] == 2) {
+            if (!keyProcessed) {
+                for (int i = 7; i >= 0; i--) {
+                    for (int j = 0; j < 9; j++) {
 
-                                    /* 步數限制 */
-                                    if ((Util::Input::IsKeyDown(Util::Keycode::UP)) ||
-                                        (Util::Input::IsKeyDown(Util::Keycode::DOWN)) ||
-                                        (Util::Input::IsKeyDown(Util::Keycode::LEFT)) ||
-                                        (Util::Input::IsKeyDown(Util::Keycode::RIGHT))) {
+                        /* 人 */
+                        if ((m_GameMap[i][j] == 4) || (isPlayerOnCheck && (i == m_PlayerPosition_i) && (j == m_PlayerPosition_j))) {
 
-                                        if (!StepKeyProcessed) {
-                                            m_RemainingSteps--; // 每次移動步數減1
-                                            m_PRM->SetRemainingStepsText(std::to_string(m_RemainingSteps));
-                                            StepKeyProcessed = true; // 標記按鍵已處理
-                                        }
+                            /* 人的上面是空地 (1、2) */
+                            if (m_GameMap[i + GameMap_i][j + GameMap_j] == 2) {
+
+                                /* 步數限制 */
+                                if ((Util::Input::IsKeyDown(Util::Keycode::UP)) ||
+                                    (Util::Input::IsKeyDown(Util::Keycode::DOWN)) ||
+                                    (Util::Input::IsKeyDown(Util::Keycode::LEFT)) ||
+                                    (Util::Input::IsKeyDown(Util::Keycode::RIGHT))) {
+
+                                    if (!StepKeyProcessed) {
+                                        m_RemainingSteps--; // 每次移動步數減1
+                                        m_PRM->SetRemainingStepsText(std::to_string(m_RemainingSteps));
+                                        StepKeyProcessed = true; // 標記按鍵已處理
                                     }
-                                    else {
-                                        StepKeyProcessed = false; // 當按鍵釋放時，重置標記
-                                    }
-
-                                    /* 人不在目標點上 */
-                                    if (!isPlayerOnCheck) {
-                                        m_GameMap[i][j] = 2; // 目前位置設為空地
-                                    }
-
-                                    // GameMap
-                                    m_GameMap[i + GameMap_i][j + GameMap_j] = 4; // 上面一格設為人
-                                    m_GameMap[i + (GameMap_i * 2)][j + (GameMap_j * 2)] = 3; // 上面兩格設為箱子
-                                    // SetPosition (箱子先移動，再換人移動)
-                                    for (size_t k = 0; k < m_Box_vec.size(); ++k) { // 找到在人的上面一格的箱子
-                                        if ((m_Box_vec[k]->GetPosition().x == m_Player->GetPosition().x + (SetPosition_i * 40)) && (m_Box_vec[k]->GetPosition().y == m_Player->GetPosition().y + (SetPosition_j * 40))) {
-                                            m_Box_vec[k]->SetPosition({ m_Box_vec[k]->GetPosition().x + (SetPosition_i * 40), m_Box_vec[k]->GetPosition().y + (SetPosition_j * 40) });
-                                            break;
-                                        }
-                                    }
-                                    m_Player->SetPosition({ m_Player->GetPosition().x + (SetPosition_i * 40), m_Player->GetPosition().y + (SetPosition_j * 40) }); // 人往上一格
-
-                                    needUpdate = true;
-
-                                    isPlayerOnCheck = false; // 人離開目標點了
-
-                                    break;
                                 }
-
-                                /* 箱子上面是目標點 (5、6) */
-                                else if (m_GameMap[i + (GameMap_i * 2)][j + (GameMap_j * 2)] == 5) {
-
-                                    /* 步數限制 */
-                                    if ((Util::Input::IsKeyDown(Util::Keycode::UP)) ||
-                                        (Util::Input::IsKeyDown(Util::Keycode::DOWN)) ||
-                                        (Util::Input::IsKeyDown(Util::Keycode::LEFT)) ||
-                                        (Util::Input::IsKeyDown(Util::Keycode::RIGHT))) {
-
-                                        if (!StepKeyProcessed) {
-                                            m_RemainingSteps--; // 每次移動步數減1
-                                            m_PRM->SetRemainingStepsText(std::to_string(m_RemainingSteps));
-                                            StepKeyProcessed = true; // 標記按鍵已處理
-                                        }
-                                    }
-                                    else {
-                                        StepKeyProcessed = false; // 當按鍵釋放時，重置標記
-                                    }
-
-                                    /* 人不在目標點上 */
-                                    if (!isPlayerOnCheck) {
-                                        m_GameMap[i][j] = 2; // 目前位置設為空地
-                                    }
-
-                                    // GameMap
-                                    m_GameMap[i + GameMap_i][j + GameMap_j] = 4; // 上面一格設為人
-                                    // SetPosition
-                                    for (size_t k = 0; k < m_Box_vec.size(); ++k) { // 找到在人的上面一格的箱子
-                                        if ((m_Box_vec[k]->GetPosition().x == m_Player->GetPosition().x + (SetPosition_i * 40)) && (m_Box_vec[k]->GetPosition().y == m_Player->GetPosition().y + (SetPosition_j * 40))) {
-                                            m_Box_vec[k]->SetPosition({ m_Box_vec[k]->GetPosition().x + (SetPosition_i * 40), m_Box_vec[k]->GetPosition().y + (SetPosition_j * 40) });
-                                            isBoxOnCheck[k] = true;
-                                            BoxOnCheckCount++;
-                                            std::cout << "BoxOnCheckCount: " << BoxOnCheckCount << std::endl;
-                                            break;
-                                        }
-                                    }
-
-                                    // 勾勾出現 (先勾勾，再人)
-                                    for (size_t k = 0; k < m_Check_vec.size(); ++k) { // 找到在人的上面兩格的勾勾(箱子的上面一格)
-                                        if ((m_Check_vec[k]->GetPosition().x == m_Player->GetPosition().x + (SetPosition_i * 80)) && (m_Check_vec[k]->GetPosition().y == m_Player->GetPosition().y + (SetPosition_j * 80))) {
-                                            m_Check_vec[k]->SetVisible(true);
-                                        }
-                                    }
-
-                                    m_Player->SetPosition({ m_Player->GetPosition().x + (SetPosition_i * 40), m_Player->GetPosition().y + (SetPosition_j * 40) });
-
-                                    needUpdate = true;
-
-                                    isPlayerOnCheck = false; // 更新玩家位置後重置標誌
-
-                                    break;
-                                }
-
-                                /* 箱子的上面是牆壁 (什麼事都不用做) */
                                 else {
-                                    needUpdate = true;
-
-                                    break;
+                                    StepKeyProcessed = false; // 當按鍵釋放時，重置標記
                                 }
+
+                                /* 人不在目標點上 */
+                                if (!isPlayerOnCheck) {
+                                    m_GameMap[i][j] = 2; // 目前位置設為空地
+                                }
+                                // GameMap
+                                m_GameMap[i + GameMap_i][j + GameMap_j] = 4; // 上面一格設為人
+                                // SetPosition
+                                m_Player->SetPosition({ m_Player->GetPosition().x + (SetPosition_i * 40), m_Player->GetPosition().y + (SetPosition_j * 40)});
+
+                                needUpdate = true;
+
+                                isPlayerOnCheck = false; // 人離開目標點了
+
+                                break;
                             }
-                        }
 
-                        /* 人的上面是目標點 */
-                        if (m_GameMap[i + GameMap_i][j + GameMap_j] == 5) {
+                            /* 人的上面是箱子 */
+                            for (size_t k = 0; k < m_Box_vec.size(); ++k) {
+                                if (m_GameMap[i + GameMap_i][j + GameMap_j] == 3) {
 
-                            /* 目標點上有箱子 */
-                            for (size_t k = 0; k < m_Box_vec.size(); k++) {
+                                    /* 箱子上面是空地 (3、4) */
+                                    if (m_GameMap[i + (GameMap_i * 2)][j + (GameMap_j * 2)] == 2) {
 
-                                if ((m_Box_vec[k]->GetPosition().x == m_Player->GetPosition().x + (SetPosition_i * 40))
-                                    && (m_Box_vec[k]->GetPosition().y == m_Player->GetPosition().y + (SetPosition_j * 40))) {
+                                        /* 步數限制 */
+                                        if ((Util::Input::IsKeyDown(Util::Keycode::UP)) ||
+                                            (Util::Input::IsKeyDown(Util::Keycode::DOWN)) ||
+                                            (Util::Input::IsKeyDown(Util::Keycode::LEFT)) ||
+                                            (Util::Input::IsKeyDown(Util::Keycode::RIGHT))) {
 
-                                    bool temp2box = false; // 記錄上面的上面還有沒有箱子
+                                            if (!StepKeyProcessed) {
+                                                m_RemainingSteps--; // 每次移動步數減1
+                                                m_PRM->SetRemainingStepsText(std::to_string(m_RemainingSteps));
+                                                StepKeyProcessed = true; // 標記按鍵已處理
+                                            }
+                                        }
+                                        else {
+                                            StepKeyProcessed = false; // 當按鍵釋放時，重置標記
+                                        }
 
-                                    /* 目標點的上面一格還有箱子 */
-                                    for (size_t j = 0; j < m_Box_vec.size(); ++j) {
-                                        if ((m_Box_vec[j]->GetPosition().x == m_Player->GetPosition().x + (SetPosition_i * 80))
-                                            && (m_Box_vec[j]->GetPosition().y == m_Player->GetPosition().y + (SetPosition_j * 80))) {
+                                        /* 人不在目標點上 */
+                                        if (!isPlayerOnCheck) {
+                                            m_GameMap[i][j] = 2; // 目前位置設為空地
+                                        }
 
-                                            temp2box = true; // 上面的上面還有箱子
-
-                                            /* 上面的上面那個箱子踩在另一個目標點上 (9) */
-                                            if (isBoxOnCheck[j]) {
-
-                                                /* 步數限制 */
-                                                if ((Util::Input::IsKeyDown(Util::Keycode::UP)) ||
-                                                    (Util::Input::IsKeyDown(Util::Keycode::DOWN)) ||
-                                                    (Util::Input::IsKeyDown(Util::Keycode::LEFT)) ||
-                                                    (Util::Input::IsKeyDown(Util::Keycode::RIGHT))) {
-
-                                                    if (!StepKeyProcessed) {
-                                                        m_RemainingSteps--; // 每次移動步數減1
-                                                        m_PRM->SetRemainingStepsText(std::to_string(m_RemainingSteps));
-                                                        StepKeyProcessed = true; // 標記按鍵已處理
-                                                    }
-                                                }
-                                                else {
-                                                    StepKeyProcessed = false; // 當按鍵釋放時，重置標記
-                                                }
-
-                                                // GameMap
-                                                m_GameMap[i][j] = 2; // 目前位置設為空地
-                                                m_GameMap[i + (GameMap_i * 3)][j + (GameMap_j * 3)] = 3; // 上面三格設為箱子
-
-                                                // SetPosition
+                                        // GameMap
+                                        m_GameMap[i + GameMap_i][j + GameMap_j] = 4; // 上面一格設為人
+                                        m_GameMap[i + (GameMap_i * 2)][j + (GameMap_j * 2)] = 3; // 上面兩格設為箱子
+                                        // SetPosition (箱子先移動，再換人移動)
+                                        for (size_t k = 0; k < m_Box_vec.size(); ++k) { // 找到在人的上面一格的箱子
+                                            if ((m_Box_vec[k]->GetPosition().x == m_Player->GetPosition().x + (SetPosition_i * 40)) && (m_Box_vec[k]->GetPosition().y == m_Player->GetPosition().y + (SetPosition_j * 40))) {
                                                 m_Box_vec[k]->SetPosition({ m_Box_vec[k]->GetPosition().x + (SetPosition_i * 40), m_Box_vec[k]->GetPosition().y + (SetPosition_j * 40) });
-                                                m_Box_vec[j]->SetPosition({ m_Box_vec[j]->GetPosition().x + (SetPosition_i * 40), m_Box_vec[j]->GetPosition().y + (SetPosition_j * 40) });
-                                                m_Player->SetPosition({ m_Player->GetPosition().x + (SetPosition_i * 40), m_Player->GetPosition().y + (SetPosition_j * 40) });
-
-                                                isPlayerOnCheck = true;
-                                                m_PlayerPosition_i = i + GameMap_i;
-                                                m_PlayerPosition_j = j + GameMap_j;
-
-                                                isBoxOnCheck[k] = true;
-                                                isBoxOnCheck[j] = false;
-                                                BoxOnCheckCount--;
-                                                std::cout << "BoxOnCheckCount: " << BoxOnCheckCount << std::endl;
-
-                                                needUpdate = true;
-
                                                 break;
                                             }
+                                        }
+                                        m_Player->SetPosition({ m_Player->GetPosition().x + (SetPosition_i * 40), m_Player->GetPosition().y + (SetPosition_j * 40) }); // 人往上一格
 
-                                            /* 上面的上面那個箱子沒有踩在另一個目標點上 (10、11) */
-                                            else {
+                                        needUpdate = true;
+
+                                        isPlayerOnCheck = false; // 人離開目標點了
+
+                                        break;
+                                    }
+
+                                    /* 箱子上面是目標點 (5、6) */
+                                    else if (m_GameMap[i + (GameMap_i * 2)][j + (GameMap_j * 2)] == 5) {
+
+                                        /* 步數限制 */
+                                        if ((Util::Input::IsKeyDown(Util::Keycode::UP)) ||
+                                            (Util::Input::IsKeyDown(Util::Keycode::DOWN)) ||
+                                            (Util::Input::IsKeyDown(Util::Keycode::LEFT)) ||
+                                            (Util::Input::IsKeyDown(Util::Keycode::RIGHT))) {
+
+                                            if (!StepKeyProcessed) {
+                                                m_RemainingSteps--; // 每次移動步數減1
+                                                m_PRM->SetRemainingStepsText(std::to_string(m_RemainingSteps));
+                                                StepKeyProcessed = true; // 標記按鍵已處理
+                                            }
+                                        }
+                                        else {
+                                            StepKeyProcessed = false; // 當按鍵釋放時，重置標記
+                                        }
+
+                                        /* 人不在目標點上 */
+                                        if (!isPlayerOnCheck) {
+                                            m_GameMap[i][j] = 2; // 目前位置設為空地
+                                        }
+
+                                        // GameMap
+                                        m_GameMap[i + GameMap_i][j + GameMap_j] = 4; // 上面一格設為人
+                                        // SetPosition
+                                        for (size_t k = 0; k < m_Box_vec.size(); ++k) { // 找到在人的上面一格的箱子
+                                            if ((m_Box_vec[k]->GetPosition().x == m_Player->GetPosition().x + (SetPosition_i * 40)) && (m_Box_vec[k]->GetPosition().y == m_Player->GetPosition().y + (SetPosition_j * 40))) {
+                                                m_Box_vec[k]->SetPosition({ m_Box_vec[k]->GetPosition().x + (SetPosition_i * 40), m_Box_vec[k]->GetPosition().y + (SetPosition_j * 40) });
+                                                isBoxOnCheck[k] = true;
+                                                BoxOnCheckCount++;
+                                                std::cout << "BoxOnCheckCount: " << BoxOnCheckCount << std::endl;
+                                                break;
+                                            }
+                                        }
+
+                                        // 勾勾出現 (先勾勾，再人)
+                                        for (size_t k = 0; k < m_Check_vec.size(); ++k) { // 找到在人的上面兩格的勾勾(箱子的上面一格)
+                                            if ((m_Check_vec[k]->GetPosition().x == m_Player->GetPosition().x + (SetPosition_i * 80)) && (m_Check_vec[k]->GetPosition().y == m_Player->GetPosition().y + (SetPosition_j * 80))) {
+                                                m_Check_vec[k]->SetVisible(true);
+                                            }
+                                        }
+
+                                        m_Player->SetPosition({ m_Player->GetPosition().x + (SetPosition_i * 40), m_Player->GetPosition().y + (SetPosition_j * 40) });
+
+                                        needUpdate = true;
+
+                                        isPlayerOnCheck = false; // 更新玩家位置後重置標誌
+
+                                        break;
+                                    }
+
+                                    /* 箱子的上面是牆壁 (什麼事都不用做) */
+                                    else {
+                                        needUpdate = true;
+
+                                        break;
+                                    }
+                                }
+                            }
+
+                            /* 人的上面是目標點 */
+                            if (m_GameMap[i + GameMap_i][j + GameMap_j] == 5) {
+
+                                /* 目標點上有箱子 */
+                                for (size_t k = 0; k < m_Box_vec.size(); k++) {
+
+                                    if ((m_Box_vec[k]->GetPosition().x == m_Player->GetPosition().x + (SetPosition_i * 40))
+                                        && (m_Box_vec[k]->GetPosition().y == m_Player->GetPosition().y + (SetPosition_j * 40))) {
+
+                                        bool temp2box = false; // 記錄上面的上面還有沒有箱子
+
+                                        /* 目標點的上面一格還有箱子 */
+                                        for (size_t j = 0; j < m_Box_vec.size(); ++j) {
+                                            if ((m_Box_vec[j]->GetPosition().x == m_Player->GetPosition().x + (SetPosition_i * 80))
+                                                && (m_Box_vec[j]->GetPosition().y == m_Player->GetPosition().y + (SetPosition_j * 80))) {
+
+                                                temp2box = true; // 上面的上面還有箱子
+
+                                                /* 上面的上面那個箱子踩在另一個目標點上 (9) */
+                                                if (isBoxOnCheck[j]) {
+
+                                                    /* 步數限制 */
+                                                    if ((Util::Input::IsKeyDown(Util::Keycode::UP)) ||
+                                                        (Util::Input::IsKeyDown(Util::Keycode::DOWN)) ||
+                                                        (Util::Input::IsKeyDown(Util::Keycode::LEFT)) ||
+                                                        (Util::Input::IsKeyDown(Util::Keycode::RIGHT))) {
+
+                                                        if (!StepKeyProcessed) {
+                                                            m_RemainingSteps--; // 每次移動步數減1
+                                                            m_PRM->SetRemainingStepsText(std::to_string(m_RemainingSteps));
+                                                            StepKeyProcessed = true; // 標記按鍵已處理
+                                                        }
+                                                    }
+                                                    else {
+                                                        StepKeyProcessed = false; // 當按鍵釋放時，重置標記
+                                                    }
+
+                                                    // GameMap
+                                                    m_GameMap[i][j] = 2; // 目前位置設為空地
+                                                    m_GameMap[i + (GameMap_i * 3)][j + (GameMap_j * 3)] = 3; // 上面三格設為箱子
+
+                                                    // SetPosition
+                                                    m_Box_vec[k]->SetPosition({ m_Box_vec[k]->GetPosition().x + (SetPosition_i * 40), m_Box_vec[k]->GetPosition().y + (SetPosition_j * 40) });
+                                                    m_Box_vec[j]->SetPosition({ m_Box_vec[j]->GetPosition().x + (SetPosition_i * 40), m_Box_vec[j]->GetPosition().y + (SetPosition_j * 40) });
+                                                    m_Player->SetPosition({ m_Player->GetPosition().x + (SetPosition_i * 40), m_Player->GetPosition().y + (SetPosition_j * 40) });
+
+                                                    isPlayerOnCheck = true;
+                                                    m_PlayerPosition_i = i + GameMap_i;
+                                                    m_PlayerPosition_j = j + GameMap_j;
+
+                                                    isBoxOnCheck[k] = true;
+                                                    isBoxOnCheck[j] = false;
+                                                    BoxOnCheckCount--;
+                                                    std::cout << "BoxOnCheckCount: " << BoxOnCheckCount << std::endl;
+
+                                                    needUpdate = true;
+
+                                                    break;
+                                                }
+
+                                                /* 上面的上面那個箱子沒有踩在另一個目標點上 (10、11) */
+                                                else {
+
+                                                    /* 步數限制 */
+                                                    if ((Util::Input::IsKeyDown(Util::Keycode::UP)) ||
+                                                        (Util::Input::IsKeyDown(Util::Keycode::DOWN)) ||
+                                                        (Util::Input::IsKeyDown(Util::Keycode::LEFT)) ||
+                                                        (Util::Input::IsKeyDown(Util::Keycode::RIGHT))) {
+
+                                                        if (!StepKeyProcessed) {
+                                                            m_RemainingSteps--; // 每次移動步數減1
+                                                            m_PRM->SetRemainingStepsText(std::to_string(m_RemainingSteps));
+                                                            StepKeyProcessed = true; // 標記按鍵已處理
+                                                        }
+                                                    }
+                                                    else {
+                                                        StepKeyProcessed = false; // 當按鍵釋放時，重置標記
+                                                    }
+
+                                                    if (!isPlayerOnCheck) {
+                                                        m_GameMap[i][j] = 2; // 目前位置設為空地
+                                                    }
+
+                                                    // GameMap
+                                                    m_GameMap[i + (GameMap_i * 2)][j + (GameMap_j * 2)] = 4; // 上面兩格設為箱子
+                                                    m_GameMap[i + (GameMap_i * 3)][j + (GameMap_j * 3)] = 3; // 上面三格設為箱子
+
+                                                    // SetPosition
+                                                    m_Box_vec[k]->SetPosition({ m_Box_vec[k]->GetPosition().x + (SetPosition_i * 40), m_Box_vec[k]->GetPosition().y + (SetPosition_j * 40) });
+                                                    m_Box_vec[j]->SetPosition({ m_Box_vec[j]->GetPosition().x + (SetPosition_i * 40), m_Box_vec[j]->GetPosition().y + (SetPosition_j * 40) });
+
+                                                    isBoxOnCheck[k] = false;
+                                                    BoxOnCheckCount--;
+
+                                                    isPlayerOnCheck = true; // 人在目標點上
+                                                    m_PlayerPosition_i = i + GameMap_i;
+                                                    m_PlayerPosition_j = j + GameMap_j;
+
+                                                    // 勾勾消失
+                                                    for (size_t k = 0; k < m_Check_vec.size(); ++k) {
+                                                        if ((m_Check_vec[k]->GetPosition().x == m_Player->GetPosition().x + (SetPosition_i * 40)) && (m_Check_vec[k]->GetPosition().y == m_Player->GetPosition().y + (SetPosition_j * 40))) {
+                                                            m_Check_vec[k]->SetVisible(false);
+                                                        }
+                                                    }
+
+                                                    m_Player->SetPosition({ m_Player->GetPosition().x + (SetPosition_i * 40), m_Player->GetPosition().y + (SetPosition_j * 40) }); // 人往上一格
+
+                                                    needUpdate = true;
+
+                                                    break;
+                                                }
+                                            }
+                                            if (needUpdate) break;
+                                        }
+
+                                        /* 目標點的上面一格沒有箱子 */
+                                        if (!temp2box) {
+
+                                            /* 目標點的上面是空地 (12、13) */
+                                            if (m_GameMap[i + (GameMap_i * 2)][j + (GameMap_j * 2)] == 2) {
 
                                                 /* 步數限制 */
                                                 if ((Util::Input::IsKeyDown(Util::Keycode::UP)) ||
@@ -618,17 +696,16 @@ void App::Update() {
                                                     StepKeyProcessed = false; // 當按鍵釋放時，重置標記
                                                 }
 
+												std::cout << "isPlayerOnCheck: " << isPlayerOnCheck << std::endl;
                                                 if (!isPlayerOnCheck) {
                                                     m_GameMap[i][j] = 2; // 目前位置設為空地
                                                 }
 
                                                 // GameMap
-                                                m_GameMap[i + (GameMap_i * 2)][j + (GameMap_j * 2)] = 4; // 上面兩格設為箱子
-                                                m_GameMap[i + (GameMap_i * 3)][j + (GameMap_j * 3)] = 3; // 上面三格設為箱子
+                                                m_GameMap[i + (GameMap_i * 2)][j + (GameMap_j * 2)] = 3; // 上面兩格設為箱子
 
                                                 // SetPosition
-                                                m_Box_vec[k]->SetPosition({ m_Box_vec[k]->GetPosition().x + (SetPosition_i * 40), m_Box_vec[k]->GetPosition().y + (SetPosition_j * 40) });
-                                                m_Box_vec[j]->SetPosition({ m_Box_vec[j]->GetPosition().x + (SetPosition_i * 40), m_Box_vec[j]->GetPosition().y + (SetPosition_j * 40) });
+                                                m_Box_vec[k]->SetPosition({ m_Box_vec[k]->GetPosition().x + (SetPosition_i * 40), m_Box_vec[k]->GetPosition().y + (SetPosition_j * 40) }); // 箱子往上一格
 
                                                 isBoxOnCheck[k] = false;
                                                 BoxOnCheckCount--;
@@ -650,185 +727,127 @@ void App::Update() {
 
                                                 break;
                                             }
-                                        }
-                                        if (needUpdate) break;
-                                    }
 
-                                    /* 目標點的上面一格沒有箱子 */
-                                    if (!temp2box) {
+                                            /* 目標點的上面是另一個目標點 (14) */
+                                            else if (m_GameMap[i + (GameMap_i * 2)][j + (GameMap_j * 2)] == 5) {
 
-                                        /* 目標點的上面是空地 (12、13) */
-                                        if (m_GameMap[i + (GameMap_i * 2)][j + (GameMap_j * 2)] == 2) {
+                                                /* 步數限制 */
+                                                if ((Util::Input::IsKeyDown(Util::Keycode::UP)) ||
+                                                    (Util::Input::IsKeyDown(Util::Keycode::DOWN)) ||
+                                                    (Util::Input::IsKeyDown(Util::Keycode::LEFT)) ||
+                                                    (Util::Input::IsKeyDown(Util::Keycode::RIGHT))) {
 
-                                            /* 步數限制 */
-                                            if ((Util::Input::IsKeyDown(Util::Keycode::UP)) ||
-                                                (Util::Input::IsKeyDown(Util::Keycode::DOWN)) ||
-                                                (Util::Input::IsKeyDown(Util::Keycode::LEFT)) ||
-                                                (Util::Input::IsKeyDown(Util::Keycode::RIGHT))) {
-
-                                                if (!StepKeyProcessed) {
-                                                    m_RemainingSteps--; // 每次移動步數減1
-                                                    m_PRM->SetRemainingStepsText(std::to_string(m_RemainingSteps));
-                                                    StepKeyProcessed = true; // 標記按鍵已處理
+                                                    if (!StepKeyProcessed) {
+                                                        m_RemainingSteps--; // 每次移動步數減1
+                                                        m_PRM->SetRemainingStepsText(std::to_string(m_RemainingSteps));
+                                                        StepKeyProcessed = true; // 標記按鍵已處理
+                                                    }
                                                 }
-                                            }
-                                            else {
-                                                StepKeyProcessed = false; // 當按鍵釋放時，重置標記
-                                            }
+                                                else {
+                                                    StepKeyProcessed = false; // 當按鍵釋放時，重置標記
+                                                }
 
-                                            if (!isPlayerOnCheck) {
+                                                // GameMap
                                                 m_GameMap[i][j] = 2; // 目前位置設為空地
-                                            }
 
-                                            // GameMap
-                                            m_GameMap[i + (GameMap_i * 2)][j + (GameMap_j * 2)] = 3; // 上面兩格設為箱子
+                                                // SetPosition
+                                                m_Box_vec[k]->SetPosition({ m_Box_vec[k]->GetPosition().x + (SetPosition_i * 40), m_Box_vec[k]->GetPosition().y + (SetPosition_j * 40) }); // 箱子往上一格
 
-                                            // SetPosition
-                                            m_Box_vec[k]->SetPosition({ m_Box_vec[k]->GetPosition().x + (SetPosition_i * 40), m_Box_vec[k]->GetPosition().y + (SetPosition_j * 40) }); // 箱子往上一格
+                                                isBoxOnCheck[k] = true;
 
-                                            isBoxOnCheck[k] = false;
-                                            BoxOnCheckCount--;
+                                                isPlayerOnCheck = true; // 人在目標點上
+                                                m_PlayerPosition_i = i + GameMap_i;
+                                                m_PlayerPosition_j = j + GameMap_j;
 
-                                            isPlayerOnCheck = true; // 人在目標點上
-                                            m_PlayerPosition_i = i + GameMap_i;
-                                            m_PlayerPosition_j = j + GameMap_j;
-
-                                            // 勾勾消失
-                                            for (size_t k = 0; k < m_Check_vec.size(); ++k) {
-                                                if ((m_Check_vec[k]->GetPosition().x == m_Player->GetPosition().x + (SetPosition_i * 40)) && (m_Check_vec[k]->GetPosition().y == m_Player->GetPosition().y + (SetPosition_j * 40))) {
-                                                    m_Check_vec[k]->SetVisible(false);
+                                                // 勾勾消失 (人的上面一格)
+                                                for (size_t k = 0; k < m_Check_vec.size(); ++k) {
+                                                    if ((m_Check_vec[k]->GetPosition().x == m_Player->GetPosition().x + (SetPosition_i * 40)) && (m_Check_vec[k]->GetPosition().y == m_Player->GetPosition().y + (SetPosition_j * 40))) {
+                                                        m_Check_vec[k]->SetVisible(false);
+                                                    }
                                                 }
-                                            }
 
-                                            m_Player->SetPosition({ m_Player->GetPosition().x + (SetPosition_i * 40), m_Player->GetPosition().y + (SetPosition_j * 40) }); // 人往上一格
-
-                                            needUpdate = true;
-
-                                            break;
-                                        }
-
-                                        /* 目標點的上面是另一個目標點 (14) */
-                                        else if (m_GameMap[i + (GameMap_i * 2)][j + (GameMap_j * 2)] == 5) {
-
-                                            /* 步數限制 */
-                                            if ((Util::Input::IsKeyDown(Util::Keycode::UP)) ||
-                                                (Util::Input::IsKeyDown(Util::Keycode::DOWN)) ||
-                                                (Util::Input::IsKeyDown(Util::Keycode::LEFT)) ||
-                                                (Util::Input::IsKeyDown(Util::Keycode::RIGHT))) {
-
-                                                if (!StepKeyProcessed) {
-                                                    m_RemainingSteps--; // 每次移動步數減1
-                                                    m_PRM->SetRemainingStepsText(std::to_string(m_RemainingSteps));
-                                                    StepKeyProcessed = true; // 標記按鍵已處理
+                                                // 勾勾出現 (人的上面兩格)
+                                                for (size_t k = 0; k < m_Check_vec.size(); ++k) {
+                                                    if ((m_Check_vec[k]->GetPosition().x == m_Player->GetPosition().x + (SetPosition_i * 80)) && (m_Check_vec[k]->GetPosition().y == m_Player->GetPosition().y + (SetPosition_j * 80))) {
+                                                        m_Check_vec[k]->SetVisible(true);
+                                                    }
                                                 }
+
+                                                m_Player->SetPosition({ m_Player->GetPosition().x + (SetPosition_i * 40), m_Player->GetPosition().y + (SetPosition_j * 40) }); // 人往上一格
+
+                                                needUpdate = true;
+
+                                                break;
                                             }
+
+                                            /* 目標點的上面是牆壁 (什麼事都不用做) */
                                             else {
-                                                StepKeyProcessed = false; // 當按鍵釋放時，重置標記
+
+											    needUpdate = true;
+
+                                                break;
                                             }
-
-                                            // GameMap
-                                            m_GameMap[i][j] = 2; // 目前位置設為空地
-                                            m_GameMap[i + (GameMap_i * 2)][j + (GameMap_j * 2)] = 3; // 上面兩格設為箱子
-
-                                            // SetPosition
-                                            m_Box_vec[k]->SetPosition({ m_Box_vec[k]->GetPosition().x + (SetPosition_i * 40), m_Box_vec[k]->GetPosition().y + (SetPosition_j * 40) }); // 箱子往上一格
-
-                                            isBoxOnCheck[k] = true;
-
-                                            isPlayerOnCheck = true; // 人在目標點上
-                                            m_PlayerPosition_i = i + GameMap_i;
-                                            m_PlayerPosition_j = j + GameMap_j;
-
-                                            // 勾勾消失 (人的上面一格)
-                                            for (size_t k = 0; k < m_Check_vec.size(); ++k) {
-                                                if ((m_Check_vec[k]->GetPosition().x == m_Player->GetPosition().x + (SetPosition_i * 40)) && (m_Check_vec[k]->GetPosition().y == m_Player->GetPosition().y + (SetPosition_j * 40))) {
-                                                    m_Check_vec[k]->SetVisible(false);
-                                                }
-                                            }
-
-                                            // 勾勾出現 (人的上面兩格)
-                                            for (size_t k = 0; k < m_Check_vec.size(); ++k) {
-                                                if ((m_Check_vec[k]->GetPosition().x == m_Player->GetPosition().x + (SetPosition_i * 80)) && (m_Check_vec[k]->GetPosition().y == m_Player->GetPosition().y + (SetPosition_j * 80))) {
-                                                    m_Check_vec[k]->SetVisible(true);
-                                                }
-                                            }
-
-                                            m_Player->SetPosition({ m_Player->GetPosition().x + (SetPosition_i * 40), m_Player->GetPosition().y + (SetPosition_j * 40) }); // 人往上一格
-
-                                            needUpdate = true;
-
-                                            break;
                                         }
 
-                                        /* 目標點的上面是牆壁 (什麼事都不用做) */
-                                        else {
+                                    }
 
-											needUpdate = true;
+                                    if (needUpdate) break;
+                                }
 
-                                            break;
+                                /* 目標點上沒箱子 (7、8) */
+                                if (!needUpdate) {
+
+                                    /* 步數限制 */
+                                    if ((Util::Input::IsKeyDown(Util::Keycode::UP)) ||
+                                        (Util::Input::IsKeyDown(Util::Keycode::DOWN)) ||
+                                        (Util::Input::IsKeyDown(Util::Keycode::LEFT)) ||
+                                        (Util::Input::IsKeyDown(Util::Keycode::RIGHT))) {
+
+                                        if (!StepKeyProcessed) {
+                                            m_RemainingSteps--; // 每次移動步數減1
+                                            m_PRM->SetRemainingStepsText(std::to_string(m_RemainingSteps));
+                                            StepKeyProcessed = true; // 標記按鍵已處理
                                         }
                                     }
-
-                                }
-
-                                if (needUpdate) break;
-                            }
-
-                            /* 目標點上沒箱子 (7、8) */
-                            if (!needUpdate) {
-
-                                /* 步數限制 */
-                                if ((Util::Input::IsKeyDown(Util::Keycode::UP)) ||
-                                    (Util::Input::IsKeyDown(Util::Keycode::DOWN)) ||
-                                    (Util::Input::IsKeyDown(Util::Keycode::LEFT)) ||
-                                    (Util::Input::IsKeyDown(Util::Keycode::RIGHT))) {
-
-                                    if (!StepKeyProcessed) {
-                                        m_RemainingSteps--; // 每次移動步數減1
-                                        m_PRM->SetRemainingStepsText(std::to_string(m_RemainingSteps));
-                                        StepKeyProcessed = true; // 標記按鍵已處理
+                                    else {
+                                        StepKeyProcessed = false; // 當按鍵釋放時，重置標記
                                     }
+
+                                    if (!isPlayerOnCheck) {
+                                        m_GameMap[i][j] = 2; // 將當前位置設為空地
+                                    }
+
+                                    // SetPosition
+                                    m_Player->SetPosition({ m_Player->GetPosition().x + (SetPosition_i * 40), m_Player->GetPosition().y + (SetPosition_j * 40) });
+
+                                    isPlayerOnCheck = true;
+                                    m_PlayerPosition_i = i + GameMap_i;
+                                    m_PlayerPosition_j = j + GameMap_j;
+
+                                    needUpdate = true;
+
+                                    break;
                                 }
-                                else {
-                                    StepKeyProcessed = false; // 當按鍵釋放時，重置標記
-                                }
 
-                                if (!isPlayerOnCheck) {
-                                    m_GameMap[i][j] = 2; // 將當前位置設為空地
-                                }
-
-                                // SetPosition
-                                m_Player->SetPosition({ m_Player->GetPosition().x + (SetPosition_i * 40), m_Player->GetPosition().y + (SetPosition_j * 40) });
-
-                                isPlayerOnCheck = true;
-                                m_PlayerPosition_i = i + GameMap_i;
-                                m_PlayerPosition_j = j + GameMap_j;
-
-                                needUpdate = true;
-
-                                break;
                             }
-
+                            break; // 找到玩家並移動後直接跳出內層迴圈
                         }
-                        break; // 找到玩家並移動後直接跳出內層迴圈
                     }
+
+                    if (needUpdate) break; // 找到玩家並移動後直接跳出外層迴圈
                 }
 
-                if (needUpdate) break; // 找到玩家並移動後直接跳出外層迴圈
-            }
-
-            for (const auto& row : m_GameMap) {
-                for (const auto& cell : row) {
-                    std::cout << cell << " ";
+                for (const auto& row : m_GameMap) {
+                    for (const auto& cell : row) {
+                        std::cout << cell << " ";
+                    }
+                    std::cout << std::endl;
                 }
                 std::cout << std::endl;
+
+                keyProcessed = true;
             }
-            std::cout << std::endl;
-
-            keyProcessed = true;
         }
-    }
-
     else {
         keyProcessed = false; // 如果沒有按下任何方向鍵，重置 keyProcessed 標誌
     }
@@ -849,13 +868,12 @@ void App::Update() {
         m_CurrentState = State::END;
     }
 
-    // 更新計時 - 只在特定關卡使用時間限制 暫時先用五六關來試
-    if (m_TimeLimited && (m_Phase == Phase::LEVEL5 || m_Phase == Phase::LEVEL6)) {
+    // 更新計時
+    if (m_TimeLimited && (m_Phase >= Phase::LEVEL21 && m_Phase <= Phase::LEVEL30)) {
         UpdateTimer();
     }
 
     m_Root.Update();
-
 
     if (!Util::Input::IsKeyPressed(Util::Keycode::RETURN)) {
         m_PhaseChanged = false;
@@ -875,14 +893,13 @@ void App::UpdateTimer() {
         int minutes = m_RemainingTime / 60;
         int seconds = m_RemainingTime % 60;
         std::string timeStr = (minutes < 10 ? "0" : "") + std::to_string(minutes) + ":" +
-                             (seconds < 10 ? "0" : "") + std::to_string(seconds);
-
-        m_TimeText->SetText("剩餘時間: " + timeStr);
+            (seconds < 10 ? "0" : "") + std::to_string(seconds);
+        m_TimeText->SetText(timeStr);
 
         // 檢查時間是否用完
         if (m_RemainingTime <= 0) {
             Lose = true;
-            m_Phase = Phase::LEVEL30; // 使用 LEVEL30 作為跳轉到失敗畫面的中介
+            m_Phase = Phase::LEVEL30;
             ValidTask();
         }
     }
