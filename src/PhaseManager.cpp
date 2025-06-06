@@ -9,7 +9,7 @@ PhaseResourceManager::PhaseResourceManager() {
     m_TaskText = std::make_shared<TaskText>();
     m_Background = std::make_shared<BackgroundImage>();
 	m_RemainingStepsText = std::make_shared<TaskText>(
-		RESOURCE_DIR"/Font/BodoniFLF-Bold.ttf", // 字體路徑
+		RESOURCE_DIR"/Font/PlaypenSansDeva-Medium.ttf", // 字體路徑
 		20,                                    // 字體大小
 		"Remaining Steps: 100",                // 初始文字內容
 		Util::Color::FromName(Util::Colors::BLACK) // 顏色
@@ -34,6 +34,10 @@ void PhaseResourceManager::SetImage(const std::string& filepath) {
 
 void PhaseResourceManager::SetTaskText(int TextLevel) {
 	m_TaskText->NextPhase(TextLevel + 1);
+}
+
+void PhaseResourceManager::SetPassText() {
+	m_TaskText->SetText("Level Complete!");
 }
 
 void PhaseResourceManager::SetRemainingStepsText(const std::string& remainingSteps) {
