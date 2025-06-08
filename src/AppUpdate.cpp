@@ -144,6 +144,11 @@ void App::Update() {
         if (Util::Input::IsKeyPressed(Util::Keycode::BACKSPACE) ||
             (mouseLeftButtonDown && Util::Input::GetCursorPosition().x < -130 && Util::Input::GetCursorPosition().y < -270)) {
 
+            if (Lose) {
+                m_Phase = Phase::LEVELSELECT;
+                Lose = false;
+            }
+
             // 重置時間限制
             m_TimeLimited = false;
             m_TimeText->SetVisible(false);
@@ -223,6 +228,7 @@ void App::Update() {
 
                 // 設定剩餘步數 (僅適用於 LEVEL11~LEVEL20)
                 int remainingStepsValues[] = { 10, 10, 20, 25, 40, 30, 30, 50, 20, 25 };
+                int remainingTimeValues[] = { 15, 15, 30, 35, 50, 40, 40, 60, 30, 35 };
 
                 // 初始化地圖
                 InitializeMap(*gameMaps[levelIndex % 10]);
@@ -235,16 +241,21 @@ void App::Update() {
                     m_RemainingSteps = remainingStepsValues[levelIndex % 10];
                     m_PRM->SetRemainingStepsText(std::to_string(m_RemainingSteps));
                 }
+                // 設定剩餘時間 (LEVEL21~LEVEL30)
+                if (m_Phase >= Phase::LEVEL21 && m_Phase <= Phase::LEVEL30) {
+                    m_RemainingTime = remainingTimeValues[levelIndex % 10];
+                    // m_PRM->
+                    // m_PRM->SetRemainingTimeText(std::to_string(m_RemainingTime));
+                }
 
                 // 設置時間限制 (LEVEL21~LEVEL30)
-                m_TimeLimit = 10; // 10秒時間限制
+                // m_TimeLimit = 10; // 10秒時間限制
                 m_RemainingTime = m_TimeLimit;
                 m_LastTimeUpdate = std::chrono::steady_clock::now();
                 int minutes = m_RemainingTime / 60;
                 int seconds = m_RemainingTime % 60;
                 std::string timeStr = (minutes < 10 ? "0" : "") + std::to_string(minutes) + ":" +
                     (seconds < 10 ? "0" : "") + std::to_string(seconds);
-
             }
             else {
                 // 默認處理

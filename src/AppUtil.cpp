@@ -138,13 +138,20 @@ void App::ValidTask() {
 				m_PRM->SetRemainingStepsText(std::to_string(m_RemainingSteps));
 				m_PRM->GetRemainingStepsText()->SetVisible(true);
 			}
+            else {
+            	m_PRM->GetRemainingStepsText()->SetVisible(false);
+            }
 
 			/* ----- [for 21~30] 限制時間 ----- */
 			if (m_Phase >= Phase::LEVEL20 && m_Phase <= Phase::LEVEL29) {
-				// 設置時間限制
-				m_TimeLimited = true;
-				m_TimeLimit = 10; // 10秒時間限制
-				m_RemainingTime = m_TimeLimit;
+				// 設置時間限制s
+				// m_TimeLimit = 10; // 10秒時間限制
+				// m_RemainingTime = m_TimeLimit;
+				// 設定剩餘時間 (LEVEL21~LEVEL30)
+				int remainingTimeValues[] = { 15, 15, 30, 35, 50, 40, 40, 60, 30, 35 };
+				if (m_Phase >= Phase::LEVEL21 && m_Phase <= Phase::LEVEL30) {
+					m_RemainingTime = remainingTimeValues[levelIndex % 10];
+				}
 				m_LastTimeUpdate = std::chrono::steady_clock::now();
 
 				// 顯示時間文字
@@ -152,7 +159,6 @@ void App::ValidTask() {
 				int seconds = m_RemainingTime % 60;
 				std::string timeStr = (minutes < 10 ? "0" : "") + std::to_string(minutes) + ":" +
 					(seconds < 10 ? "0" : "") + std::to_string(seconds);
-
 				m_TimeText->SetText(timeStr);
 				m_TimeText->SetVisible(true);
 			}

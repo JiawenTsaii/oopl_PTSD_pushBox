@@ -142,6 +142,7 @@ private:
     /* 步數限制 */
     int m_RemainingSteps = 100;   // 初始剩餘步數
 
+
     /* 地圖 */
     /* 0:草地 1:牆壁 2:空地 3:箱子 4:人物 5:目標點*/
     std::vector<std::vector<int>> GameMap1 = {
