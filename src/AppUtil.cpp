@@ -7,7 +7,7 @@
 
 void App::ValidTask() {
 	if (!m_PhaseChanged) {
-		
+
 		/* 清空地圖 */
 		for (auto& wall : m_Wall) {
 			m_Root.RemoveChild(wall);
@@ -97,7 +97,7 @@ void App::ValidTask() {
 
 		else if (m_Phase >= Phase::LEVELSELECT && m_Phase <= Phase::LEVEL29) {
 			std::cout << "LEVEL" << static_cast<int>(m_Phase) - static_cast<int>(Phase::LEVEL1) + 1 << " to LEVEL" << static_cast<int>(m_Phase) - static_cast<int>(Phase::LEVEL1) + 2 << std::endl;
-			
+
 			int levelIndex = static_cast<int>(m_Phase) - static_cast<int>(Phase::LEVEL1) + 1;
 
 			/* ----- 背景 ----- */
@@ -105,12 +105,12 @@ void App::ValidTask() {
 			if (m_Phase == Phase::LEVELSELECT) {  // 做箱子、m_Phase++
 				m_PRM->NextPhase();
 			}
-			
+
 			/* ----- 文字 ----- */
 			TextLevel = static_cast<int>(m_Phase) - static_cast<int>(Phase::LEVELSELECT);
 			std::cout << "TextLevel+1: " << TextLevel + 1 << std::endl;
 			//m_PRM->SetPassText();
-			
+
 			m_PRM->SetTaskText(TextLevel + 1);
 			m_PRM->GetTaskText()->SetVisible(true);
 
@@ -120,7 +120,7 @@ void App::ValidTask() {
 
 				/* ----- 返回的按鈕 ----- */
 				btn_return->SetVisible(true);
-				
+
 				/* ----- 重置的按鈕 ----- */
 				if (!btn_reset) {
 					btn_reset = std::make_shared<Character>(RESOURCE_DIR"/Button/btn_reset.png");
@@ -138,21 +138,26 @@ void App::ValidTask() {
 				m_PRM->SetRemainingStepsText(std::to_string(m_RemainingSteps));
 				m_PRM->GetRemainingStepsText()->SetVisible(true);
 			}
+			else {
+				m_PRM->GetRemainingStepsText()->SetVisible(false);
+			}
 
 			/* ----- [for 21~30] 限制時間 ----- */
 			if (m_Phase >= Phase::LEVEL20 && m_Phase <= Phase::LEVEL29) {
-				// 設置時間限制
-				m_TimeLimited = true;
-				m_TimeLimit = 10; // 10秒時間限制
-				m_RemainingTime = m_TimeLimit;
+				// 設置時間限制s
+				int remainingTimeValues[] = { 15, 15, 30, 35, 50, 40, 40, 60, 30, 35 };
+				if (m_Phase >= Phase::LEVEL21 && m_Phase <= Phase::LEVEL30) {
+					m_RemainingTime = remainingTimeValues[levelIndex % 10];
+				}
 				m_LastTimeUpdate = std::chrono::steady_clock::now();
+
+				m_TimeLimited = true;
 
 				// 顯示時間文字
 				int minutes = m_RemainingTime / 60;
 				int seconds = m_RemainingTime % 60;
 				std::string timeStr = (minutes < 10 ? "0" : "") + std::to_string(minutes) + ":" +
 					(seconds < 10 ? "0" : "") + std::to_string(seconds);
-
 				m_TimeText->SetText(timeStr);
 				m_TimeText->SetVisible(true);
 			}
@@ -161,11 +166,11 @@ void App::ValidTask() {
 				m_TimeLimited = false;
 				m_TimeText->SetVisible(false);
 			}
-			
+
 			/* ----- 跳下一關 ----- */
 			// 設定 m_Phase 為下一關
 			m_Phase = static_cast<Phase>(static_cast<int>(m_Phase) + 1);
-			
+
 			// 設定地圖 (GameMap)
 			std::vector<std::vector<int>>* gameMaps[] = {
 				&GameMap1, &GameMap2, &GameMap3, &GameMap4, &GameMap5,

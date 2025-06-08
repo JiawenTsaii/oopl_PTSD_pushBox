@@ -1,0 +1,1246 @@
+.
+├── CMakeLists.txt
+├── LICENSE
+├── README.md
+├── Resources
+│   ├── BGM
+│   │   └── BGM_ground.mp3
+│   ├── Background
+│   │   ├── bg_game.png
+│   │   ├── bg_level.png
+│   │   ├── bg_lose.png
+│   │   ├── bg_menu.png
+│   │   └── bg_win.png
+│   ├── Button
+│   │   ├── btn_reset.png
+│   │   └── btn_return.png
+│   ├── Font
+│   │   ├── BodoniFLF-Bold.ttf
+│   │   ├── BodoniFLF-Roman.ttf
+│   │   ├── Inkfree.ttf
+│   │   └── PlaypenSansDeva-Medium.ttf
+│   └── Object
+│       ├── LevelBox
+│       │   ├── b1.png
+│       │   ├── b10.png
+│       │   ├── b11.png
+│       │   ├── b12.png
+│       │   ├── b13.png
+│       │   ├── b14.png
+│       │   ├── b15.png
+│       │   ├── b16.png
+│       │   ├── b17.png
+│       │   ├── b18.png
+│       │   ├── b19.png
+│       │   ├── b2.png
+│       │   ├── b20.png
+│       │   ├── b21.png
+│       │   ├── b22.png
+│       │   ├── b23.png
+│       │   ├── b24.png
+│       │   ├── b25.png
+│       │   ├── b26.png
+│       │   ├── b27.png
+│       │   ├── b28.png
+│       │   ├── b29.png
+│       │   ├── b3.png
+│       │   ├── b30.png
+│       │   ├── b4.png
+│       │   ├── b5.png
+│       │   ├── b6.png
+│       │   ├── b7.png
+│       │   ├── b8.png
+│       │   └── b9.png
+│       ├── Player
+│       │   ├── player_down.png
+│       │   ├── player_floor.png
+│       │   ├── player_left.png
+│       │   ├── player_right.png
+│       │   └── player_up.png
+│       ├── box.png
+│       ├── check.png
+│       ├── desktop.ini
+│       ├── floor.png
+│       ├── player_down.png
+│       ├── point.png
+│       └── wall.png
+├── files.cmake
+├── include
+│   ├── AnimatedCharacter.hpp
+│   ├── App.hpp
+│   ├── AppUtil.hpp
+│   ├── BackgroundImage.hpp
+│   ├── Character.hpp
+│   ├── PhaseResourceManager.hpp
+│   └── TaskText.hpp
+├── out
+│   └── build
+│       ├── config.hpp
+│       ├── config.json
+│       └── x64-Debug
+│           ├── CMakeCache.txt
+│           ├── CMakeFiles
+│           │   ├── 3.31.6-msvc6
+│           │   │   ├── CMakeCCompiler.cmake
+│           │   │   ├── CMakeCXXCompiler.cmake
+│           │   │   ├── CMakeDetermineCompilerABI_C.bin
+│           │   │   ├── CMakeDetermineCompilerABI_CXX.bin
+│           │   │   ├── CMakeRCCompiler.cmake
+│           │   │   ├── CMakeSystem.cmake
+│           │   │   ├── CompilerIdC
+│           │   │   │   ├── CMakeCCompilerId.c
+│           │   │   │   ├── CMakeCCompilerId.exe
+│           │   │   │   ├── CMakeCCompilerId.obj
+│           │   │   │   └── tmp
+│           │   │   └── CompilerIdCXX
+│           │   │       ├── CMakeCXXCompilerId.cpp
+│           │   │       ├── CMakeCXXCompilerId.exe
+│           │   │       ├── CMakeCXXCompilerId.obj
+│           │   │       └── tmp
+│           │   ├── CMakeConfigureLog.yaml
+│           │   ├── OOPL_pushBox.dir
+│           │   │   ├── embed.manifest
+│           │   │   ├── intermediate.manifest
+│           │   │   ├── manifest.rc
+│           │   │   ├── manifest.res
+│           │   │   ├── src
+│           │   │   │   ├── App.cpp.obj
+│           │   │   │   ├── AppEnd.cpp.obj
+│           │   │   │   ├── AppStart.cpp.obj
+│           │   │   │   ├── AppUpdate.cpp.obj
+│           │   │   │   ├── AppUtil.cpp.obj
+│           │   │   │   ├── BGM.cpp.obj
+│           │   │   │   ├── Character.cpp.obj
+│           │   │   │   ├── InitializeMap.cpp.obj
+│           │   │   │   ├── PhaseManager.cpp.obj
+│           │   │   │   └── main.cpp.obj
+│           │   │   └── vc140.pdb
+│           │   ├── ShowIncludes
+│           │   │   ├── foo.h
+│           │   │   ├── main.c
+│           │   │   └── main.obj
+│           │   ├── TargetDirectories.txt
+│           │   ├── cmake.check_cache
+│           │   ├── pkgRedirects
+│           │   └── rules.ninja
+│           ├── CPackConfig.cmake
+│           ├── CPackSourceConfig.cmake
+│           ├── OOPL_pushBox.exe
+│           ├── OOPL_pushBox.ilk
+│           ├── OOPL_pushBox.pdb
+│           ├── Testing
+│           │   └── Temporary
+│           │       └── LastTest.log
+│           ├── VSInheritEnvironments.txt
+│           ├── _deps
+│           │   ├── glew-build
+│           │   ├── glew-subbuild
+│           │   │   ├── CMakeCache.txt
+│           │   │   ├── CMakeFiles
+│           │   │   │   ├── 3.31.6-msvc6
+│           │   │   │   │   └── CMakeSystem.cmake
+│           │   │   │   ├── CMakeConfigureLog.yaml
+│           │   │   │   ├── TargetDirectories.txt
+│           │   │   │   ├── cmake.check_cache
+│           │   │   │   ├── glew-populate-complete
+│           │   │   │   ├── glew-populate.dir
+│           │   │   │   │   ├── Labels.json
+│           │   │   │   │   └── Labels.txt
+│           │   │   │   ├── pkgRedirects
+│           │   │   │   └── rules.ninja
+│           │   │   ├── CMakeLists.txt
+│           │   │   ├── build.ninja
+│           │   │   ├── cmake_install.cmake
+│           │   │   └── glew-populate-prefix
+│           │   │       ├── src
+│           │   │       │   ├── glew-2.2.0.zip
+│           │   │       │   └── glew-populate-stamp
+│           │   │       │       ├── download-glew-populate.cmake
+│           │   │       │       ├── extract-glew-populate.cmake
+│           │   │       │       ├── glew-populate-build
+│           │   │       │       ├── glew-populate-configure
+│           │   │       │       ├── glew-populate-done
+│           │   │       │       ├── glew-populate-download
+│           │   │       │       ├── glew-populate-install
+│           │   │       │       ├── glew-populate-mkdir
+│           │   │       │       ├── glew-populate-patch
+│           │   │       │       ├── glew-populate-patch-info.txt
+│           │   │       │       ├── glew-populate-test
+│           │   │       │       ├── glew-populate-update
+│           │   │       │       ├── glew-populate-update-info.txt
+│           │   │       │       ├── glew-populate-urlinfo.txt
+│           │   │       │       └── verify-glew-populate.cmake
+│           │   │       └── tmp
+│           │   │           ├── glew-populate-cfgcmd.txt
+│           │   │           └── glew-populate-mkdirs.cmake
+│           │   ├── glm-build
+│           │   │   ├── CMakeFiles
+│           │   │   ├── CTestTestfile.cmake
+│           │   │   ├── cmake_install.cmake
+│           │   │   └── glm
+│           │   │       ├── CMakeFiles
+│           │   │       ├── CTestTestfile.cmake
+│           │   │       └── cmake_install.cmake
+│           │   ├── glm-subbuild
+│           │   │   ├── CMakeCache.txt
+│           │   │   ├── CMakeFiles
+│           │   │   │   ├── 3.31.6-msvc6
+│           │   │   │   │   └── CMakeSystem.cmake
+│           │   │   │   ├── CMakeConfigureLog.yaml
+│           │   │   │   ├── TargetDirectories.txt
+│           │   │   │   ├── cmake.check_cache
+│           │   │   │   ├── glm-populate-complete
+│           │   │   │   ├── glm-populate.dir
+│           │   │   │   │   ├── Labels.json
+│           │   │   │   │   └── Labels.txt
+│           │   │   │   ├── pkgRedirects
+│           │   │   │   └── rules.ninja
+│           │   │   ├── CMakeLists.txt
+│           │   │   ├── build.ninja
+│           │   │   ├── cmake_install.cmake
+│           │   │   └── glm-populate-prefix
+│           │   │       ├── src
+│           │   │       │   ├── glm-0.9.9.8.zip
+│           │   │       │   └── glm-populate-stamp
+│           │   │       │       ├── download-glm-populate.cmake
+│           │   │       │       ├── extract-glm-populate.cmake
+│           │   │       │       ├── glm-populate-build
+│           │   │       │       ├── glm-populate-configure
+│           │   │       │       ├── glm-populate-done
+│           │   │       │       ├── glm-populate-download
+│           │   │       │       ├── glm-populate-install
+│           │   │       │       ├── glm-populate-mkdir
+│           │   │       │       ├── glm-populate-patch
+│           │   │       │       ├── glm-populate-patch-info.txt
+│           │   │       │       ├── glm-populate-test
+│           │   │       │       ├── glm-populate-update
+│           │   │       │       ├── glm-populate-update-info.txt
+│           │   │       │       ├── glm-populate-urlinfo.txt
+│           │   │       │       └── verify-glm-populate.cmake
+│           │   │       └── tmp
+│           │   │           ├── glm-populate-cfgcmd.txt
+│           │   │           └── glm-populate-mkdirs.cmake
+│           │   ├── googletest-build
+│           │   │   ├── CMakeFiles
+│           │   │   ├── CTestTestfile.cmake
+│           │   │   ├── cmake_install.cmake
+│           │   │   ├── googlemock
+│           │   │   │   ├── CMakeFiles
+│           │   │   │   │   ├── gmock.dir
+│           │   │   │   │   │   ├── __
+│           │   │   │   │   │   │   └── googletest
+│           │   │   │   │   │   │       └── src
+│           │   │   │   │   │   └── src
+│           │   │   │   │   └── gmock_main.dir
+│           │   │   │   │       ├── __
+│           │   │   │   │       │   └── googletest
+│           │   │   │   │       │       └── src
+│           │   │   │   │       └── src
+│           │   │   │   ├── CTestTestfile.cmake
+│           │   │   │   └── cmake_install.cmake
+│           │   │   └── googletest
+│           │   │       ├── CMakeFiles
+│           │   │       │   ├── Export
+│           │   │       │   │   └── 0c08b8e77dd885bfe55a19a9659d9fc1
+│           │   │       │   │       ├── GTestTargets-debug.cmake
+│           │   │       │   │       └── GTestTargets.cmake
+│           │   │       │   ├── gtest.dir
+│           │   │       │   │   └── src
+│           │   │       │   └── gtest_main.dir
+│           │   │       │       └── src
+│           │   │       ├── CTestTestfile.cmake
+│           │   │       ├── cmake_install.cmake
+│           │   │       └── generated
+│           │   │           ├── GTestConfig.cmake
+│           │   │           ├── GTestConfigVersion.cmake
+│           │   │           ├── gmock.pc
+│           │   │           ├── gmock_main.pc
+│           │   │           ├── gtest.pc
+│           │   │           └── gtest_main.pc
+│           │   ├── googletest-subbuild
+│           │   │   ├── CMakeCache.txt
+│           │   │   ├── CMakeFiles
+│           │   │   │   ├── 3.31.6-msvc6
+│           │   │   │   │   └── CMakeSystem.cmake
+│           │   │   │   ├── CMakeConfigureLog.yaml
+│           │   │   │   ├── TargetDirectories.txt
+│           │   │   │   ├── cmake.check_cache
+│           │   │   │   ├── googletest-populate-complete
+│           │   │   │   ├── googletest-populate.dir
+│           │   │   │   │   ├── Labels.json
+│           │   │   │   │   └── Labels.txt
+│           │   │   │   ├── pkgRedirects
+│           │   │   │   └── rules.ninja
+│           │   │   ├── CMakeLists.txt
+│           │   │   ├── build.ninja
+│           │   │   ├── cmake_install.cmake
+│           │   │   └── googletest-populate-prefix
+│           │   │       ├── src
+│           │   │       │   ├── googletest-populate-stamp
+│           │   │       │   │   ├── download-googletest-populate.cmake
+│           │   │       │   │   ├── extract-googletest-populate.cmake
+│           │   │       │   │   ├── googletest-populate-build
+│           │   │       │   │   ├── googletest-populate-configure
+│           │   │       │   │   ├── googletest-populate-done
+│           │   │       │   │   ├── googletest-populate-download
+│           │   │       │   │   ├── googletest-populate-install
+│           │   │       │   │   ├── googletest-populate-mkdir
+│           │   │       │   │   ├── googletest-populate-patch
+│           │   │       │   │   ├── googletest-populate-patch-info.txt
+│           │   │       │   │   ├── googletest-populate-test
+│           │   │       │   │   ├── googletest-populate-update
+│           │   │       │   │   ├── googletest-populate-update-info.txt
+│           │   │       │   │   ├── googletest-populate-urlinfo.txt
+│           │   │       │   │   └── verify-googletest-populate.cmake
+│           │   │       │   └── v1.13.0.zip
+│           │   │       └── tmp
+│           │   │           ├── googletest-populate-cfgcmd.txt
+│           │   │           └── googletest-populate-mkdirs.cmake
+│           │   ├── imgui-build
+│           │   ├── imgui-subbuild
+│           │   │   ├── CMakeCache.txt
+│           │   │   ├── CMakeFiles
+│           │   │   │   ├── 3.31.6-msvc6
+│           │   │   │   │   └── CMakeSystem.cmake
+│           │   │   │   ├── CMakeConfigureLog.yaml
+│           │   │   │   ├── TargetDirectories.txt
+│           │   │   │   ├── cmake.check_cache
+│           │   │   │   ├── imgui-populate-complete
+│           │   │   │   ├── imgui-populate.dir
+│           │   │   │   │   ├── Labels.json
+│           │   │   │   │   └── Labels.txt
+│           │   │   │   ├── pkgRedirects
+│           │   │   │   └── rules.ninja
+│           │   │   ├── CMakeLists.txt
+│           │   │   ├── build.ninja
+│           │   │   ├── cmake_install.cmake
+│           │   │   └── imgui-populate-prefix
+│           │   │       ├── src
+│           │   │       │   ├── imgui-populate-stamp
+│           │   │       │   │   ├── download-imgui-populate.cmake
+│           │   │       │   │   ├── extract-imgui-populate.cmake
+│           │   │       │   │   ├── imgui-populate-build
+│           │   │       │   │   ├── imgui-populate-configure
+│           │   │       │   │   ├── imgui-populate-done
+│           │   │       │   │   ├── imgui-populate-download
+│           │   │       │   │   ├── imgui-populate-install
+│           │   │       │   │   ├── imgui-populate-mkdir
+│           │   │       │   │   ├── imgui-populate-patch
+│           │   │       │   │   ├── imgui-populate-patch-info.txt
+│           │   │       │   │   ├── imgui-populate-test
+│           │   │       │   │   ├── imgui-populate-update
+│           │   │       │   │   ├── imgui-populate-update-info.txt
+│           │   │       │   │   ├── imgui-populate-urlinfo.txt
+│           │   │       │   │   └── verify-imgui-populate.cmake
+│           │   │       │   └── v1.90.4-docking.zip
+│           │   │       └── tmp
+│           │   │           ├── imgui-populate-cfgcmd.txt
+│           │   │           └── imgui-populate-mkdirs.cmake
+│           │   ├── nlohmann_json-build
+│           │   │   ├── CMakeFiles
+│           │   │   ├── cmake_install.cmake
+│           │   │   ├── nlohmann_json.pc
+│           │   │   ├── nlohmann_jsonConfig.cmake
+│           │   │   └── nlohmann_jsonConfigVersion.cmake
+│           │   ├── nlohmann_json-subbuild
+│           │   │   ├── CMakeCache.txt
+│           │   │   ├── CMakeFiles
+│           │   │   │   ├── 3.31.6-msvc6
+│           │   │   │   │   └── CMakeSystem.cmake
+│           │   │   │   ├── CMakeConfigureLog.yaml
+│           │   │   │   ├── TargetDirectories.txt
+│           │   │   │   ├── cmake.check_cache
+│           │   │   │   ├── nlohmann_json-populate-complete
+│           │   │   │   ├── nlohmann_json-populate.dir
+│           │   │   │   │   ├── Labels.json
+│           │   │   │   │   └── Labels.txt
+│           │   │   │   ├── pkgRedirects
+│           │   │   │   └── rules.ninja
+│           │   │   ├── CMakeLists.txt
+│           │   │   ├── build.ninja
+│           │   │   ├── cmake_install.cmake
+│           │   │   └── nlohmann_json-populate-prefix
+│           │   │       ├── src
+│           │   │       │   ├── json.tar.xz
+│           │   │       │   └── nlohmann_json-populate-stamp
+│           │   │       │       ├── download-nlohmann_json-populate.cmake
+│           │   │       │       ├── extract-nlohmann_json-populate.cmake
+│           │   │       │       ├── nlohmann_json-populate-build
+│           │   │       │       ├── nlohmann_json-populate-configure
+│           │   │       │       ├── nlohmann_json-populate-done
+│           │   │       │       ├── nlohmann_json-populate-download
+│           │   │       │       ├── nlohmann_json-populate-install
+│           │   │       │       ├── nlohmann_json-populate-mkdir
+│           │   │       │       ├── nlohmann_json-populate-patch
+│           │   │       │       ├── nlohmann_json-populate-patch-info.txt
+│           │   │       │       ├── nlohmann_json-populate-test
+│           │   │       │       ├── nlohmann_json-populate-update
+│           │   │       │       ├── nlohmann_json-populate-update-info.txt
+│           │   │       │       ├── nlohmann_json-populate-urlinfo.txt
+│           │   │       │       └── verify-nlohmann_json-populate.cmake
+│           │   │       └── tmp
+│           │   │           ├── nlohmann_json-populate-cfgcmd.txt
+│           │   │           └── nlohmann_json-populate-mkdirs.cmake
+│           │   ├── ptsd-build
+│           │   │   ├── CMakeFiles
+│           │   │   │   ├── AudioTest.dir
+│           │   │   │   │   └── test
+│           │   │   │   │       └── Interactive
+│           │   │   │   ├── Example.dir
+│           │   │   │   │   └── example
+│           │   │   │   │       └── src
+│           │   │   │   ├── ImGui.dir
+│           │   │   │   │   ├── ImGui.pdb
+│           │   │   │   │   └── lib
+│           │   │   │   │       └── imgui
+│           │   │   │   │           ├── backends
+│           │   │   │   │           │   ├── imgui_impl_opengl3.cpp.obj
+│           │   │   │   │           │   └── imgui_impl_sdl2.cpp.obj
+│           │   │   │   │           ├── imgui.cpp.obj
+│           │   │   │   │           ├── imgui_demo.cpp.obj
+│           │   │   │   │           ├── imgui_draw.cpp.obj
+│           │   │   │   │           ├── imgui_tables.cpp.obj
+│           │   │   │   │           └── imgui_widgets.cpp.obj
+│           │   │   │   ├── PTSD.dir
+│           │   │   │   │   ├── PTSD.pdb
+│           │   │   │   │   └── src
+│           │   │   │   │       ├── Core
+│           │   │   │   │       │   ├── Context.cpp.obj
+│           │   │   │   │       │   ├── DebugMessageCallback.cpp.obj
+│           │   │   │   │       │   ├── IndexBuffer.cpp.obj
+│           │   │   │   │       │   ├── Program.cpp.obj
+│           │   │   │   │       │   ├── Shader.cpp.obj
+│           │   │   │   │       │   ├── Texture.cpp.obj
+│           │   │   │   │       │   ├── TextureUtils.cpp.obj
+│           │   │   │   │       │   ├── VertexArray.cpp.obj
+│           │   │   │   │       │   └── VertexBuffer.cpp.obj
+│           │   │   │   │       ├── Util
+│           │   │   │   │       │   ├── Animation.cpp.obj
+│           │   │   │   │       │   ├── BGM.cpp.obj
+│           │   │   │   │       │   ├── Color.cpp.obj
+│           │   │   │   │       │   ├── GameObject.cpp.obj
+│           │   │   │   │       │   ├── Image.cpp.obj
+│           │   │   │   │       │   ├── Input.cpp.obj
+│           │   │   │   │       │   ├── LoadTextFile.cpp.obj
+│           │   │   │   │       │   ├── Logger.cpp.obj
+│           │   │   │   │       │   ├── MissingTexture.cpp.obj
+│           │   │   │   │       │   ├── Position.cpp.obj
+│           │   │   │   │       │   ├── Renderer.cpp.obj
+│           │   │   │   │       │   ├── SFX.cpp.obj
+│           │   │   │   │       │   ├── Text.cpp.obj
+│           │   │   │   │       │   ├── Time.cpp.obj
+│           │   │   │   │       │   └── TransformUtils.cpp.obj
+│           │   │   │   │       └── config.cpp.obj
+│           │   │   │   └── Tests.dir
+│           │   │   │       └── test
+│           │   │   ├── CTestTestfile.cmake
+│           │   │   ├── ImGui.lib
+│           │   │   ├── PTSD.lib
+│           │   │   ├── Tests[1]_include.cmake
+│           │   │   ├── cmake_install.cmake
+│           │   │   └── lib
+│           │   │       └── glew
+│           │   │           └── build
+│           │   │               └── cmake
+│           │   │                   ├── CMakeFiles
+│           │   │                   │   ├── Export
+│           │   │                   │   │   └── 7a894a12241bfddc41ca6be6d0e647bd
+│           │   │                   │   │       ├── glew-targets-debug.cmake
+│           │   │                   │   │       └── glew-targets.cmake
+│           │   │                   │   ├── glew.dir
+│           │   │                   │   │   └── __
+│           │   │                   │   │       └── __
+│           │   │                   │   │           └── src
+│           │   │                   │   ├── glew_s.dir
+│           │   │                   │   │   ├── __
+│           │   │                   │   │   │   ├── __
+│           │   │                   │   │   │   │   └── src
+│           │   │                   │   │   │   │       └── glew.c.obj
+│           │   │                   │   │   │   ├── glew.i
+│           │   │                   │   │   │   └── glew.rc.res
+│           │   │                   │   │   └── glew_s.pdb
+│           │   │                   │   ├── glewinfo.dir
+│           │   │                   │   │   └── __
+│           │   │                   │   │       └── __
+│           │   │                   │   │           └── src
+│           │   │                   │   └── visualinfo.dir
+│           │   │                   │       └── __
+│           │   │                   │           └── __
+│           │   │                   │               └── src
+│           │   │                   ├── cmake_install.cmake
+│           │   │                   └── glew.pc
+│           │   ├── ptsd-subbuild
+│           │   │   ├── CMakeCache.txt
+│           │   │   ├── CMakeFiles
+│           │   │   │   ├── 3.31.6-msvc6
+│           │   │   │   │   └── CMakeSystem.cmake
+│           │   │   │   ├── CMakeConfigureLog.yaml
+│           │   │   │   ├── TargetDirectories.txt
+│           │   │   │   ├── cmake.check_cache
+│           │   │   │   ├── pkgRedirects
+│           │   │   │   ├── ptsd-populate-complete
+│           │   │   │   ├── ptsd-populate.dir
+│           │   │   │   │   ├── Labels.json
+│           │   │   │   │   └── Labels.txt
+│           │   │   │   └── rules.ninja
+│           │   │   ├── CMakeLists.txt
+│           │   │   ├── build.ninja
+│           │   │   ├── cmake_install.cmake
+│           │   │   └── ptsd-populate-prefix
+│           │   │       ├── src
+│           │   │       │   ├── ptsd-populate-stamp
+│           │   │       │   │   ├── download-ptsd-populate.cmake
+│           │   │       │   │   ├── extract-ptsd-populate.cmake
+│           │   │       │   │   ├── ptsd-populate-build
+│           │   │       │   │   ├── ptsd-populate-configure
+│           │   │       │   │   ├── ptsd-populate-done
+│           │   │       │   │   ├── ptsd-populate-download
+│           │   │       │   │   ├── ptsd-populate-install
+│           │   │       │   │   ├── ptsd-populate-mkdir
+│           │   │       │   │   ├── ptsd-populate-patch
+│           │   │       │   │   ├── ptsd-populate-patch-info.txt
+│           │   │       │   │   ├── ptsd-populate-test
+│           │   │       │   │   ├── ptsd-populate-update
+│           │   │       │   │   ├── ptsd-populate-update-info.txt
+│           │   │       │   │   ├── ptsd-populate-urlinfo.txt
+│           │   │       │   │   └── verify-ptsd-populate.cmake
+│           │   │       │   └── v0.3-rc1.zip
+│           │   │       └── tmp
+│           │   │           ├── ptsd-populate-cfgcmd.txt
+│           │   │           └── ptsd-populate-mkdirs.cmake
+│           │   ├── sdl2-build
+│           │   │   ├── CMakeFiles
+│           │   │   │   ├── SDL2-static.dir
+│           │   │   │   │   ├── SDL2-static.pdb
+│           │   │   │   │   └── src
+│           │   │   │   │       ├── SDL.c.obj
+│           │   │   │   │       ├── SDL_assert.c.obj
+│           │   │   │   │       ├── SDL_dataqueue.c.obj
+│           │   │   │   │       ├── SDL_error.c.obj
+│           │   │   │   │       ├── SDL_guid.c.obj
+│           │   │   │   │       ├── SDL_hints.c.obj
+│           │   │   │   │       ├── SDL_list.c.obj
+│           │   │   │   │       ├── SDL_log.c.obj
+│           │   │   │   │       ├── SDL_utils.c.obj
+│           │   │   │   │       ├── atomic
+│           │   │   │   │       │   ├── SDL_atomic.c.obj
+│           │   │   │   │       │   └── SDL_spinlock.c.obj
+│           │   │   │   │       ├── audio
+│           │   │   │   │       │   ├── SDL_audio.c.obj
+│           │   │   │   │       │   ├── SDL_audiocvt.c.obj
+│           │   │   │   │       │   ├── SDL_audiodev.c.obj
+│           │   │   │   │       │   ├── SDL_audiotypecvt.c.obj
+│           │   │   │   │       │   ├── SDL_mixer.c.obj
+│           │   │   │   │       │   ├── SDL_wave.c.obj
+│           │   │   │   │       │   ├── directsound
+│           │   │   │   │       │   │   └── SDL_directsound.c.obj
+│           │   │   │   │       │   ├── disk
+│           │   │   │   │       │   │   └── SDL_diskaudio.c.obj
+│           │   │   │   │       │   ├── dummy
+│           │   │   │   │       │   │   └── SDL_dummyaudio.c.obj
+│           │   │   │   │       │   ├── wasapi
+│           │   │   │   │       │   │   ├── SDL_wasapi.c.obj
+│           │   │   │   │       │   │   └── SDL_wasapi_win32.c.obj
+│           │   │   │   │       │   └── winmm
+│           │   │   │   │       │       └── SDL_winmm.c.obj
+│           │   │   │   │       ├── core
+│           │   │   │   │       │   └── windows
+│           │   │   │   │       │       ├── SDL_hid.c.obj
+│           │   │   │   │       │       ├── SDL_immdevice.c.obj
+│           │   │   │   │       │       ├── SDL_windows.c.obj
+│           │   │   │   │       │       └── SDL_xinput.c.obj
+│           │   │   │   │       ├── cpuinfo
+│           │   │   │   │       │   └── SDL_cpuinfo.c.obj
+│           │   │   │   │       ├── dynapi
+│           │   │   │   │       │   └── SDL_dynapi.c.obj
+│           │   │   │   │       ├── events
+│           │   │   │   │       │   ├── SDL_clipboardevents.c.obj
+│           │   │   │   │       │   ├── SDL_displayevents.c.obj
+│           │   │   │   │       │   ├── SDL_dropevents.c.obj
+│           │   │   │   │       │   ├── SDL_events.c.obj
+│           │   │   │   │       │   ├── SDL_gesture.c.obj
+│           │   │   │   │       │   ├── SDL_keyboard.c.obj
+│           │   │   │   │       │   ├── SDL_keysym_to_scancode.c.obj
+│           │   │   │   │       │   ├── SDL_mouse.c.obj
+│           │   │   │   │       │   ├── SDL_quit.c.obj
+│           │   │   │   │       │   ├── SDL_scancode_tables.c.obj
+│           │   │   │   │       │   ├── SDL_touch.c.obj
+│           │   │   │   │       │   ├── SDL_windowevents.c.obj
+│           │   │   │   │       │   └── imKStoUCS.c.obj
+│           │   │   │   │       ├── file
+│           │   │   │   │       │   └── SDL_rwops.c.obj
+│           │   │   │   │       ├── filesystem
+│           │   │   │   │       │   └── windows
+│           │   │   │   │       │       └── SDL_sysfilesystem.c.obj
+│           │   │   │   │       ├── haptic
+│           │   │   │   │       │   ├── SDL_haptic.c.obj
+│           │   │   │   │       │   └── windows
+│           │   │   │   │       │       ├── SDL_dinputhaptic.c.obj
+│           │   │   │   │       │       ├── SDL_windowshaptic.c.obj
+│           │   │   │   │       │       └── SDL_xinputhaptic.c.obj
+│           │   │   │   │       ├── hidapi
+│           │   │   │   │       │   └── SDL_hidapi.c.obj
+│           │   │   │   │       ├── joystick
+│           │   │   │   │       │   ├── SDL_gamecontroller.c.obj
+│           │   │   │   │       │   ├── SDL_joystick.c.obj
+│           │   │   │   │       │   ├── controller_type.c.obj
+│           │   │   │   │       │   ├── hidapi
+│           │   │   │   │       │   │   ├── SDL_hidapi_combined.c.obj
+│           │   │   │   │       │   │   ├── SDL_hidapi_gamecube.c.obj
+│           │   │   │   │       │   │   ├── SDL_hidapi_luna.c.obj
+│           │   │   │   │       │   │   ├── SDL_hidapi_ps3.c.obj
+│           │   │   │   │       │   │   ├── SDL_hidapi_ps4.c.obj
+│           │   │   │   │       │   │   ├── SDL_hidapi_ps5.c.obj
+│           │   │   │   │       │   │   ├── SDL_hidapi_rumble.c.obj
+│           │   │   │   │       │   │   ├── SDL_hidapi_shield.c.obj
+│           │   │   │   │       │   │   ├── SDL_hidapi_stadia.c.obj
+│           │   │   │   │       │   │   ├── SDL_hidapi_steam.c.obj
+│           │   │   │   │       │   │   ├── SDL_hidapi_switch.c.obj
+│           │   │   │   │       │   │   ├── SDL_hidapi_wii.c.obj
+│           │   │   │   │       │   │   ├── SDL_hidapi_xbox360.c.obj
+│           │   │   │   │       │   │   ├── SDL_hidapi_xbox360w.c.obj
+│           │   │   │   │       │   │   ├── SDL_hidapi_xboxone.c.obj
+│           │   │   │   │       │   │   └── SDL_hidapijoystick.c.obj
+│           │   │   │   │       │   ├── virtual
+│           │   │   │   │       │   │   └── SDL_virtualjoystick.c.obj
+│           │   │   │   │       │   └── windows
+│           │   │   │   │       │       ├── SDL_dinputjoystick.c.obj
+│           │   │   │   │       │       ├── SDL_rawinputjoystick.c.obj
+│           │   │   │   │       │       ├── SDL_windows_gaming_input.c.obj
+│           │   │   │   │       │       ├── SDL_windowsjoystick.c.obj
+│           │   │   │   │       │       └── SDL_xinputjoystick.c.obj
+│           │   │   │   │       ├── libm
+│           │   │   │   │       │   ├── e_atan2.c.obj
+│           │   │   │   │       │   ├── e_exp.c.obj
+│           │   │   │   │       │   ├── e_fmod.c.obj
+│           │   │   │   │       │   ├── e_log.c.obj
+│           │   │   │   │       │   ├── e_log10.c.obj
+│           │   │   │   │       │   ├── e_pow.c.obj
+│           │   │   │   │       │   ├── e_rem_pio2.c.obj
+│           │   │   │   │       │   ├── e_sqrt.c.obj
+│           │   │   │   │       │   ├── k_cos.c.obj
+│           │   │   │   │       │   ├── k_rem_pio2.c.obj
+│           │   │   │   │       │   ├── k_sin.c.obj
+│           │   │   │   │       │   ├── k_tan.c.obj
+│           │   │   │   │       │   ├── s_atan.c.obj
+│           │   │   │   │       │   ├── s_copysign.c.obj
+│           │   │   │   │       │   ├── s_cos.c.obj
+│           │   │   │   │       │   ├── s_fabs.c.obj
+│           │   │   │   │       │   ├── s_floor.c.obj
+│           │   │   │   │       │   ├── s_scalbn.c.obj
+│           │   │   │   │       │   ├── s_sin.c.obj
+│           │   │   │   │       │   └── s_tan.c.obj
+│           │   │   │   │       ├── loadso
+│           │   │   │   │       │   └── windows
+│           │   │   │   │       │       └── SDL_sysloadso.c.obj
+│           │   │   │   │       ├── locale
+│           │   │   │   │       │   ├── SDL_locale.c.obj
+│           │   │   │   │       │   └── windows
+│           │   │   │   │       │       └── SDL_syslocale.c.obj
+│           │   │   │   │       ├── misc
+│           │   │   │   │       │   ├── SDL_url.c.obj
+│           │   │   │   │       │   └── windows
+│           │   │   │   │       │       └── SDL_sysurl.c.obj
+│           │   │   │   │       ├── power
+│           │   │   │   │       │   ├── SDL_power.c.obj
+│           │   │   │   │       │   └── windows
+│           │   │   │   │       │       └── SDL_syspower.c.obj
+│           │   │   │   │       ├── render
+│           │   │   │   │       │   ├── SDL_d3dmath.c.obj
+│           │   │   │   │       │   ├── SDL_render.c.obj
+│           │   │   │   │       │   ├── SDL_yuv_sw.c.obj
+│           │   │   │   │       │   ├── direct3d
+│           │   │   │   │       │   │   ├── SDL_render_d3d.c.obj
+│           │   │   │   │       │   │   └── SDL_shaders_d3d.c.obj
+│           │   │   │   │       │   ├── direct3d11
+│           │   │   │   │       │   │   ├── SDL_render_d3d11.c.obj
+│           │   │   │   │       │   │   └── SDL_shaders_d3d11.c.obj
+│           │   │   │   │       │   ├── direct3d12
+│           │   │   │   │       │   │   ├── SDL_render_d3d12.c.obj
+│           │   │   │   │       │   │   └── SDL_shaders_d3d12.c.obj
+│           │   │   │   │       │   ├── opengl
+│           │   │   │   │       │   │   ├── SDL_render_gl.c.obj
+│           │   │   │   │       │   │   └── SDL_shaders_gl.c.obj
+│           │   │   │   │       │   ├── opengles
+│           │   │   │   │       │   │   └── SDL_render_gles.c.obj
+│           │   │   │   │       │   ├── opengles2
+│           │   │   │   │       │   │   ├── SDL_render_gles2.c.obj
+│           │   │   │   │       │   │   └── SDL_shaders_gles2.c.obj
+│           │   │   │   │       │   ├── ps2
+│           │   │   │   │       │   │   └── SDL_render_ps2.c.obj
+│           │   │   │   │       │   ├── psp
+│           │   │   │   │       │   │   └── SDL_render_psp.c.obj
+│           │   │   │   │       │   ├── software
+│           │   │   │   │       │   │   ├── SDL_blendfillrect.c.obj
+│           │   │   │   │       │   │   ├── SDL_blendline.c.obj
+│           │   │   │   │       │   │   ├── SDL_blendpoint.c.obj
+│           │   │   │   │       │   │   ├── SDL_drawline.c.obj
+│           │   │   │   │       │   │   ├── SDL_drawpoint.c.obj
+│           │   │   │   │       │   │   ├── SDL_render_sw.c.obj
+│           │   │   │   │       │   │   ├── SDL_rotate.c.obj
+│           │   │   │   │       │   │   └── SDL_triangle.c.obj
+│           │   │   │   │       │   └── vitagxm
+│           │   │   │   │       │       ├── SDL_render_vita_gxm.c.obj
+│           │   │   │   │       │       ├── SDL_render_vita_gxm_memory.c.obj
+│           │   │   │   │       │       └── SDL_render_vita_gxm_tools.c.obj
+│           │   │   │   │       ├── sensor
+│           │   │   │   │       │   ├── SDL_sensor.c.obj
+│           │   │   │   │       │   └── windows
+│           │   │   │   │       │       └── SDL_windowssensor.c.obj
+│           │   │   │   │       ├── stdlib
+│           │   │   │   │       │   ├── SDL_crc16.c.obj
+│           │   │   │   │       │   ├── SDL_crc32.c.obj
+│           │   │   │   │       │   ├── SDL_getenv.c.obj
+│           │   │   │   │       │   ├── SDL_iconv.c.obj
+│           │   │   │   │       │   ├── SDL_malloc.c.obj
+│           │   │   │   │       │   ├── SDL_mslibc.c.obj
+│           │   │   │   │       │   ├── SDL_qsort.c.obj
+│           │   │   │   │       │   ├── SDL_stdlib.c.obj
+│           │   │   │   │       │   ├── SDL_string.c.obj
+│           │   │   │   │       │   └── SDL_strtokr.c.obj
+│           │   │   │   │       ├── thread
+│           │   │   │   │       │   ├── SDL_thread.c.obj
+│           │   │   │   │       │   ├── generic
+│           │   │   │   │       │   │   └── SDL_syscond.c.obj
+│           │   │   │   │       │   └── windows
+│           │   │   │   │       │       ├── SDL_syscond_cv.c.obj
+│           │   │   │   │       │       ├── SDL_sysmutex.c.obj
+│           │   │   │   │       │       ├── SDL_syssem.c.obj
+│           │   │   │   │       │       ├── SDL_systhread.c.obj
+│           │   │   │   │       │       └── SDL_systls.c.obj
+│           │   │   │   │       ├── timer
+│           │   │   │   │       │   ├── SDL_timer.c.obj
+│           │   │   │   │       │   └── windows
+│           │   │   │   │       │       └── SDL_systimer.c.obj
+│           │   │   │   │       └── video
+│           │   │   │   │           ├── SDL_RLEaccel.c.obj
+│           │   │   │   │           ├── SDL_blit.c.obj
+│           │   │   │   │           ├── SDL_blit_0.c.obj
+│           │   │   │   │           ├── SDL_blit_1.c.obj
+│           │   │   │   │           ├── SDL_blit_A.c.obj
+│           │   │   │   │           ├── SDL_blit_N.c.obj
+│           │   │   │   │           ├── SDL_blit_auto.c.obj
+│           │   │   │   │           ├── SDL_blit_copy.c.obj
+│           │   │   │   │           ├── SDL_blit_slow.c.obj
+│           │   │   │   │           ├── SDL_bmp.c.obj
+│           │   │   │   │           ├── SDL_clipboard.c.obj
+│           │   │   │   │           ├── SDL_egl.c.obj
+│           │   │   │   │           ├── SDL_fillrect.c.obj
+│           │   │   │   │           ├── SDL_pixels.c.obj
+│           │   │   │   │           ├── SDL_rect.c.obj
+│           │   │   │   │           ├── SDL_shape.c.obj
+│           │   │   │   │           ├── SDL_stretch.c.obj
+│           │   │   │   │           ├── SDL_surface.c.obj
+│           │   │   │   │           ├── SDL_video.c.obj
+│           │   │   │   │           ├── SDL_vulkan_utils.c.obj
+│           │   │   │   │           ├── SDL_yuv.c.obj
+│           │   │   │   │           ├── dummy
+│           │   │   │   │           │   ├── SDL_nullevents.c.obj
+│           │   │   │   │           │   ├── SDL_nullframebuffer.c.obj
+│           │   │   │   │           │   └── SDL_nullvideo.c.obj
+│           │   │   │   │           ├── offscreen
+│           │   │   │   │           │   ├── SDL_offscreenevents.c.obj
+│           │   │   │   │           │   ├── SDL_offscreenframebuffer.c.obj
+│           │   │   │   │           │   ├── SDL_offscreenopengles.c.obj
+│           │   │   │   │           │   ├── SDL_offscreenvideo.c.obj
+│           │   │   │   │           │   └── SDL_offscreenwindow.c.obj
+│           │   │   │   │           ├── windows
+│           │   │   │   │           │   ├── SDL_windowsclipboard.c.obj
+│           │   │   │   │           │   ├── SDL_windowsevents.c.obj
+│           │   │   │   │           │   ├── SDL_windowsframebuffer.c.obj
+│           │   │   │   │           │   ├── SDL_windowskeyboard.c.obj
+│           │   │   │   │           │   ├── SDL_windowsmessagebox.c.obj
+│           │   │   │   │           │   ├── SDL_windowsmodes.c.obj
+│           │   │   │   │           │   ├── SDL_windowsmouse.c.obj
+│           │   │   │   │           │   ├── SDL_windowsopengl.c.obj
+│           │   │   │   │           │   ├── SDL_windowsopengles.c.obj
+│           │   │   │   │           │   ├── SDL_windowsshape.c.obj
+│           │   │   │   │           │   ├── SDL_windowsvideo.c.obj
+│           │   │   │   │           │   ├── SDL_windowsvulkan.c.obj
+│           │   │   │   │           │   └── SDL_windowswindow.c.obj
+│           │   │   │   │           └── yuv2rgb
+│           │   │   │   │               └── yuv_rgb.c.obj
+│           │   │   │   ├── SDL2_test.dir
+│           │   │   │   │   └── src
+│           │   │   │   │       └── test
+│           │   │   │   └── SDL2main.dir
+│           │   │   │       ├── SDL2main.pdb
+│           │   │   │       └── src
+│           │   │   │           └── main
+│           │   │   │               └── windows
+│           │   │   │                   └── SDL_windows_main.c.obj
+│           │   │   ├── SDL2-staticd.lib
+│           │   │   ├── SDL2.spec
+│           │   │   ├── SDL2maind.lib
+│           │   │   ├── SDL_config.h.intermediate
+│           │   │   ├── cmake_install.cmake
+│           │   │   ├── cmake_uninstall.cmake
+│           │   │   ├── include
+│           │   │   │   ├── SDL.h
+│           │   │   │   ├── SDL_assert.h
+│           │   │   │   ├── SDL_atomic.h
+│           │   │   │   ├── SDL_audio.h
+│           │   │   │   ├── SDL_bits.h
+│           │   │   │   ├── SDL_blendmode.h
+│           │   │   │   ├── SDL_clipboard.h
+│           │   │   │   ├── SDL_copying.h
+│           │   │   │   ├── SDL_cpuinfo.h
+│           │   │   │   ├── SDL_egl.h
+│           │   │   │   ├── SDL_endian.h
+│           │   │   │   ├── SDL_error.h
+│           │   │   │   ├── SDL_events.h
+│           │   │   │   ├── SDL_filesystem.h
+│           │   │   │   ├── SDL_gamecontroller.h
+│           │   │   │   ├── SDL_gesture.h
+│           │   │   │   ├── SDL_guid.h
+│           │   │   │   ├── SDL_haptic.h
+│           │   │   │   ├── SDL_hidapi.h
+│           │   │   │   ├── SDL_hints.h
+│           │   │   │   ├── SDL_joystick.h
+│           │   │   │   ├── SDL_keyboard.h
+│           │   │   │   ├── SDL_keycode.h
+│           │   │   │   ├── SDL_loadso.h
+│           │   │   │   ├── SDL_locale.h
+│           │   │   │   ├── SDL_log.h
+│           │   │   │   ├── SDL_main.h
+│           │   │   │   ├── SDL_messagebox.h
+│           │   │   │   ├── SDL_metal.h
+│           │   │   │   ├── SDL_misc.h
+│           │   │   │   ├── SDL_mouse.h
+│           │   │   │   ├── SDL_mutex.h
+│           │   │   │   ├── SDL_name.h
+│           │   │   │   ├── SDL_opengl.h
+│           │   │   │   ├── SDL_opengl_glext.h
+│           │   │   │   ├── SDL_opengles.h
+│           │   │   │   ├── SDL_opengles2.h
+│           │   │   │   ├── SDL_opengles2_gl2.h
+│           │   │   │   ├── SDL_opengles2_gl2ext.h
+│           │   │   │   ├── SDL_opengles2_gl2platform.h
+│           │   │   │   ├── SDL_opengles2_khrplatform.h
+│           │   │   │   ├── SDL_pixels.h
+│           │   │   │   ├── SDL_platform.h
+│           │   │   │   ├── SDL_power.h
+│           │   │   │   ├── SDL_quit.h
+│           │   │   │   ├── SDL_rect.h
+│           │   │   │   ├── SDL_render.h
+│           │   │   │   ├── SDL_revision.h
+│           │   │   │   ├── SDL_rwops.h
+│           │   │   │   ├── SDL_scancode.h
+│           │   │   │   ├── SDL_sensor.h
+│           │   │   │   ├── SDL_shape.h
+│           │   │   │   ├── SDL_stdinc.h
+│           │   │   │   ├── SDL_surface.h
+│           │   │   │   ├── SDL_system.h
+│           │   │   │   ├── SDL_syswm.h
+│           │   │   │   ├── SDL_test.h
+│           │   │   │   ├── SDL_test_assert.h
+│           │   │   │   ├── SDL_test_common.h
+│           │   │   │   ├── SDL_test_compare.h
+│           │   │   │   ├── SDL_test_crc32.h
+│           │   │   │   ├── SDL_test_font.h
+│           │   │   │   ├── SDL_test_fuzzer.h
+│           │   │   │   ├── SDL_test_harness.h
+│           │   │   │   ├── SDL_test_images.h
+│           │   │   │   ├── SDL_test_log.h
+│           │   │   │   ├── SDL_test_md5.h
+│           │   │   │   ├── SDL_test_memory.h
+│           │   │   │   ├── SDL_test_random.h
+│           │   │   │   ├── SDL_thread.h
+│           │   │   │   ├── SDL_timer.h
+│           │   │   │   ├── SDL_touch.h
+│           │   │   │   ├── SDL_types.h
+│           │   │   │   ├── SDL_version.h
+│           │   │   │   ├── SDL_video.h
+│           │   │   │   ├── SDL_vulkan.h
+│           │   │   │   ├── begin_code.h
+│           │   │   │   └── close_code.h
+│           │   │   ├── include-config-debug
+│           │   │   │   └── SDL_config.h
+│           │   │   ├── sdl2-config
+│           │   │   └── sdl2.pc
+│           │   ├── sdl2-subbuild
+│           │   │   ├── CMakeCache.txt
+│           │   │   ├── CMakeFiles
+│           │   │   │   ├── 3.31.6-msvc6
+│           │   │   │   │   └── CMakeSystem.cmake
+│           │   │   │   ├── CMakeConfigureLog.yaml
+│           │   │   │   ├── TargetDirectories.txt
+│           │   │   │   ├── cmake.check_cache
+│           │   │   │   ├── pkgRedirects
+│           │   │   │   ├── rules.ninja
+│           │   │   │   ├── sdl2-populate-complete
+│           │   │   │   └── sdl2-populate.dir
+│           │   │   │       ├── Labels.json
+│           │   │   │       └── Labels.txt
+│           │   │   ├── CMakeLists.txt
+│           │   │   ├── build.ninja
+│           │   │   ├── cmake_install.cmake
+│           │   │   └── sdl2-populate-prefix
+│           │   │       ├── src
+│           │   │       │   ├── SDL2-2.26.5.zip
+│           │   │       │   └── sdl2-populate-stamp
+│           │   │       │       ├── download-sdl2-populate.cmake
+│           │   │       │       ├── extract-sdl2-populate.cmake
+│           │   │       │       ├── sdl2-populate-build
+│           │   │       │       ├── sdl2-populate-configure
+│           │   │       │       ├── sdl2-populate-done
+│           │   │       │       ├── sdl2-populate-download
+│           │   │       │       ├── sdl2-populate-install
+│           │   │       │       ├── sdl2-populate-mkdir
+│           │   │       │       ├── sdl2-populate-patch
+│           │   │       │       ├── sdl2-populate-patch-info.txt
+│           │   │       │       ├── sdl2-populate-test
+│           │   │       │       ├── sdl2-populate-update
+│           │   │       │       ├── sdl2-populate-update-info.txt
+│           │   │       │       ├── sdl2-populate-urlinfo.txt
+│           │   │       │       └── verify-sdl2-populate.cmake
+│           │   │       └── tmp
+│           │   │           ├── sdl2-populate-cfgcmd.txt
+│           │   │           └── sdl2-populate-mkdirs.cmake
+│           │   ├── sdl2_image-build
+│           │   │   ├── CMakeFiles
+│           │   │   │   ├── SDL2_image.dir
+│           │   │   │   │   ├── IMG.c.obj
+│           │   │   │   │   ├── IMG_WIC.c.obj
+│           │   │   │   │   ├── IMG_avif.c.obj
+│           │   │   │   │   ├── IMG_bmp.c.obj
+│           │   │   │   │   ├── IMG_gif.c.obj
+│           │   │   │   │   ├── IMG_jpg.c.obj
+│           │   │   │   │   ├── IMG_jxl.c.obj
+│           │   │   │   │   ├── IMG_lbm.c.obj
+│           │   │   │   │   ├── IMG_pcx.c.obj
+│           │   │   │   │   ├── IMG_png.c.obj
+│           │   │   │   │   ├── IMG_pnm.c.obj
+│           │   │   │   │   ├── IMG_qoi.c.obj
+│           │   │   │   │   ├── IMG_stb.c.obj
+│           │   │   │   │   ├── IMG_svg.c.obj
+│           │   │   │   │   ├── IMG_tga.c.obj
+│           │   │   │   │   ├── IMG_tif.c.obj
+│           │   │   │   │   ├── IMG_webp.c.obj
+│           │   │   │   │   ├── IMG_xcf.c.obj
+│           │   │   │   │   ├── IMG_xpm.c.obj
+│           │   │   │   │   ├── IMG_xv.c.obj
+│           │   │   │   │   ├── IMG_xxx.c.obj
+│           │   │   │   │   └── SDL2_image.pdb
+│           │   │   │   ├── showanim.dir
+│           │   │   │   └── showimage.dir
+│           │   │   ├── SDL2_image-staticd.lib
+│           │   │   └── cmake_install.cmake
+│           │   ├── sdl2_image-subbuild
+│           │   │   ├── CMakeCache.txt
+│           │   │   ├── CMakeFiles
+│           │   │   │   ├── 3.31.6-msvc6
+│           │   │   │   │   └── CMakeSystem.cmake
+│           │   │   │   ├── CMakeConfigureLog.yaml
+│           │   │   │   ├── TargetDirectories.txt
+│           │   │   │   ├── cmake.check_cache
+│           │   │   │   ├── pkgRedirects
+│           │   │   │   ├── rules.ninja
+│           │   │   │   ├── sdl2_image-populate-complete
+│           │   │   │   └── sdl2_image-populate.dir
+│           │   │   │       ├── Labels.json
+│           │   │   │       └── Labels.txt
+│           │   │   ├── CMakeLists.txt
+│           │   │   ├── build.ninja
+│           │   │   ├── cmake_install.cmake
+│           │   │   └── sdl2_image-populate-prefix
+│           │   │       ├── src
+│           │   │       │   ├── SDL2_image-2.6.3.zip
+│           │   │       │   └── sdl2_image-populate-stamp
+│           │   │       │       ├── download-sdl2_image-populate.cmake
+│           │   │       │       ├── extract-sdl2_image-populate.cmake
+│           │   │       │       ├── sdl2_image-populate-build
+│           │   │       │       ├── sdl2_image-populate-configure
+│           │   │       │       ├── sdl2_image-populate-done
+│           │   │       │       ├── sdl2_image-populate-download
+│           │   │       │       ├── sdl2_image-populate-install
+│           │   │       │       ├── sdl2_image-populate-mkdir
+│           │   │       │       ├── sdl2_image-populate-patch
+│           │   │       │       ├── sdl2_image-populate-patch-info.txt
+│           │   │       │       ├── sdl2_image-populate-test
+│           │   │       │       ├── sdl2_image-populate-update
+│           │   │       │       ├── sdl2_image-populate-update-info.txt
+│           │   │       │       ├── sdl2_image-populate-urlinfo.txt
+│           │   │       │       └── verify-sdl2_image-populate.cmake
+│           │   │       └── tmp
+│           │   │           ├── sdl2_image-populate-cfgcmd.txt
+│           │   │           └── sdl2_image-populate-mkdirs.cmake
+│           │   ├── sdl2_mixer-build
+│           │   │   ├── CMakeFiles
+│           │   │   │   ├── SDL2_mixer.dir
+│           │   │   │   │   ├── SDL2_mixer.pdb
+│           │   │   │   │   └── src
+│           │   │   │   │       ├── codecs
+│           │   │   │   │       │   ├── load_aiff.c.obj
+│           │   │   │   │       │   ├── load_voc.c.obj
+│           │   │   │   │       │   ├── mp3utils.c.obj
+│           │   │   │   │       │   ├── music_cmd.c.obj
+│           │   │   │   │       │   ├── music_drflac.c.obj
+│           │   │   │   │       │   ├── music_drmp3.c.obj
+│           │   │   │   │       │   ├── music_flac.c.obj
+│           │   │   │   │       │   ├── music_fluidsynth.c.obj
+│           │   │   │   │       │   ├── music_modplug.c.obj
+│           │   │   │   │       │   ├── music_mpg123.c.obj
+│           │   │   │   │       │   ├── music_nativemidi.c.obj
+│           │   │   │   │       │   ├── music_ogg.c.obj
+│           │   │   │   │       │   ├── music_ogg_stb.c.obj
+│           │   │   │   │       │   ├── music_opus.c.obj
+│           │   │   │   │       │   ├── music_timidity.c.obj
+│           │   │   │   │       │   ├── music_wav.c.obj
+│           │   │   │   │       │   └── music_xmp.c.obj
+│           │   │   │   │       ├── effect_position.c.obj
+│           │   │   │   │       ├── effect_stereoreverse.c.obj
+│           │   │   │   │       ├── effects_internal.c.obj
+│           │   │   │   │       ├── mixer.c.obj
+│           │   │   │   │       ├── music.c.obj
+│           │   │   │   │       └── utils.c.obj
+│           │   │   │   ├── playmus.dir
+│           │   │   │   └── playwave.dir
+│           │   │   ├── SDL2_mixer-staticd.lib
+│           │   │   └── cmake_install.cmake
+│           │   ├── sdl2_mixer-subbuild
+│           │   │   ├── CMakeCache.txt
+│           │   │   ├── CMakeFiles
+│           │   │   │   ├── 3.31.6-msvc6
+│           │   │   │   │   └── CMakeSystem.cmake
+│           │   │   │   ├── CMakeConfigureLog.yaml
+│           │   │   │   ├── TargetDirectories.txt
+│           │   │   │   ├── cmake.check_cache
+│           │   │   │   ├── pkgRedirects
+│           │   │   │   ├── rules.ninja
+│           │   │   │   ├── sdl2_mixer-populate-complete
+│           │   │   │   └── sdl2_mixer-populate.dir
+│           │   │   │       ├── Labels.json
+│           │   │   │       └── Labels.txt
+│           │   │   ├── CMakeLists.txt
+│           │   │   ├── build.ninja
+│           │   │   ├── cmake_install.cmake
+│           │   │   └── sdl2_mixer-populate-prefix
+│           │   │       ├── src
+│           │   │       │   ├── SDL2_mixer-2.6.3.zip
+│           │   │       │   └── sdl2_mixer-populate-stamp
+│           │   │       │       ├── download-sdl2_mixer-populate.cmake
+│           │   │       │       ├── extract-sdl2_mixer-populate.cmake
+│           │   │       │       ├── sdl2_mixer-populate-build
+│           │   │       │       ├── sdl2_mixer-populate-configure
+│           │   │       │       ├── sdl2_mixer-populate-done
+│           │   │       │       ├── sdl2_mixer-populate-download
+│           │   │       │       ├── sdl2_mixer-populate-install
+│           │   │       │       ├── sdl2_mixer-populate-mkdir
+│           │   │       │       ├── sdl2_mixer-populate-patch
+│           │   │       │       ├── sdl2_mixer-populate-patch-info.txt
+│           │   │       │       ├── sdl2_mixer-populate-test
+│           │   │       │       ├── sdl2_mixer-populate-update
+│           │   │       │       ├── sdl2_mixer-populate-update-info.txt
+│           │   │       │       ├── sdl2_mixer-populate-urlinfo.txt
+│           │   │       │       └── verify-sdl2_mixer-populate.cmake
+│           │   │       └── tmp
+│           │   │           ├── sdl2_mixer-populate-cfgcmd.txt
+│           │   │           └── sdl2_mixer-populate-mkdirs.cmake
+│           │   ├── sdl2_ttf-build
+│           │   │   ├── CMakeFiles
+│           │   │   │   ├── SDL2_ttf.dir
+│           │   │   │   │   ├── SDL2_ttf.pdb
+│           │   │   │   │   └── SDL_ttf.c.obj
+│           │   │   │   ├── glfont.dir
+│           │   │   │   └── showfont.dir
+│           │   │   ├── SDL2_ttfd.lib
+│           │   │   ├── cmake_install.cmake
+│           │   │   └── external
+│           │   │       └── freetype
+│           │   │           ├── CMakeFiles
+│           │   │           │   ├── Export
+│           │   │           │   │   └── 778b4f54a68e80ec034bf381f364ca2c
+│           │   │           │   │       ├── freetype-config-debug.cmake
+│           │   │           │   │       └── freetype-config.cmake
+│           │   │           │   └── freetype.dir
+│           │   │           │       ├── builds
+│           │   │           │       │   └── windows
+│           │   │           │       │       ├── ftdebug.c.obj
+│           │   │           │       │       └── ftsystem.c.obj
+│           │   │           │       ├── freetype.pdb
+│           │   │           │       └── src
+│           │   │           │           ├── autofit
+│           │   │           │           │   └── autofit.c.obj
+│           │   │           │           ├── base
+│           │   │           │           │   ├── ftbase.c.obj
+│           │   │           │           │   ├── ftbbox.c.obj
+│           │   │           │           │   ├── ftbdf.c.obj
+│           │   │           │           │   ├── ftbitmap.c.obj
+│           │   │           │           │   ├── ftcid.c.obj
+│           │   │           │           │   ├── ftfstype.c.obj
+│           │   │           │           │   ├── ftgasp.c.obj
+│           │   │           │           │   ├── ftglyph.c.obj
+│           │   │           │           │   ├── ftgxval.c.obj
+│           │   │           │           │   ├── ftinit.c.obj
+│           │   │           │           │   ├── ftmm.c.obj
+│           │   │           │           │   ├── ftotval.c.obj
+│           │   │           │           │   ├── ftpatent.c.obj
+│           │   │           │           │   ├── ftpfr.c.obj
+│           │   │           │           │   ├── ftstroke.c.obj
+│           │   │           │           │   ├── ftsynth.c.obj
+│           │   │           │           │   ├── fttype1.c.obj
+│           │   │           │           │   ├── ftver.i
+│           │   │           │           │   ├── ftver.rc.res
+│           │   │           │           │   └── ftwinfnt.c.obj
+│           │   │           │           ├── bdf
+│           │   │           │           │   └── bdf.c.obj
+│           │   │           │           ├── bzip2
+│           │   │           │           │   └── ftbzip2.c.obj
+│           │   │           │           ├── cache
+│           │   │           │           │   └── ftcache.c.obj
+│           │   │           │           ├── cff
+│           │   │           │           │   └── cff.c.obj
+│           │   │           │           ├── cid
+│           │   │           │           │   └── type1cid.c.obj
+│           │   │           │           ├── gzip
+│           │   │           │           │   └── ftgzip.c.obj
+│           │   │           │           ├── lzw
+│           │   │           │           │   └── ftlzw.c.obj
+│           │   │           │           ├── pcf
+│           │   │           │           │   └── pcf.c.obj
+│           │   │           │           ├── pfr
+│           │   │           │           │   └── pfr.c.obj
+│           │   │           │           ├── psaux
+│           │   │           │           │   └── psaux.c.obj
+│           │   │           │           ├── pshinter
+│           │   │           │           │   └── pshinter.c.obj
+│           │   │           │           ├── psnames
+│           │   │           │           │   └── psnames.c.obj
+│           │   │           │           ├── raster
+│           │   │           │           │   └── raster.c.obj
+│           │   │           │           ├── sdf
+│           │   │           │           │   └── sdf.c.obj
+│           │   │           │           ├── sfnt
+│           │   │           │           │   └── sfnt.c.obj
+│           │   │           │           ├── smooth
+│           │   │           │           │   └── smooth.c.obj
+│           │   │           │           ├── svg
+│           │   │           │           │   └── svg.c.obj
+│           │   │           │           ├── truetype
+│           │   │           │           │   └── truetype.c.obj
+│           │   │           │           ├── type1
+│           │   │           │           │   └── type1.c.obj
+│           │   │           │           ├── type42
+│           │   │           │           │   └── type42.c.obj
+│           │   │           │           └── winfonts
+│           │   │           │               └── winfnt.c.obj
+│           │   │           ├── cmake_install.cmake
+│           │   │           ├── freetype-config-version.cmake
+│           │   │           ├── freetype2.pc
+│           │   │           ├── freetyped.lib
+│           │   │           └── include
+│           │   │               └── freetype
+│           │   │                   └── config
+│           │   │                       ├── ftconfig.h
+│           │   │                       └── ftoption.h
+│           │   ├── sdl2_ttf-subbuild
+│           │   │   ├── CMakeCache.txt
+│           │   │   ├── CMakeFiles
+│           │   │   │   ├── 3.31.6-msvc6
+│           │   │   │   │   └── CMakeSystem.cmake
+│           │   │   │   ├── CMakeConfigureLog.yaml
+│           │   │   │   ├── TargetDirectories.txt
+│           │   │   │   ├── cmake.check_cache
+│           │   │   │   ├── pkgRedirects
+│           │   │   │   ├── rules.ninja
+│           │   │   │   ├── sdl2_ttf-populate-complete
+│           │   │   │   └── sdl2_ttf-populate.dir
+│           │   │   │       ├── Labels.json
+│           │   │   │       └── Labels.txt
+│           │   │   ├── CMakeLists.txt
+│           │   │   ├── build.ninja
+│           │   │   ├── cmake_install.cmake
+│           │   │   └── sdl2_ttf-populate-prefix
+│           │   │       ├── src
+│           │   │       │   ├── SDL2_ttf-2.20.2.zip
+│           │   │       │   └── sdl2_ttf-populate-stamp
+│           │   │       │       ├── download-sdl2_ttf-populate.cmake
+│           │   │       │       ├── extract-sdl2_ttf-populate.cmake
+│           │   │       │       ├── sdl2_ttf-populate-build
+│           │   │       │       ├── sdl2_ttf-populate-configure
+│           │   │       │       ├── sdl2_ttf-populate-done
+│           │   │       │       ├── sdl2_ttf-populate-download
+│           │   │       │       ├── sdl2_ttf-populate-install
+│           │   │       │       ├── sdl2_ttf-populate-mkdir
+│           │   │       │       ├── sdl2_ttf-populate-patch
+│           │   │       │       ├── sdl2_ttf-populate-patch-info.txt
+│           │   │       │       ├── sdl2_ttf-populate-test
+│           │   │       │       ├── sdl2_ttf-populate-update
+│           │   │       │       ├── sdl2_ttf-populate-update-info.txt
+│           │   │       │       ├── sdl2_ttf-populate-urlinfo.txt
+│           │   │       │       └── verify-sdl2_ttf-populate.cmake
+│           │   │       └── tmp
+│           │   │           ├── sdl2_ttf-populate-cfgcmd.txt
+│           │   │           └── sdl2_ttf-populate-mkdirs.cmake
+│           │   ├── spdlog-build
+│           │   │   ├── CMakeFiles
+│           │   │   │   └── spdlog.dir
+│           │   │   │       ├── spdlog.pdb
+│           │   │   │       └── src
+│           │   │   │           ├── async.cpp.obj
+│           │   │   │           ├── cfg.cpp.obj
+│           │   │   │           ├── color_sinks.cpp.obj
+│           │   │   │           ├── file_sinks.cpp.obj
+│           │   │   │           ├── fmt.cpp.obj
+│           │   │   │           ├── spdlog.cpp.obj
+│           │   │   │           └── stdout_sinks.cpp.obj
+│           │   │   ├── cmake_install.cmake
+│           │   │   └── spdlogd.lib
+│           │   └── spdlog-subbuild
+│           │       ├── CMakeCache.txt
+│           │       ├── CMakeFiles
+│           │       │   ├── 3.31.6-msvc6
+│           │       │   │   └── CMakeSystem.cmake
+│           │       │   ├── CMakeConfigureLog.yaml
+│           │       │   ├── TargetDirectories.txt
+│           │       │   ├── cmake.check_cache
+│           │       │   ├── pkgRedirects
+│           │       │   ├── rules.ninja
+│           │       │   ├── spdlog-populate-complete
+│           │       │   └── spdlog-populate.dir
+│           │       │       ├── Labels.json
+│           │       │       └── Labels.txt
+│           │       ├── CMakeLists.txt
+│           │       ├── build.ninja
+│           │       ├── cmake_install.cmake
+│           │       └── spdlog-populate-prefix
+│           │           ├── src
+│           │           │   ├── spdlog-populate-stamp
+│           │           │   │   ├── download-spdlog-populate.cmake
+│           │           │   │   ├── extract-spdlog-populate.cmake
+│           │           │   │   ├── spdlog-populate-build
+│           │           │   │   ├── spdlog-populate-configure
+│           │           │   │   ├── spdlog-populate-done
+│           │           │   │   ├── spdlog-populate-download
+│           │           │   │   ├── spdlog-populate-install
+│           │           │   │   ├── spdlog-populate-mkdir
+│           │           │   │   ├── spdlog-populate-patch
+│           │           │   │   ├── spdlog-populate-patch-info.txt
+│           │           │   │   ├── spdlog-populate-test
+│           │           │   │   ├── spdlog-populate-update
+│           │           │   │   ├── spdlog-populate-update-info.txt
+│           │           │   │   ├── spdlog-populate-urlinfo.txt
+│           │           │   │   └── verify-spdlog-populate.cmake
+│           │           │   └── v1.10.0.zip
+│           │           └── tmp
+│           │               ├── spdlog-populate-cfgcmd.txt
+│           │               └── spdlog-populate-mkdirs.cmake
+│           ├── bin
+│           ├── build.ninja
+│           ├── cmake_install.cmake
+│           └── lib
+│               └── libglew32d.lib
+├── src
+│   ├── App.cpp
+│   ├── AppEnd.cpp
+│   ├── AppStart.cpp
+│   ├── AppUpdate.cpp
+│   ├── AppUtil.cpp
+│   ├── Character.cpp
+│   ├── InitializeMap.cpp
+│   ├── PhaseManager.cpp
+│   └── main.cpp
+└── tree.txt
+
+1112 directories, 8925 files

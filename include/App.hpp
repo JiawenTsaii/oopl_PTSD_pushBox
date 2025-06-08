@@ -10,7 +10,6 @@
 
 #include "Character.hpp"
 #include "PhaseResourceManager.hpp"
-#include "AnimatedCharacter.hpp"
 #include "TaskText.hpp"
 
 class App {
