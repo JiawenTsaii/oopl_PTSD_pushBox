@@ -244,14 +244,15 @@ void App::Update() {
                 // 設定剩餘時間 (LEVEL21~LEVEL30)
                 if (m_Phase >= Phase::LEVEL21 && m_Phase <= Phase::LEVEL30) {
                     m_RemainingTime = remainingTimeValues[levelIndex % 10];
-                }
+					std::cout << "m_RemainingTime: " << m_RemainingTime << std::endl;
+                    m_TimeLimited = true; // 啟用時間限制
 
-                // 設置時間限制 (LEVEL21~LEVEL30)
-                m_LastTimeUpdate = std::chrono::steady_clock::now();
-                int minutes = m_RemainingTime / 60;
-                int seconds = m_RemainingTime % 60;
-                std::string timeStr = (minutes < 10 ? "0" : "") + std::to_string(minutes) + ":" +
-                    (seconds < 10 ? "0" : "") + std::to_string(seconds);
+                    m_LastTimeUpdate = std::chrono::steady_clock::now();
+                    int minutes = m_RemainingTime / 60;
+                    int seconds = m_RemainingTime % 60;
+                    std::string timeStr = (minutes < 10 ? "0" : "") + std::to_string(minutes) + ":" +
+                        (seconds < 10 ? "0" : "") + std::to_string(seconds);
+                }
             }
             else {
                 // 默認處理
