@@ -146,9 +146,9 @@ void App::ValidTask() {
 			if (m_Phase >= Phase::LEVEL20 && m_Phase <= Phase::LEVEL29) {
 				// 設置時間限制s
 				int remainingTimeValues[] = { 15, 15, 30, 35, 50, 40, 40, 60, 30, 35 };
-				if (m_Phase >= Phase::LEVEL21 && m_Phase <= Phase::LEVEL30) {
-					m_RemainingTime = remainingTimeValues[levelIndex % 10];
-				}
+				
+				m_RemainingTime = remainingTimeValues[levelIndex % 10];
+
 				m_LastTimeUpdate = std::chrono::steady_clock::now();
 
 				m_TimeLimited = true;
